@@ -1,0 +1,177 @@
+todo kwota pobrania ma uwzględnić jeszcze total_paid_real
+todo w historii statusów uwzględnić status Zwrot do nadawcy 5.* i na tej podstawie oznaczyć doręczoną przesyłkę jako dostarczony zwrot.
+
+v3.1.0 @ 02.07.2024
+- dodano możliwość zmiany języka wydruku etykiet spośród PL, DE, GB w ustawieniach wydruku
+- dodano pobieranie dostępnych modułów płatności z listy zamówień w konfiguracji szablonu
+- poprawiono uzupełnianie numeru śledzenia w preście 8.1.6
+
+v3.0.0 @ 06.07.2023
+- przystosowano moduł do PS 8+ oraz PHP 8.1
+
+v2.3.1 @ 04.07.2022
+- dodano opcję usuwania wybranego punktu jeśli klient zmieni przewoźnika w zamówieniu
+
+v2.3.0 @ 08.02.2022
+- dodano obsługę nowych map GLS w v3.1
+- język tłumaczeń map zależy teraz od języka wybranego przez klienta w sklepie dla PL = PL, dla innych EN
+- lista dostępnych krajów obsługiwanych na mapie pobierana jest teraz automatycznie z serwera GLS
+- mapa będzie centrowana na domyślnym adresie klienta podanym w koszyku (o ile adres jest poprawny)
+- przystosowano moduł do współpracy z modułem pakowania zamówień od x13.pl
+
+v2.2.3 @ 08.04.2021
+- pilna poprawka metody logowania do systemu GLS
+
+v2.2.2 @ 19.02.2021
+- przywrócono widoczność opcji Zmień status zamówienia po dodaniu przesyłki w konfiguracji
+
+v2.2.1 @ 16.12.2020
+- poprawiono zapisywanie id drukarek dla konkretnych użytkowników w usłudze PrintNode
+- dodano brakujące tłumaczenia
+
+v2.2.0 @ 16.12.2020
+- przystosowano moduł do wersji PrestaShop 1.7.7.0
+- dodano opcję wydruku w usłudze PrintNode.com
+
+v2.1.0 @ 25.11.2020
+- dodano nowe formaty wydruku etykiet:
+-- etykieta z rolki (160mm x 100mm) - plik w formacie ZPL z rozszerzeniem DPL
+-- etykieta z rolki (160mm x 100mm) - plik w formacie ZPL (rozdzielczość 300dpi)
+- poprawiono wczytywanie jQuery dla Ps 1.7+
+
+v2.0.1 @ 13.11.2020
+- przebudowano proces dodawania plików i skryptów w panelu administratora
+
+v2.0.0 @ 23.10.2020
+- dodano opcję wyboru punktu ParcelShop (Szybka Paczka) z mapy!
+- przebudowano wyszukiwarkę punktów tak by nie trzeba było podawać kodu pocztowego, a jedynie adres punktu!
+- dodano możliwość wyboru kraju do którego adresujemy Szybką Paczkę! Aktualnie jest to Polska i Niemcy. 
+- dodano nową zakładkę API z funkcjonalnością pobierania etykiet oraz informacji o wybranym punkcie przez klienta na podstawie zamówienia
+- przebudowano proces dodawania przesyłek z użyciem osobnego procesu generującego sesję (by uniknąć problemów z nadawaniem wielu przesyłek jednocześnie)
+- dodano możliwosć zmiany tytułu maila intransit w konfiguracji modułu
+- uzupełnienie pustych tłumaczeń
+
+v1.9.0 @ 15.10.2020
+- przebudowano system licencji
+- dodano obsługę darmowych zamówień w szablonach przesyłek
+
+v1.8.2 @ 19.08.2020
+- poprawka kompatybilności jquery jedynie dla wybranych instancji
+
+v1.8.1 @ 18.08.2020
+- kompatybilność skryptów jquery w prestashop > 1.7.5
+- niezapisywanie etykiet w logach
+- bardziej konkretne logi niektórych błedów
+
+v1.8.0 @ 20.07.2020
+- usprawnienie połączenia z serwerem GLS - identyfikator sesji przechowywany przez 20 minut
+- poprawienie pozycji komunikatów
+
+v1.7.2 @ 23.04.2020
+- optymalizacja zakładki z zamówieniami
+
+v1.7.1 @ 22.01.2020
+- poprawiono zwracanie komunikatów o błędach przy tworzeniu przesyłek
+
+v1.7.0 @ 09.01.2020
+- dodano wyświetlanie wartości jednostki produktu w widoku Zamówień
+- dodano wyświetlanie zdjęcia produktu wraz z większym podglądem po najechaniu w widoku Zamówień
+- dodano wyświetlanie oraz filtrowanie widoku Zamówień po dokumecie sprzedaży 'Paragon/Faktura' jeśli w sklepie zainstalowany jest moduł o nazwie paragonfaktura
+- dodano możliwość wyszukiwania punktu odbioru w zależności od kraju podanego w adresie dostawy w zamówieniu. Np. Dla kraju Niemcy wyszukiwany jest punkt w okolicy podanego kodu pocztowego w Niemczech, dla Polski dla kodu pocztowego w Polsce.
+
+v1.6.0 @ 28.10.2019
+- dodano możliwość wprowadzania daty nadania przesyłki jeśli ta nadana automatycznie przez GLS jest błędna. 
+
+v1.5.0 @ 10.10.2019
+- dodano usługę Exchange-Service (wymiana towaru)
+
+v1.4.0 @ 08.10.2019
+- dodano usługę Pick & Return czyli odbiór od klienta i przywiezienie do naszej firmy.
+- dodano rozdzielanie zamówień wyraźną kreską
+- dodano informacje o wiadomościch w zamówieniach przed wygenerowaniem przesyłki oraz na liście zamówień
+- dodano opcję automatycznego wydruku etykiet po utworzeniu przesyłki
+
+v1.3.9 @ 12.08.2019
+- zmiana stylu wyświetlania statusów zamówień
+
+v1.3.8 @ 12.07.2019
+- poprawiono błąd z wyświetlaniem się styli po ostatniej aktualizacji
+
+v1.3.7 @ 11.07.2019
+- poprawiono błąd z setMedia dla PHP 7.1+
+
+v1.3.6 @ 04.07.2019
+- poprawiono błędu z wczytywaniem jQuery w starszych wersjach Presty
+
+v1.3.5 @ 03.06.2019
+- poprawiono usuwanie przesyłek ikoną usuń
+
+v1.3.4 @ 16.05.2019
+- dodano nowe tagi, które można użyć na etykietach: {customer_firstname} - imię klienta, {customer_lastname} - nazwisko klienta
+
+v1.3.3 @ 24.04.2019
+- dodano wsparcie dla modułu trackmultiplecarriers z addons4presta
+- dodano pobieranie indeksu produktu z danych produktu zamiast z historii zamówień przy generowaniu opisów przesyłek
+- poprawiono automatyczne sprawdzanie statusów za pomocą CRONa
+- poprawiono filtrowanie listy przesyłek
+
+v1.3.2 @ 15.04.2019
+- poprawiono aktualizację statusów przesyłek gdy nie jest zaznaczony żaden status do aktualizacji
+- dodano domyślny filtr daty na 7 dni wstecz dla listy zamówień o ile nie ustawiono inaczej
+- poprawiono tworzenie przesyłek z adresem zawierającym znak apostrofa lub cudzysłowiu
+
+v1.3.1 @ 19.02.2019
+- aktualizacja licencji
+- poprawiono pobieranie wagi zamówienia uwzględniając narzuty kombinacji
+
+v.1.3.0 @ 07.02.2019
+- dodano filtr daty utworzenia przesyłki na liście przesyłek
+- dodano rozwijanie i zwijanie filtrów na liście przesyłek
+- dodano mechanizm automatycznego poprawiania błędów w tłumaczeniach
+- poprawa zapisywania wybranego punktu w starszych wersjach presty
+
+v1.2.0 @ 26.01.2019
+- poprawiono wyświetlanie przesyłek do nadania
+- dodano liczbę przesyłek do wysłania w nagłówku
+- dodano oczyszczanie pól adresowych z pustych wartości (zawierających białe znaki)
+- dodano zapamiętywanie danych wybranego punktu odbioru by nie trzeba było pobierać go na nowo przez api
+- dodano możliwość aktualizacji statusów przesyłek za pomocą CRONa zamiast sprawdzania ich przez panel presty.
+- dodano szybki dostęp do zakładek w ustawieniach modułu
+- dodano możliwość usuwania przesyłek z Presty jeśli te zostały usunięte poprzez panel ADE PLUS.
+- dodano możliwość ukrywania panelu wysyłki z GLS jeśli zamówienie nie ma przypisanych szablonów
+- dodano możliwość ukrywania globalnych szablonów w zamówieniu
+
+v1.1.2 @ 16.10.2018
+- poprawiono aktualizację statusów przesyłek
+- przystosowano moduł do płatności Arena.pl od Seigi
+
+v1.1.1 @ 07.09.2018
+- kompatybilność z niektórymi wersjami PrestaShop
+
+v1.1.0 @ 07.09.2018
+- poprawiono pobieranie listy modułów płatności w zakładce GLS > Zamówienia
+- poprawiono szybkość wczytywania podglądu z zamówieniem gdy klient nie wybrał żadnego parcelshopu.
+- dodano nowe tagi do opisów/uwag przesyłek
+-- lista produktów - nazwy produktów
+-- lista produktów - nazwy i ilości produktów
+-- lista produktów - indeksy produktów
+-- lista produktów - indeksy i ilości produktów
+- dodano walidację i ostrzeżenie o przekroczeniu ilości znaków w polach: opis, uwagi, zawartość
+- walidację długości pól można włączyć lub wyłączyć w konfiguracji w zakładce ustawienia dodatkowe
+- dodano możliwość zwijania i rozwijania super filtrów w zakładce GLS > Zamówienia
+- ze względów bezpieczeństwa ukryto wprowadzone hasło w konfiguracji 
+- dodano możliwość usuwania przesyłek starszych niź X dni (dla bezpieczeństwa minimum 14 dni)
+- dodano możliwość sprawdzania statusów przesyłek w podglądzie danego zamówienia
+- poprawiono ustawianie stautsu stworzono dla nowo dodanych przesyłek
+- dodano informację o zdefiniowanej kwocie pobrania na liście utworzonych przesyłek
+- dodano możliwość przywracania ostatnio wybranego punktu przez klienta
+- dodano możłiwość pokazywania wyboru punktu odbioru poniżej listy przewoźników
+- dodano możliwość ukrycia informacji o niewybranym punkcie odbioru w zamówieniach jeśli zamówienie nie ma przypisanego szablonu z przesyłką do punktu odbioru
+- dodano możliwość zmieniania danych w mailu z potwierdzeniem zamówienia na dane wybranego punktu np. adresu dostawy
+- dodano możliwość dodawania informacji o wybranym punkcie odbioru przez klienta w wiadomości do zamówienia 
+
+v1.0.1 @ 11.07.2018
+- poprawiono komunikację z serwerem produkcyjnym
+
+v1.0.0 @ 09.07.2018
+- pierwsza oficjalna wersja modulu

@@ -1,0 +1,8 @@
+{extends file='page.tpl'}
+{block name='page_content'}<script type="text/javascript">
+var baseUri = '{$baseUri|escape:'html':'UTF-8'}';</script>
+{if isset($ispopup) && $ispopup} <a href="#gformbuilderpro_form_0" rel="0" class="btn btn-primary gformbuilderpro_openform">{$popup_label}</a>
+{/if}<input type="hidden" id="gformbuilderpro_formValidity" value="{$required_warrning}"/><div id="gformbuilderpro_form_0" class="gformbuilderpro_form gformbuilderpro_form_0 {if isset($ispopup) && $ispopup} ispopup_form ghidden_form {/if}"> {if isset($_errors)} <div class="alert alert-danger" id="create_account_error"><ol>{foreach $_errors as $_error} <li>{$_error|escape:'html':'UTF-8'}</li> {/foreach}</ol></div> {/if} <form action="{$actionUrl|escape:'html':'UTF-8'}" method="POST" class="form_using_ajax row"><input type="hidden" name="usingajax" value="1"/><input type="hidden" name="idform" value="0"/><input type="hidden" name="id_lang" value="1"/><input type="hidden" name="id_shop" value="1"/><input type="hidden" name="Conditions" value="{$Conditions|escape:'html':'UTF-8'}"/><input type="hidden" name="ConditionsHide" value=""/><input type="hidden" name="gSubmitForm" value="1"/><div class="gformbuilderpro_content">{if isset($id_module_gformbuilderpro) && $id_module_gformbuilderpro > 0}
+                {hook h='displayGDPRConsent' id_module=$id_module_gformbuilderpro}
+            {/if}</div><div style="clear:both;"></div></form><div style="clear:both;"></div></div><div style="clear:both;"></div>
+{/block}

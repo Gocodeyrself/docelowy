@@ -1,0 +1,5 @@
+[2023-08-10 13:40:06] request.INFO: Matched route "api_translation_value_edit". {"route":"api_translation_value_edit","route_parameters":{"_route":"api_translation_value_edit","_controller":"prestashop.core.api.translation.controller:translationEditAction","_legacy_controller":"AdminTranslations"},"request_uri":"https://cezos.exis24.pl/admin270jq8jrlc4glrd2ocx/index.php/api/translations/edit?_token=Nq_lukBRsCqG_UOtbbqt4gVu8kKTZQaFAvVrf2BcpcQ","method":"POST"} []
+[2023-08-10 13:40:06] security.DEBUG: Read existing security token from the session. {"key":"_security_main","token_class":"Symfony\\Component\\Security\\Core\\Authentication\\Token\\UsernamePasswordToken"} []
+[2023-08-10 13:40:06] security.DEBUG: User was reloaded from a user provider. {"provider":"PrestaShopBundle\\Security\\Admin\\EmployeeProvider","username":"serwis@exis.pl"} []
+[2023-08-10 13:40:06] app.ERROR: No result was found for query although at least one row was expected. {"object_type":"Translation"} []
+[2023-08-10 13:40:08] security.DEBUG: Stored the security token in the session. {"key":"_security_main"} []

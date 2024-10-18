@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<module>
+    <name>fblogin</name>
+    <displayName><![CDATA[Logowanie Facebook]]></displayName>
+    <version><![CDATA[1.9.9]]></version>
+    <description><![CDATA[Moduł pozwala na utworzenie logowania / rejestracji konta użytkownika za pośrednictwem Facebooka]]></description>
+    <author><![CDATA[MyPresta.eu]]></author>
+    <tab><![CDATA[front_office_features]]></tab>
+    <is_configurable>1</is_configurable>
+    <need_instance>1</need_instance>
+</module>

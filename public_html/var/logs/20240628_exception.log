@@ -1,0 +1,4 @@
+*ERROR* 	v8.1.0	2024/06/28 - 10:12:42: Link to database cannot be established: SQLSTATE[42000] [1203] User qisogexqbz_cezo0723 already has more than &#039;max_user_connections&#039; active connections at line 119 in file classes/db/DbPDO.php
+*ERROR* 	v8.1.0	2024/06/28 - 10:12:42: Link to database cannot be established: SQLSTATE[42000] [1203] User qisogexqbz_cezo0723 already has more than &#039;max_user_connections&#039; active connections at line 119 in file classes/db/DbPDO.php
+*ERROR* 	v8.1.0	2024/06/28 - 10:12:52: Link to database cannot be established: SQLSTATE[42000] [1203] User qisogexqbz_cezo0723 already has more than &#039;max_user_connections&#039; active connections at line 119 in file classes/db/DbPDO.php
+*ERROR* 	v8.1.0	2024/06/28 - 10:15:40: Link to database cannot be established: SQLSTATE[42000] [1203] User qisogexqbz_cezo0723 already has more than &#039;max_user_connections&#039; active connections at line 119 in file classes/db/DbPDO.php

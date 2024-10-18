@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<module>
+    <name>ps_banner_two</name>
+    <displayName><![CDATA[Baner 2]]></displayName>
+    <version><![CDATA[2.1.2]]></version>
+    <description><![CDATA[Dodaj drugi baner na stronie startowej, żeby wyświetlić sprzedaż lub nowe produkty w przyjaznej, wizualnej formie Czytaj więcej]]></description>
+    <author><![CDATA[PrestaShop]]></author>
+    <tab><![CDATA[front_office_features]]></tab>
+    <is_configurable>1</is_configurable>
+    <need_instance>0</need_instance>
+</module>

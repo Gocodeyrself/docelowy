@@ -1,0 +1,38 @@
+.fancybox_gcustom_style .switch, #gformbuilderpro_form .switch, .admingformmanager .switch, .admingformconfig .switch{
+    background-color: unset!important;
+}
+.panel.col-lg-12 .panel-heading {
+    padding: 10px!important;
+}
+@media (min-width: 1200px){
+    .bootstrap .control-label.col-lg-4 {
+        width: 25%!important;
+    }
+    .bootstrap .control-label.col-lg-8 {
+        width: 75%!important;
+    }
+}
+@media (min-width: 1200px){
+    .bootstrap .control-label.col-lg-4 {
+        width: 25%!important;
+    }
+    .bootstrap .control-label.col-lg-8 {
+        width: 75%!important;
+    }
+}
+.AdminGformmanager a.add_element.btn.btn-default{
+    display: unset;
+}
+.AdminGformmanager a.add_element.btn.btn-default.new_design_bt{
+    display: inline-block;
+    color: white;
+}
+@media (min-width: 768px){
+    .admingformmanager .bootstrap .edit_column_wp .edit_column_data .control-label, .bootstrap #popup_field_config_wp .control-label{
+        padding-right: 5px;
+    }
+}
+/* fix 14/4/2023  button add field*/
+a.add_element.btn.btn-default {
+    display: unset;
+}

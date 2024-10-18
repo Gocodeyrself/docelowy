@@ -1,0 +1,44 @@
+*ERROR* 	v8.1.0	2023/10/31 - 09:59:36: Table &#039;qisogexqbz_cezo0723.ps_block_cms&#039; doesn&#039;t exist&lt;br /&gt;&lt;br /&gt;&lt;pre&gt;
+		SELECT c.id_cms, l.meta_title
+		FROM  ps_cms c
+		JOIN ps_cms_lang l ON (c.id_cms = l.id_cms)
+		 INNER JOIN ps_cms_shop cms_shop
+        ON (cms_shop.id_cms = c.id_cms AND cms_shop.id_shop = 1)
+		JOIN ps_block_cms b ON (c.id_cms = b.id_cms)
+		WHERE l.id_lang = 1 AND b.id_block = 5 AND c.`active` = 1 
+		GROUP BY c.id_cms
+		ORDER BY c.`position`&lt;/pre&gt; at line 769 in file classes/db/Db.php
+*ERROR* 	v8.1.0	2023/10/31 - 10:00:15: Table &#039;qisogexqbz_cezo0723.ps_block_cms&#039; doesn&#039;t exist&lt;br /&gt;&lt;br /&gt;&lt;pre&gt;
+		SELECT c.id_cms, l.meta_title
+		FROM  ps_cms c
+		JOIN ps_cms_lang l ON (c.id_cms = l.id_cms)
+		 INNER JOIN ps_cms_shop cms_shop
+        ON (cms_shop.id_cms = c.id_cms AND cms_shop.id_shop = 1)
+		JOIN ps_block_cms b ON (c.id_cms = b.id_cms)
+		WHERE l.id_lang = 1 AND b.id_block = 5 AND c.`active` = 1 
+		GROUP BY c.id_cms
+		ORDER BY c.`position`&lt;/pre&gt; at line 769 in file classes/db/Db.php
+*ERROR* 	v8.1.0	2023/10/31 - 10:01:28: Table &#039;qisogexqbz_cezo0723.ps_block_cms&#039; doesn&#039;t exist&lt;br /&gt;&lt;br /&gt;&lt;pre&gt;
+		SELECT c.id_cms, l.meta_title
+		FROM  ps_cms c
+		JOIN ps_cms_lang l ON (c.id_cms = l.id_cms)
+		 INNER JOIN ps_cms_shop cms_shop
+        ON (cms_shop.id_cms = c.id_cms AND cms_shop.id_shop = 1)
+		JOIN ps_block_cms b ON (c.id_cms = b.id_cms)
+		WHERE l.id_lang = 1 AND b.id_block = 5 AND c.`active` = 1 
+		GROUP BY c.id_cms
+		ORDER BY c.`position`&lt;/pre&gt; at line 769 in file classes/db/Db.php
+*ERROR* 	v8.1.0	2023/10/31 - 10:10:15: Unknown column &#039;b.id_cms&#039; in &#039;on clause&#039;&lt;br /&gt;&lt;br /&gt;&lt;pre&gt;
+		SELECT c.id_cms, l.meta_title
+		FROM  ps_cms c
+		JOIN ps_cms_lang l ON (c.id_cms = l.id_cms)
+		 INNER JOIN ps_cms_shop cms_shop
+        ON (cms_shop.id_cms = c.id_cms AND cms_shop.id_shop = 1)
+		JOIN ps_cms_category b ON (c.id_cms = b.id_cms)
+		WHERE l.id_lang = 1 AND b.id_cms_category = 5 AND c.`active` = 1 
+		GROUP BY c.id_cms
+		ORDER BY c.`position`&lt;/pre&gt; at line 769 in file classes/db/Db.php
+*ERROR* 	v8.1.0	2023/10/31 - 10:29:48: Db-&gt;executeS() must be used only with select, show, explain or describe queries at line 607 in file classes/db/Db.php
+*ERROR* 	v8.1.0	2023/10/31 - 10:30:17: Db-&gt;executeS() must be used only with select, show, explain or describe queries at line 607 in file classes/db/Db.php
+*ERROR* 	v8.1.0	2023/10/31 - 10:30:28: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near &#039;` where id_cms =25&#039; at line 1&lt;br /&gt;&lt;br /&gt;&lt;pre&gt;select * from ps_cms_img` where id_cms =25&lt;/pre&gt; at line 769 in file classes/db/Db.php
+*ERROR* 	v8.1.0	2023/10/31 - 10:39:10: Unknown column &#039;test.jpg&#039; in &#039;field list&#039;&lt;br /&gt;&lt;br /&gt;&lt;pre&gt;INSERT INTO `ps_cms_img` (`id_cms`, img_name) VALUES (25, 25-test.jpg)&lt;/pre&gt; at line 769 in file classes/db/Db.php

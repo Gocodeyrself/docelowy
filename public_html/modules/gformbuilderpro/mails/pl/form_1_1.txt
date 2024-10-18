@@ -1,0 +1,94 @@
+  
+
+{shop_name}
+
+
+
+
+Cześć!
+Klient przesyła nowy  "{form_title}"
+
+
+
+Imię
+{input_22661}
+
+
+Nazwisko
+{input_36553}
+
+
+Email
+{input_38884}
+
+
+Numer telefonu
+{input_45579}
+
+
+Adres korespondencyjny
+{input_25581}
+
+
+Kod pocztowy
+{input_10241}
+
+
+Zwrot grzecznościowy
+{radio_86377}
+
+
+
+
+
+Nazwa Firmy
+{input_92617}
+
+
+Adres firmy
+{input_94755}
+
+
+Kod pocztowy firmy
+{input_66726}
+
+
+Miejscowość
+{input_72041}
+
+
+Numer VAT
+{input_24135}
+
+
+Kraj
+{selectcountry_71756}
+
+
+Projekt dla firmy?
+{radio_94606}
+
+
+
+
+
+
+Nazwa projektu
+{input_69017}
+
+
+Dodatkowe informacje
+{textarea_48331}
+
+
+File
+{fileupload_32326}
+
+
+{shop_name}
+
+
+
+
+
+

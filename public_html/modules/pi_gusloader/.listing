@@ -1,0 +1,12 @@
+drwxr-xr-x   6 magh9z_cf 49392         239 Sep 13 18:32 .
+drwxr-xr-x 108 magh9z_cf 49392        8192 Sep 13 18:31 ..
+-rw-r--r--   1 magh9z_cf 49392         744 May 19 12:40 asgusloader.css
+-rw-r--r--   1 magh9z_cf 49392        1428 May 19 12:40 asgusloader.js
+-rw-r--r--   1 magh9z_cf 49392        1538 May 25 07:22 asgusloader.php
+drwxr-xr-x   2 magh9z_cf 49392          37 Sep 13 18:32 classes
+-rw-rw-r--   1 magh9z_cf 49392         609 May 31 10:38 config_pl.xml
+drwxr-xr-x   3 magh9z_cf 49392          48 Sep 13 18:32 controllers
+-rw-r--r--   1 magh9z_cf 49392         305 May 19 12:40 index.php
+-rw-r--r--   1 magh9z_cf 49392         539 May 19 12:40 logo.png
+drwxr-xr-x   2 magh9z_cf 49392          28 Sep 13 18:32 translations
+drwxr-xr-x   3 magh9z_cf 49392          31 Sep 13 18:32 views

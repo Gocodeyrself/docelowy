@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<module>
+    <name>price_alert</name>
+    <displayName><![CDATA[Price Alert]]></displayName>
+    <version><![CDATA[1.0.0]]></version>
+    <description><![CDATA[Display Price Alert on main page]]></description>
+    <author><![CDATA[Exis Interactive]]></author>
+    <tab><![CDATA[content_management]]></tab>
+    <is_configurable>1</is_configurable>
+    <need_instance>0</need_instance>
+</module>

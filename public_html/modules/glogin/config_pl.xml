@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<module>
+    <name>glogin</name>
+    <displayName><![CDATA[Logowanie Google]]></displayName>
+    <version><![CDATA[1.7.3]]></version>
+    <description><![CDATA[Moduł pozwala na rejestrację oraz logowanie w sklepie za pośrednictwem portalu społecznościowego Google+]]></description>
+    <author><![CDATA[MyPresta.eu]]></author>
+    <tab><![CDATA[front_office_features]]></tab>
+    <is_configurable>1</is_configurable>
+    <need_instance>1</need_instance>
+</module>
