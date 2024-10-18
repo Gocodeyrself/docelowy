@@ -2047,7 +2047,7 @@ body.hover_menu #footer::before {
   }
 
   .mm_menus_ul .arrow::before {
-    border-top: 1px solid #000 !important;
+    border-top: 2px solid #000 !important;
     content: '';
     display: block;
     height: 1px;
@@ -2076,7 +2076,7 @@ body.hover_menu #footer::before {
   }
 
   .mm_menus_ul .arrow::after {
-    border-left: 1px solid #000 !important;
+    border-left: 2px solid #000 !important;
     content: '';
     display: block;
     height: 13px;
