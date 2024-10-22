@@ -5719,7 +5719,7 @@ small.value {
 .form-control:focus {
   color: #232323;
   background-color: #fff;
-  outline: .1875rem solid #d90111
+  outline: .1875rem solid #6d6d6d
 }
 
 .input-group,
@@ -5730,7 +5730,7 @@ body#checkout .custom-checkbox {
 }
 
 .input-group.focus {
-  outline: .1875rem solid #d90111
+  outline: .1875rem solid #6d6d6d
 }
 
 .input-group .form-control:focus {
