@@ -253,7 +253,8 @@ span.spinner_sub:hover,.spinner_plus:hover,
 }
 .gformbuilderpro_form p.help-block {
     font-style: italic;
-    font-size: 11px;
+    font-size: 13px;
+    font-weight: 500;
     display: block;
     margin-top: 5px;
     margin-bottom: 10px;
@@ -408,6 +409,7 @@ div.uploader input{
 }
 .gformbuilderpro_content label{
     text-align: left;
+    font-weight: 600;
 }
 .gformbuilderpro_content,.gformbuilderpro_action {
     min-width: 100%;
