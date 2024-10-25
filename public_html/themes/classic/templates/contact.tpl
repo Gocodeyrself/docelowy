@@ -66,10 +66,10 @@
 
 <div class="mt-3 map-container col-md-12">
   <div class="row" style="width:100%;">
-    <div class="col-md-3">
+  <div class="col-md-3" style="padding: 0;">
       {$contactAddress nofilter}
     </div>
-    <iframe class="col-md-9" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2318.332739495452!2d18.511202276801267!3d54.47471087263798!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46fda0efd14dc283%3A0x62123cd7567edd47!2zQ2V6b3MgU3DDs8WCa2EgeiBvZ3Jhbmljem9uxIUgb2Rwb3dpZWR6aWFsbm_Fm2NpxIUgU3Auay4!5e0!3m2!1spl!2spl!4v1695020035315!5m2!1spl!2spl" width="100%" height="600" style="border:0;padding-bottom: 30px;padding-left: 0;padding-right: 0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <iframe class="col-md-9" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2318.332739495452!2d18.511202276801267!3d54.47471087263798!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46fda0efd14dc283%3A0x62123cd7567edd47!2zQ2V6b3MgU3DDs8WCa2EgeiBvZ3Jhbmljem9uxIUgb2Rwb3dpZWR6aWFsbm_Fm2NpxIUgU3Auay4!5e0!3m2!1spl!2spl!4v1695020035315!5m2!1spl!2spl" width="100%" height="600" style="border:0;padding-bottom: 0px;padding-left: 0;padding-right: 0; border-radius: var(--border-radius);" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
   </div>
 </div>
 {/block}
