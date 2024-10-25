@@ -41,9 +41,6 @@
 <div class="container p-c" id="totalFooter">
     {$totalFooter nofilter}
 </div>
-<div class="exis text-right mt-4 p-c">
-    <a href="https://exis.pl/" target="_blank">e-commerce solutions Exis Interactive</a>
-</div>
 </div>
 
 <style>

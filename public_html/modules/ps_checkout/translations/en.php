@@ -634,3 +634,4 @@ $_MODULE['<{ps_checkout}prestashop>validateorderlegacy_d2d212703e406836886db5cfd
 $_MODULE['<{ps_checkout}prestashop>validateorderlegacy_ddd5b53a3ee360450a35db10cd6b54c1'] = 'Error code :';
 $_MODULE['<{ps_checkout}prestashop>validateorderlegacy_ee9ed9d7ec3ab0ddec14317d4d9431fe'] = 'Click here to contact Customer Service';
 $_MODULE['<{ps_checkout}prestashop>validateorderlegacy_f1fc574c6bad028c6bf2207ab7e4be35'] = 'Error message :';
+$_MODULE['<{ps_checkout}prestashop>validateorderlegacy_4216a466bc06dca586d7828dc4e7756f'] = 'Proceed';

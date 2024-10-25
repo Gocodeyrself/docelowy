@@ -4334,7 +4334,7 @@ exit;
                 $menuHtml .= "<div class='cms-menu-product' attr-depth='$depth'>";
                 foreach ($cmsPages as $cmsPage) {
                     $cms = new Cms($cmsPage["id_cms"]);
-                    $menuHtml .= '<a href="' . $cms->id_cms . '-' . $cms->link_rewrite[(int)Context::getContext()->language->id] . '">' . $cms->meta_title[(int)Context::getContext()->language->id] . '</a>';
+                    $menuHtml .= '<a href="/content/' . $cms->id_cms . '-' . $cms->link_rewrite[(int)Context::getContext()->language->id] . '">' . $cms->meta_title[(int)Context::getContext()->language->id] . '</a>';
                 }
                 $menuHtml .= "</div>";
             }

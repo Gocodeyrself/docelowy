@@ -1,8 +1,15 @@
 <div class="cardblog author-card blog-mb" id="blog-author">
     <div class="card-block">
-        <div class="author-card__row">
+        <div class="author-card__row" style="
+        display: flex;
+        align-items: center;
+        ">
             {if $author->photo}
-            <div class="author-card__block author-card__block--thumb">
+            <div class="author-card__block author-card__block--thumb" style="
+            margin-right: 20px;
+            width: 200px;
+            height: auto;
+            ">
                 <img src="{$author->photo}" class="img-fluid blog-author-thumb">
             </div>
             {/if}
@@ -28,7 +35,10 @@
         </div>
     </div>
     <div class="card-footer">
-        <ul class="authorMiniature__links blogsocial">
+        <ul class="authorMiniature__links blogsocial" style="
+                    display: flex;
+                    gap: 20px;
+                    ">
             {if $author->twitter}
             <li class="blogsocial__elem">
                 <a class="btn btn-blog-social btn-blog-social--twitter" href="{$author->twitter}">Twitter</a>

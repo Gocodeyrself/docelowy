@@ -1561,7 +1561,7 @@ select.form-control-lg:not([size]):not([multiple]) {
   user-select: none;
   border: 1px solid transparent;
   padding: .5rem 1rem;
-  font-size: 1rem;
+  font-size: 16px;
   border-radius: 0
 }
 
@@ -1663,7 +1663,8 @@ fieldset[disabled] a.btn {
 
 .btn-secondary,
 .btn-tertiary {
-  border-color: transparent
+  border-color: transparent;
+  border-radius: 10px !important;
 }
 
 .btn-secondary:hover,
@@ -4418,13 +4419,14 @@ button.close {
 
 .modal {
   position: fixed;
-  top: 50px;
+  top: 0;
   right: 0;
   bottom: 0;
   left: 0;
   z-index: 1050;
   display: none;
-  outline: 0
+  outline: 0;
+  padding-right: 0 !important; /* Padding usuniety z pop-up potwierdzenie dodania do koszyka */
 }
 
 .modal.fade .modal-dialog {
@@ -4479,7 +4481,7 @@ button.close {
 }
 
 .modal-header {
-  padding: 15px;
+  padding: 5px;
   border-bottom: 1px solid #e5e5e5
 }
 
@@ -11060,7 +11062,8 @@ body#checkout #hook-display-after-carrier>[class^=col].links .row>[class^=col] {
 
   .col-md-3 {
     width: 25%;
-	height: 100% !important;
+
+
   }
 
   .col-md-4,
@@ -12631,7 +12634,7 @@ body#checkout #hook-display-after-carrier>[class^=col].links .row>[class^=col] {
   }
 
   #blockcart-modal .modal-body {
-    padding: 1.875rem
+    padding: 0.2rem
   }
 
   .product-images>li.thumb-container>.thumb:not(.selected) {

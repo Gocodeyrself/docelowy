@@ -38,7 +38,11 @@
                     </div>
                 </div>
                 <div class="card-footer">
-                    <ul class="authorMiniature__links blogsocial">
+                    <ul class="authorMiniature__links blogsocial"
+                    style="
+                    display: flex;
+                    gap: 20px;
+                    ">
                         {if $author->twitter}
                         <li class="blogsocial__elem">
                             <a class="btn btn-blog-social btn-blog-social--twitter" href="{$author->twitter}">Twitter</a>
