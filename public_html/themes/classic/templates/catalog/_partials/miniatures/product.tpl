@@ -73,7 +73,7 @@
               {/if}
               {if $product.features}
                 {foreach from=$product.features item=feature}
-                  {if $feature.name != 'Waga brutto' && $feature.name != 'Szerokość brutto' && $feature.name != 'Głębokość brutto' && $feature.name != 'Wysokość brutto'}
+                  {if $feature.name != 'Waga brutto' && $feature.name != 'Szerokość brutto' && $feature.name != 'Głębokość brutto' && $feature.name != 'Wysokość brutto' && $feature.name != 'Gross Weight'}
                     <li><dl><dt>{$feature.name}</dt><dd>{$feature.value}</dd></dl></li>
                   {/if}
                 {/foreach}
@@ -188,7 +188,7 @@
               {if $product.features}
                 {assign var="count" value=0}
                 {foreach from=$product.features item=feature}
-                  {if $feature.name != 'Waga brutto' && $feature.name != 'Szerokość brutto' && $feature.name != 'Głębokość brutto' && $feature.name != 'Wysokość brutto'}
+                  {if $feature.name != 'Waga brutto' && $feature.name != 'Szerokość brutto' && $feature.name != 'Głębokość brutto' && $feature.name != 'Wysokość brutto' && $feature.name != 'Gross Weight'}
                     {if $count < 3}
                       <li><dl><dt>{$feature.name}</dt><dd>{$feature.value}</dd></dl></li>
                       {assign var="count" value=$count+1}
