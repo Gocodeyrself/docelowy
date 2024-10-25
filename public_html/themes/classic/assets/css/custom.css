@@ -4020,9 +4020,7 @@ html[lang='en-US']
   .quick-view::after {
   content: 'Add to cart';
 }
-.mt-3.map-container .row iframe {
-  margin-top: 15px; 
-}
+
 
 @media (max-width: 650px) {
   #yourPartner {
@@ -4119,3 +4117,8 @@ button.contactHandler {
   font-weight: 500px;
 }
 
+@media (max-width: 768px) {
+  .map-container {
+      padding: 15px 15px 0 15px;
+  }
+}
