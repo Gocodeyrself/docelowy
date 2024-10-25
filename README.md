@@ -1,3 +1,46 @@
+# Patch 1_1_2 (2024-10-25)
+## Branch Sajmon
+### - themes/classic/modules/ps_customersignin/ps_customersignin.tpl
+Stworzenie dropdown account (commit - Stabilna wersja dropdown menu account)
+### - themes/classic/modules/ps_languageselector/ps_languageselector.tpl
+Stworzenie dropdown language (commit - zmiana dropdown jezyka v6)
+### - modules/gformbuilderpro/views/css/front/customcss/mycss_****
+dodanie komentarzy do plikow mycss
+### - themes/classic/assets/css/theme.css
+poprawienie media-list
+zmiana grubosci ramki input border
+wycentrowanie powiazanych produktow w blogu
+### - modules/gformbuilderpro/views/css/front/gformbuilderpro.css
+zmiana koloru ramki input border line w polach tekstowych oraz help textu pod text inputem w formularzach
+### - modules/gformbuilderpro/views/templates/front/formtemplates/9/2/1_form_codehook.tpl
+Zmiana formularza w kontakcie angielski
+Kopia formularza w module
+### - modules/gformbuilderpro/views/templates/front/formtemplates/9/1/1_form_codehook.tpl
+Zmiana formularza w kontakcie polski
+Kopia formularza w module
+### - themes/classic/assets/css/custom.css
+usuniecie .form -group co krzaczylo stronę
+Poprawki z wygladem formularza
+### - themes/classic/templates/contact.tpl
+wsadzenie hooka do contact.tpl
+### - mails/en/account.html
+poprawki w tłumaczeniu email potwierdzenie konta
+### - mails/pl/account.html
+poprawki w tłumaczeniu email potwierdzenie konta
+
+## Branch Brylu
+### - themes/classic/assets/css/theme.css
+Style mapy
+### - themes/classic/assets/css/custom.css
+Style mapy
+### - themes/classic/templates/catalog/product.tpl
+Ukrycie napisu Gross weight
+### - themes/classic/templates/catalog/_partials/product-details.tpl
+Ukrycie napisu Gross weight
+### - themes/classic/templates/contact.tpl
+styl mapy
+
+
 # Patch 1_1_1 (2024-10-18)
 ## Branch Sajmon
 ### - classes\Tools.php
