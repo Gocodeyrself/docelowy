@@ -47,7 +47,7 @@
 {/if}
   <h4 class="head-title"><span style="border-bottom:2px solid #ff0000">{l s='Contact' d='Shop.Theme.Global'}</span> {l s='Form' d='Shop.Theme.Global'}</h4>
   <div class="white-bgr padding-container box-shadow">
-    {hook h='displayContactContent'}
+  {hook h='displayGform' id='12'}
   </div>
 </div>  
 
