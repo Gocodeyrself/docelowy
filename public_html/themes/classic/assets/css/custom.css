@@ -2526,41 +2526,38 @@ div#contact p {
 }
 .form-group input[type='checkbox'],
 .contact-form input[type='checkbox'] {
-  position: absolute;
   cursor: pointer;
-  top: 0;
   height: 15px;
-  opacity: 0;
   width: 15px;
   z-index: 999;
+  margin-right: 10px;
 }
 #contact-data .checkbox_label > p {
   line-height: 18px;
   color: #737373;
+  margin-left: 0;
 }
 .checkmark {
-  position: absolute;
-  top: 4px;
-  left: 15px;
+  position: relative;
   height: 15px;
   width: 15px;
   background-color: #fff;
   border: 1px solid #7a7a7a;
+  margin-right: 10px;
 }
 .checkbox_label > p {
-  margin-left: 24px;
+  margin-left: 0;
   text-align: left;
   font-size: 12px;
   line-height: 24px;
   margin-bottom: 0;
-  line-height: 18px;
   color: #737373;
 }
 .checkbox_label_hidden {
   display: none;
 }
 input:checked ~ .checkmark {
-  background-color: var(--first-color);
+  background-color: none;
 }
 #cms-menu-bottom {
   padding: 15px;
@@ -2883,8 +2880,8 @@ body#cms p {
   display: flex;
   flex-direction: row;
   align-items: stretch;
-  padding: 15px;
-  background: #fff;
+  padding: 15px 15px 39px 15px;
+  justify-content: center;
 }
 .purple-bgr * {
   color: #fff !important;
@@ -4023,7 +4020,9 @@ html[lang='en-US']
   .quick-view::after {
   content: 'Add to cart';
 }
-
+.mt-3.map-container .row iframe {
+  margin-top: 15px; 
+}
 
 @media (max-width: 650px) {
   #yourPartner {
