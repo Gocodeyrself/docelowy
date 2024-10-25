@@ -56,7 +56,7 @@
       <section class="product-features">
         <dl class="data-sheet">
           {foreach from=$product.grouped_features item=feature}
-            {if !in_array($feature.name, ['Szerokość brutto', 'Wysokość brutto', 'Głębokość brutto', 'Waga brutto', 'Stan sklep'])}
+            {if !in_array($feature.name, ['Szerokość brutto', 'Wysokość brutto', 'Głębokość brutto', 'Waga brutto', 'Stan sklep', 'Gross Weight'])}
               <dt class="name">{$feature.name}</dt>
               <dd class="value">{$feature.value}</dd>
             {/if}
