@@ -49,9 +49,9 @@
                                                 for="checkbox_checkbox_82631_0">Oświadczam, że zapoznałem się z powyższą
                                                 Klauzulą Informacyjną i
                                                 akceptuję treść <a
-                                                    href="https://sklep.cezos.pl/pl/content/1-regulamin-sklepu">Regulaminu</a>
+                                                    href="https://sklep.cezos.com/pl/content/1-regulamin-sklepu">Regulaminu</a>
                                                 oraz <a
-                                                    href="https://sklep.cezos.pl/pl/content/2-polityka-prywatnosci">Polityki
+                                                    href="https://sklep.cezos.com/pl/content/2-polityka-prywatnosci">Polityki
                                                     Prywatności</a>
                                                 Cezos.*</label></p>
                                     </div>

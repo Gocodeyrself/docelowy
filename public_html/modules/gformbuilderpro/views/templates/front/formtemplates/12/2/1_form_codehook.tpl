@@ -47,8 +47,8 @@
                                                 value="I declare that I have read the above Information Clause and accept the content of the Regulations and Privacy Policy of Cezos.*." /><label
                                                 for="checkbox_checkbox_82631_0">I declare that I have read the above
                                                 Information Clause and accept the content of the <a
-                                                href="https://sklep.cezos.pl/en/content/1-terms-and-conditions-store">Regulations</a> and <a
-                                                href="https://sklep.cezos.pl/en/content/2-legal-notice">Privacy Policy</a>
+                                                href="https://sklep.cezos.com/en/content/1-terms-and-conditions-store">Regulations</a> and <a
+                                                href="https://sklep.cezos.com/en/content/2-legal-notice">Privacy Policy</a>
                                                  of Cezos.*.</label></p>
                                     </div>
                                 </div>
