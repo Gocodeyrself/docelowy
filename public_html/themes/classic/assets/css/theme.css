@@ -1252,13 +1252,13 @@ pre code {
 
 .form-control {
   display: block;
-  width: 100%;
+  width: calc(100% - 33px);
   font-size: 1rem;
-  line-height: 1.25;
+  line-height: 2;
   background-color: #fff;
   background-image: none;
   background-clip: padding-box;
-  border-radius: 0
+  border-radius: var(--border-radius);
 }
 
 .form-control::-ms-expand {
@@ -5249,7 +5249,7 @@ a.bg-inverse:hover {
 }
 
 .mt-3 {
-  margin-top: 3rem !important
+  margin-top: 1rem !important
 }
 
 .mr-3 {
@@ -5721,7 +5721,7 @@ small.value {
 .form-control:focus {
   color: #232323;
   background-color: #fff;
-  outline: .1875rem solid #6d6d6d
+  outline: 2px solid #6d6d6d
 }
 
 .input-group,
@@ -5732,7 +5732,7 @@ body#checkout .custom-checkbox {
 }
 
 .input-group.focus {
-  outline: .1875rem solid #6d6d6d
+  outline: 2px solid #6d6d6d
 }
 
 .input-group .form-control:focus {
@@ -7599,7 +7599,7 @@ body#checkout #hook-display-after-carrier>[class^=col].links .row>[class^=col] {
   flex-wrap: wrap;
   -webkit-box-pack: start;
   -ms-flex-pack: start;
-  justify-content: flex-start
+  justify-content: center;
 }
 
 #products .products-section-title,
