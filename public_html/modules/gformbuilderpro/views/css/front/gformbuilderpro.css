@@ -201,6 +201,13 @@ span.spinner_sub:hover,.spinner_plus:hover,
 .checkbox_item_wp .checker{
     float: left;
 }
+.checkbox_item_wp input[type="checkbox"] {
+    margin-right: 10px;
+}
+.checkbox_item_wp p {
+    display: flex;
+    align-items: center;
+}
 .radio_box .radio{
     float: left;
 }
@@ -254,7 +261,6 @@ span.spinner_sub:hover,.spinner_plus:hover,
 .gformbuilderpro_form p.help-block {
     font-style: italic;
     font-size: 13px;
-    font-weight: 500;
     display: block;
     margin-top: 5px;
     margin-bottom: 10px;
@@ -409,7 +415,6 @@ div.uploader input{
 }
 .gformbuilderpro_content label{
     text-align: left;
-    font-weight: 600;
 }
 .gformbuilderpro_content,.gformbuilderpro_action {
     min-width: 100%;
