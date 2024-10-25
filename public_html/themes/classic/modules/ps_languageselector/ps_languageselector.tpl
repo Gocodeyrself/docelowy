@@ -22,30 +22,102 @@
  * @copyright Since 2007 PrestaShop SA and Contributors
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  *}
-<div id="_desktop_language_selector">
-  <div class="language-selector-wrapper">
-    {* <span id="language-selector-label">{l s='Language:' d='Shop.Theme.Global'}</span> *}
-    <div class="language-selector dropdown js-dropdown">
-      <button data-toggle="dropdown" class="hidden-sm-down btn-unstyle" aria-haspopup="true" aria-expanded="false" aria-label="{l s='Language dropdown' d='Shop.Theme.Global'}">
+
+ <div id="_desktop_language_selector">
+ <div class="language-selector-wrapper">
+   <div class="language-selector dropdown">
+     <!-- Przycisk do rozwijania dropdowna (tylko flaga) -->
+     <button data-toggle="dropdown" class="hidden-sm-down btn-unstyle" aria-haspopup="true" aria-expanded="false" aria-label="{l s='Language dropdown' d='Shop.Theme.Global'}">
        <img class="flag_img image-fluid" src="/img/flags/{$current_language.iso_code}.jpg"/>
-        <span class="expand-more">{$current_language.name_simple}</span>
-        <i class="material-icons expand-more">&#xE5C5;</i>
-      </button>
-      {* <ul class="dropdown-menu hidden-sm-down" aria-labelledby="language-selector-label"> *}
-      <ul class="dropdown-menu" aria-labelledby="language-selector-label">
-        {foreach from=$languages item=language}
-          <li {if $language.id_lang == $current_language.id_lang} class="current" {/if}>
-            <a href="{url entity='language' id=$language.id_lang}" class="dropdown-item" data-iso-code="{$language.iso_code}"><img class="flag_img image-fluid" src="/img/flags/{$language.iso_code}.jpg"/>{$language.name_simple}</a>
-          </li>
-        {/foreach}
-      </ul>
-      {* <select class="link hidden-md-up" aria-labelledby="language-selector-label">
-        {foreach from=$languages item=language}
-          <option value="{url entity='language' id=$language.id_lang}"{if $language.id_lang == $current_language.id_lang} selected="selected"{/if} data-iso-code="{$language.iso_code}">
-            <img class="flag_img image-fluid" src="/img/flags/{$language.iso_code}.jpg"/>{$language.name_simple}
-          </option>
-        {/foreach}
-      </select> *}
-    </div>
-  </div>
+     </button>
+     
+     <!-- Lista dostępnych języków w pełnych nazwach -->
+     <ul class="dropdown-menu" aria-labelledby="language-selector-label">
+       {foreach from=$languages item=language}
+         <li {if $language.id_lang == $current_language.id_lang} class="current" {/if}>
+           <a href="{url entity='language' id=$language.id_lang}" class="dropdown-item" data-iso-code="{$language.iso_code}">
+             <img class="flag_img image-fluid" src="/img/flags/{$language.iso_code}.jpg"/>
+             {if $language.iso_code == 'pl'} Polski {else} English {/if} <!-- Pełne nazwy języków w dropdownie -->
+           </a>
+         </li>
+       {/foreach}
+     </ul>
+   </div>
+ </div>
 </div>
+<style>
+ /* Stylizacja przycisku rozwijanego menu */
+ .language-selector button {
+   cursor: pointer;
+   padding: 3px;
+   border: none;
+   background-color: transparent;
+   display: flex;
+   align-items: center;
+   width: 20px;
+   height: 14px;
+ }
+ .language-selector .flag_img {
+   width: 20px;
+   height: 14px;
+ }
+ /* Dropdown menu */
+ .language-selector .dropdown-menu {
+   display: none;
+   position: absolute;
+   background-color: white;
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+   width: auto;
+   min-width: 100px; /* Minimalna szerokość dropdownu */
+   padding: 5px; /* Zmniejszony padding */
+   z-index: 9999;
+   top: 100%;
+   right: 0; /* Przyleganie do prawej krawędzi */
+   margin-right: 5px; /* Margines 5px od prawej strony */
+   border-radius: 5px;
+   opacity: 0;
+   transition: all 0.3s ease 0s;
+   transform: translateY(-10px);
+ }
+ /* Pokaż menu po kliknięciu */
+ .language-selector:hover .dropdown-menu,
+ .language-selector button:focus + .dropdown-menu {
+   display: block;
+   opacity: 1;
+   transform: translateY(0);
+ }
+ /* Stylizacja elementów w dropdown */
+ .language-selector .dropdown-item {
+   font-weight: 600;
+   font-size: 14px; /* Zmniejszony rozmiar czcionki */
+   color: #000;
+   padding: 5px 10px; /* Zmniejszony padding wewnątrz dropdownu */
+   display: flex;
+   align-items: center;
+   text-decoration: none;
+ }
+ .language-selector .dropdown-item:hover {
+   background-color: #f0f0f0;
+ }
+ .language-selector .dropdown-item .flag_img {
+   width: 18px;
+   height: 12px;
+   margin-right: 8px;
+ }
+ /* Stylizacja aktualnie wybranego języka */
+ .language-selector .current {
+   font-weight: bold;
+ }
+ @media (max-width: 767px) {
+   .language-selector button {
+     font-size: 12px;
+   }
+   .language-selector .dropdown-menu {
+     left: 50%;
+     right: auto;
+     transform: translateX(-50%) translateY(-10px);
+     min-width: 90%;
+     box-sizing: border-box;
+   }
+ }
+</style>
