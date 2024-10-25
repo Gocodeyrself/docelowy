@@ -221,15 +221,23 @@
         {/if}
     {/foreach}
 
-    {* Wyświetlenie pozostałych cech, z wykluczeniem "Waga brutto" oraz wcześniej wyświetlonego "Producent: Cezos" *}
+    {* Wyświetlenie pozostałych cech, z wykluczeniem "Waga brutto", "Gross Weight" oraz wcześniej wyświetlonego "Producent: Cezos" *}
     {foreach from=$product.grouped_features item=feature}
-        {if !($feature.name == 'Producent' && $feature.value == 'Cezos') && $feature.id_feature != 52 && $feature.id_feature != 69 && $feature.id_feature != 70 && $feature.id_feature != 71 && $feature.name != 'Waga brutto'}
+      {if !($feature.name == 'Producent' && $feature.value == 'Cezos') 
+          && $feature.id_feature != 52 
+          && $feature.id_feature != 69 
+          && $feature.id_feature != 70 
+          && $feature.id_feature != 71
+          && $feature.id_feature != 7 
+          && $feature.name != 'Waga brutto' 
+          && $feature.name != 'Gross Weight'}
             <li class="product_type">
                 {$feature.name}: <b>{$feature.value}</b>
             </li>
         {/if}
     {/foreach}
 </ul>
+
 
 
 
