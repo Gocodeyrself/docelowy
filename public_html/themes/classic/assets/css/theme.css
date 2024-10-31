@@ -2408,7 +2408,7 @@ tbody.collapse.in {
   margin-left: .3em;
   vertical-align: middle;
   content: "";
-  border-top: .3em solid;
+  border-top: .3em solid #574d67;
   border-right: .3em solid transparent;
   border-left: .3em solid transparent
 }
@@ -10167,14 +10167,8 @@ body#checkout #hook-display-after-carrier>[class^=col].links .row>[class^=col] {
 }
 
 #header .header-nav .right-nav {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: nowrap;
-  flex-wrap: nowrap;
-  -webkit-box-pack: end;
-  -ms-flex-pack: end;
-  justify-content: flex-end
+  justify-content: flex-end;
+  align-items: center;
 }
 
 #header .header-nav .currency-selector {
@@ -12144,8 +12138,8 @@ body#checkout #hook-display-after-carrier>[class^=col].links .row>[class^=col] {
   }
 
   body#checkout #header .header-nav {
-    max-height: none;
-    padding: 0
+    max-height: 60px;
+    border-bottom: #f6f6f6 2px solid;
   }
 
   body#checkout section.checkout-step .content {

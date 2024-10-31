@@ -65,6 +65,7 @@
     <meta property="og:site_name" content="{$shop.name}" />
     {if !isset($product) && $page.page_name != 'product'}<meta property="og:type" content="website" />{/if}
   {/block}  
+  <meta name="theme-color" content="#4E5F8B">
 {/block}
 
 {block name='head_viewport'}
