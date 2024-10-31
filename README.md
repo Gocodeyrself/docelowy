@@ -1,3 +1,8 @@
+# Patch 1_1_3 (2024-10-41)
+## Branch Header
+### - zmiany w header.tpl , head.tpl, custom.css ,theme.css
+
+
 # Patch 1_1_2 (2024-10-25)
 ## Branch Sajmon
 ### - themes/classic/modules/ps_customersignin/ps_customersignin.tpl
