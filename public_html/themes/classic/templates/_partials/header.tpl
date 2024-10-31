@@ -22,40 +22,58 @@
  * @copyright Since 2007 PrestaShop SA and Contributors
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  *}
-{block name='header_banner'}
+ {block name='header_banner'}
   <div class="header-banner">
     {hook h='displayBanner'}
   </div>
 {/block}
-
+<!-- Poczatek top headera -->
 {block name='header_nav'}
-  {* <nav class="header-nav" id="header_info">
-    <div class="container p-c">
-      <div class="row">
-        <div class="hidden-sm-down">
-          <div class="col-md-5 col-xs-12">
-            {hook h='displayNav1'}
-          </div>
-          <div class="col-md-7 right-nav">
-              {hook h='displayNav2'}
-              {if isset($headerSocialmedia)}
-                {$headerSocialmedia nofilter}
-              {/if}
-          </div>
-        </div>
-        <div class="hidden-md-up text-sm-center mobile">
-          <div class="float-xs-left" id="menu-icon">
-            <i class="material-icons d-inline">&#xE5D2;</i>
-          </div>
-          <div class="float-xs-right" id="_mobile_cart"></div>
-          <div class="float-xs-right" id="_mobile_user_info"></div>
-          <div class="top-logo" id="_mobile_logo"></div>
-          <div class="clearfix"></div>
-        </div>
-      </div>
+  <style>
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
+    @keyframes slideIn {
+        from { transform: translateX(-100%); }
+        to { transform: translateX(0); }
+    }
+
+    @keyframes pulse {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+    }
+
+    .header-nav {
+        background-color: #f8f9fa;
+        padding: 5px 20px;
+        font-size: 14px;
+        text-align: center;
+        animation: fadeIn 2s ease-out; /* Efekt pojawiania się całego nagłówka */
+    }
+
+    .header-nav .top-header-message {
+        font-weight: bold;
+        font-size: 16px;
+        color: #574d67;
+        display: inline-block;
+        animation: slideIn 1.5s ease-out, pulse 3s infinite; /* Przesuwanie + pulsowanie */
+    }
+  </style>
+
+  <nav class="header-nav" id="header_info">
+    <!-- Wyśrodkowany komunikat z animacją -->
+    <div class="top-header-message">
+      Premiera sklepu! Produkty są wciąż dodawane.
     </div>
-  </nav> *}
+  </nav>
 {/block}
+
+
+<!-- Zakonczenie top headera -->
+
+
 
 {block name='header_top'}
   <div class="header-top">
@@ -67,11 +85,11 @@
   <div class="hidden-md-up">
     {renderLogo}
 
-    <div id="blockwishlist">
+    {*<div id="blockwishlist">
       <a href="https://sklep.cezos.com/pl/module/blockwishlist/lists">
         <i class="fa fa-heart-o"></i>
       </a>
-    </div>
+    </div>*}
 
     {hook h='displayLogin'}
   </div>
