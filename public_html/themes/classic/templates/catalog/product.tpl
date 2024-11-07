@@ -179,6 +179,11 @@
     <span style="color: #333; margin-left: 5px;">450 zł</span>
   </p>
 
+  <!-- Wywołanie hooka displayReassurance poniżej tekstu o darmowej dostawie -->
+  {block name='hook_display_reassurance'}
+    {hook h='displayReassurance'}
+  {/block}
+
   <!-- Ikona śledzenia paczki -->
   <p class="d-flex align-items-center mb-1">
     <i class="material-icons mr-1" style="color: #ffc107; font-size: 20px;">&#xE8B6;</i>
