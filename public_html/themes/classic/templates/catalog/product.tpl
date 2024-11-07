@@ -161,44 +161,15 @@
           </div>
 
           <!-- Nowy box z informacjami o dostawie -->
-<div class="col-md-12 white-bgr box-shadow mt-3 p-3">
-<h4 class="box-title mb-3">{l s='Dostawa' d='Shop.Theme.Catalog'}</h4>
-<div class="delivery-info">
-  <!-- Ikona i czas dostawy -->
-  <p class="d-flex align-items-center mb-2">
-    <i class="material-icons mr-2">&#xE425;</i> <!-- Ikona zegara -->
-    {l s='Dostawa w ciągu 2-4 dni' d='Shop.Theme.Catalog'}
-  </p>
-
-  <!-- Ikona i darmowa dostawa z brakującą kwotą -->
-  <p class="d-flex align-items-center mb-2">
-    <i class="material-icons mr-2">&#xE558;</i> <!-- Ikona ciężarówki -->
-    {if isset($cart) && $cart->getOrderTotal() < 200}
-      {l s='Darmowa dostawa przy zakupach powyżej 450 zł. Brakuje jeszcze ' d='Shop.Theme.Catalog'}
-      <span class="text-danger">{displayPrice price=200 - $cart->getOrderTotal()}</span>
-    {else}
-      {l s='Darmowa dostawa dostępna dla Twojego zamówienia!' d='Shop.Theme.Catalog'}
-    {/if}
-  </p>
-
-  <!-- Ikona śledzenia paczki -->
-  <p class="d-flex align-items-center mb-2">
-    <i class="material-icons mr-2">&#xE8B6;</i> <!-- Ikona śledzenia -->
-    {l s='Śledzenie paczki dostępne po wysyłce' d='Shop.Theme.Catalog'}
-  </p>
-
-  <!-- Dostępne metody wysyłki -->
-  <h5 class="mt-3 mb-2">{l s='Dostępne metody wysyłki' d='Shop.Theme.Catalog'}</h5>
-  <ul class="pl-3">
-    <li>{l s='Odbiór osobisty: za darmo' d='Shop.Theme.Catalog'}</li>
-    <li>{l s='Kurier GLS: od 22,76 zł brutto' d='Shop.Theme.Catalog'}</li>
-    <li>{l s='Przesyłka Paczkomat® - standardowa: od 25,92 zł brutto' d='Shop.Theme.Catalog'}</li>
-    <li>{l s='Inpost - Przesyłka kurierska: od 30,91 zł brutto' d='Shop.Theme.Catalog'}</li>
-  </ul>
-</div>
-</div>
-<!-- Koniec nowego boxa z informacjami o dostawie -->
-
+        <div class="col-md-12 white-bgr box-shadow mt-3">
+        <h4 class="box-title">{l s='Dostawa' d='Shop.Theme.Catalog'}</h4>
+        <div class="delivery-info">
+          <p>{l s='Dostawa w ciągu 2-4 dni' d='Shop.Theme.Catalog'}</p>
+          <p>{l s='Darmowa dostawa przy zakupach powyżej 200 zł' d='Shop.Theme.Catalog'}</p>
+          <p>{l s='Śledzenie paczki dostępne po wysyłce' d='Shop.Theme.Catalog'}</p>
+        </div>
+      </div>
+      <!-- Koniec nowego boxa z informacjami o dostawie -->
 
 
           <div class="col-md-12 hidden-md-down white-bgr box-shadow scroll height-400 accessories-container">
