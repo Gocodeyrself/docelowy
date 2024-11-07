@@ -160,10 +160,10 @@
             </div>
           </div>
 
-          <!-- Nowy box z informacjami o dostawie -->
-<div class="col-md-12 white-bgr box-shadow mt-3 p-3">
-<h4 class="box-title mb-2" style="color: #333; font-weight: bold;">{l s='Dostawa i Zwroty' d='Shop.Theme.Catalog'}</h4>
-<div class="delivery-info" style="line-height: 1.5;">
+          <!-- Nowy box z informacjami o dostawie i zwrotach -->
+<div class="col-md-12 white-bgr box-shadow mt-3 accessories-container">
+<h4 class="head-title mb-2">{l s='Dostawa i Zwroty' d='Shop.Theme.Catalog'}</h4>
+<div class="delivery-info" style="padding: 0 15px; line-height: 1.5;">
 
   <!-- Ikona i czas dostawy -->
   <p class="d-flex align-items-center mb-1">
@@ -201,7 +201,8 @@
   </ul>
 </div>
 </div>
-<!-- Koniec nowego boxa z informacjami o dostawie -->
+<!-- Koniec nowego boxa z informacjami o dostawie i zwrotach -->
+
 
 
 
