@@ -161,7 +161,7 @@
           </div>
 
           <!-- Nowy box z informacjami o dostawie i zwrotach -->
-<div class="col-md-12 white-bgr box-shadow mt-3 accessories-container" style="padding: 10px 15px;">
+<div class="col-md-12 white-bgr box-shadow accessories-container" style="padding: 10px 15px;">
 <h4 class="head-title mb-2">{l s='Dostawa i Zwroty' d='Shop.Theme.Catalog'}</h4>
 <div class="delivery-info" style="padding: 5px 10px; line-height: 1.4;">
 
