@@ -29,7 +29,7 @@
   {if $product.cover}
   <meta property="og:image" content="{$product.cover.large.url}">
   {/if}
-  
+
   {if $product.show_price}
   <meta property="product:pretax_price:amount" content="{$product.price_tax_exc}">
   <meta property="product:pretax_price:currency" content="{$currency.iso_code}">
@@ -41,39 +41,37 @@
   <meta property="product:weight:units" content="{$product.weight_unit}">
   {/if}
   {/block}
-  
+
   {block name='head_microdata_special'}
   {include file='_partials/microdata/product-jsonld.tpl'}
   {/block}
-  
+
   {block name='content'}
-  
+
   <section id="main">
     <meta content="{$product.url}">
-  
+
     <div class="row product-container js-product-container">
-      <div class="col-lg-4 col-md-12" id="product_column_right">
+    <div class="col-lg-4 col-md-12" id="product_column_right">
         <div class="col-md-12 p-0 product-right-container">
-          
-          <!-- Box z ceną produktu -->
           <div class="col-md-12 white-bgr box-shadow">
             {block name='product_prices'}
             {include file='catalog/_partials/product-prices.tpl'}
             {/block}
-  
+
             <div class="product-information">
               {* {block name='product_description_short'}
               <div id="product-description-short-{$product.id}" class="product-description">
                 {$product.description_short
                 nofilter}</div>
               {/block} *}
-  
+
               {if $product.is_customizable && count($product.customizations.fields)}
               {block name='product_customization'}
               {include file="catalog/_partials/product-customization.tpl" customizations=$product.customizations}
               {/block}
               {/if}
-  
+
               <div class="product-actions js-product-actions">
                 {block name='product_buy'}
                 <form action="{$urls.pages.cart}" method="post" id="add-to-cart-or-refresh">
@@ -81,11 +79,11 @@
                   <input type="hidden" name="id_product" value="{$product.id}" id="product_page_product_id">
                   <input type="hidden" name="id_customization" value="{$product.id_customization}"
                     id="product_customization_id" class="js-product-customization-id">
-  
+
                   {block name='product_variants'}
                   {include file='catalog/_partials/product-variants.tpl'}
                   {/block}
-  
+
                   {block name='product_pack'}
                   {if $packItems}
                   <section class="product-pack">
@@ -99,18 +97,18 @@
                   </section>
                   {/if}
                   {/block}
-  
+
                   {block name='product_discounts'}
                   {include file='catalog/_partials/product-discounts.tpl'}
                   {/block}
-  
+
                   {block name='product_add_to_cart'}
                   {include file='catalog/_partials/product-add-to-cart.tpl'}
                   {/block}
-  
+
                   {block name='product_additional_info'}
                   {include file='catalog/_partials/product-additional-info.tpl'}
-                  {hook h='displayProductActions' product=$product}
+  {hook h='displayProductActions' product=$product}
                   {/block}
                    <ul class="product-flags-custom product-flags js-product-flags">
                        {foreach from=$product.flags item=flag}
@@ -128,13 +126,13 @@
                             <li class="product-flag bestseller">Bestseller</li>
                         {/if}
                     </ul>
-  
+
                   {* Input to refresh product HTML removed, block kept for compatibility with themes *}
                   {block name='product_refresh'}{/block}
                 </form>
                 {/block}
-  
-                <div class="catalog_number">{l s="Stock" d='Shop.Theme.Catalog'} 
+
+                <div class="catalog_number">{l s="Condition" d='Shop.Theme.Catalog'} 
                 {* <b itemprop="quantity"> *}
                 {assign var="qFeature" value=Tools::getQuantityFromFeature($product.id_product)}
                 {if $qFeature}
@@ -149,30 +147,18 @@
                 {/if}
                 {* </b> *}
                 </div>
-  
-                {block name='product_delivery'}
-                {include file='catalog/_partials/product-delivery.tpl'}
-                {/block}
+
+                  {block name='product_delivery'}
+                  {include file='catalog/_partials/product-delivery.tpl'}
+                  {/block}
               </div>
-  
+
               {block name='hook_display_reassurance'}
               {hook h='displayReassurance'}
               {/block}
-  
+
             </div>
           </div>
-  
-          <!-- Nowy box z informacjami o dostawie -->
-          <div class="col-md-12 white-bgr box-shadow mt-3">
-            <h4 class="box-title">{l s='Dostawa' d='Shop.Theme.Catalog'}</h4>
-            <div class="delivery-info">
-              <p>{l s='Dostawa w ciągu 2-4 dni' d='Shop.Theme.Catalog'}</p>
-              <p>{l s='Darmowa dostawa przy zakupach powyżej 200 zł' d='Shop.Theme.Catalog'}</p>
-              <p>{l s='Śledzenie paczki dostępne po wysyłce' d='Shop.Theme.Catalog'}</p>
-            </div>
-          </div>
-          <!-- Koniec nowego boxa z informacjami o dostawie -->
-  
           <div class="col-md-12 hidden-md-down white-bgr box-shadow scroll height-400 accessories-container">
             <h4 class="head-title">{l s='You might also like' d='Shop.Theme.Catalog'}</h4>            
               {if $accessories}
@@ -190,7 +176,7 @@
           </div>
         </div>
       </div>
-  
+
       <div class="col-lg-8 col-md-12" id="product_column_left">
         <!-- <div class="row"> -->
         <div class="col-md-12">
@@ -206,6 +192,7 @@
                   <i class="material-icons left">&#xE314;</i>
                   <i class="material-icons right">&#xE315;</i>
                 </div>
+
                 {/block}
               </section>
               {/block}
@@ -213,40 +200,47 @@
             <div class="col-md-7 position-unset">
               {block name='page_header_container'}
               {block name='page_header'}
+              <!-- {assign var='psLogo' value=Configuration::get('PS_LOGO')} -->
+              <!-- <img class="logo-product" src="/img/{$psLogo}" alt="Logo PrestaShop"> -->
               <div class="catalog_number">{l s='Catalog Number:' d='Shop.Theme.Global'} <b itemprop="sku">{$product.ean13}</b></div>
               <div class="catalog_number">{l s='Reference' d='Shop.Pdf'}: <b itemprop="sku">{$product.reference}</b>
               </div>
               <h1 class="h1 product-name">{block name='page_title'}{$product.name}{/block}</h1>
               {if $product.flags}
+             
               {/if}
               {if $product.grouped_features}
-              <ul>
-                {* Wyświetlenie cechy "Producent: Cezos" na początku, jeśli istnieje *}
-                {foreach from=$product.grouped_features item=feature}
-                  {if $feature.name == 'Producent' && $feature.value == 'Cezos'}
-                  <li class="product_type highlight-cezos">
-                    {$feature.name}: <b>{$feature.value}</b>
-                  </li>
-                  {break}
-                  {/if}
-                {/foreach}
-  
-                {* Wyświetlenie pozostałych cech, z wykluczeniem "Waga brutto", "Gross Weight" oraz wcześniej wyświetlonego "Producent: Cezos" *}
-                {foreach from=$product.grouped_features item=feature}
-                  {if !($feature.name == 'Producent' && $feature.value == 'Cezos') 
-                      && $feature.id_feature != 52 
-                      && $feature.id_feature != 69 
-                      && $feature.id_feature != 70 
-                      && $feature.id_feature != 71
-                      && $feature.id_feature != 7 
-                      && $feature.name != 'Waga brutto' 
-                      && $feature.name != 'Gross Weight'}
-                    <li class="product_type">
-                      {$feature.name}: <b>{$feature.value}</b>
-                    </li>
-                  {/if}
-                {/foreach}
-              </ul>
+<ul>
+    {* Wyświetlenie cechy "Producent: Cezos" na początku, jeśli istnieje *}
+    {foreach from=$product.grouped_features item=feature}
+        {if $feature.name == 'Producent' && $feature.value == 'Cezos'}
+            <li class="product_type highlight-cezos">
+                {$feature.name}: <b>{$feature.value}</b>
+            </li>
+            {break}
+        {/if}
+    {/foreach}
+
+    {* Wyświetlenie pozostałych cech, z wykluczeniem "Waga brutto", "Gross Weight" oraz wcześniej wyświetlonego "Producent: Cezos" *}
+    {foreach from=$product.grouped_features item=feature}
+      {if !($feature.name == 'Producent' && $feature.value == 'Cezos') 
+          && $feature.id_feature != 52 
+          && $feature.id_feature != 69 
+          && $feature.id_feature != 70 
+          && $feature.id_feature != 71
+          && $feature.id_feature != 7 
+          && $feature.name != 'Waga brutto' 
+          && $feature.name != 'Gross Weight'}
+            <li class="product_type">
+                {$feature.name}: <b>{$feature.value}</b>
+            </li>
+        {/if}
+    {/foreach}
+</ul>
+
+
+
+
               {/if}
               {/block}
               {/block}
@@ -270,12 +264,6 @@
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  
-  
-
-  
         
         {block name='product_tabs'}
         <div class="tabs col-xs-12 p-0">
