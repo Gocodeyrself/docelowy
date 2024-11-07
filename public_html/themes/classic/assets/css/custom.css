@@ -2036,7 +2036,7 @@ ul.page-list {
 }
 
 .product-right-container.fixedEnd {
-    position: absolute;
+    position: sticky;
     top: inherit;
     bottom: 0;
     left: 15px;
