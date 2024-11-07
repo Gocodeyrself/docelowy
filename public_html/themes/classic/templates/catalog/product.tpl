@@ -173,9 +173,9 @@
   <!-- Ikona i darmowa dostawa z brakującą kwotą -->
   <p class="d-flex align-items-center mb-2">
     <i class="material-icons mr-2">&#xE558;</i> <!-- Ikona ciężarówki -->
-    {if $cart.total < 200}
+    {if isset($cart) && $cart->getOrderTotal() < 200}
       {l s='Darmowa dostawa przy zakupach powyżej 450 zł. Brakuje jeszcze ' d='Shop.Theme.Catalog'}
-      <span class="text-danger">{currency_format price=200 - $cart.total}</span>
+      <span class="text-danger">{displayPrice price=200 - $cart->getOrderTotal()}</span>
     {else}
       {l s='Darmowa dostawa dostępna dla Twojego zamówienia!' d='Shop.Theme.Catalog'}
     {/if}
@@ -190,14 +190,15 @@
   <!-- Dostępne metody wysyłki -->
   <h5 class="mt-3 mb-2">{l s='Dostępne metody wysyłki' d='Shop.Theme.Catalog'}</h5>
   <ul class="pl-3">
-  <li>{l s='Odbiór osobisty: za darmo' d='Shop.Theme.Catalog'}</li>
-    <li>{l s='Kurier GLS: od 22, 76 zł brutto' d='Shop.Theme.Catalog'}</li>
+    <li>{l s='Odbiór osobisty: za darmo' d='Shop.Theme.Catalog'}</li>
+    <li>{l s='Kurier GLS: od 22,76 zł brutto' d='Shop.Theme.Catalog'}</li>
     <li>{l s='Przesyłka Paczkomat® - standardowa: od 25,92 zł brutto' d='Shop.Theme.Catalog'}</li>
     <li>{l s='Inpost - Przesyłka kurierska: od 30,91 zł brutto' d='Shop.Theme.Catalog'}</li>
   </ul>
 </div>
 </div>
 <!-- Koniec nowego boxa z informacjami o dostawie -->
+
 
 
           <div class="col-md-12 hidden-md-down white-bgr box-shadow scroll height-400 accessories-container">
