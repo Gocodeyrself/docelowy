@@ -2027,7 +2027,6 @@ ul.page-list {
     align-items: stretch;
     justify-content: flex-start;
     gap: 15px;
-    position: fixed;
     /* width: auto;
   right: 125px;
   left: calc(66.66667% - 22px);
