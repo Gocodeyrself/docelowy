@@ -132,7 +132,7 @@
                 </form>
                 {/block}
 
-                <div class="catalog_number">{l s="Stock" d='Shop.Theme.Catalog'} 
+                <div class="catalog_number">{l s="Condition" d='Shop.Theme.Catalog'} 
                 {* <b itemprop="quantity"> *}
                 {assign var="qFeature" value=Tools::getQuantityFromFeature($product.id_product)}
                 {if $qFeature}
@@ -262,18 +262,9 @@
                 </section>
                 {/if}
             </div>
-             <!-- Nowy box z informacjami o dostawie -->
-        <div class="col-md-12 white-bgr box-shadow mt-3">
-        <h4 class="box-title">{l s='Dostawa' d='Shop.Theme.Catalog'}</h4>
-        <div class="delivery-info">
-          <p>{l s='Dostawa w ciągu 2-4 dni' d='Shop.Theme.Catalog'}</p>
-          <p>{l s='Darmowa dostawa przy zakupach powyżej 200 zł' d='Shop.Theme.Catalog'}</p>
-          <p>{l s='Śledzenie paczki dostępne po wysyłce' d='Shop.Theme.Catalog'}</p>
-        </div>
-      </div>
-      <!-- Koniec nowego boxa z informacjami o dostawie -->
           </div>
         </div>
+        
         {block name='product_tabs'}
         <div class="tabs col-xs-12 p-0">
           <ul class="nav nav-tabs white-bgr box-shadow" role="tablist">
