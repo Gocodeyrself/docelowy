@@ -196,7 +196,7 @@
   </p>
 
   <!-- Brakuje do darmowej dostawy -->
-  <div class="d-flex align-items-center mb-1" style="margin-left: 20px;">
+  <div class="d-flex align-items-center mb-1">
     {assign var="toFreeDelivery" value=((float)Configuration::get('PS_SHIPPING_FREE_PRICE')-$cart.subtotals.products.amount)}
     <i class="material-icons mr-1" style="color: #333; font-size: 20px;">&#xE558;</i>
     <span style="font-weight: bold; color: #333;">
