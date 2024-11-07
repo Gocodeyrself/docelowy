@@ -168,41 +168,41 @@
 
  <!-- Reklamacje i zwroty -->
  <p class="d-flex align-items-center mb-1">
- <i class="material-icons mr-1" style="color: #333; font-size: 20px;">&#xE89C;</i>
- <span style="font-weight: bold; color: #333;">{l s='Reklamacje i zwroty:' d='Shop.Theme.Catalog'}</span>
+ <i class="material-icons mr-1" style="color: #2d4156; font-size: 20px;">&#xE89C;</i>
+ <span style="font-weight: bold; color: #2d4156;">{l s='Reklamacje i zwroty:' d='Shop.Theme.Catalog'}</span>
  <a href="https://sklep.cezos.com/pl/content/20-reklamacjazwroty" target="_blank" class="ml-1" style="color: #007bff; text-decoration: underline;">{l s='Dowiedz się więcej' d='Shop.Theme.Catalog'}</a>
 </p>
 
   <!-- Śledzenie paczki -->
   <p class="d-flex align-items-center mb-1">
-    <i class="material-icons mr-1" style="color: #333; font-size: 20px;">&#xE8B6;</i>
-    <span style="font-weight: bold; color: #333;">{l s='Śledzenie paczki dostępne po wysyłce:' d='Shop.Theme.Catalog'}</span>
-    <a href="https://sklep.cezos.com/pl/historia-zamowien" target="_blank" class="ml-1" style="color: #333; text-decoration: underline;">{l s='Sprawdź status zamówienia' d='Shop.Theme.Catalog'}</a>
+    <i class="material-icons mr-1" style="color: #2d4156; font-size: 20px;">&#xE8B6;</i>
+    <span style="font-weight: bold; color: #2d4156;">{l s='Śledzenie paczki dostępne po wysyłce:' d='Shop.Theme.Catalog'}</span>
+    <a href="https://sklep.cezos.com/pl/historia-zamowien" target="_blank" class="ml-1" style="color: #007bff; text-decoration: underline;">{l s='Sprawdź status zamówienia' d='Shop.Theme.Catalog'}</a>
   </p>
 
 
     <!-- Dostawa w ciągu -->
     <p class="d-flex align-items-center mb-1">
-    <i class="material-icons mr-1" style="color: #333; font-size: 20px;">&#xE425;</i>
-    <span style="font-weight: bold; color: #333;">{l s='Dostawa w ciągu:' d='Shop.Theme.Catalog'}</span>
-    <span style="color: #333; margin-left: 5px;">2-4 dni</span>
+    <i class="material-icons mr-1" style="color: #2d4156; font-size: 20px;">&#xE425;</i>
+    <span style="font-weight: bold; color: #2d4156;">{l s='Dostawa w ciągu:' d='Shop.Theme.Catalog'}</span>
+    <span style="color: #2d4156; margin-left: 5px;">2-4 dni</span>
   </p>
 
     <!-- Darmowa dostawa -->
     <p class="d-flex align-items-center mb-1">
-    <i class="material-icons mr-1" style="color: #333; font-size: 20px;">&#xE558;</i>
-    <span style="font-weight: bold; color: #333;">{l s='Darmowa dostawa przy zakupach powyżej:' d='Shop.Theme.Catalog'}</span>
-    <span style="color: #333; margin-left: 5px;">450 zł</span>
+    <i class="material-icons mr-1" style="color: #2d4156; font-size: 20px;">&#xE558;</i>
+    <span style="font-weight: bold; color: #2d4156;">{l s='Darmowa dostawa przy zakupach powyżej:' d='Shop.Theme.Catalog'}</span>
+    <span style="color: #2d4156; margin-left: 5px;">450 zł</span>
   </p>
 
   <!-- Brakuje do darmowej dostawy -->
   <div class="d-flex align-items-center mb-1">
     {assign var="toFreeDelivery" value=((float)Configuration::get('PS_SHIPPING_FREE_PRICE')-$cart.subtotals.products.amount)}
     <i class="material-icons mr-1" style="color: #333; font-size: 20px;">&#xE558;</i>
-    <span style="font-weight: bold; color: #333;">
+    <span style="font-weight: bold; color: #2d4156;">
       {if $toFreeDelivery > 0}
         {l s='Brakuje do darmowej dostawy:' d='Shop.Theme.Global'}
-        <span style="color: #333; margin-left: 5px;">{$toFreeDelivery|number_format:2:",":" "}</span> {$currency.sign}
+        <span style="color: #2d4156; margin-left: 5px;">{$toFreeDelivery|number_format:2:",":" "}</span> {$currency.sign}
       {/if}
     </span>
   </div>
