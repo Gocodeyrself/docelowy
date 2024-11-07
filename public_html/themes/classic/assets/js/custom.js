@@ -148,13 +148,6 @@ document.addEventListener('click', function () {
 let bool_ready = false;
 
 $(window).ready(function () {
-  // index_menu();
-  // if ($(window).width() <= 992) {
-  //   magic_sidebar2();
-  // } else {
-  //   magic_sidebar();
-  //   addLinkToArrow();
-  // }
   addFooterHandlers();
   menu_sticky();
   setLayoutHandler();
@@ -169,7 +162,6 @@ $(window).ready(function () {
   setTimeout(() => {
     resizeWidthRightColumn();
   }, 100);
-  // new TextTypingAnimation().startTyping();
 });
 $(window).resize(function () {
   indexChangeMenuAndSliderHeight();
@@ -188,14 +180,11 @@ const addFooterHandlers = () => {
   $('#footer .title.clearfix.hidden-md-up').each(function (index) {
     var $this = $(this);
 
-    // Sprawdzenie, czy element posiada atrybuty data-toggle i data-target
     if (!$this.attr('data-toggle') && !$this.attr('data-target')) {
-      // Dodanie atrybutów data-toggle i data-target
-      var uniqueTarget = 'collapse-' + index; // Unikatowa wartość data-target
+      var uniqueTarget = 'collapse-' + index;
       $this.attr('data-toggle', 'collapse');
       $this.attr('data-target', '#' + uniqueTarget);
 
-      // Znalezienie ul.collapse po elemencie title i przypisanie id
       var $ul = $this.next('ul.collapse');
       if ($ul.length) {
         $ul.attr('id', uniqueTarget);
@@ -220,27 +209,16 @@ const addPhoneInHeader = () => {
 };
 
 const wrapFirstWordInSpan = () => {
-  // Zbieranie wszystkich elementów klasy "head-title"
   const elements = document.querySelectorAll('.head-title');
 
   elements.forEach((element) => {
-    // Pobieranie tekstu z elementu
     const text = element.textContent.trim();
-
-    // Dzielenie tekstu na słowa
     const words = text.split(' ');
 
     if (words.length > 0) {
-      // Pierwsze słowo
       const firstWord = words[0];
-
-      // Reszta tekstu bez pierwszego słowa
       const restOfText = words.slice(1).join(' ');
-
-      // Tworzenie nowego HTML z opakowanym pierwszym słowem w span
       const newHTML = `<span>${firstWord}</span> ${restOfText}`;
-
-      // Ustawianie nowego HTML wewnątrz elementu
       element.innerHTML = newHTML;
     }
   });
@@ -261,7 +239,6 @@ const addHandlesFaq = () => {
     $('#handleFaq2').click((e) => {
       $('.faq-header-item').removeClass('active');
       $('#faq').removeClass('active');
-
       $(e.target).closest('.faq-header-item').addClass('active');
       $('#faq2').addClass('active');
     });
@@ -269,7 +246,6 @@ const addHandlesFaq = () => {
     $('#handleFaq').click((e) => {
       $('.faq-header-item').removeClass('active');
       $('#faq2').removeClass('active');
-
       $(e.target).closest('.faq-header-item').addClass('active');
       $('#faq').addClass('active');
     });
@@ -311,11 +287,7 @@ const addFAQHandler = () => {
 const handleCmsCategory = (event) => {
   const container = $(event.target).closest('.cms-menu-category');
   const className = 'hidden-container';
-  // if (container.hasClass(className)) {
   container.toggleClass(className);
-  // } else {
-  //   container.addClass(className);
-  // }
 };
 
 const handleTabClick = () => {
@@ -328,8 +300,7 @@ const handleTabClick = () => {
 const addToCartHandler = () => {
   setTimeout(() => {
     const value =
-      parseFloat($('#free-delivery').val()) -
-      prestashop.cart.subtotals.products.amount;
+      parseFloat($('#free-delivery').val()) - prestashop.cart.subtotals.products.amount;
     const formattedValue = value.toLocaleString('pl-PL', {
       style: 'decimal',
       minimumFractionDigits: 2,
@@ -344,60 +315,37 @@ const addToCartHandler = () => {
     }
   }, 500);
 };
+
 const goTo = (event, element) => {
   document.getElementById(element).scrollIntoView({ behavior: 'smooth' });
 };
+
 const checkRightProduct = () => {
-  const heightTopSum =
-    $('.product-right-container').height() + $(window).scrollTop();
+  const heightTopSum = $('.product-right-container').height() + $(window).scrollTop();
   const containerHeight = $('#product_column_right').height();
-  if (heightTopSum > containerHeight) {
+  const pageBottomOffset = $(document).height() - $(window).height() - $(window).scrollTop();
+
+  if (heightTopSum > containerHeight || pageBottomOffset < 50) {
     $('.product-right-container').addClass('fixedEnd');
   } else {
     $('.product-right-container').removeClass('fixedEnd');
   }
 };
 
-// const resizeProductRightColumn = () => {
-//   setTimeout(() => {
-//     if ($('#product_column_left').length) {
-//       const height =
-//         window.innerWidth > 991
-//           ? $('.tabs').outerHeight(true) +
-//             $('.product-left-container').height() +
-//             30
-//           : 'auto';
-//       $('#product_column_right').height(height);
-//     }
-//   }, 500);
-//   setTimeout(() => {
-//     if ($('#product_column_left').length) {
-//       const height =
-//         window.innerWidth > 991
-//           ? $('.tabs').outerHeight(true) +
-//             $('.product-left-container').height() +
-//             30
-//           : 'auto';
-//       $('#product_column_right').height(height);
-//     }
-//   }, 1000);
-// };
-
 const resizeProductRightColumn = () => {
   setTimeout(() => {
     if ($('#product_column_left').length) {
-      // Ustawienie wysokości na auto, niezależnie od szerokości okna
       $('#product_column_right').css('height', 'auto');
     }
   }, 500);
 
   setTimeout(() => {
     if ($('#product_column_left').length) {
-      // Ponownie ustawienie wysokości na auto po drugim opóźnieniu
       $('#product_column_right').css('height', 'auto');
     }
   }, 1000);
 };
+
 
 const indexChangeMenuAndSliderHeight = () => {
   setTimeout(() => {
