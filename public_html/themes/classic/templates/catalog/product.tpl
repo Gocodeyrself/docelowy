@@ -148,14 +148,14 @@
                 {* </b> *}
                 </div>
 
-                  {block name='product_delivery'}
+                  {*{block name='product_delivery'}
                   {include file='catalog/_partials/product-delivery.tpl'}
-                  {/block}
+                  {/block}*}
               </div>
-{*
+
               {block name='hook_display_reassurance'}
               {hook h='displayReassurance'}
-              {/block}*}
+              {/block}
 
             </div>
           </div>
