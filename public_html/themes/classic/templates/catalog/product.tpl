@@ -159,6 +159,18 @@
 
             </div>
           </div>
+
+          <!-- Nowy box z informacjami o dostawie -->
+          <div class="col-md-12 white-bgr box-shadow mt-3">
+            <h4 class="box-title">{l s='Dostawa' d='Shop.Theme.Catalog'}</h4>
+            <div class="delivery-info">
+              <p>{l s='Dostawa w ciągu 2-4 dni' d='Shop.Theme.Catalog'}</p>
+              <p>{l s='Darmowa dostawa przy zakupach powyżej 200 zł' d='Shop.Theme.Catalog'}</p>
+              <p>{l s='Śledzenie paczki dostępne po wysyłce' d='Shop.Theme.Catalog'}</p>
+            </div>
+          </div>
+          <!-- Koniec nowego boxa z informacjami o dostawie -->
+
           <div class="col-md-12 hidden-md-down white-bgr box-shadow scroll height-400 accessories-container">
             <h4 class="head-title">{l s='You might also like' d='Shop.Theme.Catalog'}</h4>            
               {if $accessories}
@@ -200,47 +212,38 @@
             <div class="col-md-7 position-unset">
               {block name='page_header_container'}
               {block name='page_header'}
-              <!-- {assign var='psLogo' value=Configuration::get('PS_LOGO')} -->
-              <!-- <img class="logo-product" src="/img/{$psLogo}" alt="Logo PrestaShop"> -->
               <div class="catalog_number">{l s='Catalog Number:' d='Shop.Theme.Global'} <b itemprop="sku">{$product.ean13}</b></div>
               <div class="catalog_number">{l s='Reference' d='Shop.Pdf'}: <b itemprop="sku">{$product.reference}</b>
               </div>
               <h1 class="h1 product-name">{block name='page_title'}{$product.name}{/block}</h1>
               {if $product.flags}
-             
               {/if}
               {if $product.grouped_features}
-<ul>
-    {* Wyświetlenie cechy "Producent: Cezos" na początku, jeśli istnieje *}
-    {foreach from=$product.grouped_features item=feature}
-        {if $feature.name == 'Producent' && $feature.value == 'Cezos'}
-            <li class="product_type highlight-cezos">
-                {$feature.name}: <b>{$feature.value}</b>
-            </li>
-            {break}
-        {/if}
-    {/foreach}
+              <ul>
+                {foreach from=$product.grouped_features item=feature}
+                    {if $feature.name == 'Producent' && $feature.value == 'Cezos'}
+                        <li class="product_type highlight-cezos">
+                            {$feature.name}: <b>{$feature.value}</b>
+                        </li>
+                        {break}
+                    {/if}
+                {/foreach}
 
-    {* Wyświetlenie pozostałych cech, z wykluczeniem "Waga brutto", "Gross Weight" oraz wcześniej wyświetlonego "Producent: Cezos" *}
-    {foreach from=$product.grouped_features item=feature}
-      {if !($feature.name == 'Producent' && $feature.value == 'Cezos') 
-          && $feature.id_feature != 52 
-          && $feature.id_feature != 69 
-          && $feature.id_feature != 70 
-          && $feature.id_feature != 71
-          && $feature.id_feature != 7 
-          && $feature.name != 'Waga brutto' 
-          && $feature.name != 'Gross Weight'}
-            <li class="product_type">
-                {$feature.name}: <b>{$feature.value}</b>
-            </li>
-        {/if}
-    {/foreach}
-</ul>
-
-
-
-
+                {foreach from=$product.grouped_features item=feature}
+                  {if !($feature.name == 'Producent' && $feature.value == 'Cezos') 
+                      && $feature.id_feature != 52 
+                      && $feature.id_feature != 69 
+                      && $feature.id_feature != 70 
+                      && $feature.id_feature != 71
+                      && $feature.id_feature != 7 
+                      && $feature.name != 'Waga brutto' 
+                      && $feature.name != 'Gross Weight'}
+                    <li class="product_type">
+                        {$feature.name}: <b>{$feature.value}</b>
+                    </li>
+                  {/if}
+                {/foreach}
+              </ul>
               {/if}
               {/block}
               {/block}
@@ -299,44 +302,32 @@
                 aria-controls="extra-{$extraKey}">{$extra.title}</a>
             </li>
             {/foreach}
-            {* <li class="nav-item">
-              <a class="nav-link" data-toggle="tab" href="#extra-necessary" onclick="goTo(event, 'necessary')" role="tab"
-                aria-controls="extra-necessary">Niezbędne do montażu</a>
-            </li> *}
             <li class="nav-item">
               <a class="nav-link" data-toggle="tab" href="#product-contact" 
                 onclick="handleTabClick()"
                 role="tab"
                 aria-controls="product-contact">{l s='Ask about the product' d='Shop.Theme.Global'}</a>
             </li>
-            {* <li class="nav-item">
-              <a class="nav-link" data-toggle="tab" href="#extra-warranty" onclick="goTo(event, 'warranty')" role="tab"
-                aria-controls="extra-warranty">Gwarancje</a>
-            </li> *}
             <li class="nav-item hidden">
               <a class="nav-link" data-toggle="tab" href="#extra-inspirations" 
               onclick="handleTabClick()"
-              {* onclick="goTo(event, 'inspirations')" *}
                role="tab"
                 aria-controls="extra-inspirations">{l s='Inspirations' d='Shop.Theme.Global'}</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" data-toggle="tab" href="#extra-product-comments-list-header" 
-              {* onclick="goTo(event, 'product-comments-list-header')"  *}
               onclick="handleTabClick()"
               role="tab"
                 aria-controls="extra-product-comments-list-header">{l s='Reviews' d='Shop.Theme.Global'}</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" data-toggle="tab" href="#featured-products" 
-              {* onclick="goTo(event, 'featured-products')"  *}
               role="tab"
               onclick="handleTabClick()"
                 aria-controls="extra-featured-products">{l s='Viewed products' d='Shop.Theme.Catalog'}</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" data-toggle="tab" href="#similar" 
-              {* onclick="goTo(event, 'similar')"  *}
                 onclick="handleTabClick()"
                 role="tab"
                 aria-controls="extra-similar">{l s='Similar' d='Shop.Theme.Global'}</a>
@@ -344,7 +335,6 @@
           </ul>
           <div class="tab-content" id="tab-content">     
             <div class="tab-pane box-shadow fade in active" id="description" role="tabpanel">
-                {* <h4 class="product-tab-title">{l s='Description' d="Shop.Theme.Catalog"}</h4> *}
                 {block name='product_description'}
                   <div class="product-description">{$product.description nofilter}</div>
                 {/block}
@@ -356,20 +346,14 @@
               {if $product.attachments}
               <div class="tab-pane box-shadow fade in" id="attachments">
                 <section class="product-attachments">
-                    {* <h4 class="product-tab-title">{l s='Download' d='Shop.Theme.Actions'}</h4> *}
                   {foreach from=$product.attachments item=attachment}
                   <div class="attachment">
-                   
                     <a href="{url entity='attachment' params=['id_attachment' => $attachment.id_attachment]}">
                       <h4>
                         {$attachment.name}
                       </h4>
                       <i class="fas fa-download"></i>
                     </a>
-                    {* <p>{$attachment.description}</p> *}
-                    {* <a href="{url entity='attachment' params=['id_attachment' => $attachment.id_attachment]}">
-                      {l s='Download' d='Shop.Theme.Actions'} ({$attachment.file_size_formatted})
-                    </a> *}
                   </div>
                   {/foreach}
                 </section>
@@ -392,16 +376,10 @@
         </div>
         {/block}
       </div>
-      
-
-
-
-
     </div>
 
     {block name='product_accessories'}
     {/block}
-
 
     {block name='product_images_modal'}
     {include file='catalog/_partials/product-images-modal.tpl'}
@@ -410,7 +388,6 @@
     {block name='page_footer_container'}
     <footer class="page-footer">
       {block name='page_footer'}
-      <!-- Footer content -->
       {/block}
     </footer>
     {/block}
