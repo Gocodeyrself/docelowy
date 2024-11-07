@@ -151,8 +151,6 @@
           </div>
         </div>
         <!-- Koniec nowego boxa z informacjami o dostawie i zwrotach -->
-        </div>
-        </div>
           <div class="col-md-12 hidden-md-down white-bgr box-shadow scroll height-400 accessories-container">
             <h4 class="head-title">{l s='You might also like' d='Shop.Theme.Catalog'}</h4>            
               {if $accessories}
