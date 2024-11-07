@@ -358,27 +358,43 @@ const checkRightProduct = () => {
   }
 };
 
+// const resizeProductRightColumn = () => {
+//   setTimeout(() => {
+//     if ($('#product_column_left').length) {
+//       const height =
+//         window.innerWidth > 991
+//           ? $('.tabs').outerHeight(true) +
+//             $('.product-left-container').height() +
+//             30
+//           : 'auto';
+//       $('#product_column_right').height(height);
+//     }
+//   }, 500);
+//   setTimeout(() => {
+//     if ($('#product_column_left').length) {
+//       const height =
+//         window.innerWidth > 991
+//           ? $('.tabs').outerHeight(true) +
+//             $('.product-left-container').height() +
+//             30
+//           : 'auto';
+//       $('#product_column_right').height(height);
+//     }
+//   }, 1000);
+// };
+
 const resizeProductRightColumn = () => {
   setTimeout(() => {
     if ($('#product_column_left').length) {
-      const height =
-        window.innerWidth > 991
-          ? $('.tabs').outerHeight(true) +
-            $('.product-left-container').height() +
-            30
-          : 'auto';
-      $('#product_column_right').height(height);
+      // Ustawienie wysokości na auto, niezależnie od szerokości okna
+      $('#product_column_right').css('height', 'auto');
     }
   }, 500);
+
   setTimeout(() => {
     if ($('#product_column_left').length) {
-      const height =
-        window.innerWidth > 991
-          ? $('.tabs').outerHeight(true) +
-            $('.product-left-container').height() +
-            30
-          : 'auto';
-      $('#product_column_right').height(height);
+      // Ponownie ustawienie wysokości na auto po drugim opóźnieniu
+      $('#product_column_right').css('height', 'auto');
     }
   }, 1000);
 };
