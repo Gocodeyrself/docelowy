@@ -152,50 +152,66 @@
                   {include file='catalog/_partials/product-delivery.tpl'}
                   {/block}
               </div>
-
+{*
               {block name='hook_display_reassurance'}
               {hook h='displayReassurance'}
-              {/block}
+              {/block}*}
 
             </div>
           </div>
 
           <!-- Nowy box z informacjami o dostawie i zwrotach -->
-<div class="col-md-12 white-bgr box-shadow accessories-container" style="padding: 10px 15px;">
-<h4 class="head-title mb-2">{l s='Dostawa i Zwroty' d='Shop.Theme.Catalog'}</h4>
-<div class="delivery-info" style="padding: 5px 10px; line-height: 1.4;">
+<div class="info-box accessories-container">
+<h4 class="info-box__title">{l s='Dostawa i Zwroty' d='Shop.Theme.Catalog'}</h4>
 
-  <!-- Ikona i czas dostawy -->
-  <p class="d-flex align-items-center mb-1">
-    <i class="material-icons mr-1" style="color: #007bff; font-size: 20px;">&#xE425;</i>
-    <span style="font-weight: bold; color: #333;">{l s='Dostawa w ciągu:' d='Shop.Theme.Catalog'}</span>
-    <span style="color: #333; margin-left: 5px;">2-4 dni</span>
+<div class="delivery-info">
+  <!-- Dostawa w ciągu -->
+  <p class="info-item">
+    <i class="icon icon-delivery-time"></i>
+    <span>{l s='Dostawa w ciągu:' d='Shop.Theme.Catalog'}</span>
+    <strong>2-4 dni</strong>
   </p>
 
-  <!-- Ikona i darmowa dostawa -->
-  <p class="d-flex align-items-center mb-1">
-    <i class="material-icons mr-1" style="color: #28a745; font-size: 20px;">&#xE558;</i>
-    <span style="font-weight: bold; color: #333;">{l s='Darmowa dostawa przy zakupach powyżej:' d='Shop.Theme.Catalog'}</span>
-    <span style="color: #333; margin-left: 5px;">450 zł</span>
+  <!-- Darmowa dostawa -->
+  <p class="info-item">
+    <i class="icon icon-free-delivery"></i>
+    <span>{l s='Darmowa dostawa przy zakupach powyżej:' d='Shop.Theme.Catalog'}</span>
+    <strong>450 zł</strong>
   </p>
 
-  <!-- Ikona śledzenia paczki -->
-  <p class="d-flex align-items-center mb-1">
-    <i class="material-icons mr-1" style="color: #ffc107; font-size: 20px;">&#xE8B6;</i>
-    <span style="font-weight: bold; color: #333;">{l s='Śledzenie paczki dostępne po wysyłce:' d='Shop.Theme.Catalog'}</span>
-    <a href="https://sklep.cezos.com/pl/historia-zamowien" target="_blank" class="ml-1" style="color: #007bff; text-decoration: underline;">{l s='Sprawdź status zamówienia' d='Shop.Theme.Catalog'}</a>
+  <!-- Brakuje do darmowej dostawy -->
+  <div class="main-product-delivery-container">
+    <div class="product-delivery-container">
+      {assign var="toFreeDelivery" value=((float)Configuration::get('PS_SHIPPING_FREE_PRICE')-$cart.subtotals.products.amount)}
+      
+      <div class="to-free-delivery {if $toFreeDelivery<=0}hidden{/if}">
+        <span>{l s='Brakuje do darmowej dostawy:' d='Shop.Theme.Global'}</span>
+        <span class="amount">{$toFreeDelivery|number_format:2:",":" "}</span> {$currency.sign}
+      </div>
+    </div>
+  </div>
+
+  <!-- Śledzenie paczki -->
+  <p class="info-item">
+    <i class="icon icon-tracking"></i>
+    <span>{l s='Śledzenie paczki dostępne po wysyłce:' d='Shop.Theme.Catalog'}</span>
+    <a href="https://sklep.cezos.com/pl/historia-zamowien" class="info-link" target="_blank">
+      {l s='Sprawdź status zamówienia' d='Shop.Theme.Catalog'}
+    </a>
   </p>
 
-  <!-- Informacje o zwrotach i reklamacjach -->
-  <p class="d-flex align-items-center mb-1">
-    <i class="material-icons mr-1" style="color: #dc3545; font-size: 20px;">&#xE89C;</i>
-    <span style="font-weight: bold; color: #333;">{l s='Reklamacje i zwroty:' d='Shop.Theme.Catalog'}</span>
-    <a href="https://sklep.cezos.com/pl/content/20-reklamacjazwroty" target="_blank" class="ml-1" style="color: #007bff; text-decoration: underline;">{l s='Dowiedz się więcej' d='Shop.Theme.Catalog'}</a>
+  <!-- Reklamacje i zwroty -->
+  <p class="info-item">
+    <i class="icon icon-returns"></i>
+    <span>{l s='Reklamacje i zwroty:' d='Shop.Theme.Catalog'}</span>
+    <a href="https://sklep.cezos.com/pl/content/20-reklamacjazwroty" class="info-link" target="_blank">
+      {l s='Dowiedz się więcej' d='Shop.Theme.Catalog'}
+    </a>
   </p>
 
   <!-- Dostępne metody wysyłki -->
-  <h5 class="mt-3 mb-1" style="color: #333; font-weight: bold;">{l s='Dostępne metody wysyłki' d='Shop.Theme.Catalog'}</h5>
-  <ul class="pl-0" style="color: #666; margin-bottom: 0;">
+  <h5 class="info-box__subtitle">{l s='Dostępne metody wysyłki' d='Shop.Theme.Catalog'}</h5>
+  <ul class="shipping-methods">
     <li>{l s='Odbiór osobisty:' d='Shop.Theme.Catalog'} za darmo</li>
     <li>{l s='Kurier GLS:' d='Shop.Theme.Catalog'} od 22,76 zł brutto</li>
     <li>{l s='Przesyłka Paczkomat® - standardowa:' d='Shop.Theme.Catalog'} od 25,92 zł brutto</li>
@@ -204,9 +220,6 @@
 </div>
 </div>
 <!-- Koniec nowego boxa z informacjami o dostawie i zwrotach -->
-
-
-
 
 
           <div class="col-md-12 hidden-md-down white-bgr box-shadow scroll height-400 accessories-container">
