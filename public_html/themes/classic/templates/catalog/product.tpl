@@ -165,48 +165,50 @@
 <h4 class="head-title mb-2">{l s='Dostawa i Zwroty' d='Shop.Theme.Catalog'}</h4>
 
 <div class="delivery-info" style="padding: 5px 10px; line-height: 1.4;">
-  <!-- Dostawa w ciągu -->
+
+ <!-- Reklamacje i zwroty -->
+ <p class="d-flex align-items-center mb-1">
+ <i class="material-icons mr-1" style="color: #333; font-size: 20px;">&#xE89C;</i>
+ <span style="font-weight: bold; color: #333;">{l s='Reklamacje i zwroty:' d='Shop.Theme.Catalog'}</span>
+ <a href="https://sklep.cezos.com/pl/content/20-reklamacjazwroty" target="_blank" class="ml-1" style="color: #007bff; text-decoration: underline;">{l s='Dowiedz się więcej' d='Shop.Theme.Catalog'}</a>
+</p>
+
+  <!-- Śledzenie paczki -->
   <p class="d-flex align-items-center mb-1">
-    <i class="material-icons mr-1" style="color: #007bff; font-size: 20px;">&#xE425;</i>
+    <i class="material-icons mr-1" style="color: #333; font-size: 20px;">&#xE8B6;</i>
+    <span style="font-weight: bold; color: #333;">{l s='Śledzenie paczki dostępne po wysyłce:' d='Shop.Theme.Catalog'}</span>
+    <a href="https://sklep.cezos.com/pl/historia-zamowien" target="_blank" class="ml-1" style="color: #333; text-decoration: underline;">{l s='Sprawdź status zamówienia' d='Shop.Theme.Catalog'}</a>
+  </p>
+
+
+    <!-- Dostawa w ciągu -->
+    <p class="d-flex align-items-center mb-1">
+    <i class="material-icons mr-1" style="color: #333; font-size: 20px;">&#xE425;</i>
     <span style="font-weight: bold; color: #333;">{l s='Dostawa w ciągu:' d='Shop.Theme.Catalog'}</span>
     <span style="color: #333; margin-left: 5px;">2-4 dni</span>
   </p>
 
-  <!-- Darmowa dostawa -->
-  <p class="d-flex align-items-center mb-1">
-    <i class="material-icons mr-1" style="color: #28a745; font-size: 20px;">&#xE558;</i>
+    <!-- Darmowa dostawa -->
+    <p class="d-flex align-items-center mb-1">
+    <i class="material-icons mr-1" style="color: #333; font-size: 20px;">&#xE558;</i>
     <span style="font-weight: bold; color: #333;">{l s='Darmowa dostawa przy zakupach powyżej:' d='Shop.Theme.Catalog'}</span>
     <span style="color: #333; margin-left: 5px;">450 zł</span>
   </p>
 
   <!-- Brakuje do darmowej dostawy -->
-  <div class="d-flex align-items-center mb-1" style="margin-left: 25px;">
+  <div class="d-flex align-items-center mb-1" style="margin-left: 20px;">
     {assign var="toFreeDelivery" value=((float)Configuration::get('PS_SHIPPING_FREE_PRICE')-$cart.subtotals.products.amount)}
-    <i class="material-icons mr-1" style="color: #dc3545; font-size: 20px;">&#xE558;</i>
+    <i class="material-icons mr-1" style="color: #333; font-size: 20px;">&#xE558;</i>
     <span style="font-weight: bold; color: #333;">
       {if $toFreeDelivery > 0}
         {l s='Brakuje do darmowej dostawy:' d='Shop.Theme.Global'}
-        <span style="color: #28a745; margin-left: 5px;">{$toFreeDelivery|number_format:2:",":" "}</span> {$currency.sign}
+        <span style="color: #333; margin-left: 5px;">{$toFreeDelivery|number_format:2:",":" "}</span> {$currency.sign}
       {/if}
     </span>
   </div>
 
-  <!-- Śledzenie paczki -->
-  <p class="d-flex align-items-center mb-1">
-    <i class="material-icons mr-1" style="color: #ffc107; font-size: 20px;">&#xE8B6;</i>
-    <span style="font-weight: bold; color: #333;">{l s='Śledzenie paczki dostępne po wysyłce:' d='Shop.Theme.Catalog'}</span>
-    <a href="https://sklep.cezos.com/pl/historia-zamowien" target="_blank" class="ml-1" style="color: #007bff; text-decoration: underline;">{l s='Sprawdź status zamówienia' d='Shop.Theme.Catalog'}</a>
-  </p>
-
-  <!-- Reklamacje i zwroty -->
-  <p class="d-flex align-items-center mb-1">
-    <i class="material-icons mr-1" style="color: #dc3545; font-size: 20px;">&#xE89C;</i>
-    <span style="font-weight: bold; color: #333;">{l s='Reklamacje i zwroty:' d='Shop.Theme.Catalog'}</span>
-    <a href="https://sklep.cezos.com/pl/content/20-reklamacjazwroty" target="_blank" class="ml-1" style="color: #007bff; text-decoration: underline;">{l s='Dowiedz się więcej' d='Shop.Theme.Catalog'}</a>
-  </p>
-
   <!-- Dostępne metody wysyłki -->
-  <h5 class="mt-3 mb-1" style="color: #333; font-weight: bold;">{l s='Dostępne metody wysyłki' d='Shop.Theme.Catalog'}</h5>
+  <h5 class="mt-3 mb-1" style="color: #333; font-weight: bold;">{l s='Dostępne metody wysyłki:' d='Shop.Theme.Catalog'}</h5>
   <ul class="pl-0" style="color: #666; margin-bottom: 0;">
     <li>{l s='Odbiór osobisty:' d='Shop.Theme.Catalog'} za darmo</li>
     <li>{l s='Kurier GLS:' d='Shop.Theme.Catalog'} od 22,76 zł brutto</li>
