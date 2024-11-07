@@ -4741,3 +4741,67 @@ button.contactHandler {
       padding: 15px 15px 0 15px;
     }
   }
+
+  /* Stylizacja głównego boxa */
+.info-box {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .info-box__title {
+    font-size: 1.25em;
+    color: #333;
+    margin-bottom: 15px;
+    font-weight: bold;
+  }
+  
+  .delivery-info .info-item {
+    display: flex;
+    align-items: center;
+    font-size: 0.9em;
+    color: #555;
+    margin: 10px 0;
+  }
+  
+  .info-item i {
+    margin-right: 10px;
+    font-size: 1.2em;
+  }
+  
+  .info-link {
+    color: #007bff;
+    text-decoration: underline;
+  }
+  
+  .info-link:hover {
+    color: #0056b3;
+  }
+  
+  .shipping-methods {
+    list-style-type: none;
+    padding-left: 20px;
+    margin-top: 10px;
+  }
+  
+  /* Ikony dla poszczególnych sekcji */
+  .icon-delivery-time {
+    color: #007bff;
+  }
+  
+  .icon-free-delivery {
+    color: #28a745;
+  }
+  
+  .icon-tracking {
+    color: #ffc107;
+  }
+  
+  .icon-returns {
+    color: #dc3545;
+  }
+  
+  /* Informacja o brakującej kwocie do darmowej dostawy */
+  
