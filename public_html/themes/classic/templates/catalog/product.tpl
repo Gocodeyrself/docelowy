@@ -99,58 +99,50 @@
         </div>
 
         <!-- Nowy box z informacjami o dostawie i zwrotach -->
-        <div class="col-md-12 white-bgr box-shadow mt-3 accessories-container">
-          <h4 class="head-title mb-2">{l s='Dostawa i Zwroty' d='Shop.Theme.Catalog'}</h4>
-          <div class="delivery-info" style="padding: 5px 10px; line-height: 1.4;">
-            <!-- Ikona i czas dostawy -->
-            <p class="d-flex align-items-center mb-1">
-              <i class="material-icons mr-1" style="color: #007bff; font-size: 20px;">&#xE425;</i>
-              <span style="font-weight: bold; color: #333;">{l s='Dostawa w ciągu:' d='Shop.Theme.Catalog'}</span>
-              <span style="color: #333; margin-left: 5px;">2-4 dni</span>
-            </p>
+<div class="col-md-12 white-bgr box-shadow mt-3 accessories-container">
+<h4 class="head-title mb-2">{l s='Dostawa i Zwroty' d='Shop.Theme.Catalog'}</h4>
+<div class="delivery-info" style="padding: 5px 10px; line-height: 1.4;">
 
-            <!-- Ikona i darmowa dostawa -->
-            <p class="d-flex align-items-center mb-1">
-              <i class="material-icons mr-1" style="color: #28a745; font-size: 20px;">&#xE558;</i>
-              <span style="font-weight: bold; color: #333;">{l s='Darmowa dostawa przy zakupach powyżej:' d='Shop.Theme.Catalog'}</span>
-              <span style="color: #333; margin-left: 5px;">450 zł</span>
-            </p>
+  <!-- Ikona i czas dostawy -->
+  <p class="d-flex align-items-center mb-1">
+    <i class="material-icons mr-1" style="color: #007bff; font-size: 20px;">&#xE425;</i>
+    <span style="font-weight: bold; color: #333;">{l s='Dostawa w ciągu:' d='Shop.Theme.Catalog'}</span>
+    <span style="color: #333; margin-left: 5px;">2-4 dni</span>
+  </p>
 
-            <!-- Wywołanie hooka displayReassurance -->
-            {block name='hook_display_reassurance'}
-              {hook h='displayReassurance'}
-            {/block}
+  <!-- Ikona i darmowa dostawa -->
+  <p class="d-flex align-items-center mb-1">
+    <i class="material-icons mr-1" style="color: #28a745; font-size: 20px;">&#xE558;</i>
+    <span style="font-weight: bold; color: #333;">{l s='Darmowa dostawa przy zakupach powyżej:' d='Shop.Theme.Catalog'}</span>
+    <span style="color: #333; margin-left: 5px;">450 zł</span>
+  </p>
 
-            <!-- Ikona śledzenia paczki -->
-            <p class="d-flex align-items-center mb-1">
-              <i class="material-icons mr-1" style="color: #ffc107; font-size: 20px;">&#xE8B6;</i>
-              <span style="font-weight: bold; color: #333;">{l s='Śledzenie paczki dostępne po wysyłce:' d='Shop.Theme.Catalog'}</span>
-              <a href="https://sklep.cezos.com/pl/historia-zamowien" target="_blank" class="ml-1" style="color: #007bff; text-decoration: underline;">{l s='Sprawdź status zamówienia' d='Shop.Theme.Catalog'}</a>
-            </p>
+  <!-- Ikona śledzenia paczki -->
+  <p class="d-flex align-items-center mb-1">
+    <i class="material-icons mr-1" style="color: #ffc107; font-size: 20px;">&#xE8B6;</i>
+    <span style="font-weight: bold; color: #333;">{l s='Śledzenie paczki dostępne po wysyłce:' d='Shop.Theme.Catalog'}</span>
+    <a href="https://sklep.cezos.com/pl/historia-zamowien" target="_blank" class="ml-1" style="color: #007bff; text-decoration: underline;">{l s='Sprawdź status zamówienia' d='Shop.Theme.Catalog'}</a>
+  </p>
 
-            <!-- Informacje o zwrotach i reklamacjach -->
-            <p class="d-flex align-items-center mb-1">
-              <i class="material-icons mr-1" style="color: #dc3545; font-size: 20px;">&#xE89C;</i>
-              <span style="font-weight: bold; color: #333;">{l s='Reklamacje i zwroty:' d='Shop.Theme.Catalog'}</span>
-              <a href="https://sklep.cezos.com/pl/content/20-reklamacjazwroty" target="_blank" class="ml-1" style="color: #007bff; text-decoration: underline;">{l s='Dowiedz się więcej' d='Shop.Theme.Catalog'}</a>
-            </p>
+  <!-- Informacje o zwrotach i reklamacjach -->
+  <p class="d-flex align-items-center mb-1">
+    <i class="material-icons mr-1" style="color: #dc3545; font-size: 20px;">&#xE89C;</i>
+    <span style="font-weight: bold; color: #333;">{l s='Reklamacje i zwroty:' d='Shop.Theme.Catalog'}</span>
+    <a href="https://sklep.cezos.com/pl/content/20-reklamacjazwroty" target="_blank" class="ml-1" style="color: #007bff; text-decoration: underline;">{l s='Dowiedz się więcej' d='Shop.Theme.Catalog'}</a>
+  </p>
 
-            <!-- Dostępne metody wysyłki -->
-            <h5 class="mt-3 mb-1" style="color: #333; font-weight: bold;">{l s='Dostępne metody wysyłki' d='Shop.Theme.Catalog'}</h5>
-            <ul class="pl-0" style="color: #666; margin-bottom: 0;">
-              <li>{l s='Odbiór osobisty:' d='Shop.Theme.Catalog'} za darmo</li>
-              <li>{l s='Kurier GLS:' d='Shop.Theme.Catalog'} od 22,76 zł brutto</li>
-              <li>{l s='Przesyłka Paczkomat® - standardowa:' d='Shop.Theme.Catalog'} od 25,92 zł brutto</li>
-              <li>{l s='Inpost - Przesyłka kurierska:' d='Shop.Theme.Catalog'} od 30,91 zł brutto</li>
-            </ul>
+  <!-- Dostępne metody wysyłki -->
+  <h5 class="mt-3 mb-1" style="color: #333; font-weight: bold;">{l s='Dostępne metody wysyłki' d='Shop.Theme.Catalog'}</h5>
+  <ul class="pl-0" style="color: #666; margin-bottom: 0;">
+    <li>{l s='Odbiór osobisty:' d='Shop.Theme.Catalog'} za darmo</li>
+    <li>{l s='Kurier GLS:' d='Shop.Theme.Catalog'} od 22,76 zł brutto</li>
+    <li>{l s='Przesyłka Paczkomat® - standardowa:' d='Shop.Theme.Catalog'} od 25,92 zł brutto</li>
+    <li>{l s='Inpost - Przesyłka kurierska:' d='Shop.Theme.Catalog'} od 30,91 zł brutto</li>
+  </ul>
+</div>
+</div>
+<!-- Koniec nowego boxa z informacjami o dostawie i zwrotach -->
 
-            <!-- Wywołanie hooka displayProductActions -->
-            {block name='hook_display_product_actions'}
-              {hook h='displayProductActions' product=$product}
-            {/block}
-          </div>
-        </div>
-        <!-- Koniec nowego boxa z informacjami o dostawie i zwrotach -->
           <div class="col-md-12 hidden-md-down white-bgr box-shadow scroll height-400 accessories-container">
             <h4 class="head-title">{l s='You might also like' d='Shop.Theme.Catalog'}</h4>            
               {if $accessories}
