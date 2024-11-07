@@ -162,29 +162,38 @@
 
           <!-- Nowy box z informacjami o dostawie -->
 <div class="col-md-12 white-bgr box-shadow mt-3 p-3">
-<h4 class="box-title mb-3">{l s='Dostawa' d='Shop.Theme.Catalog'}</h4>
+<h4 class="box-title mb-3" style="color: #333; font-weight: bold;">{l s='Dostawa i Zwroty' d='Shop.Theme.Catalog'}</h4>
 <div class="delivery-info">
+
   <!-- Ikona i czas dostawy -->
   <p class="d-flex align-items-center mb-2">
-    <i class="material-icons mr-2">&#xE425;</i> <!-- Ikona zegara -->
-    {l s='Dostawa w ciągu 2-4 dni' d='Shop.Theme.Catalog'}
+    <i class="material-icons mr-2" style="color: #007bff;">&#xE425;</i> <!-- Ikona zegara -->
+    <span style="font-weight: bold; color: #333;">{l s='Dostawa w ciągu 2-4 dni' d='Shop.Theme.Catalog'}</span>
   </p>
 
   <!-- Ikona i darmowa dostawa -->
   <p class="d-flex align-items-center mb-2">
-    <i class="material-icons mr-2">&#xE558;</i> <!-- Ikona ciężarówki -->
-    {l s='Darmowa dostawa przy zakupach powyżej 450 zł' d='Shop.Theme.Catalog'}
+    <i class="material-icons mr-2" style="color: #28a745;">&#xE558;</i> <!-- Ikona ciężarówki -->
+    <span style="font-weight: bold; color: #333;">{l s='Darmowa dostawa przy zakupach powyżej 450 zł' d='Shop.Theme.Catalog'}</span>
   </p>
 
   <!-- Ikona śledzenia paczki -->
   <p class="d-flex align-items-center mb-2">
-    <i class="material-icons mr-2">&#xE8B6;</i> <!-- Ikona śledzenia -->
-    {l s='Śledzenie paczki dostępne po wysyłce' d='Shop.Theme.Catalog'}
+    <i class="material-icons mr-2" style="color: #ffc107;">&#xE8B6;</i> <!-- Ikona śledzenia -->
+    <span style="font-weight: bold; color: #333;">{l s='Śledzenie paczki dostępne po wysyłce' d='Shop.Theme.Catalog'}</span>
+    <a href="https://sklep.cezos.com/pl/historia-zamowien" target="_blank" class="ml-2" style="color: #007bff; text-decoration: underline;">{l s='Sprawdź status zamówienia' d='Shop.Theme.Catalog'}</a>
+  </p>
+
+  <!-- Informacje o zwrotach i reklamacjach -->
+  <p class="d-flex align-items-center mb-2">
+    <i class="material-icons mr-2" style="color: #dc3545;">&#xE89C;</i> <!-- Ikona zwrotów -->
+    <span style="font-weight: bold; color: #333;">{l s='Reklamacje i zwroty' d='Shop.Theme.Catalog'}</span>
+    <a href="https://sklep.cezos.com/pl/content/20-reklamacjazwroty" target="_blank" class="ml-2" style="color: #007bff; text-decoration: underline;">{l s='Dowiedz się więcej' d='Shop.Theme.Catalog'}</a>
   </p>
 
   <!-- Dostępne metody wysyłki -->
-  <h5 class="mt-3 mb-2">{l s='Dostępne metody wysyłki' d='Shop.Theme.Catalog'}</h5>
-  <ul class="pl-3">
+  <h5 class="mt-4 mb-2" style="color: #333; font-weight: bold;">{l s='Dostępne metody wysyłki' d='Shop.Theme.Catalog'}</h5>
+  <ul class="pl-3" style="color: #666;">
     <li>{l s='Odbiór osobisty: za darmo' d='Shop.Theme.Catalog'}</li>
     <li>{l s='Kurier GLS: od 22,76 zł brutto' d='Shop.Theme.Catalog'}</li>
     <li>{l s='Przesyłka Paczkomat® - standardowa: od 25,92 zł brutto' d='Shop.Theme.Catalog'}</li>
@@ -193,6 +202,7 @@
 </div>
 </div>
 <!-- Koniec nowego boxa z informacjami o dostawie -->
+
 
 
           <div class="col-md-12 hidden-md-down white-bgr box-shadow scroll height-400 accessories-container">
