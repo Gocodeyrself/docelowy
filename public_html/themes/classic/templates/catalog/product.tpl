@@ -188,24 +188,25 @@
     <span style="color: #2d4156; margin-left: 5px;">2-4 dni</span>
   </p>
 
-    <!-- Darmowa dostawa -->
-    <p class="d-flex align-items-center mb-1">
-    <i class="material-icons mr-1" style="color: #2d4156; font-size: 20px;">&#xE558;</i>
-    <span style="font-weight: bold; color: #2d4156;">{l s='Darmowa dostawa przy zakupach powyżej:' d='Shop.Theme.Catalog'}</span>
-    <span style="color: #2d4156; margin-left: 5px;">450 zł</span>
-  </p>
+   <!-- Darmowa dostawa -->
+<p class="d-flex align-items-center mb-1">
+<i class="material-icons mr-1" style="color: #2d4156; font-size: 20px;">&#xE558;</i>
+<span style="font-weight: bold; color: #2d4156;">{l s='Darmowa dostawa przy zakupach powyżej:' d='Shop.Theme.Catalog'}</span>
+<span style="color: #2d4156; margin-left: 5px;">450 zł</span>
+</p>
 
-  <!-- Brakuje do darmowej dostawy -->
-  <div class="d-flex align-items-center mb-1">
-    {assign var="toFreeDelivery" value=((float)Configuration::get('PS_SHIPPING_FREE_PRICE')-$cart.subtotals.products.amount)}
-    <i class="material-icons mr-1" style="color: #333; font-size: 20px;">&#xE558;</i>
-    <span style="font-weight: bold; color: #2d4156;">
-      {if $toFreeDelivery > 0}
-        {l s='Brakuje do darmowej dostawy:' d='Shop.Theme.Global'}
-        <span style="color: #2d4156; margin-left: 5px;">{$toFreeDelivery|number_format:2:",":" "}</span> {$currency.sign}
-      {/if}
-    </span>
-  </div>
+<!-- Brakuje do darmowej dostawy -->
+<p class="d-flex align-items-center mb-1">
+{assign var="toFreeDelivery" value=((float)Configuration::get('PS_SHIPPING_FREE_PRICE')-$cart.subtotals.products.amount)}
+<i class="material-icons mr-1" style="color: #333; font-size: 20px;">&#xE558;</i>
+<span style="font-weight: bold; color: #2d4156;">
+  {if $toFreeDelivery > 0}
+    {l s='Brakuje do darmowej dostawy:' d='Shop.Theme.Global'}
+    <span style="color: #2d4156; margin-left: 5px;">{$toFreeDelivery|number_format:2:",":" "}</span> {$currency.sign}
+  {/if}
+</span>
+</p>
+
 
   <!-- Dostępne metody wysyłki -->
   <h5 class="mt-3 mb-1" style="color: #333; font-weight: bold;">{l s='Dostępne metody wysyłki:' d='Shop.Theme.Catalog'}</h5>
