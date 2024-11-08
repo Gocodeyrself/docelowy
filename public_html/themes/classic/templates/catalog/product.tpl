@@ -29,7 +29,7 @@
   {if $product.cover}
   <meta property="og:image" content="{$product.cover.large.url}">
   {/if}
-
+  
   {if $product.show_price}
   <meta property="product:pretax_price:amount" content="{$product.price_tax_exc}">
   <meta property="product:pretax_price:currency" content="{$currency.iso_code}">
@@ -41,173 +41,147 @@
   <meta property="product:weight:units" content="{$product.weight_unit}">
   {/if}
   {/block}
-
+  
   {block name='head_microdata_special'}
   {include file='_partials/microdata/product-jsonld.tpl'}
   {/block}
-
+  
   {block name='content'}
-
+  
   <section id="main">
     <meta content="{$product.url}">
-
+  
     <div class="row product-container js-product-container">
-    <div class="col-lg-4 col-md-12" id="product_column_right">
+      <div class="col-lg-4 col-md-12" id="product_column_right">
         <div class="col-md-12 p-0 product-right-container">
           <div class="col-md-12 white-bgr box-shadow">
             {block name='product_prices'}
             {include file='catalog/_partials/product-prices.tpl'}
             {/block}
-
+  
             <div class="product-information">
-              {* {block name='product_description_short'}
-              <div id="product-description-short-{$product.id}" class="product-description">
-                {$product.description_short
-                nofilter}</div>
-              {/block} *}
-
+  
               {if $product.is_customizable && count($product.customizations.fields)}
               {block name='product_customization'}
               {include file="catalog/_partials/product-customization.tpl" customizations=$product.customizations}
               {/block}
               {/if}
-
+  
               <div class="product-actions js-product-actions">
                 {block name='product_buy'}
                 <form action="{$urls.pages.cart}" method="post" id="add-to-cart-or-refresh">
                   <input type="hidden" name="token" value="{$static_token}">
                   <input type="hidden" name="id_product" value="{$product.id}" id="product_page_product_id">
-                  <input type="hidden" name="id_customization" value="{$product.id_customization}"
-                    id="product_customization_id" class="js-product-customization-id">
-
+                  <input type="hidden" name="id_customization" value="{$product.id_customization}" id="product_customization_id" class="js-product-customization-id">
+  
                   {block name='product_variants'}
                   {include file='catalog/_partials/product-variants.tpl'}
                   {/block}
-
+  
                   {block name='product_pack'}
                   {if $packItems}
                   <section class="product-pack">
                     <p class="h4">{l s='This pack contains' d='Shop.Theme.Catalog'}</p>
                     {foreach from=$packItems item="product_pack"}
                     {block name='product_miniature'}
-                    {include file='catalog/_partials/miniatures/pack-product.tpl' product=$product_pack
-                    showPackProductsPrice=$product.show_price}
+                    {include file='catalog/_partials/miniatures/pack-product.tpl' product=$product_pack showPackProductsPrice=$product.show_price}
                     {/block}
                     {/foreach}
                   </section>
                   {/if}
                   {/block}
-
+  
                   {block name='product_discounts'}
                   {include file='catalog/_partials/product-discounts.tpl'}
                   {/block}
-
+  
                   {block name='product_add_to_cart'}
                   {include file='catalog/_partials/product-add-to-cart.tpl'}
                   {/block}
-
+  
                   {block name='product_additional_info'}
                   {include file='catalog/_partials/product-additional-info.tpl'}
-  {hook h='displayProductActions' product=$product}
+                  {hook h='displayProductActions' product=$product}
                   {/block}
-                   <ul class="product-flags-custom product-flags js-product-flags">
-                       {foreach from=$product.flags item=flag}
-                            {if $flag.type != "new" && $flag.type != "discount" && $flag.type != "on-sale" && $flag.type != "out_of_stock"}
-                                <li class="product-flag {$flag.type}">{$flag.label}</li>
-                            {/if}
-                        {/foreach}
-                        {if Tools::generateFlag(10,$product.id)}
-                            <li class="product-flag new">{l s='New' d="Shop.Theme.Global"}</li>
-                        {/if}
-                        {if Tools::generateFlag(11,$product.id)}
-                            <li class="product-flag promotion">{l s='Special offer' d="Shop.Theme.Global"}</li>
-                        {/if}
-                        {if Tools::generateFlag(12,$product.id)}
-                            <li class="product-flag bestseller">Bestseller</li>
-                        {/if}
-                    </ul>
-
-                  {* Input to refresh product HTML removed, block kept for compatibility with themes *}
+                  
+                  {* Flag indicators for products *}
+                  <ul class="product-flags-custom product-flags js-product-flags">
+                    {foreach from=$product.flags item=flag}
+                      {if $flag.type != "new" && $flag.type != "discount" && $flag.type != "on-sale" && $flag.type != "out_of_stock"}
+                        <li class="product-flag {$flag.type}">{$flag.label}</li>
+                      {/if}
+                    {/foreach}
+                  </ul>
+  
                   {block name='product_refresh'}{/block}
                 </form>
                 {/block}
-
-                <div class="catalog_number">{l s="Condition" d='Shop.Theme.Catalog'} 
-                {* <b itemprop="quantity"> *}
-                {assign var="qFeature" value=Tools::getQuantityFromFeature($product.id_product)}
-                {if $qFeature}
-                  {l s="%count% items" sprintf=['%count%' => $qFeature ] d='Shop.Theme.Checkout'}
-                {else}
-                  {if $product.quantity < 0}
-                    {l s="%count% items" sprintf=['%count%' => 0] d='Shop.Theme.Checkout'}
+  
+                <div class="catalog_number">
+                  {l s="Condition" d='Shop.Theme.Catalog'}
+                  {assign var="qFeature" value=Tools::getQuantityFromFeature($product.id_product)}
+                  {if $qFeature}
+                    {l s="%count% items" sprintf=['%count%' => $qFeature ] d='Shop.Theme.Checkout'}
                   {else}
-                    {l s="%count% items" sprintf=['%count%' => $product.quantity] d='Shop.Theme.Checkout'}
-                    {* {l s="%count% items" sprintf=['%count%' => 'Stan do dyspozycji'] d='Shop.Theme.Checkout'} *}
+                    {if $product.quantity < 0}
+                      {l s="%count% items" sprintf=['%count%' => 0] d='Shop.Theme.Checkout'}
+                    {else}
+                      {l s="%count% items" sprintf=['%count%' => $product.quantity] d='Shop.Theme.Checkout'}
+                    {/if}
                   {/if}
-                {/if}
-                {* </b> *}
                 </div>
-
-                  {*{block name='product_delivery'}
-                  {include file='catalog/_partials/product-delivery.tpl'}
-                  {/block}*}
               </div>
-
+  
               {block name='hook_display_reassurance'}
               {hook h='displayReassurance'}
               {/block}
-
             </div>
           </div>
-
+  
           <!-- New box with delivery and returns information -->
-<div class="col-md-12 white-bgr box-shadow accessories-container" style="padding: 10px 15px;">
-<h4 class="head-title mb-2">{l s='Delivery and Returns' d='Shop.Theme.Catalog'}</h4>
-
-<div class="delivery-info" style="padding: 5px 10px; line-height: 1.4;">
-
-  <!-- Returns and complaints -->
-  <p class="d-flex align-items-center mb-1">
-    <i class="material-icons mr-1" style="color: #2d4156; font-size: 20px;">&#xE89C;</i>
-    <span style="font-weight: bold; color: #2d4156;">{l s='Returns and complaints:' d='Shop.Theme.Catalog'}</span>
-    <a href="https://sklep.cezos.com/pl/content/20-reklamacjazwroty" target="_blank" class="ml-1" style="color: #007bff; text-decoration: underline;">{l s='Learn more' d='Shop.Theme.Catalog'}</a>
-  </p>
-
-  <!-- Package tracking -->
-  <p class="d-flex align-items-center mb-1">
-    <i class="material-icons mr-1" style="color: #2d4156; font-size: 20px;">&#xE8B6;</i>
-    <span style="font-weight: bold; color: #2d4156;">{l s='Package tracking available after shipment:' d='Shop.Theme.Catalog'}</span>
-    <a href="https://sklep.cezos.com/pl/historia-zamowien" target="_blank" class="ml-1" style="color: #007bff; text-decoration: underline;">{l s='Check order status' d='Shop.Theme.Catalog'}</a>
-  </p>
-
-  <!-- Available shipping methods -->
-  <h5 class="mt-3 mb-1" style="color: #333; font-weight: bold;">{l s='Available shipping methods:' d='Shop.Theme.Catalog'}</h5>
-  <ul class="pl-0" style="color: #666; margin-bottom: 0;">
-    
-    {if $cart.id_currency == 1} {** Zakładamy, że id_currency 1 to PLN, czyli Polska **}
-      <!-- Methods available in Poland -->
-      <li>{l s='In-store pickup:' d='Shop.Theme.Catalog'} {l s='free' d='Shop.Theme.Catalog'}</li>
-      <li>{l s='GLS courier - Poland:' d='Shop.Theme.Catalog'} {convertPrice price=30.00}</li>
-      <li>{l s='GLS Parcel Shop:' d='Shop.Theme.Catalog'} {convertPrice price=18.50}</li>
-      <li>{l s='Standard parcel locker shipping:' d='Shop.Theme.Catalog'} {convertPrice price=25.92}</li>
-      <li>{l s='InPost Parcel Locker (cash on delivery):' d='Shop.Theme.Catalog'} {convertPrice price=30.00}</li>
-      <li>{l s='InPost courier:' d='Shop.Theme.Catalog'} {convertPrice price=30.91}</li>
-
-    {else} {** Zakładamy, że każda inna waluta to wysyłka międzynarodowa **}
-      <!-- Method available outside Poland -->
-      {foreach from=$carriers item=carrier}
-        {if $carrier.name == 'GLS - International'}
-          <li>{$carrier.name}: {convertPrice price=$carrier.getDeliveryPriceByCountryId($cart.id_country)}</li>
-        {/if}
-      {/foreach}
-    {/if}
-  </ul>
-</div>
-</div>
-<!-- End of new delivery and returns information box -->
-
-
-
+          <div class="col-md-12 white-bgr box-shadow accessories-container" style="padding: 10px 15px;">
+            <h4 class="head-title mb-2">{l s='Delivery and Returns' d='Shop.Theme.Catalog'}</h4>
+  
+            <div class="delivery-info" style="padding: 5px 10px; line-height: 1.4;">
+  
+              <!-- Returns and complaints -->
+              <p class="d-flex align-items-center mb-1">
+                <i class="material-icons mr-1" style="color: #2d4156; font-size: 20px;">&#xE89C;</i>
+                <span style="font-weight: bold; color: #2d4156;">{l s='Returns and complaints:' d='Shop.Theme.Catalog'}</span>
+                <a href="https://sklep.cezos.com/pl/content/20-reklamacjazwroty" target="_blank" class="ml-1" style="color: #007bff; text-decoration: underline;">{l s='Learn more' d='Shop.Theme.Catalog'}</a>
+              </p>
+  
+              <!-- Package tracking -->
+              <p class="d-flex align-items-center mb-1">
+                <i class="material-icons mr-1" style="color: #2d4156; font-size: 20px;">&#xE8B6;</i>
+                <span style="font-weight: bold; color: #2d4156;">{l s='Package tracking available after shipment:' d='Shop.Theme.Catalog'}</span>
+                <a href="https://sklep.cezos.com/pl/historia-zamowien" target="_blank" class="ml-1" style="color: #007bff; text-decoration: underline;">{l s='Check order status' d='Shop.Theme.Catalog'}</a>
+              </p>
+  
+              <!-- Available shipping methods -->
+              <h5 class="mt-3 mb-1" style="color: #333; font-weight: bold;">{l s='Available shipping methods:' d='Shop.Theme.Catalog'}</h5>
+              <ul class="pl-0" style="color: #666; margin-bottom: 0;">
+                
+                {if $currency.iso_code == 'PLN'} 
+                  <!-- Methods available in Poland -->
+                  <li>{l s='In-store pickup:' d='Shop.Theme.Catalog'} {l s='free' d='Shop.Theme.Catalog'}</li>
+                  <li>{l s='GLS courier - Poland:' d='Shop.Theme.Catalog'} {convertPrice price=30.00}</li>
+                  <li>{l s='GLS Parcel Shop:' d='Shop.Theme.Catalog'} {convertPrice price=18.50}</li>
+                  <li>{l s='Standard parcel locker shipping:' d='Shop.Theme.Catalog'} {convertPrice price=25.92}</li>
+                  <li>{l s='InPost Parcel Locker (cash on delivery):' d='Shop.Theme.Catalog'} {convertPrice price=30.00}</li>
+                  <li>{l s='InPost courier:' d='Shop.Theme.Catalog'} {convertPrice price=30.91}</li>
+  
+                {else} 
+                  <!-- Method available outside Poland -->
+                  <li>{l s='GLS courier - International:' d='Shop.Theme.Catalog'} 
+                    {convertPrice price=$carrier->getDeliveryPriceByCountryId($cart.id_address_delivery|intval)}
+                  </li>
+                {/if}
+              </ul>
+            </div>
+          </div>
+          <!-- End of new delivery and returns information box -->
+  
 
           <div class="col-md-12 hidden-md-down white-bgr box-shadow scroll height-400 accessories-container">
             <h4 class="head-title">{l s='You might also like' d='Shop.Theme.Catalog'}</h4>            
