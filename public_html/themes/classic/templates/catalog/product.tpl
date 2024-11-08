@@ -158,26 +158,29 @@
                 <a href="https://sklep.cezos.com/pl/historia-zamowien" target="_blank" class="ml-1" style="color: #007bff; text-decoration: underline;">{l s='Check order status' d='Shop.Theme.Catalog'}</a>
               </p>
   
-              <!-- Available shipping methods -->
-              <h5 class="mt-3 mb-1" style="color: #333; font-weight: bold;">{l s='Available shipping methods:' d='Shop.Theme.Catalog'}</h5>
-              <ul class="pl-0" style="color: #666; margin-bottom: 0;">
-                
-                {if $currency.iso_code == 'PLN'} 
-                  <!-- Methods available in Poland -->
-                  <li>{l s='In-store pickup:' d='Shop.Theme.Catalog'} {l s='free' d='Shop.Theme.Catalog'}</li>
-                  <li>{l s='GLS courier - Poland:' d='Shop.Theme.Catalog'} {convertPrice price=30.00}</li>
-                  <li>{l s='GLS Parcel Shop:' d='Shop.Theme.Catalog'} {convertPrice price=18.50}</li>
-                  <li>{l s='Standard parcel locker shipping:' d='Shop.Theme.Catalog'} {convertPrice price=25.92}</li>
-                  <li>{l s='InPost Parcel Locker (cash on delivery):' d='Shop.Theme.Catalog'} {convertPrice price=30.00}</li>
-                  <li>{l s='InPost courier:' d='Shop.Theme.Catalog'} {convertPrice price=30.91}</li>
-  
-                {else} 
-                  <!-- Method available outside Poland -->
-                  <li>{l s='GLS courier - International:' d='Shop.Theme.Catalog'} 
-                    {convertPrice price=$carrier->getDeliveryPriceByCountryId($cart.id_address_delivery|intval)}
-                  </li>
-                {/if}
-              </ul>
+              <!-- Dostępne metody wysyłki -->
+<h5 class="mt-3 mb-1" style="color: #333; font-weight: bold;">
+{l s='Available shipping methods:' d='Shop.Theme.Catalog'}
+</h5>
+<ul class="pl-0" style="color: #666; margin-bottom: 0;">
+
+{if $currency.iso_code == 'PLN'} 
+  <!-- Metody dostępne w Polsce -->
+  <li>{l s='Odbiór w sklepie:' d='Shop.Theme.Catalog'} {l s='za darmo' d='Shop.Theme.Catalog'}</li>
+  <li>{l s='Kurier GLS - Polska:' d='Shop.Theme.Catalog'} {convertPrice price=30.00}</li>
+  <li>{l s='GLS Parcel Shop:' d='Shop.Theme.Catalog'} {convertPrice price=18.50}</li>
+  <li>{l s='Przesyłka Paczkomat® - standardowa:' d='Shop.Theme.Catalog'} {convertPrice price=25.92}</li>
+  <li>{l s='InPost Paczkomat (pobranie):' d='Shop.Theme.Catalog'} {convertPrice price=30.00}</li>
+  <li>{l s='InPost kurier:' d='Shop.Theme.Catalog'} {convertPrice price=30.91}</li>
+
+{else} 
+  <!-- Metoda dostępna poza Polską -->
+  <li>{l s='Kurier GLS - Międzynarodowy:' d='Shop.Theme.Catalog'} 
+    {l s='Cena zależna od kraju docelowego' d='Shop.Theme.Catalog'}
+  </li>
+{/if}
+</ul>
+
             </div>
           </div>
           <!-- End of new delivery and returns information box -->
