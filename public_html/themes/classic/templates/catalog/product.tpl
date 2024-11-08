@@ -104,7 +104,7 @@
                   {hook h='displayProductActions' product=$product}
                   {/block}
                   
-                  {* Flag indicators for products *}
+                  {* Wskaźniki flag produktów *}
                   <ul class="product-flags-custom product-flags js-product-flags">
                     {foreach from=$product.flags item=flag}
                       {if $flag.type != "new" && $flag.type != "discount" && $flag.type != "on-sale" && $flag.type != "out_of_stock"}
@@ -118,15 +118,15 @@
                 {/block}
   
                 <div class="catalog_number">
-                  {l s="Condition" d='Shop.Theme.Catalog'}
+                  {l s="Stan" d='Shop.Theme.Catalog'}
                   {assign var="qFeature" value=Tools::getQuantityFromFeature($product.id_product)}
                   {if $qFeature}
-                    {l s="%count% items" sprintf=['%count%' => $qFeature ] d='Shop.Theme.Checkout'}
+                    {l s="%count% szt." sprintf=['%count%' => $qFeature ] d='Shop.Theme.Checkout'}
                   {else}
                     {if $product.quantity < 0}
-                      {l s="%count% items" sprintf=['%count%' => 0] d='Shop.Theme.Checkout'}
+                      {l s="%count% szt." sprintf=['%count%' => 0] d='Shop.Theme.Checkout'}
                     {else}
-                      {l s="%count% items" sprintf=['%count%' => $product.quantity] d='Shop.Theme.Checkout'}
+                      {l s="%count% szt." sprintf=['%count%' => $product.quantity] d='Shop.Theme.Checkout'}
                     {/if}
                   {/if}
                 </div>
@@ -139,56 +139,53 @@
           </div>
   
           <!-- Nowy box z informacjami o dostawie i zwrotach -->
-<div class="col-md-12 white-bgr box-shadow accessories-container" style="padding: 10px 15px;">
-<h4 class="head-title mb-2">{l s='Dostawa i Zwroty' d='Shop.Theme.Catalog'}</h4>
-
-<div class="delivery-info" style="padding: 5px 10px; line-height: 1.4;">
-
-  <!-- Reklamacje i zwroty -->
-  <p class="d-flex align-items-center mb-1">
-    <i class="material-icons mr-1" style="color: #2d4156; font-size: 20px;">&#xE89C;</i>
-    <span style="font-weight: bold; color: #2d4156;">{l s='Reklamacje i zwroty:' d='Shop.Theme.Catalog'}</span>
-    <a href="https://sklep.cezos.com/pl/content/20-reklamacjazwroty" target="_blank" class="ml-1" style="color: #007bff; text-decoration: underline;">
-      {l s='Dowiedz się więcej' d='Shop.Theme.Catalog'}
-    </a>
-  </p>
-
-  <!-- Śledzenie paczki -->
-  <p class="d-flex align-items-center mb-1">
-    <i class="material-icons mr-1" style="color: #2d4156; font-size: 20px;">&#xE8B6;</i>
-    <span style="font-weight: bold; color: #2d4156;">{l s='Śledzenie paczki dostępne po wysyłce:' d='Shop.Theme.Catalog'}</span>
-    <a href="https://sklep.cezos.com/pl/historia-zamowien" target="_blank" class="ml-1" style="color: #007bff; text-decoration: underline;">
-      {l s='Sprawdź status zamówienia' d='Shop.Theme.Catalog'}
-    </a>
-  </p>
-
-  <!-- Dostawa w ciągu -->
-  <p class="d-flex align-items-center mb-1">
-    <i class="material-icons mr-1" style="color: #2d4156; font-size: 20px;">&#xE425;</i>
-    <span style="font-weight: bold; color: #2d4156;">{l s='Dostawa w ciągu:' d='Shop.Theme.Catalog'}</span>
-    <span style="color: #2d4156; margin-left: 5px;">2-4 dni</span>
-  </p>
-
-  <!-- Dostępne metody wysyłki -->
-<h5 class="mt-3 mb-1" style="color: #333; font-weight: bold;">
-{l s='Dostępne metody wysyłki:' d='Shop.Theme.Catalog'}
-</h5>
-<ul class="pl-0" style="color: #666; margin-bottom: 0;">
-
-{if $currency.iso_code == 'PLN' && isset($shipping_methods)}
-  {foreach from=$shipping_methods item=method}
-    <li>{$method.name}: {$method.price}</li>
-  {/foreach}
-{else}
-  <!-- Metody dostępne poza Polską lub gdy brak danych -->
-  <li>{l s='Kurier GLS - Międzynarodowy:' d='Shop.Theme.Catalog'} {l s='Cena zależna od kraju docelowego' d='Shop.Theme.Catalog'}</li>
-{/if}
-</ul>
-
-</div>
-</div>
-<!-- Koniec nowego boxa z informacjami o dostawie i zwrotach -->
-
+          <div class="col-md-12 white-bgr box-shadow accessories-container" style="padding: 10px 15px;">
+            <h4 class="head-title mb-2">{l s='Dostawa i Zwroty' d='Shop.Theme.Catalog'}</h4>
+  
+            <div class="delivery-info" style="padding: 5px 10px; line-height: 1.4;">
+  
+              <!-- Reklamacje i zwroty -->
+              <p class="d-flex align-items-center mb-1">
+                <i class="material-icons mr-1" style="color: #2d4156; font-size: 20px;">&#xE89C;</i>
+                <span style="font-weight: bold; color: #2d4156;">{l s='Reklamacje i zwroty:' d='Shop.Theme.Catalog'}</span>
+                <a href="https://sklep.cezos.com/pl/content/20-reklamacjazwroty" target="_blank" class="ml-1" style="color: #007bff; text-decoration: underline;">
+                  {l s='Dowiedz się więcej' d='Shop.Theme.Catalog'}
+                </a>
+              </p>
+  
+              <!-- Śledzenie paczki -->
+              <p class="d-flex align-items-center mb-1">
+                <i class="material-icons mr-1" style="color: #2d4156; font-size: 20px;">&#xE8B6;</i>
+                <span style="font-weight: bold; color: #2d4156;">{l s='Śledzenie paczki dostępne po wysyłce:' d='Shop.Theme.Catalog'}</span>
+                <a href="https://sklep.cezos.com/pl/historia-zamowien" target="_blank" class="ml-1" style="color: #007bff; text-decoration: underline;">
+                  {l s='Sprawdź status zamówienia' d='Shop.Theme.Catalog'}
+                </a>
+              </p>
+  
+              <!-- Dostawa w ciągu -->
+              <p class="d-flex align-items-center mb-1">
+                <i class="material-icons mr-1" style="color: #2d4156; font-size: 20px;">&#xE425;</i>
+                <span style="font-weight: bold; color: #2d4156;">{l s='Dostawa w ciągu:' d='Shop.Theme.Catalog'}</span>
+                <span style="color: #2d4156; margin-left: 5px;">2-4 dni</span>
+              </p>
+  
+              <!-- Dostępne metody wysyłki -->
+              <h5 class="mt-3 mb-1" style="color: #333; font-weight: bold;">{l s='Dostępne metody wysyłki:' d='Shop.Theme.Catalog'}</h5>
+              <ul class="pl-0" style="color: #666; margin-bottom: 0;">
+                <!-- Ręcznie wpisane ceny wysyłki -->
+                <li>{l s='Odbiór w sklepie:' d='Shop.Theme.Catalog'} {l s='za darmo' d='Shop.Theme.Catalog'}</li>
+                <li>{l s='Kurier GLS - Polska:' d='Shop.Theme.Catalog'} 30,00 zł</li>
+                <li>{l s='GLS Parcel Shop:' d='Shop.Theme.Catalog'} 18,50 zł</li>
+                <li>{l s='Przesyłka Paczkomat® - standardowa:' d='Shop.Theme.Catalog'} 25,92 zł</li>
+                <li>{l s='InPost Paczkomat (pobranie):' d='Shop.Theme.Catalog'} 30,00 zł</li>
+                <li>{l s='InPost kurier:' d='Shop.Theme.Catalog'} 30,91 zł</li>
+                <!-- Metoda dla zagranicy -->
+                <li>{l s='Kurier GLS - Międzynarodowy:' d='Shop.Theme.Catalog'} {l s='Cena zależna od kraju docelowego' d='Shop.Theme.Catalog'}</li>
+              </ul>
+            </div>
+          </div>
+          <!-- Koniec nowego boxa z informacjami o dostawie i zwrotach -->
+  
 
           <div class="col-md-12 hidden-md-down white-bgr box-shadow scroll height-400 accessories-container">
             <h4 class="head-title">{l s='You might also like' d='Shop.Theme.Catalog'}</h4>            
