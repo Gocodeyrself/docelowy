@@ -704,105 +704,90 @@
         <trans-unit id="delivery_and_returns" approved="yes">
             <source>Delivery and Returns</source>
             <target state="final">Dostawa i Zwroty</target>
-            <note>Line: ??</note>
         </trans-unit>
 
         <!-- Complaints and returns -->
         <trans-unit id="complaints_and_returns" approved="yes">
             <source>Complaints and returns:</source>
             <target state="final">Reklamacje i zwroty:</target>
-            <note>Line: ??</note>
         </trans-unit>
 
         <!-- Learn more -->
         <trans-unit id="learn_more" approved="yes">
             <source>Learn more</source>
             <target state="final">Dowiedz się więcej</target>
-            <note>Line: ??</note>
         </trans-unit>
 
         <!-- Package tracking available after shipment -->
         <trans-unit id="package_tracking_available" approved="yes">
             <source>Package tracking available after shipment:</source>
             <target state="final">Śledzenie paczki dostępne po wysyłce:</target>
-            <note>Line: ??</note>
         </trans-unit>
 
         <!-- Check order status -->
         <trans-unit id="check_order_status" approved="yes">
             <source>Check order status</source>
             <target state="final">Sprawdź status zamówienia</target>
-            <note>Line: ??</note>
         </trans-unit>
 
         <!-- Delivery within -->
         <trans-unit id="delivery_within" approved="yes">
             <source>Delivery within:</source>
             <target state="final">Dostawa w ciągu:</target>
-            <note>Line: ??</note>
         </trans-unit>
 
         <!-- Available shipping methods -->
         <trans-unit id="available_shipping_methods" approved="yes">
             <source>Available shipping methods:</source>
             <target state="final">Dostępne metody wysyłki:</target>
-            <note>Line: ??</note>
         </trans-unit>
 
         <!-- GLS Courier - International -->
         <trans-unit id="gls_courier_international" approved="yes">
             <source>GLS Courier - International:</source>
             <target state="final">Kurier GLS - Międzynarodowy:</target>
-            <note>Line: ??</note>
         </trans-unit>
 
         <!-- Price dependent on destination country -->
         <trans-unit id="price_dependent_on_country" approved="yes">
             <source>Price dependent on destination country</source>
             <target state="final">Cena zależna od kraju docelowego</target>
-            <note>Line: ??</note>
         </trans-unit>
 
         <!-- In-store pickup: free -->
         <trans-unit id="in_store_pickup" approved="yes">
             <source>In-store pickup: free</source>
             <target state="final">Odbiór w sklepie: za darmo</target>
-            <note>Line: ??</note>
         </trans-unit>
 
         <!-- GLS Courier - Poland -->
         <trans-unit id="gls_courier_poland" approved="yes">
             <source>GLS Courier - Poland:</source>
             <target state="final">Kurier GLS - Polska:</target>
-            <note>Line: ??</note>
         </trans-unit>
 
         <!-- GLS Parcel Shop -->
         <trans-unit id="gls_parcel_shop" approved="yes">
             <source>GLS Parcel Shop:</source>
             <target state="final">GLS Parcel Shop:</target>
-            <note>Line: ??</note>
         </trans-unit>
 
         <!-- Standard parcel locker shipping -->
         <trans-unit id="standard_parcel_locker" approved="yes">
             <source>Standard parcel locker shipping:</source>
             <target state="final">Przesyłka Paczkomat® - standardowa:</target>
-            <note>Line: ??</note>
         </trans-unit>
 
         <!-- InPost Parcel Locker (cash on delivery) -->
         <trans-unit id="inpost_parcel_locker_cod" approved="yes">
             <source>InPost Parcel Locker (cash on delivery):</source>
             <target state="final">InPost Paczkomat (pobranie):</target>
-            <note>Line: ??</note>
         </trans-unit>
 
         <!-- InPost courier -->
         <trans-unit id="inpost_courier" approved="yes">
             <source>InPost courier:</source>
             <target state="final">InPost kurier:</target>
-            <note>Line: ??</note>
         </trans-unit>
     </body>
 </file>
