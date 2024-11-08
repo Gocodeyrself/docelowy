@@ -170,21 +170,21 @@
   </p>
 
   <!-- Dostępne metody wysyłki -->
-  <h5 class="mt-3 mb-1" style="color: #333; font-weight: bold;">{l s='Dostępne metody wysyłki:' d='Shop.Theme.Catalog'}</h5>
-  <ul class="pl-0" style="color: #666; margin-bottom: 0;">
-    {if $currency.iso_code == 'PLN'}
-      <!-- Metody dostępne w Polsce -->
-      <li>{l s='Odbiór w sklepie:' d='Shop.Theme.Catalog'} {l s='za darmo' d='Shop.Theme.Catalog'}</li>
-      <li>{l s='Kurier GLS - Polska:' d='Shop.Theme.Catalog'} 30,00 zł</li>
-      <li>{l s='GLS Parcel Shop:' d='Shop.Theme.Catalog'} 18,50 zł</li>
-      <li>{l s='Przesyłka Paczkomat® - standardowa:' d='Shop.Theme.Catalog'} 25,92 zł</li>
-      <li>{l s='InPost Paczkomat (pobranie):' d='Shop.Theme.Catalog'} 30,00 zł</li>
-      <li>{l s='InPost kurier:' d='Shop.Theme.Catalog'} 30,91 zł</li>
-    {else}
-      <!-- Metody dostępne poza Polską -->
-      <li>{l s='Kurier GLS - Międzynarodowy:' d='Shop.Theme.Catalog'} {l s='Cena zależna od kraju docelowego' d='Shop.Theme.Catalog'}</li>
-    {/if}
-  </ul>
+<h5 class="mt-3 mb-1" style="color: #333; font-weight: bold;">
+{l s='Dostępne metody wysyłki:' d='Shop.Theme.Catalog'}
+</h5>
+<ul class="pl-0" style="color: #666; margin-bottom: 0;">
+
+{if $currency.iso_code == 'PLN' && isset($shipping_methods)}
+  {foreach from=$shipping_methods item=method}
+    <li>{$method.name}: {$method.price}</li>
+  {/foreach}
+{else}
+  <!-- Metody dostępne poza Polską lub gdy brak danych -->
+  <li>{l s='Kurier GLS - Międzynarodowy:' d='Shop.Theme.Catalog'} {l s='Cena zależna od kraju docelowego' d='Shop.Theme.Catalog'}</li>
+{/if}
+</ul>
+
 </div>
 </div>
 <!-- Koniec nowego boxa z informacjami o dostawie i zwrotach -->
