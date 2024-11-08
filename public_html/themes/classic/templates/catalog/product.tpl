@@ -180,43 +180,32 @@
     <a href="https://sklep.cezos.com/pl/historia-zamowien" target="_blank" class="ml-1" style="color: #007bff; text-decoration: underline;">{l s='Check order status' d='Shop.Theme.Catalog'}</a>
   </p>
 
-  <!-- Delivery time -->
-  <p class="d-flex align-items-center mb-1">
-    <i class="material-icons mr-1" style="color: #2d4156; font-size: 20px;">&#xE425;</i>
-    <span style="font-weight: bold; color: #2d4156;">{l s='Delivery within:' d='Shop.Theme.Catalog'}</span>
-    <span style="color: #2d4156; margin-left: 5px;">2-4 days</span>
-  </p>
-
-  <!-- Free shipping threshold -->
-  <p class="d-flex align-items-center mb-1">
-    <i class="material-icons mr-1" style="color: #2d4156; font-size: 20px;">&#xE558;</i>
-    <span style="font-weight: bold; color: #2d4156;">{l s='Free shipping on orders over:' d='Shop.Theme.Catalog'}</span>
-    <span style="color: #2d4156; margin-left: 5px;">450 zł</span>
-  </p>
-
-  <!-- Amount missing for free shipping -->
-  <p class="d-flex align-items-center mb-1">
-    {assign var="toFreeDelivery" value=((float)Configuration::get('PS_SHIPPING_FREE_PRICE')-$cart.subtotals.products.amount)}
-    <i class="material-icons mr-1" style="color: #333; font-size: 20px;">&#xE558;</i>
-    <span style="font-weight: bold; color: #2d4156;">
-      {if $toFreeDelivery > 0}
-        {l s='Amount missing for free shipping:' d='Shop.Theme.Global'}
-        <span style="color: #2d4156; margin-left: 5px;">{$toFreeDelivery|number_format:2:",":" "}</span> {$currency.sign}
-      {/if}
-    </span>
-  </p>
-
   <!-- Available shipping methods -->
   <h5 class="mt-3 mb-1" style="color: #333; font-weight: bold;">{l s='Available shipping methods:' d='Shop.Theme.Catalog'}</h5>
   <ul class="pl-0" style="color: #666; margin-bottom: 0;">
-    <li>{l s='In-store pickup:' d='Shop.Theme.Catalog'} free</li>
-    <li>{l s='GLS courier:' d='Shop.Theme.Catalog'} from 22.76 zł gross</li>
-    <li>{l s='Parcel locker standard shipping:' d='Shop.Theme.Catalog'} from 25.92 zł gross</li>
-    <li>{l s='InPost courier shipping:' d='Shop.Theme.Catalog'} from 30.91 zł gross</li>
+    
+    {if $cart.id_currency == 1} {** Zakładamy, że id_currency 1 to PLN, czyli Polska **}
+      <!-- Methods available in Poland -->
+      <li>{l s='In-store pickup:' d='Shop.Theme.Catalog'} {l s='free' d='Shop.Theme.Catalog'}</li>
+      <li>{l s='GLS courier - Poland:' d='Shop.Theme.Catalog'} {convertPrice price=30.00}</li>
+      <li>{l s='GLS Parcel Shop:' d='Shop.Theme.Catalog'} {convertPrice price=18.50}</li>
+      <li>{l s='Standard parcel locker shipping:' d='Shop.Theme.Catalog'} {convertPrice price=25.92}</li>
+      <li>{l s='InPost Parcel Locker (cash on delivery):' d='Shop.Theme.Catalog'} {convertPrice price=30.00}</li>
+      <li>{l s='InPost courier:' d='Shop.Theme.Catalog'} {convertPrice price=30.91}</li>
+
+    {else} {** Zakładamy, że każda inna waluta to wysyłka międzynarodowa **}
+      <!-- Method available outside Poland -->
+      {foreach from=$carriers item=carrier}
+        {if $carrier.name == 'GLS - International'}
+          <li>{$carrier.name}: {convertPrice price=$carrier.getDeliveryPriceByCountryId($cart.id_country)}</li>
+        {/if}
+      {/foreach}
+    {/if}
   </ul>
 </div>
 </div>
 <!-- End of new delivery and returns information box -->
+
 
 
 
