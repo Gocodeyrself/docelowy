@@ -17,179 +17,240 @@
 * Do not edit or add to this file if you wish to upgrade PrestaShop to newer
 * versions in the future. If you wish to customize PrestaShop for your
 * needs please refer to https://devdocs.prestashop.com/ for more information.
-*
-* @author PrestaShop SA and Contributors <contact@prestashop.com>
-  * @copyright Since 2007 PrestaShop SA and Contributors
-  * @license https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
-  *}
-  {extends file=$layout}
+*}
 
-  {block name='head' append}
-  <meta property="og:type" content="product">
-  {if $product.cover}
-  <meta property="og:image" content="{$product.cover.large.url}">
-  {/if}
-  
-  {if $product.show_price}
-  <meta property="product:pretax_price:amount" content="{$product.price_tax_exc}">
-  <meta property="product:pretax_price:currency" content="{$currency.iso_code}">
-  <meta property="product:price:amount" content="{$product.price_amount}">
-  <meta property="product:price:currency" content="{$currency.iso_code}">
-  {/if}
-  {if isset($product.weight) && ($product.weight != 0)}
-  <meta property="product:weight:value" content="{$product.weight}">
-  <meta property="product:weight:units" content="{$product.weight_unit}">
-  {/if}
-  {/block}
-  
-  {block name='head_microdata_special'}
-  {include file='_partials/microdata/product-jsonld.tpl'}
-  {/block}
-  
-  {block name='content'}
-  
-  <section id="main">
-    <meta content="{$product.url}">
-  
-    <div class="row product-container js-product-container">
-      <div class="col-lg-4 col-md-12" id="product_column_right">
-        <div class="col-md-12 p-0 product-right-container">
-          <div class="col-md-12 white-bgr box-shadow">
-            {block name='product_prices'}
-            {include file='catalog/_partials/product-prices.tpl'}
-            {/block}
-  
-            <div class="product-information">
-  
-              {if $product.is_customizable && count($product.customizations.fields)}
-              {block name='product_customization'}
-              {include file="catalog/_partials/product-customization.tpl" customizations=$product.customizations}
-              {/block}
-              {/if}
-  
-              <div class="product-actions js-product-actions">
-                {block name='product_buy'}
-                <form action="{$urls.pages.cart}" method="post" id="add-to-cart-or-refresh">
-                  <input type="hidden" name="token" value="{$static_token}">
-                  <input type="hidden" name="id_product" value="{$product.id}" id="product_page_product_id">
-                  <input type="hidden" name="id_customization" value="{$product.id_customization}" id="product_customization_id" class="js-product-customization-id">
-  
-                  {block name='product_variants'}
-                  {include file='catalog/_partials/product-variants.tpl'}
-                  {/block}
-  
-                  {block name='product_pack'}
-                  {if $packItems}
-                  <section class="product-pack">
-                    <p class="h4">{l s='This pack contains' d='Shop.Theme.Catalog'}</p>
-                    {foreach from=$packItems item="product_pack"}
-                    {block name='product_miniature'}
-                    {include file='catalog/_partials/miniatures/pack-product.tpl' product=$product_pack showPackProductsPrice=$product.show_price}
-                    {/block}
-                    {/foreach}
-                  </section>
-                  {/if}
-                  {/block}
-  
-                  {block name='product_discounts'}
-                  {include file='catalog/_partials/product-discounts.tpl'}
-                  {/block}
-  
-                  {block name='product_add_to_cart'}
-                  {include file='catalog/_partials/product-add-to-cart.tpl'}
-                  {/block}
-  
-                  {block name='product_additional_info'}
-                  {include file='catalog/_partials/product-additional-info.tpl'}
-                  {hook h='displayProductActions' product=$product}
-                  {/block}
-                  
-                  {* Wskaźniki flag produktów *}
-                  <ul class="product-flags-custom product-flags js-product-flags">
-                    {foreach from=$product.flags item=flag}
-                      {if $flag.type != "new" && $flag.type != "discount" && $flag.type != "on-sale" && $flag.type != "out_of_stock"}
-                        <li class="product-flag {$flag.type}">{$flag.label}</li>
-                      {/if}
-                    {/foreach}
-                  </ul>
-  
-                  {block name='product_refresh'}{/block}
-                </form>
-                {/block}
-  
-                <div class="catalog_number">
-                  {l s="Stan" d='Shop.Theme.Catalog'}
-                  {assign var="qFeature" value=Tools::getQuantityFromFeature($product.id_product)}
-                  {if $qFeature}
-                    {l s="%count% szt." sprintf=['%count%' => $qFeature ] d='Shop.Theme.Checkout'}
-                  {else}
-                    {if $product.quantity < 0}
-                      {l s="%count% szt." sprintf=['%count%' => 0] d='Shop.Theme.Checkout'}
-                    {else}
-                      {l s="%count% szt." sprintf=['%count%' => $product.quantity] d='Shop.Theme.Checkout'}
-                    {/if}
-                  {/if}
-                </div>
-              </div>
-  
-              {block name='hook_display_reassurance'}
-              {hook h='displayReassurance'}
-              {/block}
-            </div>
-          </div>
-  
-          <!-- New box with delivery and returns information -->
-        <div class="col-md-12 white-bgr box-shadow accessories-container" style="padding: 10px 15px;">
-        <h4 class="head-title mb-2">{l s='Delivery and Returns' d='Shop.Theme.Catalog'}</h4>
+{extends file=$layout}
 
-        <div class="delivery-info" style="padding: 5px 10px; line-height: 1.4;">
-
-          <!-- Complaints and returns -->
-          <p class="d-flex align-items-center mb-1">
-            <i class="material-icons mr-1" style="color: #2d4156; font-size: 20px;">&#xE89C;</i>
-            <span style="font-weight: bold; color: #2d4156;">{l s='Complaints and returns:' d='Shop.Theme.Catalog'}</span>
-            <a href="https://sklep.cezos.com/pl/content/20-reklamacjazwroty" target="_blank" class="ml-1" style="color: #007bff; text-decoration: underline;">
-              {l s='Learn more' d='Shop.Theme.Catalog'}
-            </a>
-          </p>
-
-          <!-- Package tracking -->
-          <p class="d-flex align-items-center mb-1">
-            <i class="material-icons mr-1" style="color: #2d4156; font-size: 20px;">&#xE8B6;</i>
-            <span style="font-weight: bold; color: #2d4156;">{l s='Package tracking available after shipment:' d='Shop.Theme.Catalog'}</span>
-            <a href="https://sklep.cezos.com/pl/historia-zamowien" target="_blank" class="ml-1" style="color: #007bff; text-decoration: underline;">
-              {l s='Check order status' d='Shop.Theme.Catalog'}
-            </a>
-          </p>
-
-          <!-- Delivery within -->
-          <p class="d-flex align-items-center mb-1">
-            <i class="material-icons mr-1" style="color: #2d4156; font-size: 20px;">&#xE425;</i>
-            <span style="font-weight: bold; color: #2d4156;">{l s='Delivery within:' d='Shop.Theme.Catalog'}</span>
-            <span style="color: #2d4156; margin-left: 5px;">2-4 days</span>
-          </p>
-
-          <!-- Available shipping methods -->
-          <h5 class="mt-3 mb-1" style="color: #333; font-weight: bold;">{l s='Available shipping methods:' d='Shop.Theme.Catalog'}</h5>
-          <ul class="pl-0" style="color: #666; margin-bottom: 0;">
-
-            {if $language.iso_code == 'en'}
-              <!-- For English, only display international shipping method -->
-              <li>{l s='GLS Courier - International:' d='Shop.Theme.Catalog'} {l s='Price dependent on destination country' d='Shop.Theme.Catalog'}</li>
-            {else}
-              <!-- For other languages, display all shipping methods -->
-  <li>{l s='Odbiór w sklepie:' d='Shop.Theme.Catalog'} {l s='za darmo' d='Shop.Theme.Catalog'}</li>
-  <li>{l s='Kurier GLS - Polska:' d='Shop.Theme.Catalog'} 30,00 zł</li>
-  <li>{l s='GLS Parcel Shop:' d='Shop.Theme.Catalog'} 18,50 zł</li>
-  <li>{l s='Przesyłka Paczkomat® - standardowa:' d='Shop.Theme.Catalog'} 25,92 zł</li>
-  <li>{l s='InPost Paczkomat (pobranie):' d='Shop.Theme.Catalog'} 30,00 zł</li>
-  <li>{l s='InPost kurier:' d='Shop.Theme.Catalog'} 30,91 zł</li>
+{block name='head' append}
+<meta property="og:type" content="product">
+{if $product.cover}
+<meta property="og:image" content="{$product.cover.large.url}">
 {/if}
-</ul>
 
+{if $product.show_price}
+<meta property="product:pretax_price:amount" content="{$product.price_tax_exc}">
+<meta property="product:pretax_price:currency" content="{$currency.iso_code}">
+<meta property="product:price:amount" content="{$product.price_amount}">
+<meta property="product:price:currency" content="{$currency.iso_code}">
+{/if}
+{if isset($product.weight) && ($product.weight != 0)}
+<meta property="product:weight:value" content="{$product.weight}">
+<meta property="product:weight:units" content="{$product.weight_unit}">
+{/if}
+
+<!-- JSON-LD Structured Data for Google -->
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Product",
+  "name": "{$product.name|escape:'html'}",
+  "image": "{$product.cover.large.url}",
+  "description": "{$product.description_short|escape:'html'}",
+  "sku": "{$product.reference|escape:'html'}",
+  "mpn": "{$product.id|escape:'html'}",
+  "brand": {
+    "@type": "Brand",
+    "name": "{$product.manufacturer_name|escape:'html'}"
+  },
+  "offers": {
+    "@type": "Offer",
+    "url": "{$product.url}",
+    "priceCurrency": "{$currency.iso_code}",
+    "price": "{$product.price_amount}",
+    "itemCondition": "http://schema.org/NewCondition",
+    "availability": "http://schema.org/{if $product.quantity > 0}InStock{else}OutOfStock{/if}",
+    "seller": {
+      "@type": "Organization",
+      "name": "{l s='sklep.cezos.com' d='Shop.Theme.Catalog'}"
+    },
+    "hasMerchantReturnPolicy": {
+      "@type": "MerchantReturnPolicy",
+      "url": "https://sklep.cezos.com/pl/content/20-reklamacjazwroty",
+      "returnPolicyCategory": "http://schema.org/ReturnPolicyFullRefund",
+      "merchantReturnDays": "30"
+    },
+    "shippingDetails": {
+      "@type": "OfferShippingDetails",
+      "shippingRate": {
+        "@type": "MonetaryAmount",
+        "value": "30.00",
+        "currency": "{$currency.iso_code}"
+      },
+      "shippingDestination": {
+        "@type": "DefinedRegion",
+        "addressCountry": {
+          "@type": "Country",
+          "name": "{if $language.iso_code == 'pl'}Poland{else}International{/if}"
+        }
+      },
+      "deliveryTime": {
+        "@type": "ShippingDeliveryTime",
+        "handlingTime": {
+          "@type": "QuantitativeValue",
+          "minValue": 1,
+          "maxValue": 2,
+          "unitCode": "d"
+        },
+        "transitTime": {
+          "@type": "QuantitativeValue",
+          "minValue": 2,
+          "maxValue": 4,
+          "unitCode": "d"
+        }
+      }
+    }
+  }
+}
+</script>
+{/block}
+
+{block name='head_microdata_special'}
+{include file='_partials/microdata/product-jsonld.tpl'}
+{/block}
+
+{block name='content'}
+
+<section id="main">
+  <meta content="{$product.url}">
+
+  <div class="row product-container js-product-container">
+    <div class="col-lg-4 col-md-12" id="product_column_right">
+      <div class="col-md-12 p-0 product-right-container">
+        <div class="col-md-12 white-bgr box-shadow">
+          {block name='product_prices'}
+          {include file='catalog/_partials/product-prices.tpl'}
+          {/block}
+
+          <div class="product-information">
+
+            {if $product.is_customizable && count($product.customizations.fields)}
+            {block name='product_customization'}
+            {include file="catalog/_partials/product-customization.tpl" customizations=$product.customizations}
+            {/block}
+            {/if}
+
+            <div class="product-actions js-product-actions">
+              {block name='product_buy'}
+              <form action="{$urls.pages.cart}" method="post" id="add-to-cart-or-refresh">
+                <input type="hidden" name="token" value="{$static_token}">
+                <input type="hidden" name="id_product" value="{$product.id}" id="product_page_product_id">
+                <input type="hidden" name="id_customization" value="{$product.id_customization}" id="product_customization_id" class="js-product-customization-id">
+
+                {block name='product_variants'}
+                {include file='catalog/_partials/product-variants.tpl'}
+                {/block}
+
+                {block name='product_pack'}
+                {if $packItems}
+                <section class="product-pack">
+                  <p class="h4">{l s='This pack contains' d='Shop.Theme.Catalog'}</p>
+                  {foreach from=$packItems item="product_pack"}
+                  {block name='product_miniature'}
+                  {include file='catalog/_partials/miniatures/pack-product.tpl' product=$product_pack showPackProductsPrice=$product.show_price}
+                  {/block}
+                  {/foreach}
+                </section>
+                {/if}
+                {/block}
+
+                {block name='product_discounts'}
+                {include file='catalog/_partials/product-discounts.tpl'}
+                {/block}
+
+                {block name='product_add_to_cart'}
+                {include file='catalog/_partials/product-add-to-cart.tpl'}
+                {/block}
+
+                {block name='product_additional_info'}
+                {include file='catalog/_partials/product-additional-info.tpl'}
+                {hook h='displayProductActions' product=$product}
+                {/block}
+                
+                {* Wskaźniki flag produktów *}
+                <ul class="product-flags-custom product-flags js-product-flags">
+                  {foreach from=$product.flags item=flag}
+                    {if $flag.type != "new" && $flag.type != "discount" && $flag.type != "on-sale" && $flag.type != "out_of_stock"}
+                      <li class="product-flag {$flag.type}">{$flag.label}</li>
+                    {/if}
+                  {/foreach}
+                </ul>
+
+                {block name='product_refresh'}{/block}
+              </form>
+              {/block}
+
+              <div class="catalog_number">
+                {l s="Stan" d='Shop.Theme.Catalog'}
+                {assign var="qFeature" value=Tools::getQuantityFromFeature($product.id_product)}
+                {if $qFeature}
+                  {l s="%count% szt." sprintf=['%count%' => $qFeature ] d='Shop.Theme.Checkout'}
+                {else}
+                  {if $product.quantity < 0}
+                    {l s="%count% szt." sprintf=['%count%' => 0] d='Shop.Theme.Checkout'}
+                  {else}
+                    {l s="%count% szt." sprintf=['%count%' => $product.quantity] d='Shop.Theme.Checkout'}
+                  {/if}
+                {/if}
+              </div>
             </div>
+
+            {block name='hook_display_reassurance'}
+            {hook h='displayReassurance'}
+            {/block}
           </div>
-          <!-- Koniec nowego boxa z informacjami o dostawie i zwrotach -->
+        </div>
+
+        <!-- New box with delivery and returns information -->
+        <div class="col-md-12 white-bgr box-shadow accessories-container" style="padding: 10px 15px;">
+          <h4 class="head-title mb-2">{l s='Delivery and Returns' d='Shop.Theme.Catalog'}</h4>
+
+          <div class="delivery-info" style="padding: 5px 10px; line-height: 1.4;">
+
+            <!-- Complaints and returns -->
+            <p class="d-flex align-items-center mb-1">
+              <i class="material-icons mr-1" style="color: #2d4156; font-size: 20px;">&#xE89C;</i>
+              <span style="font-weight: bold; color: #2d4156;">{l s='Complaints and returns:' d='Shop.Theme.Catalog'}</span>
+              <a href="https://sklep.cezos.com/pl/content/20-reklamacjazwroty" target="_blank" class="ml-1" style="color: #007bff; text-decoration: underline;">
+                {l s='Learn more' d='Shop.Theme.Catalog'}
+              </a>
+            </p>
+
+            <!-- Package tracking -->
+            <p class="d-flex align-items-center mb-1">
+              <i class="material-icons mr-1" style="color: #2d4156; font-size: 20px;">&#xE8B6;</i>
+              <span style="font-weight: bold; color: #2d4156;">{l s='Package tracking available after shipment:' d='Shop.Theme.Catalog'}</span>
+              <a href="https://sklep.cezos.com/pl/historia-zamowien" target="_blank" class="ml-1" style="color: #007bff; text-decoration: underline;">
+                {l s='Check order status' d='Shop.Theme.Catalog'}
+              </a>
+            </p>
+
+            <!-- Delivery within -->
+            <p class="d-flex align-items-center mb-1">
+              <i class="material-icons mr-1" style="color: #2d4156; font-size: 20px;">&#xE425;</i>
+              <span style="font-weight: bold; color: #2d4156;">{l s='Delivery within:' d='Shop.Theme.Catalog'}</span>
+              <span style="color: #2d4156; margin-left: 5px;">2-4 days</span>
+            </p>
+
+            <!-- Available shipping methods -->
+            <h5 class="mt-3 mb-1" style="color: #333; font-weight: bold;">{l s='Available shipping methods:' d='Shop.Theme.Catalog'}</h5>
+            <ul class="pl-0" style="color: #666; margin-bottom: 0;">
+
+              {if $language.iso_code == 'en'}
+                <!-- For English, only display international shipping method -->
+                <li>{l s='GLS Courier - International:' d='Shop.Theme.Catalog'} {l s='Price dependent on destination country' d='Shop.Theme.Catalog'}</li>
+              {else}
+                <!-- For other languages, display all shipping methods -->
+                <li>{l s='Odbiór w sklepie:' d='Shop.Theme.Catalog'} {l s='za darmo' d='Shop.Theme.Catalog'}</li>
+                <li>{l s='Kurier GLS - Polska:' d='Shop.Theme.Catalog'} 30,00 zł</li>
+                <li>{l s='GLS Parcel Shop:' d='Shop.Theme.Catalog'} 18,50 zł</li>
+                <li>{l s='Przesyłka Paczkomat® - standardowa:' d='Shop.Theme.Catalog'} 25,92 zł</li>
+                <li>{l s='InPost Paczkomat (pobranie):' d='Shop.Theme.Catalog'} 30,00 zł</li>
+                <li>{l s='InPost kurier:' d='Shop.Theme.Catalog'} 30,91 zł</li>
+              {/if}
+            </ul>
+          </div>
+        </div>
+        <!-- End of new delivery and returns information box -->
   
 
           <div class="col-md-12 hidden-md-down white-bgr box-shadow scroll height-400 accessories-container">
