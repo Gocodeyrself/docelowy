@@ -24,6 +24,9 @@
   *}
   {extends file=$layout}
 
+  {assign var='lang_iso_code' value=$context.language.iso_code}
+
+
 {block name='head' append}
 <meta property="og:type" content="product">
 {if $product.cover}
@@ -138,57 +141,56 @@
           </div>
         </div>
 
-        <!-- Nowy box z informacjami o dostawie i zwrotach -->
-        <div class="col-md-12 white-bgr box-shadow accessories-container" style="padding: 10px 15px;">
-          <h4 class="head-title mb-2">{l s='Dostawa i Zwroty' d='Shop.Theme.Catalog'}</h4>
+        <!-- New box with delivery and returns information -->
+<div class="col-md-12 white-bgr box-shadow accessories-container" style="padding: 10px 15px;">
+<h4 class="head-title mb-2">{l s='Delivery and Returns' d='Shop.Theme.Catalog'}</h4>
 
-          <div class="delivery-info" style="padding: 5px 10px; line-height: 1.4;">
+<div class="delivery-info" style="padding: 5px 10px; line-height: 1.4;">
 
-            <!-- Reklamacje i zwroty -->
-            <p class="d-flex align-items-center mb-1">
-              <i class="material-icons mr-1" style="color: #2d4156; font-size: 20px;">&#xE89C;</i>
-              <span style="font-weight: bold; color: #2d4156;">{l s='Reklamacje i zwroty:' d='Shop.Theme.Catalog'}</span>
-              <a href="https://sklep.cezos.com/pl/content/20-reklamacjazwroty" target="_blank" class="ml-1" style="color: #007bff; text-decoration: underline;">
-                {l s='Dowiedz się więcej' d='Shop.Theme.Catalog'}
-              </a>
-            </p>
+  <!-- Returns and complaints -->
+  <p class="d-flex align-items-center mb-1">
+    <i class="material-icons mr-1" style="color: #2d4156; font-size: 20px;">&#xE89C;</i>
+    <span style="font-weight: bold; color: #2d4156;">{l s='Returns and complaints:' d='Shop.Theme.Catalog'}</span>
+    <a href="https://sklep.cezos.com/{$lang_iso_code}/content/20-reklamacjazwroty" target="_blank" class="ml-1" style="color: #007bff; text-decoration: underline;">
+      {l s='Learn more' d='Shop.Theme.Catalog'}
+    </a>
+  </p>
 
-            <!-- Śledzenie paczki -->
-            <p class="d-flex align-items-center mb-1">
-              <i class="material-icons mr-1" style="color: #2d4156; font-size: 20px;">&#xE8B6;</i>
-              <span style="font-weight: bold; color: #2d4156;">{l s='Śledzenie paczki dostępne po wysyłce:' d='Shop.Theme.Catalog'}</span>
-              <a href="https://sklep.cezos.com/pl/historia-zamowien" target="_blank" class="ml-1" style="color: #007bff; text-decoration: underline;">
-                {l s='Sprawdź status zamówienia' d='Shop.Theme.Catalog'}
-              </a>
-            </p>
+  <!-- Package tracking -->
+  <p class="d-flex align-items-center mb-1">
+    <i class="material-icons mr-1" style="color: #2d4156; font-size: 20px;">&#xE8B6;</i>
+    <span style="font-weight: bold; color: #2d4156;">{l s='Package tracking available after shipment:' d='Shop.Theme.Catalog'}</span>
+    <a href="https://sklep.cezos.com/{$lang_iso_code}/order-history" target="_blank" class="ml-1" style="color: #007bff; text-decoration: underline;">
+      {l s='Check order status' d='Shop.Theme.Catalog'}
+    </a>
+  </p>
 
-            <!-- Dostawa w ciągu -->
-            <p class="d-flex align-items-center mb-1">
-              <i class="material-icons mr-1" style="color: #2d4156; font-size: 20px;">&#xE425;</i>
-              <span style="font-weight: bold; color: #2d4156;">{l s='Dostawa w ciągu:' d='Shop.Theme.Catalog'}</span>
-              <span style="color: #2d4156; margin-left: 5px;">{l s='2-4 dni' d='Shop.Theme.Catalog'}</span>
-            </p>
+  <!-- Delivery within -->
+  <p class="d-flex align-items-center mb-1">
+    <i class="material-icons mr-1" style="color: #2d4156; font-size: 20px;">&#xE425;</i>
+    <span style="font-weight: bold; color: #2d4156;">{l s='Delivery within:' d='Shop.Theme.Catalog'}</span>
+    <span style="color: #2d4156; margin-left: 5px;">{l s='2-4 days' d='Shop.Theme.Catalog'}</span>
+  </p>
 
-            <!-- Dostępne metody wysyłki -->
-            <h5 class="mt-3 mb-1" style="color: #333; font-weight: bold;">{l s='Dostępne metody wysyłki:' d='Shop.Theme.Catalog'}</h5>
-            <ul class="pl-0" style="color: #666; margin-bottom: 0;">
-              {assign var='lang_iso_code' value=$context.language.iso_code}
-              {if $lang_iso_code == 'pl'}
-                <!-- Metody dostępne w języku polskim -->
-                <li>{l s='Odbiór w sklepie:' d='Shop.Theme.Catalog'} {l s='za darmo' d='Shop.Theme.Catalog'}</li>
-                <li>{l s='Kurier GLS - Polska:' d='Shop.Theme.Catalog'} {l s='30,00 zł' d='Shop.Theme.Catalog'}</li>
-                <li>{l s='GLS Parcel Shop:' d='Shop.Theme.Catalog'} {l s='18,50 zł' d='Shop.Theme.Catalog'}</li>
-                <li>{l s='Przesyłka Paczkomat® - standardowa:' d='Shop.Theme.Catalog'} {l s='25,92 zł' d='Shop.Theme.Catalog'}</li>
-                <li>{l s='InPost Paczkomat (pobranie):' d='Shop.Theme.Catalog'} {l s='30,00 zł' d='Shop.Theme.Catalog'}</li>
-                <li>{l s='InPost kurier:' d='Shop.Theme.Catalog'} {l s='30,91 zł' d='Shop.Theme.Catalog'}</li>
-              {else}
-                <!-- Metoda dostępna w innych językach -->
-                <li>{l s='GLS Courier - International:' d='Shop.Theme.Catalog'} {l s='Price depends on destination country' d='Shop.Theme.Catalog'}</li>
-              {/if}
-            </ul>
-          </div>
-        </div>
-        <!-- Koniec nowego boxa z informacjami o dostawie i zwrotach -->
+  <!-- Available shipping methods -->
+  <h5 class="mt-3 mb-1" style="color: #333; font-weight: bold;">{l s='Available shipping methods:' d='Shop.Theme.Catalog'}</h5>
+  <ul class="pl-0" style="color: #666; margin-bottom: 0;">
+    {if $lang_iso_code == 'pl'}
+      <!-- Metody dla języka polskiego -->
+      <li>{l s='In-store pickup:' d='Shop.Theme.Catalog'} {l s='free' d='Shop.Theme.Catalog'}</li>
+      <li>{l s='GLS Courier - Poland:' d='Shop.Theme.Catalog'} {l s='30,00 zł' d='Shop.Theme.Catalog'}</li>
+      <li>{l s='GLS Parcel Shop:' d='Shop.Theme.Catalog'} {l s='18,50 zł' d='Shop.Theme.Catalog'}</li>
+      <li>{l s='Standard parcel locker shipping:' d='Shop.Theme.Catalog'} {l s='25,92 zł' d='Shop.Theme.Catalog'}</li>
+      <li>{l s='InPost Parcel Locker (cash on delivery):' d='Shop.Theme.Catalog'} {l s='30,00 zł' d='Shop.Theme.Catalog'}</li>
+      <li>{l s='InPost courier:' d='Shop.Theme.Catalog'} {l s='30,91 zł' d='Shop.Theme.Catalog'}</li>
+    {else}
+      <!-- Metoda dla języka angielskiego lub innego -->
+      <li>{l s='GLS Courier - International:' d='Shop.Theme.Catalog'} {l s='Price depends on destination country' d='Shop.Theme.Catalog'}</li>
+    {/if}
+  </ul>
+</div>
+</div>
+<!-- End of new box with delivery and returns information -->
   
 
           <div class="col-md-12 hidden-md-down white-bgr box-shadow scroll height-400 accessories-container">
