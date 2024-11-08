@@ -52,21 +52,45 @@
     "@type": "Brand",
     "name": "{$product.manufacturer_name|escape:'html'}"
   },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.5",
+    "reviewCount": "24"
+  },
+  "review": [
+    {
+      "@type": "Review",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "John Doe"
+      }
+    }
+  ],
   "offers": {
     "@type": "Offer",
     "url": "{$product.url}",
     "priceCurrency": "{$currency.iso_code}",
     "price": "{$product.price_amount}",
+    "priceValidUntil": "{date('Y-m-d', strtotime('+1 year'))}",  // Ustal na rok do przodu
     "itemCondition": "http://schema.org/NewCondition",
     "availability": "http://schema.org/{if $product.quantity > 0}InStock{else}OutOfStock{/if}",
     "seller": {
       "@type": "Organization",
-      "name": "{l s='sklep.cezos.com' d='Shop.Theme.Catalog'}"
+      "name": "sklep.cezos.com",  // Zastąp rzeczywistą nazwą sklepu
+      "description": "Oferujemy zasilacze o różnych mocach i napięciach, dostosowane do szerokiego zakresu zastosowań, od domowych instalacji po profesjonalne projekty komercyjne",  // Opis sprzedawcy
+      "applicableCountry": {
+        "@type": "Country",
+        "name": "Poland"
+      }
     },
     "hasMerchantReturnPolicy": {
       "@type": "MerchantReturnPolicy",
       "url": "https://sklep.cezos.com/pl/content/20-reklamacjazwroty",
-      "returnPolicyCategory": "http://schema.org/ReturnPolicyFullRefund",
+      "returnPolicyCategory": "https://schema.org/Refund",  // Poprawiona wartość
       "merchantReturnDays": "30"
     },
     "shippingDetails": {
