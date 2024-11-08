@@ -138,108 +138,58 @@
             </div>
           </div>
   
-          <!-- Nowy box z informacjami o dostawie i zwrotach -->
-          <div class="col-md-12 white-bgr box-shadow accessories-container" style="padding: 10px 15px;">
-            <h4 class="head-title mb-2">{l s='Dostawa i Zwroty' d='Shop.Theme.Catalog'}</h4>
-  
-            <div class="delivery-info" style="padding: 5px 10px; line-height: 1.4;">
-  
-              <!-- Reklamacje i zwroty -->
-              <p class="d-flex align-items-center mb-1">
-                <i class="material-icons mr-1" style="color: #2d4156; font-size: 20px;">&#xE89C;</i>
-                <span style="font-weight: bold; color: #2d4156;">{l s='Reklamacje i zwroty:' d='Shop.Theme.Catalog'}</span>
-                <a href="https://sklep.cezos.com/pl/content/20-reklamacjazwroty" target="_blank" class="ml-1" style="color: #007bff; text-decoration: underline;">
-                  {l s='Dowiedz się więcej' d='Shop.Theme.Catalog'}
-                </a>
-              </p>
-  
-              <!-- Śledzenie paczki -->
-              <p class="d-flex align-items-center mb-1">
-                <i class="material-icons mr-1" style="color: #2d4156; font-size: 20px;">&#xE8B6;</i>
-                <span style="font-weight: bold; color: #2d4156;">{l s='Śledzenie paczki dostępne po wysyłce:' d='Shop.Theme.Catalog'}</span>
-                <a href="https://sklep.cezos.com/pl/historia-zamowien" target="_blank" class="ml-1" style="color: #007bff; text-decoration: underline;">
-                  {l s='Sprawdź status zamówienia' d='Shop.Theme.Catalog'}
-                </a>
-              </p>
-  
-              <!-- Dostawa w ciągu -->
-              <p class="d-flex align-items-center mb-1">
-                <i class="material-icons mr-1" style="color: #2d4156; font-size: 20px;">&#xE425;</i>
-                <span style="font-weight: bold; color: #2d4156;">{l s='Dostawa w ciągu:' d='Shop.Theme.Catalog'}</span>
-                <span style="color: #2d4156; margin-left: 5px;">2-4 dni</span>
-              </p>
-  
-              <!-- Dostępne metody wysyłki -->
-              <h5 class="mt-3 mb-1" style="color: #333; font-weight: bold;">{l s='Dostępne metody wysyłki:' d='Shop.Theme.Catalog'}</h5>
-              <ul class="pl-0" style="color: #666; margin-bottom: 0;">
-                <!-- Ręcznie wpisane ceny wysyłki -->
-                <li>{l s='Odbiór w sklepie:' d='Shop.Theme.Catalog'} {l s='za darmo' d='Shop.Theme.Catalog'}</li>
-                <li>{l s='Kurier GLS - Polska:' d='Shop.Theme.Catalog'} 30,00 zł</li>
-                <li>{l s='GLS Parcel Shop:' d='Shop.Theme.Catalog'} 18,50 zł</li>
-                <li>{l s='Przesyłka Paczkomat® - standardowa:' d='Shop.Theme.Catalog'} 25,92 zł</li>
-                <li>{l s='InPost Paczkomat (pobranie):' d='Shop.Theme.Catalog'} 30,00 zł</li>
-                <li>{l s='InPost kurier:' d='Shop.Theme.Catalog'} 30,91 zł</li>
-                <!-- Metoda dla zagranicy -->
-                <li>{l s='Kurier GLS - Międzynarodowy:' d='Shop.Theme.Catalog'} {l s='Cena zależna od kraju docelowego' d='Shop.Theme.Catalog'}</li>
-              </ul>
+          <!-- New box with delivery and returns information -->
+        <div class="col-md-12 white-bgr box-shadow accessories-container" style="padding: 10px 15px;">
+        <h4 class="head-title mb-2">{l s='Delivery and Returns' d='Shop.Theme.Catalog'}</h4>
+
+        <div class="delivery-info" style="padding: 5px 10px; line-height: 1.4;">
+
+          <!-- Complaints and returns -->
+          <p class="d-flex align-items-center mb-1">
+            <i class="material-icons mr-1" style="color: #2d4156; font-size: 20px;">&#xE89C;</i>
+            <span style="font-weight: bold; color: #2d4156;">{l s='Complaints and returns:' d='Shop.Theme.Catalog'}</span>
+            <a href="https://sklep.cezos.com/pl/content/20-reklamacjazwroty" target="_blank" class="ml-1" style="color: #007bff; text-decoration: underline;">
+              {l s='Learn more' d='Shop.Theme.Catalog'}
+            </a>
+          </p>
+
+          <!-- Package tracking -->
+          <p class="d-flex align-items-center mb-1">
+            <i class="material-icons mr-1" style="color: #2d4156; font-size: 20px;">&#xE8B6;</i>
+            <span style="font-weight: bold; color: #2d4156;">{l s='Package tracking available after shipment:' d='Shop.Theme.Catalog'}</span>
+            <a href="https://sklep.cezos.com/pl/historia-zamowien" target="_blank" class="ml-1" style="color: #007bff; text-decoration: underline;">
+              {l s='Check order status' d='Shop.Theme.Catalog'}
+            </a>
+          </p>
+
+          <!-- Delivery within -->
+          <p class="d-flex align-items-center mb-1">
+            <i class="material-icons mr-1" style="color: #2d4156; font-size: 20px;">&#xE425;</i>
+            <span style="font-weight: bold; color: #2d4156;">{l s='Delivery within:' d='Shop.Theme.Catalog'}</span>
+            <span style="color: #2d4156; margin-left: 5px;">2-4 days</span>
+          </p>
+
+          <!-- Available shipping methods -->
+          <h5 class="mt-3 mb-1" style="color: #333; font-weight: bold;">{l s='Available shipping methods:' d='Shop.Theme.Catalog'}</h5>
+          <ul class="pl-0" style="color: #666; margin-bottom: 0;">
+
+            {if $language.iso_code == 'en'}
+              <!-- For English, only display international shipping method -->
+              <li>{l s='GLS Courier - International:' d='Shop.Theme.Catalog'} {l s='Price dependent on destination country' d='Shop.Theme.Catalog'}</li>
+            {else}
+              <!-- For other languages, display all shipping methods -->
+  <li>{l s='Odbiór w sklepie:' d='Shop.Theme.Catalog'} {l s='za darmo' d='Shop.Theme.Catalog'}</li>
+  <li>{l s='Kurier GLS - Polska:' d='Shop.Theme.Catalog'} 30,00 zł</li>
+  <li>{l s='GLS Parcel Shop:' d='Shop.Theme.Catalog'} 18,50 zł</li>
+  <li>{l s='Przesyłka Paczkomat® - standardowa:' d='Shop.Theme.Catalog'} 25,92 zł</li>
+  <li>{l s='InPost Paczkomat (pobranie):' d='Shop.Theme.Catalog'} 30,00 zł</li>
+  <li>{l s='InPost kurier:' d='Shop.Theme.Catalog'} 30,91 zł</li>
+{/if}
+</ul>
+
             </div>
-
-            {block name='hook_display_reassurance'}
-            {hook h='displayReassurance'}
-            {/block}
           </div>
-        </div>
-
-        <!-- Nowy box z informacjami o dostawie i zwrotach -->
-<div class="col-md-12 white-bgr box-shadow accessories-container" style="padding: 10px 15px;">
-<h4 class="head-title mb-2">{l s='Dostawa i Zwroty' d='Shop.Theme.Catalog'}</h4>
-
-<div class="delivery-info" style="padding: 5px 10px; line-height: 1.4;">
-
-  <!-- Reklamacje i zwroty -->
-  <p class="d-flex align-items-center mb-1">
-    <i class="material-icons mr-1" style="color: #2d4156; font-size: 20px;">&#xE89C;</i>
-    <span style="font-weight: bold; color: #2d4156;">{l s='Reklamacje i zwroty:' d='Shop.Theme.Catalog'}</span>
-    <a href="https://sklep.cezos.com/pl/content/20-reklamacjazwroty" target="_blank" class="ml-1" style="color: #007bff; text-decoration: underline;">
-      {l s='Dowiedz się więcej' d='Shop.Theme.Catalog'}
-    </a>
-  </p>
-
-  <!-- Śledzenie paczki -->
-  <p class="d-flex align-items-center mb-1">
-    <i class="material-icons mr-1" style="color: #2d4156; font-size: 20px;">&#xE8B6;</i>
-    <span style="font-weight: bold; color: #2d4156;">{l s='Śledzenie paczki dostępne po wysyłce:' d='Shop.Theme.Catalog'}</span>
-    <a href="https://sklep.cezos.com/pl/historia-zamowien" target="_blank" class="ml-1" style="color: #007bff; text-decoration: underline;">
-      {l s='Sprawdź status zamówienia' d='Shop.Theme.Catalog'}
-    </a>
-  </p>
-
-  <!-- Dostawa w ciągu -->
-  <p class="d-flex align-items-center mb-1">
-    <i class="material-icons mr-1" style="color: #2d4156; font-size: 20px;">&#xE425;</i>
-    <span style="font-weight: bold; color: #2d4156;">{l s='Dostawa w ciągu:' d='Shop.Theme.Catalog'}</span>
-    <span style="color: #2d4156; margin-left: 5px;">2-4 dni</span>
-  </p>
-
-  <!-- Dostępne metody wysyłki -->
-  <h5 class="mt-3 mb-1" style="color: #333; font-weight: bold;">{l s='Dostępne metody wysyłki:' d='Shop.Theme.Catalog'}</h5>
-  <ul class="pl-0" style="color: #666; margin-bottom: 0;">
-    {if $lang_iso_code == 'pl'}
-      <!-- Metody dostępne w języku polskim -->
-      <li>{l s='Odbiór w sklepie:' d='Shop.Theme.Catalog'} {l s='za darmo' d='Shop.Theme.Catalog'}</li>
-      <li>{l s='Kurier GLS - Polska:' d='Shop.Theme.Catalog'} 30,00 zł</li>
-      <li>{l s='GLS Parcel Shop:' d='Shop.Theme.Catalog'} 18,50 zł</li>
-      <li>{l s='Przesyłka Paczkomat® - standardowa:' d='Shop.Theme.Catalog'} 25,92 zł</li>
-      <li>{l s='InPost Paczkomat (pobranie):' d='Shop.Theme.Catalog'} 30,00 zł</li>
-      <li>{l s='InPost kurier:' d='Shop.Theme.Catalog'} 30,91 zł</li>
-    {else}
-      <!-- Metoda dla innych języków -->
-      <li>{l s='Kurier GLS - Międzynarodowy:' d='Shop.Theme.Catalog'} {l s='Cena zależna od kraju docelowego' d='Shop.Theme.Catalog'}</li>
-    {/if}
-  </ul>
-</div>
-</div>
-<!-- Koniec nowego boxa z informacjami o dostawie i zwrotach -->
+          <!-- Koniec nowego boxa z informacjami o dostawie i zwrotach -->
   
 
           <div class="col-md-12 hidden-md-down white-bgr box-shadow scroll height-400 accessories-container">
