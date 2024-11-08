@@ -24,6 +24,9 @@
   *}
   {extends file=$layout}
 
+  {assign var='lang_iso_code' value=$language.iso_code}
+
+
   {block name='head' append}
   <meta property="og:type" content="product">
   {if $product.cover}
@@ -170,18 +173,22 @@
               </p>
   
               <!-- Dostępne metody wysyłki -->
-              <h5 class="mt-3 mb-1" style="color: #333; font-weight: bold;">{l s='Dostępne metody wysyłki:' d='Shop.Theme.Catalog'}</h5>
-              <ul class="pl-0" style="color: #666; margin-bottom: 0;">
-                <!-- Ręcznie wpisane ceny wysyłki -->
-                <li>{l s='Odbiór w sklepie:' d='Shop.Theme.Catalog'} {l s='za darmo' d='Shop.Theme.Catalog'}</li>
-                <li>{l s='Kurier GLS - Polska:' d='Shop.Theme.Catalog'} 30,00 zł</li>
-                <li>{l s='GLS Parcel Shop:' d='Shop.Theme.Catalog'} 18,50 zł</li>
-                <li>{l s='Przesyłka Paczkomat® - standardowa:' d='Shop.Theme.Catalog'} 25,92 zł</li>
-                <li>{l s='InPost Paczkomat (pobranie):' d='Shop.Theme.Catalog'} 30,00 zł</li>
-                <li>{l s='InPost kurier:' d='Shop.Theme.Catalog'} 30,91 zł</li>
-                <!-- Metoda dla zagranicy -->
-                <li>{l s='Kurier GLS - Międzynarodowy:' d='Shop.Theme.Catalog'} {l s='Cena zależna od kraju docelowego' d='Shop.Theme.Catalog'}</li>
-              </ul>
+<h5 class="mt-3 mb-1" style="color: #333; font-weight: bold;">{l s='Dostępne metody wysyłki:' d='Shop.Theme.Catalog'}</h5>
+<ul class="pl-0" style="color: #666; margin-bottom: 0;">
+  {if $lang_iso_code == 'pl'}
+    <!-- Metody dostępne w języku polskim -->
+    <li>{l s='Odbiór w sklepie:' d='Shop.Theme.Catalog'} {l s='za darmo' d='Shop.Theme.Catalog'}</li>
+    <li>{l s='Kurier GLS - Polska:' d='Shop.Theme.Catalog'} 30,00 zł</li>
+    <li>{l s='GLS Parcel Shop:' d='Shop.Theme.Catalog'} 18,50 zł</li>
+    <li>{l s='Przesyłka Paczkomat® - standardowa:' d='Shop.Theme.Catalog'} 25,92 zł</li>
+    <li>{l s='InPost Paczkomat (pobranie):' d='Shop.Theme.Catalog'} 30,00 zł</li>
+    <li>{l s='InPost kurier:' d='Shop.Theme.Catalog'} 30,91 zł</li>
+  {else}
+    <!-- Metoda dostępna w innych językach -->
+    <li>{l s='Kurier GLS - International:' d='Shop.Theme.Catalog'} {l s='Price depends on destination country' d='Shop.Theme.Catalog'}</li>
+  {/if}
+</ul>
+
             </div>
           </div>
           <!-- Koniec nowego boxa z informacjami o dostawie i zwrotach -->
