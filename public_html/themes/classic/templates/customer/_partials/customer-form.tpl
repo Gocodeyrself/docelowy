@@ -45,7 +45,7 @@
     {/block}
 
     <!-- Dodany widget reCAPTCHA -->
-    <div class="g-recaptcha" data-sitekey="6LcpGRwqAAAAAB36EBRSbyXryGO_0HOiGsNWGtkz"></div>
+    <div class="g-recaptcha" data-sitekey="6LcpGhwqAAAAAB2-Hi3qM1zrGiPeP2agHIoglTdg"></div>
     <!-- Załadowanie skryptu API reCAPTCHA -->
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
