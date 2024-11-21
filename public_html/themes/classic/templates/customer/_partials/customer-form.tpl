@@ -22,7 +22,7 @@
  * @copyright Since 2007 PrestaShop SA and Contributors
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  *}
-{block name='customer_form'}
+ {block name='customer_form'}
   {block name='customer_form_errors'}
     {include file='_partials/form-errors.tpl' errors=$errors['']}
   {/block}
@@ -43,6 +43,12 @@
       {/foreach}
       {$hook_create_account_form nofilter}
     {/block}
+
+    <!-- Dodany widget reCAPTCHA -->
+    <div class="g-recaptcha" data-sitekey="6LcpGRwqAAAAAB36EBRSbyXryGO_0HOiGsNWGtkz"></div>
+    <!-- Załadowanie skryptu API reCAPTCHA -->
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
   </div>
 
 {*
