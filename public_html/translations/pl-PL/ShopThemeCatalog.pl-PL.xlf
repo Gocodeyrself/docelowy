@@ -756,8 +756,12 @@
 
         <!-- In-store pickup: free -->
         <trans-unit id="in_store_pickup" approved="yes">
-            <source>In-store pickup: free</source>
-            <target state="final">Odbiór w sklepie: za darmo</target>
+            <source>In-store pickup:</source>
+            <target state="final">Odbiór w sklepie:</target>
+        </trans-unit>
+        <trans-unit id="in_store_pickup_free" approved="yes">
+            <source>free</source>
+            <target state="final">za darmo</target>
         </trans-unit>
 
         <!-- GLS Courier - Poland -->

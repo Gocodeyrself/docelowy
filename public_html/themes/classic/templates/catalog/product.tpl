@@ -468,7 +468,8 @@
             {/block}
             <div class="tab-pane box-shadow fade in" id="product-contact" role="tabpanel">
                 <section class="product-rewievs_tab">
-                    {widget name="contactform"}
+                    {* {widget name="contactform"} *}
+                    {hook h='displayGform' id='13'}
                 </section>
             </div>
             {foreach from=$product.extraContent item=extra key=extraKey}
