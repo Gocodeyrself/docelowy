@@ -71,7 +71,7 @@
            {/if}
          </a>
          <!-- Link do wylogowania -->
-         <a class="dropdown-item" href="{if $language.iso_code == 'pl'}https://sklep.cezos.com/pl/?mylogout={else}https://sklep.cezos.com/en/?mylogout={/if}" rel="nofollow">
+         <a class="dropdown-item" href="{if $language.iso_code == 'pl'}https://cezos.com/pl/?mylogout={else}https://cezos.com/en/?mylogout={/if}" rel="nofollow">
            {if $language.iso_code == 'pl'}
              Wyloguj się
            {else}
@@ -97,7 +97,7 @@
        </a>
        <div class="dropdown-menu" aria-labelledby="accountDropdown">
          <!-- Poprawione linki do logowania -->
-         <a class="dropdown-item" href="{if $language.iso_code == 'pl'}https://sklep.cezos.com/pl/logowanie{else}https://sklep.cezos.com/en/login{/if}">
+         <a class="dropdown-item" href="{if $language.iso_code == 'pl'}https://cezos.com/pl/logowanie{else}https://cezos.com/en/login{/if}">
            {if $language.iso_code == 'pl'}
              Zaloguj
            {else}
