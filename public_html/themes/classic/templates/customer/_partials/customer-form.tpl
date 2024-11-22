@@ -45,10 +45,10 @@
       {$hook_create_account_form nofilter}
     {/block}
 
-    <!-- Dodany widget reCAPTCHA -->
-    <div class="g-recaptcha" data-sitekey="{$recaptcha_site_key}"></div>
-    <!-- Załadowanie skryptu API reCAPTCHA -->
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <!-- Dodany widget reCAPTCHA 
+    <div class="g-recaptcha" data-sitekey="{$recaptcha_site_key}"></div>-->
+    <!-- Załadowanie skryptu API reCAPTCHA 
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>-->
 
   </div>
 
