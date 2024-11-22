@@ -1,10 +1,9 @@
 <?php
 
-namespace Http\Message;
+namespace ps_metrics_module_v4_0_8\Http\Message;
 
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
-
 /**
  * Formats a request and/or a response as a string.
  *
@@ -23,7 +22,6 @@ interface Formatter
      * @return string
      */
     public function formatRequest(RequestInterface $request);
-
     /**
      * @deprecated since 1.13, use formatResponseForRequest() instead
      *

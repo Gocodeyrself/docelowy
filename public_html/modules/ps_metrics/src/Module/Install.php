@@ -18,47 +18,40 @@
  * @copyright Since 2007 PrestaShop SA and Contributors
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License version 3.0
  */
-
 namespace PrestaShop\Module\Ps_metrics\Module;
 
 use Hook;
 use PrestaShop\Module\Ps_metrics\Repository\ConfigurationRepository;
 use PrestaShop\Module\Ps_metrics\Repository\HookModuleRepository;
-use Ps_metrics;
-
 class Install
 {
     /**
-     * @var Ps_metrics
+     * @var \Ps_metrics
      */
     private $module;
-
     /**
      * @var ConfigurationRepository
      */
     private $configurationRepository;
-
     /**
      * @var HookModuleRepository
      */
     private $hookModuleRepository;
-
     /**
      * Install constructor.
      *
-     * @param Ps_metrics $module
+     * @param \Ps_metrics $module
      * @param ConfigurationRepository $configurationRepository
      * @param HookModuleRepository $hookModuleRepository
      *
      * @return void
      */
-    public function __construct(Ps_metrics $module, ConfigurationRepository $configurationRepository, HookModuleRepository $hookModuleRepository)
+    public function __construct(\Ps_metrics $module, ConfigurationRepository $configurationRepository, HookModuleRepository $hookModuleRepository)
     {
         $this->module = $module;
         $this->configurationRepository = $configurationRepository;
         $this->hookModuleRepository = $hookModuleRepository;
     }
-
     /**
      * updateModuleHookPosition
      *
@@ -69,19 +62,16 @@ class Install
      */
     public function updateModuleHookPosition(string $hookName, int $position)
     {
-        if ((bool) version_compare(_PS_VERSION_, '1.7.7.7', '>=')) {
-            $hookId = Hook::getIdByName($hookName, true, true);
+        if ((bool) \version_compare(_PS_VERSION_, '1.7.7.7', '>=')) {
+            $hookId = Hook::getIdByName($hookName, \true, \true);
         } else {
             $hookId = Hook::getIdByName($hookName);
         }
-
-        if (false == $hookId) {
-            return false;
+        if (\false == $hookId) {
+            return \false;
         }
-
         return $this->hookModuleRepository->setModuleHookPosition($hookId, (int) $this->module->id, $position);
     }
-
     /**
      * setConfigurationValues
      *
@@ -89,7 +79,6 @@ class Install
      */
     public function setConfigurationValues()
     {
-        return $this->configurationRepository->saveActionGoogleLinked(false) &&
-            $this->configurationRepository->saveGoogleTagLinked(false);
+        return $this->configurationRepository->saveActionGoogleLinked(\false) && $this->configurationRepository->saveGoogleTagLinked(\false);
     }
 }

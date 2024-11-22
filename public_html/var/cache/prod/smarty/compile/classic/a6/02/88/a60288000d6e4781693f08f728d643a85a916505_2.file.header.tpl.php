@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 4.3.1, created on 2024-10-16 13:09:04
+/* Smarty version 4.3.1, created on 2024-11-22 08:34:54
   from '/home/qisogexqbz/domains/cezos.exis24.pl/public_html/modules/ph_simpleblog/views/templates/hook/header.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.1',
-  'unifunc' => 'content_670f9ed01891a8_68051555',
+  'unifunc' => 'content_6740341e9f6b41_36146731',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_670f9ed01891a8_68051555 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6740341e9f6b41_36146731 (Smarty_Internal_Template $_smarty_tpl) {
 ?><meta property="og:url" content="<?php echo htmlspecialchars((string) call_user_func_array($_smarty_tpl->registered_plugins[ 'modifier' ][ 'escape' ][ 0 ], array( $_smarty_tpl->tpl_vars['post_url']->value,'html','UTF-8' )), ENT_QUOTES, 'UTF-8');?>
 " />
 <meta property="og:title" content="<?php echo htmlspecialchars((string) call_user_func_array($_smarty_tpl->registered_plugins[ 'modifier' ][ 'escape' ][ 0 ], array( $_smarty_tpl->tpl_vars['post_title']->value,'html','UTF-8' )), ENT_QUOTES, 'UTF-8');?>

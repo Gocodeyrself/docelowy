@@ -18,7 +18,6 @@
  * @copyright Since 2007 PrestaShop SA and Contributors
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License version 3.0
  */
-
 namespace PrestaShop\Module\Ps_metrics\Middleware;
 
 abstract class Middleware
@@ -27,19 +26,16 @@ abstract class Middleware
      * @var Middleware
      */
     private $next;
-
     /**
      * @param Middleware $next
      *
      * @return Middleware
      */
-    public function linkWith(Middleware $next)
+    public function linkWith(\PrestaShop\Module\Ps_metrics\Middleware\Middleware $next)
     {
         $this->next = $next;
-
         return $next;
     }
-
     /**
      * @param mixed $response
      *
@@ -50,7 +46,6 @@ abstract class Middleware
         if (null === $this->next) {
             return (array) $response;
         }
-
         return $this->next->execute($response);
     }
 }

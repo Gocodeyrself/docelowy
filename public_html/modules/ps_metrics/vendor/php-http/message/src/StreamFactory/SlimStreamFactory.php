@@ -1,15 +1,13 @@
 <?php
 
-namespace Http\Message\StreamFactory;
+namespace ps_metrics_module_v4_0_8\Http\Message\StreamFactory;
 
-use Http\Message\StreamFactory;
+use ps_metrics_module_v4_0_8\Http\Message\StreamFactory;
 use Psr\Http\Message\StreamInterface;
-use Slim\Http\Stream;
-
-if (!interface_exists(StreamFactory::class)) {
-    throw new \LogicException('You cannot use "Http\Message\MessageFactory\SlimStreamFactory" as the "php-http/message-factory" package is not installed. Try running "composer require php-http/message-factory". Note that this package is deprecated, use "psr/http-factory" instead');
+use ps_metrics_module_v4_0_8\Slim\Http\Stream;
+if (!\interface_exists(StreamFactory::class)) {
+    throw new \LogicException('You cannot use "Http\\Message\\MessageFactory\\SlimStreamFactory" as the "php-http/message-factory" package is not installed. Try running "composer require php-http/message-factory". Note that this package is deprecated, use "psr/http-factory" instead');
 }
-
 /**
  * Creates Slim 3 streams.
  *
@@ -19,25 +17,19 @@ if (!interface_exists(StreamFactory::class)) {
  */
 final class SlimStreamFactory implements StreamFactory
 {
-    /**
-     * {@inheritdoc}
-     */
     public function createStream($body = null)
     {
         if ($body instanceof StreamInterface) {
             return $body;
         }
-
-        if (is_resource($body)) {
+        if (\is_resource($body)) {
             return new Stream($body);
         }
-
-        $resource = fopen('php://memory', 'r+');
+        $resource = \fopen('php://memory', 'r+');
         $stream = new Stream($resource);
         if (null !== $body && '' !== $body) {
             $stream->write((string) $body);
         }
-
         return $stream;
     }
 }

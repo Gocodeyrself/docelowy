@@ -1,5 +1,7 @@
 <?php
 
+namespace ps_metrics_module_v4_0_8;
+
 /**
  * Copyright since 2007 PrestaShop SA and Contributors
  * PrestaShop is an International Registered Trademark & Property of PrestaShop SA

@@ -1,31 +1,28 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
-use Prestashop\ModuleLibMboInstaller\Installer;
-use Prestashop\ModuleLibMboInstaller\Presenter;
+namespace ps_metrics_module_v4_0_8;
 
+use ps_metrics_module_v4_0_8\PHPUnit\Framework\TestCase;
+use ps_metrics_module_v4_0_8\Prestashop\ModuleLibMboInstaller\Installer;
+use ps_metrics_module_v4_0_8\Prestashop\ModuleLibMboInstaller\Presenter;
 class InstallationTest extends TestCase
 {
-    protected function setUp(): void
+    protected function setUp() : void
     {
-        if (version_compare(_PS_VERSION_, '8.0.0', '<')) {
+        if (\version_compare(\_PS_VERSION_, '8.0.0', '<')) {
             global $kernel;
             $moduleManager = $kernel->getContainer()->get('prestashop.module.manager');
-            $moduleManager->uninstall('ps_mbo', true);
+            $moduleManager->uninstall('ps_mbo', \true);
         }
     }
-
     public function testModuleIsInstalled()
     {
         $mboStatusBeforeInstall = (new Presenter())->present();
-
         // Expect module to be unknown
         $this->assertFalse($mboStatusBeforeInstall['isInstalled']);
         $this->assertFalse($mboStatusBeforeInstall['isEnabled']);
-
         // Install it...
-        $this->assertTrue((new Installer(_PS_VERSION_))->installModule());
-
+        $this->assertTrue((new Installer(\_PS_VERSION_))->installModule());
         // Expect module to be installed now
         $mboStatusAfterInstall = (new Presenter())->present();
         $this->assertTrue($mboStatusAfterInstall['isPresentOnDisk']);

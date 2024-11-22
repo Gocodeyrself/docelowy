@@ -27,6 +27,8 @@ use PrestaShop\Module\PrestashopFacebook\Provider\MultishopDataProvider;
 use PrestaShop\Module\PrestashopFacebook\Repository\ShopRepository;
 use PrestaShop\PrestaShop\Core\Addon\Module\ModuleManagerBuilder;
 use PrestaShop\PsAccountsInstaller\Installer\Facade\PsAccounts;
+use PrestaShopCorp\Billing\Presenter\BillingPresenter;
+use PrestaShopCorp\Billing\Services\BillingService;
 
 class AdminPsfacebookModuleController extends ModuleAdminController
 {
@@ -90,8 +92,8 @@ class AdminPsfacebookModuleController extends ModuleAdminController
             'id_pixel' => pSQL($this->configurationAdapter->get(Config::PS_PIXEL_ID)),
             'access_token' => pSQL($this->configurationAdapter->get('PS_FBE_ACCESS_TOKEN')),
             'PsfacebookControllerLink' => $this->context->link->getAdminLink('AdminAjaxPsfacebook'),
-            'pathApp' => (bool) $this->env->get('USE_LOCAL_VUE_APP') ? $this->module->getPathUri() . 'views/js/app.js' : $this->env->get('PSX_FACEBOOK_CDN_URL') . 'app.js',
-            'chunkVendor' => (bool) $this->env->get('USE_LOCAL_VUE_APP') ? $this->module->getPathUri() . 'views/js/chunk-vendors.js' : $this->env->get('PSX_FACEBOOK_CDN_URL') . 'chunk-vendors.js',
+            'pathApp' => (bool) $this->env->get('USE_LOCAL_VUE_APP') ? $this->module->getPathUri() . 'views/js/pssocial-ui.js' : $this->env->get('PSX_FACEBOOK_CDN_URL') . 'pssocial-ui.js',
+            'psSocialLiveMode' => (bool) $this->env->get('USE_LIVE_VUE_APP'),
         ]);
 
         $defaultCurrency = $this->context->currency;
@@ -104,6 +106,10 @@ class AdminPsfacebookModuleController extends ModuleAdminController
         }
 
         $psAccountsData = $this->getPsAccountsData();
+
+        /************************
+         * PrestaShop CloudSync *
+         ************************/
 
         $moduleManager = ModuleManagerBuilder::getInstance()->build();
 
@@ -118,6 +124,32 @@ class AdminPsfacebookModuleController extends ModuleAdminController
                 ]);
             }
         }
+
+        /**********************
+         * PrestaShop Billing *
+         **********************/
+
+        // Load the context for PrestaShop Billing
+        $billingFacade = $this->module->getService(BillingPresenter::class);
+        $billingService = $this->module->getService(BillingService::class);
+        $partnerLogo = $this->module->getLocalPath() . 'logo.png';
+        $currentSubscription = $billingService->getCurrentSubscription();
+
+        // PrestaShop Billing
+        Media::addJsDef($billingFacade->present([
+            'logo' => $partnerLogo,
+            'tosLink' => 'https://prestashop.com/prestashop-account-terms-conditions/',
+            'privacyLink' => 'https://prestashop.com/prestashop-account-privacy/',
+            // This field is deprecated but a valid email must be provided to ensure backward compatibility
+            'emailSupport' => 'no-reply@prestashop.com',
+        ]));
+        Media::addJsDef([
+            'psBillingSubscription' => (!empty($currentSubscription['success']) ? $currentSubscription['body'] : null),
+        ]);
+
+        /*********************
+         * PrestaShop Social *
+         *********************/
 
         Media::addJsDef([
             // (object) cast is useful for the js when the array is empty
@@ -189,15 +221,6 @@ class AdminPsfacebookModuleController extends ModuleAdminController
                     'ajax' => 1,
                 ]
             ),
-            'psFacebookGetCategories' => $this->context->link->getAdminLink(
-                'AdminAjaxPsfacebook',
-                true,
-                [],
-                [
-                    'action' => 'getCategories',
-                    'ajax' => 1,
-                ]
-            ),
             'psFacebookGetFeaturesRoute' => $this->context->link->getAdminLink(
                 'AdminAjaxPsfacebook',
                 true,
@@ -213,42 +236,6 @@ class AdminPsfacebookModuleController extends ModuleAdminController
                 [],
                 [
                     'action' => 'UpdateFeature',
-                    'ajax' => 1,
-                ]
-            ),
-            'psFacebookStartProductSyncRoute' => $this->context->link->getAdminLink(
-                'AdminAjaxPsfacebook',
-                true,
-                [],
-                [
-                    'action' => 'requireProductSyncStart',
-                    'ajax' => 1,
-                ]
-            ),
-            'psFacebookGetCatalogSummaryRoute' => $this->context->link->getAdminLink(
-                'AdminAjaxPsfacebook',
-                true,
-                [],
-                [
-                    'action' => 'CatalogSummary',
-                    'ajax' => 1,
-                ]
-            ),
-            'psFacebookRunPrevalidationScanRoute' => $this->context->link->getAdminLink(
-                'AdminAjaxPsfacebook',
-                true,
-                [],
-                [
-                    'action' => 'RunPrevalidationScan',
-                    'ajax' => 1,
-                ]
-            ),
-            'psFacebookGetCategoryMappingStatus' => $this->context->link->getAdminLink(
-                'AdminAjaxPsfacebook',
-                true,
-                [],
-                [
-                    'action' => 'CategoryMappingCounters',
                     'ajax' => 1,
                 ]
             ),
@@ -297,15 +284,6 @@ class AdminPsfacebookModuleController extends ModuleAdminController
                     'ajax' => 1,
                 ]
             ),
-            'psFacebookExportWholeCatalog' => $this->context->link->getAdminLink(
-                'AdminAjaxPsfacebook',
-                true,
-                [],
-                [
-                    'action' => 'ExportWholeCatalog',
-                    'ajax' => 1,
-                ]
-            ),
             'psFacebookRetrieveTokensRoute' => $this->context->link->getAdminLink(
                 'AdminAjaxPsfacebook',
                 true,
@@ -315,6 +293,25 @@ class AdminPsfacebookModuleController extends ModuleAdminController
                     'ajax' => 1,
                 ]
             ),
+            'psFacebookGetChatStatus' => $this->context->link->getAdminLink(
+                'AdminAjaxPsfacebook',
+                true,
+                [],
+                [
+                    'action' => 'MerchantHasChatDisabled',
+                    'ajax' => 1,
+                ]
+            ),
+            'psFacebookDisableMessengerChat' => $this->context->link->getAdminLink(
+                'AdminAjaxPsfacebook',
+                true,
+                [],
+                [
+                    'action' => 'DisabledMessengerFeature',
+                    'ajax' => 1,
+                ]
+            ),
+            'psFacebookProductsUrl' => $this->context->link->getAdminLink('AdminProducts'),
             'i18nSettings' => [
                 'isoCode' => $this->context->language->iso_code,
                 'languageLocale' => $this->context->language->language_code,

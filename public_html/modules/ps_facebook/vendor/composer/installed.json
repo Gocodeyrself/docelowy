@@ -76,23 +76,23 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/PrestaShopCorp/facebook-php-business-sdk.git",
-                "reference": "3435b7f67805af205eeed06436bfcafe46a7f75a"
+                "reference": "55994a7162da9ccf5d2e2acaa60e444124f889da"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PrestaShopCorp/facebook-php-business-sdk/zipball/3435b7f67805af205eeed06436bfcafe46a7f75a",
-                "reference": "3435b7f67805af205eeed06436bfcafe46a7f75a",
+                "url": "https://api.github.com/repos/PrestaShopCorp/facebook-php-business-sdk/zipball/55994a7162da9ccf5d2e2acaa60e444124f889da",
+                "reference": "55994a7162da9ccf5d2e2acaa60e444124f889da",
                 "shasum": ""
             },
             "require": {
-                "prestashop/module-lib-guzzle-adapter": "^0.5"
+                "prestashop/module-lib-guzzle-adapter": "^0 || ^1.0"
             },
             "require-dev": {
                 "mockery/mockery": "1.3.3",
                 "phpunit/phpunit": "~9",
                 "symfony/finder": "~2.6"
             },
-            "time": "2023-07-13T13:58:38+00:00",
+            "time": "2023-09-26T10:21:54+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -117,47 +117,41 @@
         },
         {
             "name": "guzzlehttp/psr7",
-            "version": "2.5.0",
-            "version_normalized": "2.5.0.0",
+            "version": "1.9.1",
+            "version_normalized": "1.9.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/psr7.git",
-                "reference": "b635f279edd83fc275f822a1188157ffea568ff6"
+                "reference": "e4490cabc77465aaee90b20cfc9a770f8c04be6b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/psr7/zipball/b635f279edd83fc275f822a1188157ffea568ff6",
-                "reference": "b635f279edd83fc275f822a1188157ffea568ff6",
+                "url": "https://api.github.com/repos/guzzle/psr7/zipball/e4490cabc77465aaee90b20cfc9a770f8c04be6b",
+                "reference": "e4490cabc77465aaee90b20cfc9a770f8c04be6b",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.2.5 || ^8.0",
-                "psr/http-factory": "^1.0",
-                "psr/http-message": "^1.1 || ^2.0",
-                "ralouphie/getallheaders": "^3.0"
+                "php": ">=5.4.0",
+                "psr/http-message": "~1.0",
+                "ralouphie/getallheaders": "^2.0.5 || ^3.0.0"
             },
             "provide": {
-                "psr/http-factory-implementation": "1.0",
                 "psr/http-message-implementation": "1.0"
             },
             "require-dev": {
-                "bamarni/composer-bin-plugin": "^1.8.1",
-                "http-interop/http-factory-tests": "^0.9",
-                "phpunit/phpunit": "^8.5.29 || ^9.5.23"
+                "ext-zlib": "*",
+                "phpunit/phpunit": "~4.8.36 || ^5.7.27 || ^6.5.14 || ^7.5.20 || ^8.5.8 || ^9.3.10"
             },
             "suggest": {
                 "laminas/laminas-httphandlerrunner": "Emit PSR-7 responses"
             },
-            "time": "2023-04-17T16:11:26+00:00",
+            "time": "2023-04-17T16:00:37+00:00",
             "type": "library",
-            "extra": {
-                "bamarni-bin": {
-                    "bin-links": true,
-                    "forward-command": false
-                }
-            },
             "installation-source": "dist",
             "autoload": {
+                "files": [
+                    "src/functions_include.php"
+                ],
                 "psr-4": {
                     "GuzzleHttp\\Psr7\\": "src/"
                 }
@@ -196,11 +190,6 @@
                     "name": "Tobias Schultze",
                     "email": "webmaster@tubo-world.de",
                     "homepage": "https://github.com/Tobion"
-                },
-                {
-                    "name": "Márk Sági-Kazár",
-                    "email": "mark.sagikazar@gmail.com",
-                    "homepage": "https://sagikazarmark.hu"
                 }
             ],
             "description": "PSR-7 message implementation that also provides common utility methods",
@@ -216,7 +205,7 @@
             ],
             "support": {
                 "issues": "https://github.com/guzzle/psr7/issues",
-                "source": "https://github.com/guzzle/psr7/tree/2.5.0"
+                "source": "https://github.com/guzzle/psr7/tree/1.9.1"
             },
             "funding": [
                 {
@@ -236,31 +225,35 @@
         },
         {
             "name": "php-http/httplug",
-            "version": "2.4.0",
-            "version_normalized": "2.4.0.0",
+            "version": "v1.1.0",
+            "version_normalized": "1.1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-http/httplug.git",
-                "reference": "625ad742c360c8ac580fcc647a1541d29e257f67"
+                "reference": "1c6381726c18579c4ca2ef1ec1498fdae8bdf018"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-http/httplug/zipball/625ad742c360c8ac580fcc647a1541d29e257f67",
-                "reference": "625ad742c360c8ac580fcc647a1541d29e257f67",
+                "url": "https://api.github.com/repos/php-http/httplug/zipball/1c6381726c18579c4ca2ef1ec1498fdae8bdf018",
+                "reference": "1c6381726c18579c4ca2ef1ec1498fdae8bdf018",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.1 || ^8.0",
-                "php-http/promise": "^1.1",
-                "psr/http-client": "^1.0",
-                "psr/http-message": "^1.0 || ^2.0"
+                "php": ">=5.4",
+                "php-http/promise": "^1.0",
+                "psr/http-message": "^1.0"
             },
             "require-dev": {
-                "friends-of-phpspec/phpspec-code-coverage": "^4.1 || ^5.0 || ^6.0",
-                "phpspec/phpspec": "^5.1 || ^6.0 || ^7.0"
+                "henrikbjorn/phpspec-code-coverage": "^1.0",
+                "phpspec/phpspec": "^2.4"
             },
-            "time": "2023-04-14T15:10:03+00:00",
+            "time": "2016-08-31T08:30:17+00:00",
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.1-dev"
+                }
+            },
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
@@ -278,8 +271,7 @@
                 },
                 {
                     "name": "Márk Sági-Kazár",
-                    "email": "mark.sagikazar@gmail.com",
-                    "homepage": "https://sagikazarmark.hu"
+                    "email": "mark.sagikazar@gmail.com"
                 }
             ],
             "description": "HTTPlug, the HTTP client abstraction for PHP",
@@ -290,7 +282,7 @@
             ],
             "support": {
                 "issues": "https://github.com/php-http/httplug/issues",
-                "source": "https://github.com/php-http/httplug/tree/2.4.0"
+                "source": "https://github.com/php-http/httplug/tree/master"
             },
             "install-path": "../php-http/httplug"
         },
@@ -608,25 +600,24 @@
         },
         {
             "name": "prestashop/module-lib-guzzle-adapter",
-            "version": "v0.5",
-            "version_normalized": "0.5.0.0",
+            "version": "v0.6",
+            "version_normalized": "0.6.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PrestaShopCorp/module-lib-guzzle-adapter.git",
-                "reference": "e832ee996ce0eeae665e0590b6cff30ba00ed8d3"
+                "reference": "451477b899b6fae8865a0face5b3362b07a1f947"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PrestaShopCorp/module-lib-guzzle-adapter/zipball/e832ee996ce0eeae665e0590b6cff30ba00ed8d3",
-                "reference": "e832ee996ce0eeae665e0590b6cff30ba00ed8d3",
+                "url": "https://api.github.com/repos/PrestaShopCorp/module-lib-guzzle-adapter/zipball/451477b899b6fae8865a0face5b3362b07a1f947",
+                "reference": "451477b899b6fae8865a0face5b3362b07a1f947",
                 "shasum": ""
             },
             "require": {
-                "guzzlehttp/psr7": "^2.3.0",
-                "php": "^7.2 || ^8.0",
-                "php-http/httplug": "^2.3",
-                "php-http/message": "^1.13",
-                "psr/http-client": "^1.0",
+                "guzzlehttp/psr7": "~1.9",
+                "php": ">=5.6.0",
+                "php-http/httplug": "~1.1",
+                "php-http/message": "^1.7",
                 "psr/http-message": "^1.0"
             },
             "provide": {
@@ -635,10 +626,10 @@
             },
             "require-dev": {
                 "phpstan/phpstan": "^1.7",
-                "phpunit/phpunit": "^9.5",
-                "prestashop/php-dev-tools": "^4.2"
+                "phpunit/phpunit": "^9.5|^8.5|^5.7",
+                "prestashop/php-dev-tools": "^4.2|^3.16"
             },
-            "time": "2022-08-31T10:11:27+00:00",
+            "time": "2023-01-11T15:09:56+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -659,7 +650,7 @@
             "description": "Plug modules to the Guzzle client available on a running shop",
             "support": {
                 "issues": "https://github.com/PrestaShopCorp/module-lib-guzzle-adapter/issues",
-                "source": "https://github.com/PrestaShopCorp/module-lib-guzzle-adapter/tree/v0.5"
+                "source": "https://github.com/PrestaShopCorp/module-lib-guzzle-adapter/tree/v0.6"
             },
             "install-path": "../prestashop/module-lib-guzzle-adapter"
         },
@@ -766,117 +757,49 @@
             "install-path": "../prestashop/prestashop-accounts-installer"
         },
         {
-            "name": "psr/http-client",
-            "version": "1.0.2",
-            "version_normalized": "1.0.2.0",
+            "name": "prestashopcorp/module-lib-billing",
+            "version": "3.2.0",
+            "version_normalized": "3.2.0.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/php-fig/http-client.git",
-                "reference": "0955afe48220520692d2d09f7ab7e0f93ffd6a31"
+                "url": "https://github.com/PrestaShopCorp/module-lib-billing.git",
+                "reference": "b04e70ac5db33accc677fa88a8ec52118bc3b3e4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/http-client/zipball/0955afe48220520692d2d09f7ab7e0f93ffd6a31",
-                "reference": "0955afe48220520692d2d09f7ab7e0f93ffd6a31",
+                "url": "https://api.github.com/repos/PrestaShopCorp/module-lib-billing/zipball/b04e70ac5db33accc677fa88a8ec52118bc3b3e4",
+                "reference": "b04e70ac5db33accc677fa88a8ec52118bc3b3e4",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.0 || ^8.0",
-                "psr/http-message": "^1.0 || ^2.0"
+                "php": ">=5.6",
+                "prestashop/module-lib-guzzle-adapter": "0.6"
             },
-            "time": "2023-04-10T20:12:12+00:00",
+            "require-dev": {
+                "guzzlehttp/guzzle": "^5.3",
+                "prestashop/php-dev-tools": "^3"
+            },
+            "time": "2023-08-31T15:09:01+00:00",
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "Psr\\Http\\Client\\": "src/"
-                }
+                    "PrestaShopCorp\\Billing\\": "src/"
+                },
+                "classmap": [
+                    "src/"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
-            "authors": [
-                {
-                    "name": "PHP-FIG",
-                    "homepage": "https://www.php-fig.org/"
-                }
-            ],
-            "description": "Common interface for HTTP clients",
-            "homepage": "https://github.com/php-fig/http-client",
-            "keywords": [
-                "http",
-                "http-client",
-                "psr",
-                "psr-18"
-            ],
+            "description": "Utility package to retrieve Built for PS context and more",
             "support": {
-                "source": "https://github.com/php-fig/http-client/tree/1.0.2"
+                "issues": "https://github.com/PrestaShopCorp/module-lib-billing/issues",
+                "source": "https://github.com/PrestaShopCorp/module-lib-billing/tree/3.2.0"
             },
-            "install-path": "../psr/http-client"
-        },
-        {
-            "name": "psr/http-factory",
-            "version": "1.0.2",
-            "version_normalized": "1.0.2.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/php-fig/http-factory.git",
-                "reference": "e616d01114759c4c489f93b099585439f795fe35"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/http-factory/zipball/e616d01114759c4c489f93b099585439f795fe35",
-                "reference": "e616d01114759c4c489f93b099585439f795fe35",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.0.0",
-                "psr/http-message": "^1.0 || ^2.0"
-            },
-            "time": "2023-04-10T20:10:41+00:00",
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "installation-source": "dist",
-            "autoload": {
-                "psr-4": {
-                    "Psr\\Http\\Message\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "PHP-FIG",
-                    "homepage": "https://www.php-fig.org/"
-                }
-            ],
-            "description": "Common interfaces for PSR-7 HTTP message factories",
-            "keywords": [
-                "factory",
-                "http",
-                "message",
-                "psr",
-                "psr-17",
-                "psr-7",
-                "request",
-                "response"
-            ],
-            "support": {
-                "source": "https://github.com/php-fig/http-factory/tree/1.0.2"
-            },
-            "install-path": "../psr/http-factory"
+            "install-path": "../prestashopcorp/module-lib-billing"
         },
         {
             "name": "psr/http-message",
@@ -1112,17 +1035,17 @@
         },
         {
             "name": "symfony/polyfill-ctype",
-            "version": "v1.27.0",
-            "version_normalized": "1.27.0.0",
+            "version": "v1.28.0",
+            "version_normalized": "1.28.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-ctype.git",
-                "reference": "5bbc823adecdae860bb64756d639ecfec17b050a"
+                "reference": "ea208ce43cbb04af6867b4fdddb1bdbf84cc28cb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-ctype/zipball/5bbc823adecdae860bb64756d639ecfec17b050a",
-                "reference": "5bbc823adecdae860bb64756d639ecfec17b050a",
+                "url": "https://api.github.com/repos/symfony/polyfill-ctype/zipball/ea208ce43cbb04af6867b4fdddb1bdbf84cc28cb",
+                "reference": "ea208ce43cbb04af6867b4fdddb1bdbf84cc28cb",
                 "shasum": ""
             },
             "require": {
@@ -1134,11 +1057,11 @@
             "suggest": {
                 "ext-ctype": "For best performance"
             },
-            "time": "2022-11-03T14:55:06+00:00",
+            "time": "2023-01-26T09:26:14+00:00",
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "1.27-dev"
+                    "dev-main": "1.28-dev"
                 },
                 "thanks": {
                     "name": "symfony/polyfill",
@@ -1177,7 +1100,7 @@
                 "portable"
             ],
             "support": {
-                "source": "https://github.com/symfony/polyfill-ctype/tree/v1.27.0"
+                "source": "https://github.com/symfony/polyfill-ctype/tree/v1.28.0"
             },
             "funding": [
                 {

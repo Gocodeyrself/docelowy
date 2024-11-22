@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 4.3.1, created on 2024-10-16 12:11:53
+/* Smarty version 4.3.1, created on 2024-11-22 08:58:43
   from '/home/qisogexqbz/domains/cezos.exis24.pl/public_html/themes/classic/templates/catalog/_partials/products.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.1',
-  'unifunc' => 'content_670f9169010595_51920312',
+  'unifunc' => 'content_674039b32c20e2_82740312',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:_partials/pagination.tpl' => 1,
   ),
 ),false)) {
-function content_670f9169010595_51920312 (Smarty_Internal_Template $_smarty_tpl) {
+function content_674039b32c20e2_82740312 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, false);
 ?>
@@ -31,7 +31,7 @@ $_smarty_tpl->inheritance->init($_smarty_tpl, false);
 ?>
 
   <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_641321960670f916900f0b6_97746583', 'pagination');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_224453953674039b32c16d6_70059503', 'pagination');
 ?>
 
 
@@ -54,12 +54,12 @@ $_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_641321960670f91690
 <?php echo '</script'; ?>
 ><?php }
 /* {block 'pagination'} */
-class Block_641321960670f916900f0b6_97746583 extends Smarty_Internal_Block
+class Block_224453953674039b32c16d6_70059503 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'pagination' => 
   array (
-    0 => 'Block_641321960670f916900f0b6_97746583',
+    0 => 'Block_224453953674039b32c16d6_70059503',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {

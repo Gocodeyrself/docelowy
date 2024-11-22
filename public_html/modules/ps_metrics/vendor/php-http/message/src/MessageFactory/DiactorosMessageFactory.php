@@ -1,18 +1,16 @@
 <?php
 
-namespace Http\Message\MessageFactory;
+namespace ps_metrics_module_v4_0_8\Http\Message\MessageFactory;
 
-use Http\Message\MessageFactory;
-use Http\Message\StreamFactory\DiactorosStreamFactory;
-use Laminas\Diactoros\Request as LaminasRequest;
-use Laminas\Diactoros\Response as LaminasResponse;
-use Zend\Diactoros\Request as ZendRequest;
-use Zend\Diactoros\Response as ZendResponse;
-
-if (!interface_exists(MessageFactory::class)) {
-    throw new \LogicException('You cannot use "Http\Message\MessageFactory\DiactorosMessageFactory" as the "php-http/message-factory" package is not installed. Try running "composer require php-http/message-factory". Note that this package is deprecated, use "psr/http-factory" instead');
+use ps_metrics_module_v4_0_8\Http\Message\MessageFactory;
+use ps_metrics_module_v4_0_8\Http\Message\StreamFactory\DiactorosStreamFactory;
+use ps_metrics_module_v4_0_8\Laminas\Diactoros\Request as LaminasRequest;
+use ps_metrics_module_v4_0_8\Laminas\Diactoros\Response as LaminasResponse;
+use ps_metrics_module_v4_0_8\Zend\Diactoros\Request as ZendRequest;
+use ps_metrics_module_v4_0_8\Zend\Diactoros\Response as ZendResponse;
+if (!\interface_exists(MessageFactory::class)) {
+    throw new \LogicException('You cannot use "Http\\Message\\MessageFactory\\DiactorosMessageFactory" as the "php-http/message-factory" package is not installed. Try running "composer require php-http/message-factory". Note that this package is deprecated, use "psr/http-factory" instead');
 }
-
 /**
  * Creates Diactoros messages.
  *
@@ -26,61 +24,22 @@ final class DiactorosMessageFactory implements MessageFactory
      * @var DiactorosStreamFactory
      */
     private $streamFactory;
-
     public function __construct()
     {
         $this->streamFactory = new DiactorosStreamFactory();
     }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function createRequest(
-        $method,
-        $uri,
-        array $headers = [],
-        $body = null,
-        $protocolVersion = '1.1'
-    ) {
-        if (class_exists(LaminasRequest::class)) {
-            return (new LaminasRequest(
-                $uri,
-                $method,
-                $this->streamFactory->createStream($body),
-                $headers
-            ))->withProtocolVersion($protocolVersion);
+    public function createRequest($method, $uri, array $headers = [], $body = null, $protocolVersion = '1.1')
+    {
+        if (\class_exists(LaminasRequest::class)) {
+            return (new LaminasRequest($uri, $method, $this->streamFactory->createStream($body), $headers))->withProtocolVersion($protocolVersion);
         }
-
-        return (new ZendRequest(
-            $uri,
-            $method,
-            $this->streamFactory->createStream($body),
-            $headers
-        ))->withProtocolVersion($protocolVersion);
+        return (new ZendRequest($uri, $method, $this->streamFactory->createStream($body), $headers))->withProtocolVersion($protocolVersion);
     }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function createResponse(
-        $statusCode = 200,
-        $reasonPhrase = null,
-        array $headers = [],
-        $body = null,
-        $protocolVersion = '1.1'
-    ) {
-        if (class_exists(LaminasResponse::class)) {
-            return (new LaminasResponse(
-                $this->streamFactory->createStream($body),
-                $statusCode,
-                $headers
-            ))->withProtocolVersion($protocolVersion);
+    public function createResponse($statusCode = 200, $reasonPhrase = null, array $headers = [], $body = null, $protocolVersion = '1.1')
+    {
+        if (\class_exists(LaminasResponse::class)) {
+            return (new LaminasResponse($this->streamFactory->createStream($body), $statusCode, $headers))->withProtocolVersion($protocolVersion);
         }
-
-        return (new ZendResponse(
-            $this->streamFactory->createStream($body),
-            $statusCode,
-            $headers
-        ))->withProtocolVersion($protocolVersion);
+        return (new ZendResponse($this->streamFactory->createStream($body), $statusCode, $headers))->withProtocolVersion($protocolVersion);
     }
 }

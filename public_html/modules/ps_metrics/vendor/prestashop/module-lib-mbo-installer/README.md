@@ -8,14 +8,14 @@ For extensions requiring other modules available on the marketplace on PrestaSho
 ## Installation
 
 ```
-composer require prestashop/module-lib-mbo-installer
+composer require prestashop/module-lib-mbo-adapter
 ```
 
 ## Version Guidance
 
 | Version | Status         | Packagist           -| Namespace    | Repo                | Docs                | PHP Version  |
 |---------|----------------|----------------------|--------------|---------------------|---------------------|--------------|
-| 1.x     | Latest         | `prestashop/module-lib-mbo-installer` | `Prestashop\ModuleLibMboInstaller` | [v1.x][lib-1-repo] | N/A                 | >=5.6   |
+| 1.x     | Latest         | `prestashop/module-lib-mbo-adapter` | `Prestashop\ModuleLibMboInstaller` | [v1.x][lib-1-repo] | N/A                 | >=5.6   |
 
 [lib-1-repo]: https://github.com/PrestaShopCorp/module-lib-mbo-installer/tree/main
 
@@ -30,7 +30,6 @@ This example would be called from your module.
 $mboStatus = (new Prestashop\ModuleLibMboInstaller\Presenter)->present();
 
 var_dump($mboStatus);
-
 /*
 Example output:
 array(4) {
@@ -43,7 +42,7 @@ array(4) {
   ["version"]=>
   NULL
 }
-*/
+/*
 ```
 
 ### Trigger download and installation of MBO

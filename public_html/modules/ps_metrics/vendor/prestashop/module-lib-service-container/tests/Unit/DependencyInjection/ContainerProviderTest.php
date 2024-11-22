@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright since 2007 PrestaShop SA and Contributors
  * PrestaShop is an International Registered Trademark & Property of PrestaShop SA
@@ -17,12 +18,11 @@
  * @copyright Since 2007 PrestaShop SA and Contributors
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  */
-namespace Tests\Unit\DependencyInjection;
+namespace ps_metrics_module_v4_0_8\Tests\Unit\DependencyInjection;
 
-use PHPUnit\Framework\TestCase;
-use PrestaShop\ModuleLibCacheDirectoryProvider\Cache\CacheDirectoryProvider;
+use ps_metrics_module_v4_0_8\PHPUnit\Framework\TestCase;
+use ps_metrics_module_v4_0_8\PrestaShop\ModuleLibCacheDirectoryProvider\Cache\CacheDirectoryProvider;
 use PrestaShop\ModuleLibServiceContainer\DependencyInjection\ContainerProvider;
-
 class ContainerProviderTest extends TestCase
 {
     public function testItIsReturnValidInstance()
@@ -30,7 +30,6 @@ class ContainerProviderTest extends TestCase
         /** @var CacheDirectoryProvider $cacheDirectory */
         $cacheDirectory = $this->createMock(CacheDirectoryProvider::class);
         $containerProvider = new ContainerProvider('test', __DIR__, $cacheDirectory);
-
         $this->assertInstanceOf(ContainerProvider::class, $containerProvider);
     }
 }

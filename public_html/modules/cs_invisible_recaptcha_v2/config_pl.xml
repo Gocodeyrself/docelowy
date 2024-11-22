@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <module>
     <name>cs_invisible_recaptcha_v2</name>
-    <displayName><![CDATA[Invisible reCaptcha]]></displayName>
+    <displayName><![CDATA[Niewidoczna reCaptcha]]></displayName>
     <version><![CDATA[1.1.0]]></version>
-    <description><![CDATA[Add a Invisible reCaptcha to your website contact form]]></description>
+    <description><![CDATA[Dodaj niewidoczną reCaptcha do formularza kontaktowego na swojej stronie internetowej]]></description>
     <author><![CDATA[comonsoft]]></author>
     <tab><![CDATA[front_office_features]]></tab>
     <is_configurable>1</is_configurable>

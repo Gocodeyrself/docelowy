@@ -1,9 +1,8 @@
 <?php
 
-namespace Dotenv\Environment\Adapter;
+namespace ps_metrics_module_v4_0_8\Dotenv\Environment\Adapter;
 
-use PhpOption\None;
-
+use ps_metrics_module_v4_0_8\PhpOption\None;
 class ApacheAdapter implements AdapterInterface
 {
     /**
@@ -15,9 +14,8 @@ class ApacheAdapter implements AdapterInterface
      */
     public function isSupported()
     {
-        return function_exists('apache_getenv') && function_exists('apache_setenv');
+        return \function_exists('apache_getenv') && \function_exists('apache_setenv');
     }
-
     /**
      * Get an environment variable, if it exists.
      *
@@ -32,7 +30,6 @@ class ApacheAdapter implements AdapterInterface
     {
         return None::create();
     }
-
     /**
      * Set an environment variable.
      *
@@ -45,11 +42,10 @@ class ApacheAdapter implements AdapterInterface
      */
     public function set($name, $value = null)
     {
-        if (apache_getenv($name) !== false) {
-            apache_setenv($name, (string) $value);
+        if (\apache_getenv($name) !== \false) {
+            \apache_setenv($name, (string) $value);
         }
     }
-
     /**
      * Clear an environment variable.
      *

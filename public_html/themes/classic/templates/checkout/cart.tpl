@@ -57,7 +57,7 @@
 
         <!-- shipping informations -->
         {block name='hook_shopping_cart_footer'}
-          {hook h='displayShoppingCartFooter'}
+          {* {hook h='displayShoppingCartFooter'} *}
         {/block}
       </div>
 

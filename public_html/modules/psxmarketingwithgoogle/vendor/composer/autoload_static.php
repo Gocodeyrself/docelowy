@@ -4,33 +4,40 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitc1bb91e161456bc058be6a6576af9daf
+class ComposerStaticInit6844d0c729b7c71a07d5daab1e7a8127
 {
     public static $files = array (
         '9c67151ae59aff4788964ce8eb2a0f43' => __DIR__ . '/..' . '/clue/stream-filter/src/functions_include.php',
         '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
+        'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
         '8cff32064859f4559445b89279f3199c' => __DIR__ . '/..' . '/php-http/message/src/filters.php',
+        '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
         '2a9afd012ba84c341672875ae49cd5cd' => __DIR__ . '/..' . '/segmentio/analytics-php/lib/Segment.php',
         'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
     );
 
     public static $prefixLengthsPsr4 = array (
+        'l' => 
+        array (
+            'libphonenumber\\' => 15,
+        ),
         'S' => 
         array (
             'Symfony\\Polyfill\\Php80\\' => 23,
+            'Symfony\\Polyfill\\Mbstring\\' => 26,
             'Symfony\\Polyfill\\Ctype\\' => 23,
         ),
         'P' => 
         array (
             'Psr\\Http\\Message\\' => 17,
-            'Psr\\Http\\Client\\' => 16,
             'Prestashop\\ModuleLibGuzzleAdapter\\' => 34,
             'PrestaShop\\PsAccountsInstaller\\' => 31,
             'PrestaShop\\Module\\PsxMarketingWithGoogle\\' => 41,
             'PrestaShop\\ModuleLibServiceContainer\\' => 37,
             'PrestaShop\\ModuleLibFaq\\' => 24,
             'PrestaShop\\ModuleLibCacheDirectoryProvider\\' => 43,
+            'PrestaShopCorp\\Billing\\' => 23,
             'PhpOption\\' => 10,
         ),
         'H' => 
@@ -42,6 +49,7 @@ class ComposerStaticInitc1bb91e161456bc058be6a6576af9daf
         'G' => 
         array (
             'GuzzleHttp\\Psr7\\' => 16,
+            'Giggsey\\Locale\\' => 15,
         ),
         'D' => 
         array (
@@ -51,12 +59,24 @@ class ComposerStaticInitc1bb91e161456bc058be6a6576af9daf
         array (
             'Clue\\StreamFilter\\' => 18,
         ),
+        'B' => 
+        array (
+            'Brick\\PhoneNumber\\' => 18,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
+        'libphonenumber\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/giggsey/libphonenumber-for-php/src',
+        ),
         'Symfony\\Polyfill\\Php80\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-php80',
+        ),
+        'Symfony\\Polyfill\\Mbstring\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/polyfill-mbstring',
         ),
         'Symfony\\Polyfill\\Ctype\\' => 
         array (
@@ -64,12 +84,7 @@ class ComposerStaticInitc1bb91e161456bc058be6a6576af9daf
         ),
         'Psr\\Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-factory/src',
-            1 => __DIR__ . '/..' . '/psr/http-message/src',
-        ),
-        'Psr\\Http\\Client\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/psr/http-client/src',
+            0 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
         'Prestashop\\ModuleLibGuzzleAdapter\\' => 
         array (
@@ -95,6 +110,10 @@ class ComposerStaticInitc1bb91e161456bc058be6a6576af9daf
         array (
             0 => __DIR__ . '/..' . '/prestashop/module-lib-cache-directory-provider/src',
         ),
+        'PrestaShopCorp\\Billing\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/prestashopcorp/module-lib-billing/src',
+        ),
         'PhpOption\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpoption/phpoption/src/PhpOption',
@@ -106,7 +125,6 @@ class ComposerStaticInitc1bb91e161456bc058be6a6576af9daf
         'Http\\Message\\' => 
         array (
             0 => __DIR__ . '/..' . '/php-http/message/src',
-            1 => __DIR__ . '/..' . '/php-http/message-factory/src',
         ),
         'Http\\Client\\' => 
         array (
@@ -116,6 +134,10 @@ class ComposerStaticInitc1bb91e161456bc058be6a6576af9daf
         array (
             0 => __DIR__ . '/..' . '/guzzlehttp/psr7/src',
         ),
+        'Giggsey\\Locale\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/giggsey/locale/src',
+        ),
         'Dotenv\\' => 
         array (
             0 => __DIR__ . '/..' . '/vlucas/phpdotenv/src',
@@ -123,6 +145,10 @@ class ComposerStaticInitc1bb91e161456bc058be6a6576af9daf
         'Clue\\StreamFilter\\' => 
         array (
             0 => __DIR__ . '/..' . '/clue/stream-filter/src',
+        ),
+        'Brick\\PhoneNumber\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/brick/phonenumber/src',
         ),
     );
 
@@ -140,6 +166,11 @@ class ComposerStaticInitc1bb91e161456bc058be6a6576af9daf
         'AdminAjaxPsxMktgWithGoogleController' => __DIR__ . '/../..' . '/controllers/admin/AdminAjaxPsxMktgWithGoogleController.php',
         'AdminPsxMktgWithGoogleModuleController' => __DIR__ . '/../..' . '/controllers/admin/AdminPsxMktgWithGoogleModuleController.php',
         'Attribute' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
+        'Brick\\PhoneNumber\\PhoneNumber' => __DIR__ . '/..' . '/brick/phonenumber/src/PhoneNumber.php',
+        'Brick\\PhoneNumber\\PhoneNumberException' => __DIR__ . '/..' . '/brick/phonenumber/src/PhoneNumberException.php',
+        'Brick\\PhoneNumber\\PhoneNumberFormat' => __DIR__ . '/..' . '/brick/phonenumber/src/PhoneNumberFormat.php',
+        'Brick\\PhoneNumber\\PhoneNumberParseException' => __DIR__ . '/..' . '/brick/phonenumber/src/PhoneNumberParseException.php',
+        'Brick\\PhoneNumber\\PhoneNumberType' => __DIR__ . '/..' . '/brick/phonenumber/src/PhoneNumberType.php',
         'Clue\\StreamFilter\\CallbackFilter' => __DIR__ . '/..' . '/clue/stream-filter/src/CallbackFilter.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'Dotenv\\Dotenv' => __DIR__ . '/..' . '/vlucas/phpdotenv/src/Dotenv.php',
@@ -166,14 +197,13 @@ class ComposerStaticInitc1bb91e161456bc058be6a6576af9daf
         'Dotenv\\Regex\\Result' => __DIR__ . '/..' . '/vlucas/phpdotenv/src/Regex/Result.php',
         'Dotenv\\Regex\\Success' => __DIR__ . '/..' . '/vlucas/phpdotenv/src/Regex/Success.php',
         'Dotenv\\Validator' => __DIR__ . '/..' . '/vlucas/phpdotenv/src/Validator.php',
+        'Giggsey\\Locale\\Locale' => __DIR__ . '/..' . '/giggsey/locale/src/Locale.php',
         'GuzzleHttp\\Psr7\\AppendStream' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/AppendStream.php',
         'GuzzleHttp\\Psr7\\BufferStream' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/BufferStream.php',
         'GuzzleHttp\\Psr7\\CachingStream' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/CachingStream.php',
         'GuzzleHttp\\Psr7\\DroppingStream' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/DroppingStream.php',
-        'GuzzleHttp\\Psr7\\Exception\\MalformedUriException' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/Exception/MalformedUriException.php',
         'GuzzleHttp\\Psr7\\FnStream' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/FnStream.php',
         'GuzzleHttp\\Psr7\\Header' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/Header.php',
-        'GuzzleHttp\\Psr7\\HttpFactory' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/HttpFactory.php',
         'GuzzleHttp\\Psr7\\InflateStream' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/InflateStream.php',
         'GuzzleHttp\\Psr7\\LazyOpenStream' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/LazyOpenStream.php',
         'GuzzleHttp\\Psr7\\LimitStream' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/LimitStream.php',
@@ -200,7 +230,6 @@ class ComposerStaticInitc1bb91e161456bc058be6a6576af9daf
         'Http\\Client\\Exception' => __DIR__ . '/..' . '/php-http/httplug/src/Exception.php',
         'Http\\Client\\Exception\\HttpException' => __DIR__ . '/..' . '/php-http/httplug/src/Exception/HttpException.php',
         'Http\\Client\\Exception\\NetworkException' => __DIR__ . '/..' . '/php-http/httplug/src/Exception/NetworkException.php',
-        'Http\\Client\\Exception\\RequestAwareTrait' => __DIR__ . '/..' . '/php-http/httplug/src/Exception/RequestAwareTrait.php',
         'Http\\Client\\Exception\\RequestException' => __DIR__ . '/..' . '/php-http/httplug/src/Exception/RequestException.php',
         'Http\\Client\\Exception\\TransferException' => __DIR__ . '/..' . '/php-http/httplug/src/Exception/TransferException.php',
         'Http\\Client\\HttpAsyncClient' => __DIR__ . '/..' . '/php-http/httplug/src/HttpAsyncClient.php',
@@ -241,22 +270,17 @@ class ComposerStaticInitc1bb91e161456bc058be6a6576af9daf
         'Http\\Message\\Formatter\\CurlCommandFormatter' => __DIR__ . '/..' . '/php-http/message/src/Formatter/CurlCommandFormatter.php',
         'Http\\Message\\Formatter\\FullHttpMessageFormatter' => __DIR__ . '/..' . '/php-http/message/src/Formatter/FullHttpMessageFormatter.php',
         'Http\\Message\\Formatter\\SimpleFormatter' => __DIR__ . '/..' . '/php-http/message/src/Formatter/SimpleFormatter.php',
-        'Http\\Message\\MessageFactory' => __DIR__ . '/..' . '/php-http/message-factory/src/MessageFactory.php',
         'Http\\Message\\MessageFactory\\DiactorosMessageFactory' => __DIR__ . '/..' . '/php-http/message/src/MessageFactory/DiactorosMessageFactory.php',
         'Http\\Message\\MessageFactory\\GuzzleMessageFactory' => __DIR__ . '/..' . '/php-http/message/src/MessageFactory/GuzzleMessageFactory.php',
         'Http\\Message\\MessageFactory\\SlimMessageFactory' => __DIR__ . '/..' . '/php-http/message/src/MessageFactory/SlimMessageFactory.php',
-        'Http\\Message\\RequestFactory' => __DIR__ . '/..' . '/php-http/message-factory/src/RequestFactory.php',
         'Http\\Message\\RequestMatcher' => __DIR__ . '/..' . '/php-http/message/src/RequestMatcher.php',
         'Http\\Message\\RequestMatcher\\CallbackRequestMatcher' => __DIR__ . '/..' . '/php-http/message/src/RequestMatcher/CallbackRequestMatcher.php',
         'Http\\Message\\RequestMatcher\\RegexRequestMatcher' => __DIR__ . '/..' . '/php-http/message/src/RequestMatcher/RegexRequestMatcher.php',
         'Http\\Message\\RequestMatcher\\RequestMatcher' => __DIR__ . '/..' . '/php-http/message/src/RequestMatcher/RequestMatcher.php',
-        'Http\\Message\\ResponseFactory' => __DIR__ . '/..' . '/php-http/message-factory/src/ResponseFactory.php',
-        'Http\\Message\\StreamFactory' => __DIR__ . '/..' . '/php-http/message-factory/src/StreamFactory.php',
         'Http\\Message\\StreamFactory\\DiactorosStreamFactory' => __DIR__ . '/..' . '/php-http/message/src/StreamFactory/DiactorosStreamFactory.php',
         'Http\\Message\\StreamFactory\\GuzzleStreamFactory' => __DIR__ . '/..' . '/php-http/message/src/StreamFactory/GuzzleStreamFactory.php',
         'Http\\Message\\StreamFactory\\SlimStreamFactory' => __DIR__ . '/..' . '/php-http/message/src/StreamFactory/SlimStreamFactory.php',
         'Http\\Message\\Stream\\BufferedStream' => __DIR__ . '/..' . '/php-http/message/src/Stream/BufferedStream.php',
-        'Http\\Message\\UriFactory' => __DIR__ . '/..' . '/php-http/message-factory/src/UriFactory.php',
         'Http\\Message\\UriFactory\\DiactorosUriFactory' => __DIR__ . '/..' . '/php-http/message/src/UriFactory/DiactorosUriFactory.php',
         'Http\\Message\\UriFactory\\GuzzleUriFactory' => __DIR__ . '/..' . '/php-http/message/src/UriFactory/GuzzleUriFactory.php',
         'Http\\Message\\UriFactory\\SlimUriFactory' => __DIR__ . '/..' . '/php-http/message/src/UriFactory/SlimUriFactory.php',
@@ -268,6 +292,19 @@ class ComposerStaticInitc1bb91e161456bc058be6a6576af9daf
         'PhpOption\\Option' => __DIR__ . '/..' . '/phpoption/phpoption/src/PhpOption/Option.php',
         'PhpOption\\Some' => __DIR__ . '/..' . '/phpoption/phpoption/src/PhpOption/Some.php',
         'PhpToken' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/PhpToken.php',
+        'PrestaShopCorp\\Billing\\Builder\\EnvBuilder' => __DIR__ . '/..' . '/prestashopcorp/module-lib-billing/src/Builder/EnvBuilder.php',
+        'PrestaShopCorp\\Billing\\Builder\\UrlBuilder' => __DIR__ . '/..' . '/prestashopcorp/module-lib-billing/src/Builder/UrlBuilder.php',
+        'PrestaShopCorp\\Billing\\Clients\\BillingApiGatewayClient' => __DIR__ . '/..' . '/prestashopcorp/module-lib-billing/src/Clients/BillingAPIGatewayClient.php',
+        'PrestaShopCorp\\Billing\\Clients\\BillingServiceSubscriptionClient' => __DIR__ . '/..' . '/prestashopcorp/module-lib-billing/src/Clients/BillingServiceSubscriptionClient.php',
+        'PrestaShopCorp\\Billing\\Clients\\GenericClient' => __DIR__ . '/..' . '/prestashopcorp/module-lib-billing/src/Clients/GenericClient.php',
+        'PrestaShopCorp\\Billing\\Clients\\Handler\\HttpResponseHandler' => __DIR__ . '/..' . '/prestashopcorp/module-lib-billing/src/Clients/Handler/HttpResponseHandler.php',
+        'PrestaShopCorp\\Billing\\Config\\Config' => __DIR__ . '/..' . '/prestashopcorp/module-lib-billing/src/Config/Config.php',
+        'PrestaShopCorp\\Billing\\Exception\\BillingContextException' => __DIR__ . '/..' . '/prestashopcorp/module-lib-billing/src/Exception/BillingContextException.php',
+        'PrestaShopCorp\\Billing\\Exception\\MissingMandatoryParametersException' => __DIR__ . '/..' . '/prestashopcorp/module-lib-billing/src/Exception/MissingMandatoryParametersException.php',
+        'PrestaShopCorp\\Billing\\Exception\\QueryParamsException' => __DIR__ . '/..' . '/prestashopcorp/module-lib-billing/src/Exception/QueryParamsException.php',
+        'PrestaShopCorp\\Billing\\Presenter\\BillingPresenter' => __DIR__ . '/..' . '/prestashopcorp/module-lib-billing/src/Presenter/BillingPresenter.php',
+        'PrestaShopCorp\\Billing\\Services\\BillingService' => __DIR__ . '/..' . '/prestashopcorp/module-lib-billing/src/Services/BillingService.php',
+        'PrestaShopCorp\\Billing\\Wrappers\\BillingContextWrapper' => __DIR__ . '/..' . '/prestashopcorp/module-lib-billing/src/Wrappers/BillingContextWrapper.php',
         'PrestaShop\\ModuleLibCacheDirectoryProvider\\Cache\\CacheDirectoryProvider' => __DIR__ . '/..' . '/prestashop/module-lib-cache-directory-provider/src/Cache/CacheDirectoryProvider.php',
         'PrestaShop\\ModuleLibFaq\\Faq' => __DIR__ . '/..' . '/prestashop/module-lib-faq/src/Faq.php',
         'PrestaShop\\ModuleLibFaq\\Parameters' => __DIR__ . '/..' . '/prestashop/module-lib-faq/src/Parameters.php',
@@ -278,6 +315,13 @@ class ComposerStaticInitc1bb91e161456bc058be6a6576af9daf
         'PrestaShop\\Module\\PsxMarketingWithGoogle\\Builder\\CarrierBuilder' => __DIR__ . '/../..' . '/classes/Builder/CarrierBuilder.php',
         'PrestaShop\\Module\\PsxMarketingWithGoogle\\Config\\Config' => __DIR__ . '/../..' . '/classes/config/Config.php',
         'PrestaShop\\Module\\PsxMarketingWithGoogle\\Config\\Env' => __DIR__ . '/../..' . '/classes/config/Env.php',
+        'PrestaShop\\Module\\PsxMarketingWithGoogle\\Conversion\\EnhancedConversionToggle' => __DIR__ . '/../..' . '/classes/Conversion/EnhancedConversionToggle.php',
+        'PrestaShop\\Module\\PsxMarketingWithGoogle\\Conversion\\Hasher' => __DIR__ . '/../..' . '/classes/Conversion/Hasher.php',
+        'PrestaShop\\Module\\PsxMarketingWithGoogle\\Conversion\\Normalizer' => __DIR__ . '/../..' . '/classes/Conversion/Normalizer.php',
+        'PrestaShop\\Module\\PsxMarketingWithGoogle\\Conversion\\SnippetUpdater' => __DIR__ . '/../..' . '/classes/Conversion/SnippetUpdater.php',
+        'PrestaShop\\Module\\PsxMarketingWithGoogle\\Conversion\\UserAddressData' => __DIR__ . '/../..' . '/classes/Conversion/UserAddressData.php',
+        'PrestaShop\\Module\\PsxMarketingWithGoogle\\Conversion\\UserData' => __DIR__ . '/../..' . '/classes/Conversion/UserData.php',
+        'PrestaShop\\Module\\PsxMarketingWithGoogle\\Conversion\\UserDataProvider' => __DIR__ . '/../..' . '/classes/Conversion/UserDataProvider.php',
         'PrestaShop\\Module\\PsxMarketingWithGoogle\\DTO\\Carrier' => __DIR__ . '/../..' . '/classes/DTO/Carrier.php',
         'PrestaShop\\Module\\PsxMarketingWithGoogle\\DTO\\CarrierDetail' => __DIR__ . '/../..' . '/classes/DTO/CarrierDetail.php',
         'PrestaShop\\Module\\PsxMarketingWithGoogle\\DTO\\CarrierTax' => __DIR__ . '/../..' . '/classes/DTO/CarrierTax.php',
@@ -292,19 +336,37 @@ class ComposerStaticInitc1bb91e161456bc058be6a6576af9daf
         'PrestaShop\\Module\\PsxMarketingWithGoogle\\Handler\\ErrorHandler' => __DIR__ . '/../..' . '/classes/Handler/ErrorHandler.php',
         'PrestaShop\\Module\\PsxMarketingWithGoogle\\Handler\\ModuleFilteredRavenClient' => __DIR__ . '/../..' . '/classes/Handler/ModuleFilteredRavenClient.php',
         'PrestaShop\\Module\\PsxMarketingWithGoogle\\Handler\\RemarketingHookHandler' => __DIR__ . '/../..' . '/classes/Handler/RemarketingHookHandler.php',
+        'PrestaShop\\Module\\PsxMarketingWithGoogle\\ProductFilter\\AttributeMapConditionOutput' => __DIR__ . '/../..' . '/classes/ProductFilter/AttributeMapConditionOutput.php',
+        'PrestaShop\\Module\\PsxMarketingWithGoogle\\ProductFilter\\AttributeType' => __DIR__ . '/../..' . '/classes/ProductFilter/AttributeType.php',
+        'PrestaShop\\Module\\PsxMarketingWithGoogle\\ProductFilter\\Condition' => __DIR__ . '/../..' . '/classes/ProductFilter/Condition.php',
+        'PrestaShop\\Module\\PsxMarketingWithGoogle\\ProductFilter\\FilterApplication\\AttributeQueryBuilder\\BrandQueryBuilder' => __DIR__ . '/../..' . '/classes/ProductFilter/FilterApplication/AttributeQueryBuilder/BrandQueryBuilder.php',
+        'PrestaShop\\Module\\PsxMarketingWithGoogle\\ProductFilter\\FilterApplication\\AttributeQueryBuilder\\CategoryQueryBuilder' => __DIR__ . '/../..' . '/classes/ProductFilter/FilterApplication/AttributeQueryBuilder/CategoryQueryBuilder.php',
+        'PrestaShop\\Module\\PsxMarketingWithGoogle\\ProductFilter\\FilterApplication\\AttributeQueryBuilder\\FeatureQueryBuilder' => __DIR__ . '/../..' . '/classes/ProductFilter/FilterApplication/AttributeQueryBuilder/FeatureQueryBuilder.php',
+        'PrestaShop\\Module\\PsxMarketingWithGoogle\\ProductFilter\\FilterApplication\\AttributeQueryBuilder\\OutOfStockQueryBuilder' => __DIR__ . '/../..' . '/classes/ProductFilter/FilterApplication/AttributeQueryBuilder/OutOfStockQueryBuilder.php',
+        'PrestaShop\\Module\\PsxMarketingWithGoogle\\ProductFilter\\FilterApplication\\AttributeQueryBuilder\\PriceQueryBuilder' => __DIR__ . '/../..' . '/classes/ProductFilter/FilterApplication/AttributeQueryBuilder/PriceQueryBuilder.php',
+        'PrestaShop\\Module\\PsxMarketingWithGoogle\\ProductFilter\\FilterApplication\\AttributeQueryBuilder\\ProductIdQueryBuilder' => __DIR__ . '/../..' . '/classes/ProductFilter/FilterApplication/AttributeQueryBuilder/ProductIdQueryBuilder.php',
+        'PrestaShop\\Module\\PsxMarketingWithGoogle\\ProductFilter\\FilterApplication\\AttributeQueryBuilder\\QueryBuilderInterface' => __DIR__ . '/../..' . '/classes/ProductFilter/FilterApplication/AttributeQueryBuilder/QueryBuilderInterface.php',
+        'PrestaShop\\Module\\PsxMarketingWithGoogle\\ProductFilter\\FilterApplication\\FilterValidator' => __DIR__ . '/../..' . '/classes/ProductFilter/FilterApplication/FilterValidator.php',
+        'PrestaShop\\Module\\PsxMarketingWithGoogle\\ProductFilter\\FilterApplication\\ProductEnumerator' => __DIR__ . '/../..' . '/classes/ProductFilter/FilterApplication/ProductEnumerator.php',
+        'PrestaShop\\Module\\PsxMarketingWithGoogle\\ProductFilter\\FilterApplication\\QueryBuilder' => __DIR__ . '/../..' . '/classes/ProductFilter/FilterApplication/QueryBuilder.php',
+        'PrestaShop\\Module\\PsxMarketingWithGoogle\\ProductFilter\\Options\\BrandOptionsProvider' => __DIR__ . '/../..' . '/classes/ProductFilter/Options/BrandOptionsProvider.php',
+        'PrestaShop\\Module\\PsxMarketingWithGoogle\\ProductFilter\\Options\\CategoryOptionsProvider' => __DIR__ . '/../..' . '/classes/ProductFilter/Options/CategoryOptionsProvider.php',
+        'PrestaShop\\Module\\PsxMarketingWithGoogle\\ProductFilter\\Options\\FeatureOptionsProvider' => __DIR__ . '/../..' . '/classes/ProductFilter/Options/FeatureOptionsProvider.php',
+        'PrestaShop\\Module\\PsxMarketingWithGoogle\\ProductFilter\\Options\\OptionsProviderInterface' => __DIR__ . '/../..' . '/classes/ProductFilter/Options/OptionsProviderInterface.php',
+        'PrestaShop\\Module\\PsxMarketingWithGoogle\\ProductFilter\\Options\\Resolver' => __DIR__ . '/../..' . '/classes/ProductFilter/Options/Resolver.php',
         'PrestaShop\\Module\\PsxMarketingWithGoogle\\Provider\\CarrierDataProvider' => __DIR__ . '/../..' . '/classes/Provider/CarrierDataProvider.php',
         'PrestaShop\\Module\\PsxMarketingWithGoogle\\Provider\\CartEventDataProvider' => __DIR__ . '/../..' . '/classes/Provider/CartEventDataProvider.php',
-        'PrestaShop\\Module\\PsxMarketingWithGoogle\\Provider\\ConversionEventDataProvider' => __DIR__ . '/../..' . '/classes/Provider/ConversionEventDataProvider.php',
-        'PrestaShop\\Module\\PsxMarketingWithGoogle\\Provider\\GoogleTagProvider' => __DIR__ . '/../..' . '/classes/Provider/GoogleTagProvider.php',
         'PrestaShop\\Module\\PsxMarketingWithGoogle\\Provider\\PageViewEventDataProvider' => __DIR__ . '/../..' . '/classes/Provider/PageViewEventDataProvider.php',
         'PrestaShop\\Module\\PsxMarketingWithGoogle\\Provider\\ProductDataProvider' => __DIR__ . '/../..' . '/classes/Provider/ProductDataProvider.php',
         'PrestaShop\\Module\\PsxMarketingWithGoogle\\Provider\\PurchaseEventDataProvider' => __DIR__ . '/../..' . '/classes/Provider/PurchaseEventDataProvider.php',
         'PrestaShop\\Module\\PsxMarketingWithGoogle\\Provider\\VerificationTagDataProvider' => __DIR__ . '/../..' . '/classes/Provider/VerificationTagDataProvider.php',
         'PrestaShop\\Module\\PsxMarketingWithGoogle\\Repository\\AttributesRepository' => __DIR__ . '/../..' . '/classes/Repository/AttributesRepository.php',
         'PrestaShop\\Module\\PsxMarketingWithGoogle\\Repository\\CarrierRepository' => __DIR__ . '/../..' . '/classes/Repository/CarrierRepository.php',
+        'PrestaShop\\Module\\PsxMarketingWithGoogle\\Repository\\CategoryRepository' => __DIR__ . '/../..' . '/classes/Repository/CategoryRepository.php',
         'PrestaShop\\Module\\PsxMarketingWithGoogle\\Repository\\CountryRepository' => __DIR__ . '/../..' . '/classes/Repository/CountryRepository.php',
         'PrestaShop\\Module\\PsxMarketingWithGoogle\\Repository\\CurrencyRepository' => __DIR__ . '/../..' . '/classes/Repository/CurrencyRepository.php',
         'PrestaShop\\Module\\PsxMarketingWithGoogle\\Repository\\LanguageRepository' => __DIR__ . '/../..' . '/classes/Repository/LanguageRepository.php',
+        'PrestaShop\\Module\\PsxMarketingWithGoogle\\Repository\\ManufacturerRepository' => __DIR__ . '/../..' . '/classes/Repository/ManufacturerRepository.php',
         'PrestaShop\\Module\\PsxMarketingWithGoogle\\Repository\\ModuleRepository' => __DIR__ . '/../..' . '/classes/Repository/ModuleRepository.php',
         'PrestaShop\\Module\\PsxMarketingWithGoogle\\Repository\\ProductRepository' => __DIR__ . '/../..' . '/classes/Repository/ProductRepository.php',
         'PrestaShop\\Module\\PsxMarketingWithGoogle\\Repository\\StateRepository' => __DIR__ . '/../..' . '/classes/Repository/StateRepository.php',
@@ -320,30 +382,22 @@ class ComposerStaticInitc1bb91e161456bc058be6a6576af9daf
         'PrestaShop\\PsAccountsInstaller\\Installer\\Installer' => __DIR__ . '/..' . '/prestashop/prestashop-accounts-installer/src/Installer/Installer.php',
         'PrestaShop\\PsAccountsInstaller\\Installer\\Presenter\\InstallerPresenter' => __DIR__ . '/..' . '/prestashop/prestashop-accounts-installer/src/Installer/Presenter/InstallerPresenter.php',
         'Prestashop\\ModuleLibGuzzleAdapter\\ClientFactory' => __DIR__ . '/..' . '/prestashop/module-lib-guzzle-adapter/src/ClientFactory.php',
-        'Prestashop\\ModuleLibGuzzleAdapter\\ConfigInterface' => __DIR__ . '/..' . '/prestashop/module-lib-guzzle-adapter/src/ConfigInterface.php',
         'Prestashop\\ModuleLibGuzzleAdapter\\Guzzle5\\Client' => __DIR__ . '/..' . '/prestashop/module-lib-guzzle-adapter/src/Guzzle5/Client.php',
         'Prestashop\\ModuleLibGuzzleAdapter\\Guzzle5\\Config' => __DIR__ . '/..' . '/prestashop/module-lib-guzzle-adapter/src/Guzzle5/Config.php',
         'Prestashop\\ModuleLibGuzzleAdapter\\Guzzle7\\Client' => __DIR__ . '/..' . '/prestashop/module-lib-guzzle-adapter/src/Guzzle7/Client.php',
         'Prestashop\\ModuleLibGuzzleAdapter\\Guzzle7\\Config' => __DIR__ . '/..' . '/prestashop/module-lib-guzzle-adapter/src/Guzzle7/Config.php',
         'Prestashop\\ModuleLibGuzzleAdapter\\Guzzle7\\Exception\\UnexpectedValueException' => __DIR__ . '/..' . '/prestashop/module-lib-guzzle-adapter/src/Guzzle7/Exception/UnexpectedValueException.php',
         'Prestashop\\ModuleLibGuzzleAdapter\\Guzzle7\\Promise' => __DIR__ . '/..' . '/prestashop/module-lib-guzzle-adapter/src/Guzzle7/Promise.php',
+        'Prestashop\\ModuleLibGuzzleAdapter\\Interfaces\\ClientExceptionInterface' => __DIR__ . '/..' . '/prestashop/module-lib-guzzle-adapter/src/Interfaces/ClientExceptionInterface.php',
+        'Prestashop\\ModuleLibGuzzleAdapter\\Interfaces\\ConfigInterface' => __DIR__ . '/..' . '/prestashop/module-lib-guzzle-adapter/src/Interfaces/ConfigInterface.php',
+        'Prestashop\\ModuleLibGuzzleAdapter\\Interfaces\\HttpClientInterface' => __DIR__ . '/..' . '/prestashop/module-lib-guzzle-adapter/src/Interfaces/HttpClientInterface.php',
         'Prestashop\\ModuleLibGuzzleAdapter\\VersionDetection' => __DIR__ . '/..' . '/prestashop/module-lib-guzzle-adapter/src/VersionDetection.php',
-        'Psr\\Http\\Client\\ClientExceptionInterface' => __DIR__ . '/..' . '/psr/http-client/src/ClientExceptionInterface.php',
-        'Psr\\Http\\Client\\ClientInterface' => __DIR__ . '/..' . '/psr/http-client/src/ClientInterface.php',
-        'Psr\\Http\\Client\\NetworkExceptionInterface' => __DIR__ . '/..' . '/psr/http-client/src/NetworkExceptionInterface.php',
-        'Psr\\Http\\Client\\RequestExceptionInterface' => __DIR__ . '/..' . '/psr/http-client/src/RequestExceptionInterface.php',
         'Psr\\Http\\Message\\MessageInterface' => __DIR__ . '/..' . '/psr/http-message/src/MessageInterface.php',
-        'Psr\\Http\\Message\\RequestFactoryInterface' => __DIR__ . '/..' . '/psr/http-factory/src/RequestFactoryInterface.php',
         'Psr\\Http\\Message\\RequestInterface' => __DIR__ . '/..' . '/psr/http-message/src/RequestInterface.php',
-        'Psr\\Http\\Message\\ResponseFactoryInterface' => __DIR__ . '/..' . '/psr/http-factory/src/ResponseFactoryInterface.php',
         'Psr\\Http\\Message\\ResponseInterface' => __DIR__ . '/..' . '/psr/http-message/src/ResponseInterface.php',
-        'Psr\\Http\\Message\\ServerRequestFactoryInterface' => __DIR__ . '/..' . '/psr/http-factory/src/ServerRequestFactoryInterface.php',
         'Psr\\Http\\Message\\ServerRequestInterface' => __DIR__ . '/..' . '/psr/http-message/src/ServerRequestInterface.php',
-        'Psr\\Http\\Message\\StreamFactoryInterface' => __DIR__ . '/..' . '/psr/http-factory/src/StreamFactoryInterface.php',
         'Psr\\Http\\Message\\StreamInterface' => __DIR__ . '/..' . '/psr/http-message/src/StreamInterface.php',
-        'Psr\\Http\\Message\\UploadedFileFactoryInterface' => __DIR__ . '/..' . '/psr/http-factory/src/UploadedFileFactoryInterface.php',
         'Psr\\Http\\Message\\UploadedFileInterface' => __DIR__ . '/..' . '/psr/http-message/src/UploadedFileInterface.php',
-        'Psr\\Http\\Message\\UriFactoryInterface' => __DIR__ . '/..' . '/psr/http-factory/src/UriFactoryInterface.php',
         'Psr\\Http\\Message\\UriInterface' => __DIR__ . '/..' . '/psr/http-message/src/UriInterface.php',
         'PsxMarketingWithGoogle' => __DIR__ . '/../..' . '/psxmarketingwithgoogle.php',
         'Raven_Autoloader' => __DIR__ . '/..' . '/sentry/sentry/lib/Raven/Autoloader.php',
@@ -370,19 +424,60 @@ class ComposerStaticInitc1bb91e161456bc058be6a6576af9daf
         'Raven_Util' => __DIR__ . '/..' . '/sentry/sentry/lib/Raven/Util.php',
         'Stringable' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Stringable.php',
         'Symfony\\Polyfill\\Ctype\\Ctype' => __DIR__ . '/..' . '/symfony/polyfill-ctype/Ctype.php',
+        'Symfony\\Polyfill\\Mbstring\\Mbstring' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/Mbstring.php',
         'Symfony\\Polyfill\\Php80\\Php80' => __DIR__ . '/..' . '/symfony/polyfill-php80/Php80.php',
         'Symfony\\Polyfill\\Php80\\PhpToken' => __DIR__ . '/..' . '/symfony/polyfill-php80/PhpToken.php',
         'UnhandledMatchError' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/UnhandledMatchError.php',
         'ValueError' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/ValueError.php',
+        'libphonenumber\\AlternateFormatsCountryCodeSet' => __DIR__ . '/..' . '/giggsey/libphonenumber-for-php/src/AlternateFormatsCountryCodeSet.php',
+        'libphonenumber\\AsYouTypeFormatter' => __DIR__ . '/..' . '/giggsey/libphonenumber-for-php/src/AsYouTypeFormatter.php',
+        'libphonenumber\\CountryCodeSource' => __DIR__ . '/..' . '/giggsey/libphonenumber-for-php/src/CountryCodeSource.php',
+        'libphonenumber\\CountryCodeToRegionCodeMap' => __DIR__ . '/..' . '/giggsey/libphonenumber-for-php/src/CountryCodeToRegionCodeMap.php',
+        'libphonenumber\\DefaultMetadataLoader' => __DIR__ . '/..' . '/giggsey/libphonenumber-for-php/src/DefaultMetadataLoader.php',
+        'libphonenumber\\Leniency' => __DIR__ . '/..' . '/giggsey/libphonenumber-for-php/src/Leniency.php',
+        'libphonenumber\\Leniency\\AbstractLeniency' => __DIR__ . '/..' . '/giggsey/libphonenumber-for-php/src/Leniency/AbstractLeniency.php',
+        'libphonenumber\\Leniency\\ExactGrouping' => __DIR__ . '/..' . '/giggsey/libphonenumber-for-php/src/Leniency/ExactGrouping.php',
+        'libphonenumber\\Leniency\\Possible' => __DIR__ . '/..' . '/giggsey/libphonenumber-for-php/src/Leniency/Possible.php',
+        'libphonenumber\\Leniency\\StrictGrouping' => __DIR__ . '/..' . '/giggsey/libphonenumber-for-php/src/Leniency/StrictGrouping.php',
+        'libphonenumber\\Leniency\\Valid' => __DIR__ . '/..' . '/giggsey/libphonenumber-for-php/src/Leniency/Valid.php',
+        'libphonenumber\\MatchType' => __DIR__ . '/..' . '/giggsey/libphonenumber-for-php/src/MatchType.php',
+        'libphonenumber\\Matcher' => __DIR__ . '/..' . '/giggsey/libphonenumber-for-php/src/Matcher.php',
+        'libphonenumber\\MatcherAPIInterface' => __DIR__ . '/..' . '/giggsey/libphonenumber-for-php/src/MatcherAPIInterface.php',
+        'libphonenumber\\MetadataLoaderInterface' => __DIR__ . '/..' . '/giggsey/libphonenumber-for-php/src/MetadataLoaderInterface.php',
+        'libphonenumber\\MetadataSourceInterface' => __DIR__ . '/..' . '/giggsey/libphonenumber-for-php/src/MetadataSourceInterface.php',
+        'libphonenumber\\MultiFileMetadataSourceImpl' => __DIR__ . '/..' . '/giggsey/libphonenumber-for-php/src/MultiFileMetadataSourceImpl.php',
+        'libphonenumber\\NumberFormat' => __DIR__ . '/..' . '/giggsey/libphonenumber-for-php/src/NumberFormat.php',
+        'libphonenumber\\NumberParseException' => __DIR__ . '/..' . '/giggsey/libphonenumber-for-php/src/NumberParseException.php',
+        'libphonenumber\\PhoneMetadata' => __DIR__ . '/..' . '/giggsey/libphonenumber-for-php/src/PhoneMetadata.php',
+        'libphonenumber\\PhoneNumber' => __DIR__ . '/..' . '/giggsey/libphonenumber-for-php/src/PhoneNumber.php',
+        'libphonenumber\\PhoneNumberDesc' => __DIR__ . '/..' . '/giggsey/libphonenumber-for-php/src/PhoneNumberDesc.php',
+        'libphonenumber\\PhoneNumberFormat' => __DIR__ . '/..' . '/giggsey/libphonenumber-for-php/src/PhoneNumberFormat.php',
+        'libphonenumber\\PhoneNumberMatch' => __DIR__ . '/..' . '/giggsey/libphonenumber-for-php/src/PhoneNumberMatch.php',
+        'libphonenumber\\PhoneNumberMatcher' => __DIR__ . '/..' . '/giggsey/libphonenumber-for-php/src/PhoneNumberMatcher.php',
+        'libphonenumber\\PhoneNumberToCarrierMapper' => __DIR__ . '/..' . '/giggsey/libphonenumber-for-php/src/PhoneNumberToCarrierMapper.php',
+        'libphonenumber\\PhoneNumberToTimeZonesMapper' => __DIR__ . '/..' . '/giggsey/libphonenumber-for-php/src/PhoneNumberToTimeZonesMapper.php',
+        'libphonenumber\\PhoneNumberType' => __DIR__ . '/..' . '/giggsey/libphonenumber-for-php/src/PhoneNumberType.php',
+        'libphonenumber\\PhoneNumberUtil' => __DIR__ . '/..' . '/giggsey/libphonenumber-for-php/src/PhoneNumberUtil.php',
+        'libphonenumber\\RegexBasedMatcher' => __DIR__ . '/..' . '/giggsey/libphonenumber-for-php/src/RegexBasedMatcher.php',
+        'libphonenumber\\RegionCode' => __DIR__ . '/..' . '/giggsey/libphonenumber-for-php/src/RegionCode.php',
+        'libphonenumber\\ShortNumberCost' => __DIR__ . '/..' . '/giggsey/libphonenumber-for-php/src/ShortNumberCost.php',
+        'libphonenumber\\ShortNumberInfo' => __DIR__ . '/..' . '/giggsey/libphonenumber-for-php/src/ShortNumberInfo.php',
+        'libphonenumber\\ShortNumbersRegionCodeSet' => __DIR__ . '/..' . '/giggsey/libphonenumber-for-php/src/ShortNumbersRegionCodeSet.php',
+        'libphonenumber\\ValidationResult' => __DIR__ . '/..' . '/giggsey/libphonenumber-for-php/src/ValidationResult.php',
+        'libphonenumber\\geocoding\\PhoneNumberOfflineGeocoder' => __DIR__ . '/..' . '/giggsey/libphonenumber-for-php/src/geocoding/PhoneNumberOfflineGeocoder.php',
+        'libphonenumber\\prefixmapper\\MappingFileProvider' => __DIR__ . '/..' . '/giggsey/libphonenumber-for-php/src/prefixmapper/MappingFileProvider.php',
+        'libphonenumber\\prefixmapper\\PhonePrefixMap' => __DIR__ . '/..' . '/giggsey/libphonenumber-for-php/src/prefixmapper/PhonePrefixMap.php',
+        'libphonenumber\\prefixmapper\\PrefixFileReader' => __DIR__ . '/..' . '/giggsey/libphonenumber-for-php/src/prefixmapper/PrefixFileReader.php',
+        'libphonenumber\\prefixmapper\\PrefixTimeZonesMap' => __DIR__ . '/..' . '/giggsey/libphonenumber-for-php/src/prefixmapper/PrefixTimeZonesMap.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitc1bb91e161456bc058be6a6576af9daf::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitc1bb91e161456bc058be6a6576af9daf::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInitc1bb91e161456bc058be6a6576af9daf::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInitc1bb91e161456bc058be6a6576af9daf::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit6844d0c729b7c71a07d5daab1e7a8127::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit6844d0c729b7c71a07d5daab1e7a8127::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit6844d0c729b7c71a07d5daab1e7a8127::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit6844d0c729b7c71a07d5daab1e7a8127::$classMap;
 
         }, null, ClassLoader::class);
     }

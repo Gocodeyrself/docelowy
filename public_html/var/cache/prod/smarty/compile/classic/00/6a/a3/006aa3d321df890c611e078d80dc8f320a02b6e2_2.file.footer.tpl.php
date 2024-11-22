@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.1, created on 2024-10-14 11:00:14
+/* Smarty version 4.3.1, created on 2024-11-22 08:31:08
   from '/home/qisogexqbz/domains/cezos.exis24.pl/public_html/modules/categoriesbanners/views/templates/front/footer.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.1',
-  'unifunc' => 'content_670cdd9e256770_71031995',
+  'unifunc' => 'content_6740333c521ca0_25279831',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '006aa3d321df890c611e078d80dc8f320a02b6e2' => 
     array (
       0 => '/home/qisogexqbz/domains/cezos.exis24.pl/public_html/modules/categoriesbanners/views/templates/front/footer.tpl',
-      1 => 1716547618,
+      1 => 1730322665,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_670cdd9e256770_71031995 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6740333c521ca0_25279831 (Smarty_Internal_Template $_smarty_tpl) {
 if ($_smarty_tpl->tpl_vars['cat_banner']->value) {
 echo '<script'; ?>
  type="text/javascript" src="<?php echo htmlspecialchars((string) $_smarty_tpl->tpl_vars['img_url']->value, ENT_QUOTES, 'UTF-8');?>
@@ -86,7 +86,6 @@ rowsc.before( banner_html );
 <?php
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
-</div>
 <!-- categorybannermodule-->
 
 <style>

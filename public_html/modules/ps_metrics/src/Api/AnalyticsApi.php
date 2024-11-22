@@ -18,36 +18,29 @@
  * @copyright Since 2007 PrestaShop SA and Contributors
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License version 3.0
  */
-
 namespace PrestaShop\Module\Ps_metrics\Api;
 
 use PrestaShop\Module\Ps_metrics\Api\Client\AnalyticsClient;
 use PrestaShop\Module\Ps_metrics\Helper\ConfigHelper;
-
 class AnalyticsApi
 {
     /**
      * @var AnalyticsClient
      */
     private $client;
-
     /**
      * AnalyticsApi constructor.
      *
      * @param AnalyticsClient $analyticsClient
      * @param ConfigHelper $configHelper
      */
-    public function __construct(
-        AnalyticsClient $analyticsClient,
-        ConfigHelper $configHelper
-    ) {
+    public function __construct(AnalyticsClient $analyticsClient, ConfigHelper $configHelper)
+    {
         $this->client = $analyticsClient;
-
         $this->client->setUrl($configHelper->getApiBaseUrl());
         $this->client->setMiddlewares();
         $this->client->setHeader($this->client->getHeader());
     }
-
     /**
      * @return false|string
      */
@@ -55,7 +48,6 @@ class AnalyticsApi
     {
         return $this->client->getShopId();
     }
-
     /**
      * get reportings by date
      *
@@ -66,12 +58,9 @@ class AnalyticsApi
     public function getReportingByDate(array $data)
     {
         $this->client->setRoute('/shops/' . $this->getShopId() . '/reportings');
-
         $reportings = $this->client->post($data);
-
         return !empty($reportings['error']) ? [] : $reportings;
     }
-
     /**
      * getAccountsList
      *
@@ -79,14 +68,10 @@ class AnalyticsApi
      */
     public function getAccountsList()
     {
-        $this->client->setRoute(
-            '/shops/' . $this->getShopId() . '/accounts/list'
-        );
+        $this->client->setRoute('/shops/' . $this->getShopId() . '/accounts/list');
         $accounts = $this->client->get();
-
         return !empty($accounts['error']) ? [] : $accounts['body'];
     }
-
     /**
      * setAccountSelection
      *
@@ -96,17 +81,10 @@ class AnalyticsApi
      */
     public function setAccountSelection(array $data)
     {
-        $this->client->setRoute(
-            '/shops/' . $this->getShopId() . '/accounts/selection'
-        );
-
+        $this->client->setRoute('/shops/' . $this->getShopId() . '/accounts/selection');
         $accountSelected = $this->client->post($data);
-
-        return !empty($accountSelected['error'])
-            ? false
-            : $accountSelected['body'];
+        return !empty($accountSelected['error']) ? \false : $accountSelected['body'];
     }
-
     /**
      * unsubscribe
      *
@@ -114,15 +92,10 @@ class AnalyticsApi
      */
     public function unsubscribe()
     {
-        $this->client->setRoute(
-            '/shops/' . $this->getShopId() . '/accounts/unsubscribe'
-        );
-
+        $this->client->setRoute('/shops/' . $this->getShopId() . '/accounts/unsubscribe');
         $unsubscribed = $this->client->post();
-
         return empty($unsubscribed['error']);
     }
-
     /**
      * refreshGA
      *
@@ -130,13 +103,9 @@ class AnalyticsApi
      */
     public function refreshGA()
     {
-        $this->client->setRoute(
-            '/shops/' . $this->getShopId() . '/accounts/refresh'
-        );
-
+        $this->client->setRoute('/shops/' . $this->getShopId() . '/accounts/refresh');
         return $this->client->post();
     }
-
     /**
      * authUrl
      *
@@ -146,12 +115,8 @@ class AnalyticsApi
      */
     public function generateAuthUrl(array $data)
     {
-        $this->client->setRoute(
-            '/shops/' . $this->getShopId() . '/google/generate-auth-url'
-        );
-
+        $this->client->setRoute('/shops/' . $this->getShopId() . '/google/generate-auth-url');
         $generated = $this->client->post($data);
-
         return !empty($generated['error']) ? [] : $generated['body'];
     }
 }

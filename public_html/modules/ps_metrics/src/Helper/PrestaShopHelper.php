@@ -18,12 +18,10 @@
  * @copyright Since 2007 PrestaShop SA and Contributors
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License version 3.0
  */
-
 namespace PrestaShop\Module\Ps_metrics\Helper;
 
 use Employee;
 use PrestaShopException;
-
 /**
  * Class PrestaShopHelper used to get information from PrestaShop Context
  */
@@ -33,7 +31,6 @@ class PrestaShopHelper
      * @var \Context
      */
     private $context;
-
     /**
      * PrestaShopHelper constructor.
      *
@@ -42,14 +39,11 @@ class PrestaShopHelper
     public function __construct()
     {
         $context = \Context::getContext();
-
         if ($context == null) {
             throw new \PrestaShopException('Context is null or invalid');
         }
-
         $this->context = $context;
     }
-
     /**
      * Get the isoCode from the context language, if null, send 'en' as default value
      *
@@ -59,7 +53,6 @@ class PrestaShopHelper
     {
         return $this->context->language !== null ? $this->context->language->iso_code : 'en';
     }
-
     /**
      * Get current language
      *
@@ -69,7 +62,6 @@ class PrestaShopHelper
     {
         return $this->context->language;
     }
-
     /**
      * Get current language code
      *
@@ -79,7 +71,6 @@ class PrestaShopHelper
     {
         return $this->context->language !== null ? $this->context->language->language_code : 'en';
     }
-
     /**
      * Get currency code
      *
@@ -89,7 +80,6 @@ class PrestaShopHelper
     {
         return $this->context->currency !== null ? $this->context->currency->iso_code : 'EUR';
     }
-
     /**
      * Get current locale
      *
@@ -101,7 +91,6 @@ class PrestaShopHelper
     {
         return $this->getLanguageIsoCode();
     }
-
     /**
      * Get controller name
      *
@@ -111,10 +100,8 @@ class PrestaShopHelper
     {
         /** @var \AdminControllerCore $adminController */
         $adminController = $this->context->controller;
-
-        return (!empty($adminController->controller_name)) ? $adminController->controller_name : '';
+        return !empty($adminController->controller_name) ? $adminController->controller_name : '';
     }
-
     /**
      * Get context link
      *
@@ -125,10 +112,8 @@ class PrestaShopHelper
         if (null == $this->context->link) {
             throw new \PrestaShopException('Link is null or invalid');
         }
-
         return $this->context->link;
     }
-
     /**
      * Get shop id
      *
@@ -139,10 +124,8 @@ class PrestaShopHelper
         if (null == $this->context->shop) {
             throw new \PrestaShopException('Shop is null or invalid');
         }
-
         return (int) $this->context->shop->id;
     }
-
     /**
      * Get shop domain
      *
@@ -153,10 +136,8 @@ class PrestaShopHelper
         if (null == $this->context->shop) {
             throw new \PrestaShopException('Shop is null or invalid');
         }
-
         return $this->context->shop->domain;
     }
-
     /**
      * Get employee from context
      *
@@ -167,14 +148,11 @@ class PrestaShopHelper
     public function getEmployee()
     {
         $employee = $this->context->employee;
-
         if ($employee == null) {
             throw new \PrestaShopException('Employee is null or invalid');
         }
-
         return $employee;
     }
-
     /**
      * @return int
      */
@@ -182,7 +160,6 @@ class PrestaShopHelper
     {
         return (int) $this->getEmployee()->id_lang;
     }
-
     /**
      * @return string
      */
@@ -190,7 +167,6 @@ class PrestaShopHelper
     {
         return $this->getEmployee()->email;
     }
-
     /**
      * Get controller link without token
      *
@@ -201,16 +177,13 @@ class PrestaShopHelper
      */
     public function getLinkWithoutToken($controller, $route)
     {
-        $controllerLink = $this->getLink()->getAdminLink($controller, true, ['route' => $route]);
-
-        $pos = strpos($controllerLink, '?');
-        if (false === $pos) {
+        $controllerLink = $this->getLink()->getAdminLink($controller, \true, ['route' => $route]);
+        $pos = \strpos($controllerLink, '?');
+        if (\false === $pos) {
             return $controllerLink;
         }
-
-        return substr($controllerLink, 0, $pos);
+        return \substr($controllerLink, 0, $pos);
     }
-
     /**
      * Get token from controller link
      *
@@ -221,14 +194,11 @@ class PrestaShopHelper
      */
     public function getTokenFromAdminLink($controller, $route)
     {
-        $controllerLink = $this->getLink()->getAdminLink($controller, true, ['route' => $route]);
-
-        parse_str((string) parse_url($controllerLink, PHP_URL_QUERY), $result);
-
-        if (!is_string($result['_token'])) {
+        $controllerLink = $this->getLink()->getAdminLink($controller, \true, ['route' => $route]);
+        \parse_str((string) \parse_url($controllerLink, \PHP_URL_QUERY), $result);
+        if (!\is_string($result['_token'])) {
             throw new PrestaShopException('Token is not defined !');
         }
-
-        return strval($result['_token']);
+        return \strval($result['_token']);
     }
 }

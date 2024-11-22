@@ -28,7 +28,9 @@
                     <span>
                         {if $tab.url}
                             {Tools::generateCategoryMiniatureById($tab.id_category)}
-                            <a class="ets_mm_url" href="{$tab.url|escape:'html':'UTF-8'}">
+                             {* Oryginalny kod - usunięty, aby zapobiec przekierowaniu *}
+                             {* <a class="ets_mm_url" href="{$tab.url|escape:'html':'UTF-8'}"> *}
+                                <a class="ets_mm_url" href="#" onclick="event.preventDefault();">
                         {/if}
                             {if $tab.tab_img_link}
                                 <img src="{$tab.tab_img_link|escape:'html':'UTF-8'}" title="" alt="" width="20"/>

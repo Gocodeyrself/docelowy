@@ -18,11 +18,10 @@
  * @copyright Since 2007 PrestaShop SA and Contributors
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License version 3.0
  */
-
 namespace PrestaShop\Module\Ps_metrics\Controller\Admin;
 
+use Exception;
 use PrestaShopBundle\Controller\Admin\FrameworkBundleAdminController;
-
 class MetricsLegacyStatsController extends FrameworkBundleAdminController
 {
     /**
@@ -30,6 +29,14 @@ class MetricsLegacyStatsController extends FrameworkBundleAdminController
      */
     public function redirectToLegacyStats()
     {
-        \Tools::redirectAdmin($this->getAdminLink('AdminStats', [], true));
+        $context = \Context::getContext();
+        if (null == $context) {
+            throw new Exception('Context is null');
+        }
+        $link = $context->link;
+        if (null == $link) {
+            throw new Exception('Link is null');
+        }
+        \Tools::redirectAdmin($link->getAdminLink('AdminStats', \true));
     }
 }

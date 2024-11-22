@@ -4,18 +4,30 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInita9152809377f20d6316d47f59938a0ab
+class ComposerStaticInit77aea025dfb30e4e2c739336bd7bcd23
 {
     public static $files = array (
-        '9c67151ae59aff4788964ce8eb2a0f43' => __DIR__ . '/..' . '/clue/stream-filter/src/functions_include.php',
-        '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
-        'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
-        '8cff32064859f4559445b89279f3199c' => __DIR__ . '/..' . '/php-http/message/src/filters.php',
-        '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
-        '2a9afd012ba84c341672875ae49cd5cd' => __DIR__ . '/..' . '/segmentio/analytics-php/lib/Segment.php',
+        'a9c67151ae59aff4788964ce8eb2a0f43' => __DIR__ . '/..' . '/clue/stream-filter/src/functions_include.php',
+        'a7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
+        'aa0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
+        'a8cff32064859f4559445b89279f3199c' => __DIR__ . '/..' . '/php-http/message/src/filters.php',
+        'a320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
+        'a2a9afd012ba84c341672875ae49cd5cd' => __DIR__ . '/..' . '/segmentio/analytics-php/lib/Segment.php',
     );
 
     public static $prefixLengthsPsr4 = array (
+        'p' => 
+        array (
+            'ps_metrics_module_v4_0_8\\Prestashop\\ModuleLibMboInstaller\\' => 58,
+            'ps_metrics_module_v4_0_8\\Prestashop\\ModuleLibGuzzleAdapter\\' => 59,
+            'ps_metrics_module_v4_0_8\\PrestaShop\\PsAccountsInstaller\\' => 56,
+            'ps_metrics_module_v4_0_8\\PrestaShop\\ModuleLibCacheDirectoryProvider\\' => 68,
+            'ps_metrics_module_v4_0_8\\PhpOption\\' => 35,
+            'ps_metrics_module_v4_0_8\\Http\\Promise\\' => 38,
+            'ps_metrics_module_v4_0_8\\Http\\Message\\' => 38,
+            'ps_metrics_module_v4_0_8\\Dotenv\\' => 32,
+            'ps_metrics_module_v4_0_8\\Clue\\StreamFilter\\' => 43,
+        ),
         'S' => 
         array (
             'Symfony\\Polyfill\\Ctype\\' => 23,
@@ -23,35 +35,56 @@ class ComposerStaticInita9152809377f20d6316d47f59938a0ab
         'P' => 
         array (
             'Psr\\Http\\Message\\' => 17,
-            'Prestashop\\ModuleLibMboInstaller\\' => 33,
-            'Prestashop\\ModuleLibGuzzleAdapter\\' => 34,
-            'PrestaShop\\PsAccountsInstaller\\' => 31,
             'PrestaShop\\Module\\Ps_metrics\\' => 29,
             'PrestaShop\\ModuleLibServiceContainer\\' => 37,
-            'PrestaShop\\ModuleLibCacheDirectoryProvider\\' => 43,
-            'PhpOption\\' => 10,
         ),
         'H' => 
         array (
-            'Http\\Promise\\' => 13,
-            'Http\\Message\\' => 13,
             'Http\\Client\\' => 12,
         ),
         'G' => 
         array (
             'GuzzleHttp\\Psr7\\' => 16,
         ),
-        'D' => 
-        array (
-            'Dotenv\\' => 7,
-        ),
-        'C' => 
-        array (
-            'Clue\\StreamFilter\\' => 18,
-        ),
     );
 
     public static $prefixDirsPsr4 = array (
+        'ps_metrics_module_v4_0_8\\Prestashop\\ModuleLibMboInstaller\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/prestashop/module-lib-mbo-installer/src',
+        ),
+        'ps_metrics_module_v4_0_8\\Prestashop\\ModuleLibGuzzleAdapter\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/prestashop/module-lib-guzzle-adapter/src',
+        ),
+        'ps_metrics_module_v4_0_8\\PrestaShop\\PsAccountsInstaller\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/prestashop/prestashop-accounts-installer/src',
+        ),
+        'ps_metrics_module_v4_0_8\\PrestaShop\\ModuleLibCacheDirectoryProvider\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/prestashop/module-lib-cache-directory-provider/src',
+        ),
+        'ps_metrics_module_v4_0_8\\PhpOption\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phpoption/phpoption/src/PhpOption',
+        ),
+        'ps_metrics_module_v4_0_8\\Http\\Promise\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/php-http/promise/src',
+        ),
+        'ps_metrics_module_v4_0_8\\Http\\Message\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/php-http/message/src',
+        ),
+        'ps_metrics_module_v4_0_8\\Dotenv\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/vlucas/phpdotenv/src',
+        ),
+        'ps_metrics_module_v4_0_8\\Clue\\StreamFilter\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/clue/stream-filter/src',
+        ),
         'Symfony\\Polyfill\\Ctype\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-ctype',
@@ -59,18 +92,6 @@ class ComposerStaticInita9152809377f20d6316d47f59938a0ab
         'Psr\\Http\\Message\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/http-message/src',
-        ),
-        'Prestashop\\ModuleLibMboInstaller\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/prestashop/module-lib-mbo-installer/src',
-        ),
-        'Prestashop\\ModuleLibGuzzleAdapter\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/prestashop/module-lib-guzzle-adapter/src',
-        ),
-        'PrestaShop\\PsAccountsInstaller\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/prestashop/prestashop-accounts-installer/src',
         ),
         'PrestaShop\\Module\\Ps_metrics\\' => 
         array (
@@ -80,22 +101,6 @@ class ComposerStaticInita9152809377f20d6316d47f59938a0ab
         array (
             0 => __DIR__ . '/..' . '/prestashop/module-lib-service-container/src',
         ),
-        'PrestaShop\\ModuleLibCacheDirectoryProvider\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/prestashop/module-lib-cache-directory-provider/src',
-        ),
-        'PhpOption\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/phpoption/phpoption/src/PhpOption',
-        ),
-        'Http\\Promise\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/php-http/promise/src',
-        ),
-        'Http\\Message\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/php-http/message/src',
-        ),
         'Http\\Client\\' => 
         array (
             0 => __DIR__ . '/..' . '/php-http/httplug/src',
@@ -104,43 +109,10 @@ class ComposerStaticInita9152809377f20d6316d47f59938a0ab
         array (
             0 => __DIR__ . '/..' . '/guzzlehttp/psr7/src',
         ),
-        'Dotenv\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/vlucas/phpdotenv/src',
-        ),
-        'Clue\\StreamFilter\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/clue/stream-filter/src',
-        ),
     );
 
     public static $classMap = array (
-        'Clue\\StreamFilter\\CallbackFilter' => __DIR__ . '/..' . '/clue/stream-filter/src/CallbackFilter.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
-        'Dotenv\\Dotenv' => __DIR__ . '/..' . '/vlucas/phpdotenv/src/Dotenv.php',
-        'Dotenv\\Environment\\AbstractVariables' => __DIR__ . '/..' . '/vlucas/phpdotenv/src/Environment/AbstractVariables.php',
-        'Dotenv\\Environment\\Adapter\\AdapterInterface' => __DIR__ . '/..' . '/vlucas/phpdotenv/src/Environment/Adapter/AdapterInterface.php',
-        'Dotenv\\Environment\\Adapter\\ApacheAdapter' => __DIR__ . '/..' . '/vlucas/phpdotenv/src/Environment/Adapter/ApacheAdapter.php',
-        'Dotenv\\Environment\\Adapter\\ArrayAdapter' => __DIR__ . '/..' . '/vlucas/phpdotenv/src/Environment/Adapter/ArrayAdapter.php',
-        'Dotenv\\Environment\\Adapter\\EnvConstAdapter' => __DIR__ . '/..' . '/vlucas/phpdotenv/src/Environment/Adapter/EnvConstAdapter.php',
-        'Dotenv\\Environment\\Adapter\\PutenvAdapter' => __DIR__ . '/..' . '/vlucas/phpdotenv/src/Environment/Adapter/PutenvAdapter.php',
-        'Dotenv\\Environment\\Adapter\\ServerConstAdapter' => __DIR__ . '/..' . '/vlucas/phpdotenv/src/Environment/Adapter/ServerConstAdapter.php',
-        'Dotenv\\Environment\\DotenvFactory' => __DIR__ . '/..' . '/vlucas/phpdotenv/src/Environment/DotenvFactory.php',
-        'Dotenv\\Environment\\DotenvVariables' => __DIR__ . '/..' . '/vlucas/phpdotenv/src/Environment/DotenvVariables.php',
-        'Dotenv\\Environment\\FactoryInterface' => __DIR__ . '/..' . '/vlucas/phpdotenv/src/Environment/FactoryInterface.php',
-        'Dotenv\\Environment\\VariablesInterface' => __DIR__ . '/..' . '/vlucas/phpdotenv/src/Environment/VariablesInterface.php',
-        'Dotenv\\Exception\\ExceptionInterface' => __DIR__ . '/..' . '/vlucas/phpdotenv/src/Exception/ExceptionInterface.php',
-        'Dotenv\\Exception\\InvalidFileException' => __DIR__ . '/..' . '/vlucas/phpdotenv/src/Exception/InvalidFileException.php',
-        'Dotenv\\Exception\\InvalidPathException' => __DIR__ . '/..' . '/vlucas/phpdotenv/src/Exception/InvalidPathException.php',
-        'Dotenv\\Exception\\ValidationException' => __DIR__ . '/..' . '/vlucas/phpdotenv/src/Exception/ValidationException.php',
-        'Dotenv\\Lines' => __DIR__ . '/..' . '/vlucas/phpdotenv/src/Lines.php',
-        'Dotenv\\Loader' => __DIR__ . '/..' . '/vlucas/phpdotenv/src/Loader.php',
-        'Dotenv\\Parser' => __DIR__ . '/..' . '/vlucas/phpdotenv/src/Parser.php',
-        'Dotenv\\Regex\\Error' => __DIR__ . '/..' . '/vlucas/phpdotenv/src/Regex/Error.php',
-        'Dotenv\\Regex\\Regex' => __DIR__ . '/..' . '/vlucas/phpdotenv/src/Regex/Regex.php',
-        'Dotenv\\Regex\\Result' => __DIR__ . '/..' . '/vlucas/phpdotenv/src/Regex/Result.php',
-        'Dotenv\\Regex\\Success' => __DIR__ . '/..' . '/vlucas/phpdotenv/src/Regex/Success.php',
-        'Dotenv\\Validator' => __DIR__ . '/..' . '/vlucas/phpdotenv/src/Validator.php',
         'GuzzleHttp\\Psr7\\AppendStream' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/AppendStream.php',
         'GuzzleHttp\\Psr7\\BufferStream' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/BufferStream.php',
         'GuzzleHttp\\Psr7\\CachingStream' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/CachingStream.php',
@@ -179,62 +151,6 @@ class ComposerStaticInita9152809377f20d6316d47f59938a0ab
         'Http\\Client\\HttpClient' => __DIR__ . '/..' . '/php-http/httplug/src/HttpClient.php',
         'Http\\Client\\Promise\\HttpFulfilledPromise' => __DIR__ . '/..' . '/php-http/httplug/src/Promise/HttpFulfilledPromise.php',
         'Http\\Client\\Promise\\HttpRejectedPromise' => __DIR__ . '/..' . '/php-http/httplug/src/Promise/HttpRejectedPromise.php',
-        'Http\\Message\\Authentication' => __DIR__ . '/..' . '/php-http/message/src/Authentication.php',
-        'Http\\Message\\Authentication\\AutoBasicAuth' => __DIR__ . '/..' . '/php-http/message/src/Authentication/AutoBasicAuth.php',
-        'Http\\Message\\Authentication\\BasicAuth' => __DIR__ . '/..' . '/php-http/message/src/Authentication/BasicAuth.php',
-        'Http\\Message\\Authentication\\Bearer' => __DIR__ . '/..' . '/php-http/message/src/Authentication/Bearer.php',
-        'Http\\Message\\Authentication\\Chain' => __DIR__ . '/..' . '/php-http/message/src/Authentication/Chain.php',
-        'Http\\Message\\Authentication\\Header' => __DIR__ . '/..' . '/php-http/message/src/Authentication/Header.php',
-        'Http\\Message\\Authentication\\Matching' => __DIR__ . '/..' . '/php-http/message/src/Authentication/Matching.php',
-        'Http\\Message\\Authentication\\QueryParam' => __DIR__ . '/..' . '/php-http/message/src/Authentication/QueryParam.php',
-        'Http\\Message\\Authentication\\RequestConditional' => __DIR__ . '/..' . '/php-http/message/src/Authentication/RequestConditional.php',
-        'Http\\Message\\Authentication\\Wsse' => __DIR__ . '/..' . '/php-http/message/src/Authentication/Wsse.php',
-        'Http\\Message\\Builder\\ResponseBuilder' => __DIR__ . '/..' . '/php-http/message/src/Builder/ResponseBuilder.php',
-        'Http\\Message\\Cookie' => __DIR__ . '/..' . '/php-http/message/src/Cookie.php',
-        'Http\\Message\\CookieJar' => __DIR__ . '/..' . '/php-http/message/src/CookieJar.php',
-        'Http\\Message\\CookieUtil' => __DIR__ . '/..' . '/php-http/message/src/CookieUtil.php',
-        'Http\\Message\\Decorator\\MessageDecorator' => __DIR__ . '/..' . '/php-http/message/src/Decorator/MessageDecorator.php',
-        'Http\\Message\\Decorator\\RequestDecorator' => __DIR__ . '/..' . '/php-http/message/src/Decorator/RequestDecorator.php',
-        'Http\\Message\\Decorator\\ResponseDecorator' => __DIR__ . '/..' . '/php-http/message/src/Decorator/ResponseDecorator.php',
-        'Http\\Message\\Decorator\\StreamDecorator' => __DIR__ . '/..' . '/php-http/message/src/Decorator/StreamDecorator.php',
-        'Http\\Message\\Encoding\\ChunkStream' => __DIR__ . '/..' . '/php-http/message/src/Encoding/ChunkStream.php',
-        'Http\\Message\\Encoding\\CompressStream' => __DIR__ . '/..' . '/php-http/message/src/Encoding/CompressStream.php',
-        'Http\\Message\\Encoding\\DechunkStream' => __DIR__ . '/..' . '/php-http/message/src/Encoding/DechunkStream.php',
-        'Http\\Message\\Encoding\\DecompressStream' => __DIR__ . '/..' . '/php-http/message/src/Encoding/DecompressStream.php',
-        'Http\\Message\\Encoding\\DeflateStream' => __DIR__ . '/..' . '/php-http/message/src/Encoding/DeflateStream.php',
-        'Http\\Message\\Encoding\\Filter\\Chunk' => __DIR__ . '/..' . '/php-http/message/src/Encoding/Filter/Chunk.php',
-        'Http\\Message\\Encoding\\FilteredStream' => __DIR__ . '/..' . '/php-http/message/src/Encoding/FilteredStream.php',
-        'Http\\Message\\Encoding\\GzipDecodeStream' => __DIR__ . '/..' . '/php-http/message/src/Encoding/GzipDecodeStream.php',
-        'Http\\Message\\Encoding\\GzipEncodeStream' => __DIR__ . '/..' . '/php-http/message/src/Encoding/GzipEncodeStream.php',
-        'Http\\Message\\Encoding\\InflateStream' => __DIR__ . '/..' . '/php-http/message/src/Encoding/InflateStream.php',
-        'Http\\Message\\Exception' => __DIR__ . '/..' . '/php-http/message/src/Exception.php',
-        'Http\\Message\\Exception\\UnexpectedValueException' => __DIR__ . '/..' . '/php-http/message/src/Exception/UnexpectedValueException.php',
-        'Http\\Message\\Formatter' => __DIR__ . '/..' . '/php-http/message/src/Formatter.php',
-        'Http\\Message\\Formatter\\CurlCommandFormatter' => __DIR__ . '/..' . '/php-http/message/src/Formatter/CurlCommandFormatter.php',
-        'Http\\Message\\Formatter\\FullHttpMessageFormatter' => __DIR__ . '/..' . '/php-http/message/src/Formatter/FullHttpMessageFormatter.php',
-        'Http\\Message\\Formatter\\SimpleFormatter' => __DIR__ . '/..' . '/php-http/message/src/Formatter/SimpleFormatter.php',
-        'Http\\Message\\MessageFactory\\DiactorosMessageFactory' => __DIR__ . '/..' . '/php-http/message/src/MessageFactory/DiactorosMessageFactory.php',
-        'Http\\Message\\MessageFactory\\GuzzleMessageFactory' => __DIR__ . '/..' . '/php-http/message/src/MessageFactory/GuzzleMessageFactory.php',
-        'Http\\Message\\MessageFactory\\SlimMessageFactory' => __DIR__ . '/..' . '/php-http/message/src/MessageFactory/SlimMessageFactory.php',
-        'Http\\Message\\RequestMatcher' => __DIR__ . '/..' . '/php-http/message/src/RequestMatcher.php',
-        'Http\\Message\\RequestMatcher\\CallbackRequestMatcher' => __DIR__ . '/..' . '/php-http/message/src/RequestMatcher/CallbackRequestMatcher.php',
-        'Http\\Message\\RequestMatcher\\RegexRequestMatcher' => __DIR__ . '/..' . '/php-http/message/src/RequestMatcher/RegexRequestMatcher.php',
-        'Http\\Message\\RequestMatcher\\RequestMatcher' => __DIR__ . '/..' . '/php-http/message/src/RequestMatcher/RequestMatcher.php',
-        'Http\\Message\\StreamFactory\\DiactorosStreamFactory' => __DIR__ . '/..' . '/php-http/message/src/StreamFactory/DiactorosStreamFactory.php',
-        'Http\\Message\\StreamFactory\\GuzzleStreamFactory' => __DIR__ . '/..' . '/php-http/message/src/StreamFactory/GuzzleStreamFactory.php',
-        'Http\\Message\\StreamFactory\\SlimStreamFactory' => __DIR__ . '/..' . '/php-http/message/src/StreamFactory/SlimStreamFactory.php',
-        'Http\\Message\\Stream\\BufferedStream' => __DIR__ . '/..' . '/php-http/message/src/Stream/BufferedStream.php',
-        'Http\\Message\\UriFactory\\DiactorosUriFactory' => __DIR__ . '/..' . '/php-http/message/src/UriFactory/DiactorosUriFactory.php',
-        'Http\\Message\\UriFactory\\GuzzleUriFactory' => __DIR__ . '/..' . '/php-http/message/src/UriFactory/GuzzleUriFactory.php',
-        'Http\\Message\\UriFactory\\SlimUriFactory' => __DIR__ . '/..' . '/php-http/message/src/UriFactory/SlimUriFactory.php',
-        'Http\\Promise\\FulfilledPromise' => __DIR__ . '/..' . '/php-http/promise/src/FulfilledPromise.php',
-        'Http\\Promise\\Promise' => __DIR__ . '/..' . '/php-http/promise/src/Promise.php',
-        'Http\\Promise\\RejectedPromise' => __DIR__ . '/..' . '/php-http/promise/src/RejectedPromise.php',
-        'PhpOption\\LazyOption' => __DIR__ . '/..' . '/phpoption/phpoption/src/PhpOption/LazyOption.php',
-        'PhpOption\\None' => __DIR__ . '/..' . '/phpoption/phpoption/src/PhpOption/None.php',
-        'PhpOption\\Option' => __DIR__ . '/..' . '/phpoption/phpoption/src/PhpOption/Option.php',
-        'PhpOption\\Some' => __DIR__ . '/..' . '/phpoption/phpoption/src/PhpOption/Some.php',
-        'PrestaShop\\ModuleLibCacheDirectoryProvider\\Cache\\CacheDirectoryProvider' => __DIR__ . '/..' . '/prestashop/module-lib-cache-directory-provider/src/Cache/CacheDirectoryProvider.php',
         'PrestaShop\\ModuleLibServiceContainer\\DependencyInjection\\ContainerProvider' => __DIR__ . '/..' . '/prestashop/module-lib-service-container/src/DependencyInjection/ContainerProvider.php',
         'PrestaShop\\ModuleLibServiceContainer\\DependencyInjection\\ServiceContainer' => __DIR__ . '/..' . '/prestashop/module-lib-service-container/src/DependencyInjection/ServiceContainer.php',
         'PrestaShop\\Module\\Ps_metrics\\Adapter\\LoggerAdapter' => __DIR__ . '/../..' . '/src/Adapter/LoggerAdapter.php',
@@ -280,25 +196,6 @@ class ComposerStaticInita9152809377f20d6316d47f59938a0ab
         'PrestaShop\\Module\\Ps_metrics\\Tracker\\Segment' => __DIR__ . '/../..' . '/src/Tracker/Segment.php',
         'PrestaShop\\Module\\Ps_metrics\\Tracker\\TrackerInterface' => __DIR__ . '/../..' . '/src/Tracker/TrackerInterface.php',
         'PrestaShop\\Module\\Ps_metrics\\Validation\\SelectAccountAnalytics' => __DIR__ . '/../..' . '/src/Validation/SelectAccountAnalytics.php',
-        'PrestaShop\\PsAccountsInstaller\\Installer\\Exception\\InstallerException' => __DIR__ . '/..' . '/prestashop/prestashop-accounts-installer/src/Installer/Exception/InstallerException.php',
-        'PrestaShop\\PsAccountsInstaller\\Installer\\Exception\\ModuleNotInstalledException' => __DIR__ . '/..' . '/prestashop/prestashop-accounts-installer/src/Installer/Exception/ModuleNotInstalledException.php',
-        'PrestaShop\\PsAccountsInstaller\\Installer\\Exception\\ModuleVersionException' => __DIR__ . '/..' . '/prestashop/prestashop-accounts-installer/src/Installer/Exception/ModuleVersionException.php',
-        'PrestaShop\\PsAccountsInstaller\\Installer\\Facade\\PsAccounts' => __DIR__ . '/..' . '/prestashop/prestashop-accounts-installer/src/Installer/Facade/PsAccounts.php',
-        'PrestaShop\\PsAccountsInstaller\\Installer\\Installer' => __DIR__ . '/..' . '/prestashop/prestashop-accounts-installer/src/Installer/Installer.php',
-        'PrestaShop\\PsAccountsInstaller\\Installer\\Presenter\\InstallerPresenter' => __DIR__ . '/..' . '/prestashop/prestashop-accounts-installer/src/Installer/Presenter/InstallerPresenter.php',
-        'Prestashop\\ModuleLibGuzzleAdapter\\ClientFactory' => __DIR__ . '/..' . '/prestashop/module-lib-guzzle-adapter/src/ClientFactory.php',
-        'Prestashop\\ModuleLibGuzzleAdapter\\Guzzle5\\Client' => __DIR__ . '/..' . '/prestashop/module-lib-guzzle-adapter/src/Guzzle5/Client.php',
-        'Prestashop\\ModuleLibGuzzleAdapter\\Guzzle5\\Config' => __DIR__ . '/..' . '/prestashop/module-lib-guzzle-adapter/src/Guzzle5/Config.php',
-        'Prestashop\\ModuleLibGuzzleAdapter\\Guzzle7\\Client' => __DIR__ . '/..' . '/prestashop/module-lib-guzzle-adapter/src/Guzzle7/Client.php',
-        'Prestashop\\ModuleLibGuzzleAdapter\\Guzzle7\\Config' => __DIR__ . '/..' . '/prestashop/module-lib-guzzle-adapter/src/Guzzle7/Config.php',
-        'Prestashop\\ModuleLibGuzzleAdapter\\Guzzle7\\Exception\\UnexpectedValueException' => __DIR__ . '/..' . '/prestashop/module-lib-guzzle-adapter/src/Guzzle7/Exception/UnexpectedValueException.php',
-        'Prestashop\\ModuleLibGuzzleAdapter\\Guzzle7\\Promise' => __DIR__ . '/..' . '/prestashop/module-lib-guzzle-adapter/src/Guzzle7/Promise.php',
-        'Prestashop\\ModuleLibGuzzleAdapter\\Interfaces\\ClientExceptionInterface' => __DIR__ . '/..' . '/prestashop/module-lib-guzzle-adapter/src/Interfaces/ClientExceptionInterface.php',
-        'Prestashop\\ModuleLibGuzzleAdapter\\Interfaces\\ConfigInterface' => __DIR__ . '/..' . '/prestashop/module-lib-guzzle-adapter/src/Interfaces/ConfigInterface.php',
-        'Prestashop\\ModuleLibGuzzleAdapter\\Interfaces\\HttpClientInterface' => __DIR__ . '/..' . '/prestashop/module-lib-guzzle-adapter/src/Interfaces/HttpClientInterface.php',
-        'Prestashop\\ModuleLibGuzzleAdapter\\VersionDetection' => __DIR__ . '/..' . '/prestashop/module-lib-guzzle-adapter/src/VersionDetection.php',
-        'Prestashop\\ModuleLibMboInstaller\\Installer' => __DIR__ . '/..' . '/prestashop/module-lib-mbo-installer/src/Installer.php',
-        'Prestashop\\ModuleLibMboInstaller\\Presenter' => __DIR__ . '/..' . '/prestashop/module-lib-mbo-installer/src/Presenter.php',
         'Ps_metrics' => __DIR__ . '/../..' . '/ps_metrics.php',
         'Psr\\Http\\Message\\MessageInterface' => __DIR__ . '/..' . '/psr/http-message/src/MessageInterface.php',
         'Psr\\Http\\Message\\RequestInterface' => __DIR__ . '/..' . '/psr/http-message/src/RequestInterface.php',
@@ -308,14 +205,114 @@ class ComposerStaticInita9152809377f20d6316d47f59938a0ab
         'Psr\\Http\\Message\\UploadedFileInterface' => __DIR__ . '/..' . '/psr/http-message/src/UploadedFileInterface.php',
         'Psr\\Http\\Message\\UriInterface' => __DIR__ . '/..' . '/psr/http-message/src/UriInterface.php',
         'Symfony\\Polyfill\\Ctype\\Ctype' => __DIR__ . '/..' . '/symfony/polyfill-ctype/Ctype.php',
+        'ps_metrics_module_v4_0_8\\Clue\\StreamFilter\\CallbackFilter' => __DIR__ . '/..' . '/clue/stream-filter/src/CallbackFilter.php',
+        'ps_metrics_module_v4_0_8\\Dotenv\\Dotenv' => __DIR__ . '/..' . '/vlucas/phpdotenv/src/Dotenv.php',
+        'ps_metrics_module_v4_0_8\\Dotenv\\Environment\\AbstractVariables' => __DIR__ . '/..' . '/vlucas/phpdotenv/src/Environment/AbstractVariables.php',
+        'ps_metrics_module_v4_0_8\\Dotenv\\Environment\\Adapter\\AdapterInterface' => __DIR__ . '/..' . '/vlucas/phpdotenv/src/Environment/Adapter/AdapterInterface.php',
+        'ps_metrics_module_v4_0_8\\Dotenv\\Environment\\Adapter\\ApacheAdapter' => __DIR__ . '/..' . '/vlucas/phpdotenv/src/Environment/Adapter/ApacheAdapter.php',
+        'ps_metrics_module_v4_0_8\\Dotenv\\Environment\\Adapter\\ArrayAdapter' => __DIR__ . '/..' . '/vlucas/phpdotenv/src/Environment/Adapter/ArrayAdapter.php',
+        'ps_metrics_module_v4_0_8\\Dotenv\\Environment\\Adapter\\EnvConstAdapter' => __DIR__ . '/..' . '/vlucas/phpdotenv/src/Environment/Adapter/EnvConstAdapter.php',
+        'ps_metrics_module_v4_0_8\\Dotenv\\Environment\\Adapter\\PutenvAdapter' => __DIR__ . '/..' . '/vlucas/phpdotenv/src/Environment/Adapter/PutenvAdapter.php',
+        'ps_metrics_module_v4_0_8\\Dotenv\\Environment\\Adapter\\ServerConstAdapter' => __DIR__ . '/..' . '/vlucas/phpdotenv/src/Environment/Adapter/ServerConstAdapter.php',
+        'ps_metrics_module_v4_0_8\\Dotenv\\Environment\\DotenvFactory' => __DIR__ . '/..' . '/vlucas/phpdotenv/src/Environment/DotenvFactory.php',
+        'ps_metrics_module_v4_0_8\\Dotenv\\Environment\\DotenvVariables' => __DIR__ . '/..' . '/vlucas/phpdotenv/src/Environment/DotenvVariables.php',
+        'ps_metrics_module_v4_0_8\\Dotenv\\Environment\\FactoryInterface' => __DIR__ . '/..' . '/vlucas/phpdotenv/src/Environment/FactoryInterface.php',
+        'ps_metrics_module_v4_0_8\\Dotenv\\Environment\\VariablesInterface' => __DIR__ . '/..' . '/vlucas/phpdotenv/src/Environment/VariablesInterface.php',
+        'ps_metrics_module_v4_0_8\\Dotenv\\Exception\\ExceptionInterface' => __DIR__ . '/..' . '/vlucas/phpdotenv/src/Exception/ExceptionInterface.php',
+        'ps_metrics_module_v4_0_8\\Dotenv\\Exception\\InvalidFileException' => __DIR__ . '/..' . '/vlucas/phpdotenv/src/Exception/InvalidFileException.php',
+        'ps_metrics_module_v4_0_8\\Dotenv\\Exception\\InvalidPathException' => __DIR__ . '/..' . '/vlucas/phpdotenv/src/Exception/InvalidPathException.php',
+        'ps_metrics_module_v4_0_8\\Dotenv\\Exception\\ValidationException' => __DIR__ . '/..' . '/vlucas/phpdotenv/src/Exception/ValidationException.php',
+        'ps_metrics_module_v4_0_8\\Dotenv\\Lines' => __DIR__ . '/..' . '/vlucas/phpdotenv/src/Lines.php',
+        'ps_metrics_module_v4_0_8\\Dotenv\\Loader' => __DIR__ . '/..' . '/vlucas/phpdotenv/src/Loader.php',
+        'ps_metrics_module_v4_0_8\\Dotenv\\Parser' => __DIR__ . '/..' . '/vlucas/phpdotenv/src/Parser.php',
+        'ps_metrics_module_v4_0_8\\Dotenv\\Regex\\Error' => __DIR__ . '/..' . '/vlucas/phpdotenv/src/Regex/Error.php',
+        'ps_metrics_module_v4_0_8\\Dotenv\\Regex\\Regex' => __DIR__ . '/..' . '/vlucas/phpdotenv/src/Regex/Regex.php',
+        'ps_metrics_module_v4_0_8\\Dotenv\\Regex\\Result' => __DIR__ . '/..' . '/vlucas/phpdotenv/src/Regex/Result.php',
+        'ps_metrics_module_v4_0_8\\Dotenv\\Regex\\Success' => __DIR__ . '/..' . '/vlucas/phpdotenv/src/Regex/Success.php',
+        'ps_metrics_module_v4_0_8\\Dotenv\\Validator' => __DIR__ . '/..' . '/vlucas/phpdotenv/src/Validator.php',
+        'ps_metrics_module_v4_0_8\\Http\\Message\\Authentication' => __DIR__ . '/..' . '/php-http/message/src/Authentication.php',
+        'ps_metrics_module_v4_0_8\\Http\\Message\\Authentication\\AutoBasicAuth' => __DIR__ . '/..' . '/php-http/message/src/Authentication/AutoBasicAuth.php',
+        'ps_metrics_module_v4_0_8\\Http\\Message\\Authentication\\BasicAuth' => __DIR__ . '/..' . '/php-http/message/src/Authentication/BasicAuth.php',
+        'ps_metrics_module_v4_0_8\\Http\\Message\\Authentication\\Bearer' => __DIR__ . '/..' . '/php-http/message/src/Authentication/Bearer.php',
+        'ps_metrics_module_v4_0_8\\Http\\Message\\Authentication\\Chain' => __DIR__ . '/..' . '/php-http/message/src/Authentication/Chain.php',
+        'ps_metrics_module_v4_0_8\\Http\\Message\\Authentication\\Header' => __DIR__ . '/..' . '/php-http/message/src/Authentication/Header.php',
+        'ps_metrics_module_v4_0_8\\Http\\Message\\Authentication\\Matching' => __DIR__ . '/..' . '/php-http/message/src/Authentication/Matching.php',
+        'ps_metrics_module_v4_0_8\\Http\\Message\\Authentication\\QueryParam' => __DIR__ . '/..' . '/php-http/message/src/Authentication/QueryParam.php',
+        'ps_metrics_module_v4_0_8\\Http\\Message\\Authentication\\RequestConditional' => __DIR__ . '/..' . '/php-http/message/src/Authentication/RequestConditional.php',
+        'ps_metrics_module_v4_0_8\\Http\\Message\\Authentication\\Wsse' => __DIR__ . '/..' . '/php-http/message/src/Authentication/Wsse.php',
+        'ps_metrics_module_v4_0_8\\Http\\Message\\Builder\\ResponseBuilder' => __DIR__ . '/..' . '/php-http/message/src/Builder/ResponseBuilder.php',
+        'ps_metrics_module_v4_0_8\\Http\\Message\\Cookie' => __DIR__ . '/..' . '/php-http/message/src/Cookie.php',
+        'ps_metrics_module_v4_0_8\\Http\\Message\\CookieJar' => __DIR__ . '/..' . '/php-http/message/src/CookieJar.php',
+        'ps_metrics_module_v4_0_8\\Http\\Message\\CookieUtil' => __DIR__ . '/..' . '/php-http/message/src/CookieUtil.php',
+        'ps_metrics_module_v4_0_8\\Http\\Message\\Decorator\\MessageDecorator' => __DIR__ . '/..' . '/php-http/message/src/Decorator/MessageDecorator.php',
+        'ps_metrics_module_v4_0_8\\Http\\Message\\Decorator\\RequestDecorator' => __DIR__ . '/..' . '/php-http/message/src/Decorator/RequestDecorator.php',
+        'ps_metrics_module_v4_0_8\\Http\\Message\\Decorator\\ResponseDecorator' => __DIR__ . '/..' . '/php-http/message/src/Decorator/ResponseDecorator.php',
+        'ps_metrics_module_v4_0_8\\Http\\Message\\Decorator\\StreamDecorator' => __DIR__ . '/..' . '/php-http/message/src/Decorator/StreamDecorator.php',
+        'ps_metrics_module_v4_0_8\\Http\\Message\\Encoding\\ChunkStream' => __DIR__ . '/..' . '/php-http/message/src/Encoding/ChunkStream.php',
+        'ps_metrics_module_v4_0_8\\Http\\Message\\Encoding\\CompressStream' => __DIR__ . '/..' . '/php-http/message/src/Encoding/CompressStream.php',
+        'ps_metrics_module_v4_0_8\\Http\\Message\\Encoding\\DechunkStream' => __DIR__ . '/..' . '/php-http/message/src/Encoding/DechunkStream.php',
+        'ps_metrics_module_v4_0_8\\Http\\Message\\Encoding\\DecompressStream' => __DIR__ . '/..' . '/php-http/message/src/Encoding/DecompressStream.php',
+        'ps_metrics_module_v4_0_8\\Http\\Message\\Encoding\\DeflateStream' => __DIR__ . '/..' . '/php-http/message/src/Encoding/DeflateStream.php',
+        'ps_metrics_module_v4_0_8\\Http\\Message\\Encoding\\Filter\\Chunk' => __DIR__ . '/..' . '/php-http/message/src/Encoding/Filter/Chunk.php',
+        'ps_metrics_module_v4_0_8\\Http\\Message\\Encoding\\FilteredStream' => __DIR__ . '/..' . '/php-http/message/src/Encoding/FilteredStream.php',
+        'ps_metrics_module_v4_0_8\\Http\\Message\\Encoding\\GzipDecodeStream' => __DIR__ . '/..' . '/php-http/message/src/Encoding/GzipDecodeStream.php',
+        'ps_metrics_module_v4_0_8\\Http\\Message\\Encoding\\GzipEncodeStream' => __DIR__ . '/..' . '/php-http/message/src/Encoding/GzipEncodeStream.php',
+        'ps_metrics_module_v4_0_8\\Http\\Message\\Encoding\\InflateStream' => __DIR__ . '/..' . '/php-http/message/src/Encoding/InflateStream.php',
+        'ps_metrics_module_v4_0_8\\Http\\Message\\Exception' => __DIR__ . '/..' . '/php-http/message/src/Exception.php',
+        'ps_metrics_module_v4_0_8\\Http\\Message\\Exception\\UnexpectedValueException' => __DIR__ . '/..' . '/php-http/message/src/Exception/UnexpectedValueException.php',
+        'ps_metrics_module_v4_0_8\\Http\\Message\\Formatter' => __DIR__ . '/..' . '/php-http/message/src/Formatter.php',
+        'ps_metrics_module_v4_0_8\\Http\\Message\\Formatter\\CurlCommandFormatter' => __DIR__ . '/..' . '/php-http/message/src/Formatter/CurlCommandFormatter.php',
+        'ps_metrics_module_v4_0_8\\Http\\Message\\Formatter\\FullHttpMessageFormatter' => __DIR__ . '/..' . '/php-http/message/src/Formatter/FullHttpMessageFormatter.php',
+        'ps_metrics_module_v4_0_8\\Http\\Message\\Formatter\\SimpleFormatter' => __DIR__ . '/..' . '/php-http/message/src/Formatter/SimpleFormatter.php',
+        'ps_metrics_module_v4_0_8\\Http\\Message\\MessageFactory\\DiactorosMessageFactory' => __DIR__ . '/..' . '/php-http/message/src/MessageFactory/DiactorosMessageFactory.php',
+        'ps_metrics_module_v4_0_8\\Http\\Message\\MessageFactory\\GuzzleMessageFactory' => __DIR__ . '/..' . '/php-http/message/src/MessageFactory/GuzzleMessageFactory.php',
+        'ps_metrics_module_v4_0_8\\Http\\Message\\MessageFactory\\SlimMessageFactory' => __DIR__ . '/..' . '/php-http/message/src/MessageFactory/SlimMessageFactory.php',
+        'ps_metrics_module_v4_0_8\\Http\\Message\\RequestMatcher' => __DIR__ . '/..' . '/php-http/message/src/RequestMatcher.php',
+        'ps_metrics_module_v4_0_8\\Http\\Message\\RequestMatcher\\CallbackRequestMatcher' => __DIR__ . '/..' . '/php-http/message/src/RequestMatcher/CallbackRequestMatcher.php',
+        'ps_metrics_module_v4_0_8\\Http\\Message\\RequestMatcher\\RegexRequestMatcher' => __DIR__ . '/..' . '/php-http/message/src/RequestMatcher/RegexRequestMatcher.php',
+        'ps_metrics_module_v4_0_8\\Http\\Message\\RequestMatcher\\RequestMatcher' => __DIR__ . '/..' . '/php-http/message/src/RequestMatcher/RequestMatcher.php',
+        'ps_metrics_module_v4_0_8\\Http\\Message\\StreamFactory\\DiactorosStreamFactory' => __DIR__ . '/..' . '/php-http/message/src/StreamFactory/DiactorosStreamFactory.php',
+        'ps_metrics_module_v4_0_8\\Http\\Message\\StreamFactory\\GuzzleStreamFactory' => __DIR__ . '/..' . '/php-http/message/src/StreamFactory/GuzzleStreamFactory.php',
+        'ps_metrics_module_v4_0_8\\Http\\Message\\StreamFactory\\SlimStreamFactory' => __DIR__ . '/..' . '/php-http/message/src/StreamFactory/SlimStreamFactory.php',
+        'ps_metrics_module_v4_0_8\\Http\\Message\\Stream\\BufferedStream' => __DIR__ . '/..' . '/php-http/message/src/Stream/BufferedStream.php',
+        'ps_metrics_module_v4_0_8\\Http\\Message\\UriFactory\\DiactorosUriFactory' => __DIR__ . '/..' . '/php-http/message/src/UriFactory/DiactorosUriFactory.php',
+        'ps_metrics_module_v4_0_8\\Http\\Message\\UriFactory\\GuzzleUriFactory' => __DIR__ . '/..' . '/php-http/message/src/UriFactory/GuzzleUriFactory.php',
+        'ps_metrics_module_v4_0_8\\Http\\Message\\UriFactory\\SlimUriFactory' => __DIR__ . '/..' . '/php-http/message/src/UriFactory/SlimUriFactory.php',
+        'ps_metrics_module_v4_0_8\\Http\\Promise\\FulfilledPromise' => __DIR__ . '/..' . '/php-http/promise/src/FulfilledPromise.php',
+        'ps_metrics_module_v4_0_8\\Http\\Promise\\Promise' => __DIR__ . '/..' . '/php-http/promise/src/Promise.php',
+        'ps_metrics_module_v4_0_8\\Http\\Promise\\RejectedPromise' => __DIR__ . '/..' . '/php-http/promise/src/RejectedPromise.php',
+        'ps_metrics_module_v4_0_8\\PhpOption\\LazyOption' => __DIR__ . '/..' . '/phpoption/phpoption/src/PhpOption/LazyOption.php',
+        'ps_metrics_module_v4_0_8\\PhpOption\\None' => __DIR__ . '/..' . '/phpoption/phpoption/src/PhpOption/None.php',
+        'ps_metrics_module_v4_0_8\\PhpOption\\Option' => __DIR__ . '/..' . '/phpoption/phpoption/src/PhpOption/Option.php',
+        'ps_metrics_module_v4_0_8\\PhpOption\\Some' => __DIR__ . '/..' . '/phpoption/phpoption/src/PhpOption/Some.php',
+        'ps_metrics_module_v4_0_8\\PrestaShop\\ModuleLibCacheDirectoryProvider\\Cache\\CacheDirectoryProvider' => __DIR__ . '/..' . '/prestashop/module-lib-cache-directory-provider/src/Cache/CacheDirectoryProvider.php',
+        'ps_metrics_module_v4_0_8\\PrestaShop\\PsAccountsInstaller\\Installer\\Exception\\InstallerException' => __DIR__ . '/..' . '/prestashop/prestashop-accounts-installer/src/Installer/Exception/InstallerException.php',
+        'ps_metrics_module_v4_0_8\\PrestaShop\\PsAccountsInstaller\\Installer\\Exception\\ModuleNotInstalledException' => __DIR__ . '/..' . '/prestashop/prestashop-accounts-installer/src/Installer/Exception/ModuleNotInstalledException.php',
+        'ps_metrics_module_v4_0_8\\PrestaShop\\PsAccountsInstaller\\Installer\\Exception\\ModuleVersionException' => __DIR__ . '/..' . '/prestashop/prestashop-accounts-installer/src/Installer/Exception/ModuleVersionException.php',
+        'ps_metrics_module_v4_0_8\\PrestaShop\\PsAccountsInstaller\\Installer\\Facade\\PsAccounts' => __DIR__ . '/..' . '/prestashop/prestashop-accounts-installer/src/Installer/Facade/PsAccounts.php',
+        'ps_metrics_module_v4_0_8\\PrestaShop\\PsAccountsInstaller\\Installer\\Installer' => __DIR__ . '/..' . '/prestashop/prestashop-accounts-installer/src/Installer/Installer.php',
+        'ps_metrics_module_v4_0_8\\PrestaShop\\PsAccountsInstaller\\Installer\\Presenter\\InstallerPresenter' => __DIR__ . '/..' . '/prestashop/prestashop-accounts-installer/src/Installer/Presenter/InstallerPresenter.php',
+        'ps_metrics_module_v4_0_8\\Prestashop\\ModuleLibGuzzleAdapter\\ClientFactory' => __DIR__ . '/..' . '/prestashop/module-lib-guzzle-adapter/src/ClientFactory.php',
+        'ps_metrics_module_v4_0_8\\Prestashop\\ModuleLibGuzzleAdapter\\Guzzle5\\Client' => __DIR__ . '/..' . '/prestashop/module-lib-guzzle-adapter/src/Guzzle5/Client.php',
+        'ps_metrics_module_v4_0_8\\Prestashop\\ModuleLibGuzzleAdapter\\Guzzle5\\Config' => __DIR__ . '/..' . '/prestashop/module-lib-guzzle-adapter/src/Guzzle5/Config.php',
+        'ps_metrics_module_v4_0_8\\Prestashop\\ModuleLibGuzzleAdapter\\Guzzle7\\Client' => __DIR__ . '/..' . '/prestashop/module-lib-guzzle-adapter/src/Guzzle7/Client.php',
+        'ps_metrics_module_v4_0_8\\Prestashop\\ModuleLibGuzzleAdapter\\Guzzle7\\Config' => __DIR__ . '/..' . '/prestashop/module-lib-guzzle-adapter/src/Guzzle7/Config.php',
+        'ps_metrics_module_v4_0_8\\Prestashop\\ModuleLibGuzzleAdapter\\Guzzle7\\Exception\\UnexpectedValueException' => __DIR__ . '/..' . '/prestashop/module-lib-guzzle-adapter/src/Guzzle7/Exception/UnexpectedValueException.php',
+        'ps_metrics_module_v4_0_8\\Prestashop\\ModuleLibGuzzleAdapter\\Guzzle7\\Promise' => __DIR__ . '/..' . '/prestashop/module-lib-guzzle-adapter/src/Guzzle7/Promise.php',
+        'ps_metrics_module_v4_0_8\\Prestashop\\ModuleLibGuzzleAdapter\\Interfaces\\ClientExceptionInterface' => __DIR__ . '/..' . '/prestashop/module-lib-guzzle-adapter/src/Interfaces/ClientExceptionInterface.php',
+        'ps_metrics_module_v4_0_8\\Prestashop\\ModuleLibGuzzleAdapter\\Interfaces\\ConfigInterface' => __DIR__ . '/..' . '/prestashop/module-lib-guzzle-adapter/src/Interfaces/ConfigInterface.php',
+        'ps_metrics_module_v4_0_8\\Prestashop\\ModuleLibGuzzleAdapter\\Interfaces\\HttpClientInterface' => __DIR__ . '/..' . '/prestashop/module-lib-guzzle-adapter/src/Interfaces/HttpClientInterface.php',
+        'ps_metrics_module_v4_0_8\\Prestashop\\ModuleLibGuzzleAdapter\\VersionDetection' => __DIR__ . '/..' . '/prestashop/module-lib-guzzle-adapter/src/VersionDetection.php',
+        'ps_metrics_module_v4_0_8\\Prestashop\\ModuleLibMboInstaller\\Installer' => __DIR__ . '/..' . '/prestashop/module-lib-mbo-installer/src/Installer.php',
+        'ps_metrics_module_v4_0_8\\Prestashop\\ModuleLibMboInstaller\\Presenter' => __DIR__ . '/..' . '/prestashop/module-lib-mbo-installer/src/Presenter.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInita9152809377f20d6316d47f59938a0ab::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInita9152809377f20d6316d47f59938a0ab::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInita9152809377f20d6316d47f59938a0ab::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit77aea025dfb30e4e2c739336bd7bcd23::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit77aea025dfb30e4e2c739336bd7bcd23::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit77aea025dfb30e4e2c739336bd7bcd23::$classMap;
 
         }, null, ClassLoader::class);
     }

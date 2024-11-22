@@ -332,7 +332,7 @@ abstract class QueryServiceInterface
     private function handleBatchSizeParam($batchSize)
     {
         $validatedBatchSize = self::DEFAULT_BATCH_SIZE;
-        if (ctype_digit($batchSize)) {
+        if (ctype_digit((string) $batchSize)) {
             $validatedBatchSize = $batchSize <= self::MAX_BATCH_SIZE ? $batchSize : self::MAX_BATCH_SIZE;
         }
         // Fetch one extra record than batch size to use as next cursor.
@@ -350,7 +350,7 @@ abstract class QueryServiceInterface
     {
         if ('' === $shopId || !$shopId) {
             return null;
-        } elseif (ctype_digit($shopId) && ObjectModel::existsInDatabase((int) $shopId, 'shop')) {
+        } elseif (ctype_digit((string) $shopId) && ObjectModel::existsInDatabase((int) $shopId, 'shop')) {
             return (int) $shopId;
         } else {
             throw new WebserviceException(

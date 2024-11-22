@@ -1,10 +1,9 @@
 <?php
 
-namespace Dotenv\Environment\Adapter;
+namespace ps_metrics_module_v4_0_8\Dotenv\Environment\Adapter;
 
-use PhpOption\None;
-use PhpOption\Some;
-
+use ps_metrics_module_v4_0_8\PhpOption\None;
+use ps_metrics_module_v4_0_8\PhpOption\Some;
 class ArrayAdapter implements AdapterInterface
 {
     /**
@@ -13,7 +12,6 @@ class ArrayAdapter implements AdapterInterface
      * @return array<string|null>
      */
     private $variables = [];
-
     /**
      * Determines if the adapter is supported.
      *
@@ -21,9 +19,8 @@ class ArrayAdapter implements AdapterInterface
      */
     public function isSupported()
     {
-        return true;
+        return \true;
     }
-
     /**
      * Get an environment variable, if it exists.
      *
@@ -33,13 +30,11 @@ class ArrayAdapter implements AdapterInterface
      */
     public function get($name)
     {
-        if (array_key_exists($name, $this->variables)) {
+        if (\array_key_exists($name, $this->variables)) {
             return Some::create($this->variables[$name]);
         }
-
         return None::create();
     }
-
     /**
      * Set an environment variable.
      *
@@ -52,7 +47,6 @@ class ArrayAdapter implements AdapterInterface
     {
         $this->variables[$name] = $value;
     }
-
     /**
      * Clear an environment variable.
      *

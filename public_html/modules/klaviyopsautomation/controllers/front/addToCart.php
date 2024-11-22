@@ -83,6 +83,12 @@ class KlaviyoPsAddToCartModuleFrontController extends KlaviyoPsAjaxModuleFrontCo
         } catch (Exception $e) {
             return array();
         }
+
+        // getLastProduct() can return false if item is not found.
+        if (!$itemDetails) {
+            return array();
+        }
+
         $productId = $itemDetails['id_product'];
         $langId = $this->context->language->id;
         $shopId = $this->context->shop->id;

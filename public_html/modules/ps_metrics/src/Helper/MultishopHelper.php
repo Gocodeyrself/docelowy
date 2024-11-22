@@ -18,7 +18,6 @@
  * @copyright Since 2007 PrestaShop SA and Contributors
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License version 3.0
  */
-
 namespace PrestaShop\Module\Ps_metrics\Helper;
 
 /**
@@ -29,29 +28,24 @@ class MultishopHelper
     /**
      * @var bool
      */
-    private $isMultishopActive = false;
-
+    private $isMultishopActive = \false;
     /**
      * @var int
      */
     private $context = null;
-
     /**
      * @var int
      */
     private $selectedShopId = null;
-
     public function __construct()
     {
         $this->isMultishopActive = \Shop::isFeatureActive();
         $this->context = \Shop::getContext();
-
         $context = \Context::getContext();
         if ($context != null && $context->shop != null) {
             $this->selectedShopId = (int) $context->shop->id;
         }
     }
-
     /**
      * Shop context
      *
@@ -61,7 +55,6 @@ class MultishopHelper
     {
         return $this->context;
     }
-
     /**
      * Get multishop active feature is enabled
      *
@@ -71,7 +64,6 @@ class MultishopHelper
     {
         return $this->isMultishopActive;
     }
-
     /**
      * ID of selected shop
      *
@@ -81,7 +73,6 @@ class MultishopHelper
     {
         return $this->selectedShopId;
     }
-
     /**
      * Current shop
      *
@@ -91,7 +82,6 @@ class MultishopHelper
     {
         return \Shop::getShop($this->getSelectedShopId());
     }
-
     /**
      * Check if shop context is shop
      *
@@ -100,12 +90,10 @@ class MultishopHelper
     public function isShopContext()
     {
         if ($this->isMultishopActive() && $this->getShopContext() !== \Shop::CONTEXT_SHOP) {
-            return false;
+            return \false;
         }
-
-        return true;
+        return \true;
     }
-
     /**
      * Check if shop context is group
      *
@@ -114,12 +102,10 @@ class MultishopHelper
     public function isGroupContext()
     {
         if ($this->isMultishopActive() && $this->getShopContext() !== \Shop::CONTEXT_GROUP) {
-            return false;
+            return \false;
         }
-
-        return true;
+        return \true;
     }
-
     /**
      * Check if shop context is all
      *
@@ -128,12 +114,10 @@ class MultishopHelper
     public function isAllContext()
     {
         if ($this->isMultishopActive() && $this->getShopContext() !== \Shop::CONTEXT_ALL) {
-            return false;
+            return \false;
         }
-
-        return true;
+        return \true;
     }
-
     /**
      * Get all active shops for all shops or for a group
      *
@@ -142,18 +126,15 @@ class MultishopHelper
     public function getAllShopsOrGroupShops()
     {
         if ($this->isMultishopActive() && $this->isGroupContext()) {
-            $allShops = \Shop::getShops(true, $this->getSelectedShopId());
+            $allShops = \Shop::getShops(\true, $this->getSelectedShopId());
         } else {
-            $allShops = \Shop::getShops(false);
+            $allShops = \Shop::getShops(\false);
         }
-
         foreach ($allShops as &$shop) {
-            $shop['group'] = \Shop::getGroupFromShop($shop['id_shop'], false);
+            $shop['group'] = \Shop::getGroupFromShop($shop['id_shop'], \false);
         }
-
         return $allShops;
     }
-
     /**
      * get Shop context as string
      *
@@ -166,7 +147,6 @@ class MultishopHelper
         } elseif ($this->isGroupContext()) {
             return 'GROUP';
         }
-
         return 'ALL';
     }
 }

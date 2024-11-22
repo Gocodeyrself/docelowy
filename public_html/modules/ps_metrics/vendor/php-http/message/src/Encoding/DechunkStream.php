@@ -1,6 +1,6 @@
 <?php
 
-namespace Http\Message\Encoding;
+namespace ps_metrics_module_v4_0_8\Http\Message\Encoding;
 
 /**
  * Decorate a stream which is chunked.
@@ -11,12 +11,11 @@ namespace Http\Message\Encoding;
  */
 class DechunkStream extends FilteredStream
 {
-    protected function readFilter(): string
+    protected function readFilter() : string
     {
         return 'dechunk';
     }
-
-    protected function writeFilter(): string
+    protected function writeFilter() : string
     {
         return 'chunk';
     }

@@ -18,7 +18,6 @@
  * @copyright Since 2007 PrestaShop SA and Contributors
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License version 3.0
  */
-
 namespace PrestaShop\Module\Ps_metrics\Helper;
 
 class ApiHelper
@@ -30,17 +29,11 @@ class ApiHelper
      */
     public function getLastedPeriodRange(array $period)
     {
-        $startDate = strtotime($period['startDate']);
-        $endDate = strtotime($period['endDate']);
-
-        $dateDiffSeconds = ($endDate - $startDate);
-
+        $startDate = \strtotime($period['startDate']);
+        $endDate = \strtotime($period['endDate']);
+        $dateDiffSeconds = $endDate - $startDate;
         //if diff < 1 day, set 1 day
-        $dateDiffSeconds = ($dateDiffSeconds < 86400) ? 8640 : $dateDiffSeconds;
-
-        return [
-            'startDate' => date('Y-m-d', $startDate - $dateDiffSeconds),
-            'endDate' => $period['startDate'],
-        ];
+        $dateDiffSeconds = $dateDiffSeconds < 86400 ? 8640 : $dateDiffSeconds;
+        return ['startDate' => \date('Y-m-d', $startDate - $dateDiffSeconds), 'endDate' => $period['startDate']];
     }
 }

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.1, created on 2024-10-14 11:00:14
+/* Smarty version 4.3.1, created on 2024-11-22 08:31:25
   from '/home/qisogexqbz/domains/cezos.exis24.pl/public_html/themes/classic/templates/_partials/footer.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.1',
-  'unifunc' => 'content_670cdd9e17c730_31390664',
+  'unifunc' => 'content_6740334d4bec02_03982352',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '040e8ce681295f161c00e1ac58fa77c275c43307' => 
     array (
       0 => '/home/qisogexqbz/domains/cezos.exis24.pl/public_html/themes/classic/templates/_partials/footer.tpl',
-      1 => 1722946810,
+      1 => 1730322187,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:catalog/_partials/blog.tpl' => 1,
   ),
 ),false)) {
-function content_670cdd9e17c730_31390664 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6740334d4bec02_03982352 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, false);
 ?>
@@ -36,7 +36,7 @@ $_smarty_tpl->inheritance->init($_smarty_tpl, false);
     <?php }?>
   <div class="row">
     <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1553847460670cdd9e172188_26289733', 'hook_footer_before');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_17031109026740334d4bb871_47858174', 'hook_footer_before');
 ?>
 
     <?php if ($_smarty_tpl->tpl_vars['page']->value['page_name'] === "index") {?>
@@ -51,7 +51,7 @@ $_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1553847460670cdd9e
         <?php echo $_smarty_tpl->tpl_vars['footerLeft']->value;?>
 
         <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_262305113670cdd9e174761_02532123', 'hook_footer');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_6963101936740334d4bc627_95597166', 'hook_footer');
 ?>
 
         <?php echo $_smarty_tpl->tpl_vars['footerCenterRight']->value;?>
@@ -65,9 +65,7 @@ $_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_262305113670cdd9e1
     <?php echo $_smarty_tpl->tpl_vars['totalFooter']->value;?>
 
 </div>
-<div class="exis text-right mt-4 p-c">
-    <a href="https://exis.pl/" target="_blank">e-commerce solutions Exis Interactive</a>
-</div>
+
 
 <?php echo '<script'; ?>
  type="text/javascript">
@@ -378,12 +376,12 @@ $('#discover.new1').owlCarousel({
 >
 <?php }
 /* {block 'hook_footer_before'} */
-class Block_1553847460670cdd9e172188_26289733 extends Smarty_Internal_Block
+class Block_17031109026740334d4bb871_47858174 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'hook_footer_before' => 
   array (
-    0 => 'Block_1553847460670cdd9e172188_26289733',
+    0 => 'Block_17031109026740334d4bb871_47858174',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -396,12 +394,12 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 }
 /* {/block 'hook_footer_before'} */
 /* {block 'hook_footer'} */
-class Block_262305113670cdd9e174761_02532123 extends Smarty_Internal_Block
+class Block_6963101936740334d4bc627_95597166 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'hook_footer' => 
   array (
-    0 => 'Block_262305113670cdd9e174761_02532123',
+    0 => 'Block_6963101936740334d4bc627_95597166',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {

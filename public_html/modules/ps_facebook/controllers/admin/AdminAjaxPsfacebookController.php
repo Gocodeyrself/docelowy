@@ -196,6 +196,15 @@ class AdminAjaxPsfacebookController extends ModuleAdminController
                 $e->getCode(),
                 true
             );
+            $this->ajaxDie(
+                json_encode(
+                    [
+                        'success' => false,
+                        'message' => $e->getMessage(),
+                        'turnOn' => false,
+                    ]
+                )
+            );
 
             return;
         }
@@ -205,6 +214,16 @@ class AdminAjaxPsfacebookController extends ModuleAdminController
                 new FacebookOnboardException(
                     json_encode($response['message']),
                     FacebookOnboardException::FACEBOOK_RETRIEVE_EXTERNAL_BUSINESS_ID_EXCEPTION
+                )
+            );
+
+            $this->ajaxDie(
+                json_encode(
+                    [
+                        'success' => false,
+                        'message' => $response['message'],
+                        'turnOn' => false,
+                    ]
                 )
             );
 
@@ -431,6 +450,42 @@ class AdminAjaxPsfacebookController extends ModuleAdminController
         }
     }
 
+    public function displayAjaxDisabledMessengerFeature()
+    {
+        /**
+         * @var FbeFeatureManager
+         */
+        $featureManager = $this->module->getService(FbeFeatureManager::class);
+
+        $featureManager->updateFeature('messenger_chat', false);
+
+        $this->ajaxDie(
+            json_encode(
+                [
+                    'success' => true,
+                ]
+            )
+        );
+    }
+
+    public function displayAjaxMerchantHasChatDisabled()
+    {
+        $messengerChatFeature = json_decode($this->configurationAdapter->get(Config::FBE_FEATURE_CONFIGURATION . 'messenger_chat'));
+        $isEnabled = false;
+
+        if (!empty($messengerChatFeature->enabled)) {
+            $isEnabled = $messengerChatFeature->enabled;
+        }
+
+        $this->ajaxDie(
+            json_encode(
+                [
+                    'messengerChatStatus' => $isEnabled,
+                ]
+            )
+        );
+    }
+
     /**
      * @throws PrestaShopException
      */
@@ -462,7 +517,7 @@ class AdminAjaxPsfacebookController extends ModuleAdminController
                         'prevalidation' => $prevalidationScanDataProvider->getPrevalidationScanSummary($this->context->shop->id),
                         'reporting' => [
                             'lastSyncDate' => $syncReport['lastFinishedSyncStartedAt'],
-                            'catalog' => $productCount['product_count'] ?? '--',
+                            'catalog' => $productCount['product_count'] ?? null,
                             'errored' => count($syncReport['errors']), // no distinction for base lang vs l10n errors
                         ],
                     ],
@@ -517,8 +572,23 @@ class AdminAjaxPsfacebookController extends ModuleAdminController
 
     public function displayAjaxGetCategories()
     {
-        $categoryId = (int) Tools::getValue('id_category');
-        $page = (int) Tools::getValue('page');
+        $inputs = json_decode(Tools::file_get_contents('php://input'), true);
+
+        $categoryId = isset($inputs['id_category']) ? (int) $inputs['id_category'] : null;
+        $page = isset($inputs['page']) ? (int) $inputs['page'] : null;
+
+        if ($categoryId === null || $page === null) {
+            http_response_code(400);
+            $this->ajaxDie(
+                json_encode(
+                    [
+                        'success' => false,
+                        'message' => 'Missing data',
+                    ]
+                )
+            );
+        }
+
         $shopId = (int) $this->context->shop->id;
         $langId = $this->context->language->id;
         /** @var GoogleCategoryProviderInterface $googleCategoryProvider */
@@ -606,7 +676,7 @@ class AdminAjaxPsfacebookController extends ModuleAdminController
         $moduleName = Tools::getValue('module_name');
         $moduleAction = Tools::getValue('module_action');
 
-        if (!in_array($moduleName, ['ps_accounts', 'ps_eventbus'])
+        if (!in_array($moduleName, ['ps_accounts', 'ps_eventbus', 'ps_facebook'])
             || !in_array($moduleAction, ['enable', 'install', 'upgrade'])) {
             http_response_code(401);
             $this->ajaxDie(

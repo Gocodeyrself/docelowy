@@ -1044,6 +1044,11 @@
     'path' => 'classes/lang/ContactLang.php',
     'type' => 'class',
   ),
+  'Contactform' => 
+  array (
+    'path' => 'override/modules/contactform/contactform.php',
+    'type' => 'class',
+  ),
   'Context' => 
   array (
     'path' => NULL,
@@ -1166,7 +1171,7 @@
   ),
   'CustomerForm' => 
   array (
-    'path' => NULL,
+    'path' => 'override/classes/form/CustomerForm.php',
     'type' => 'class',
   ),
   'CustomerFormCore' => 
@@ -1176,7 +1181,7 @@
   ),
   'CustomerFormatter' => 
   array (
-    'path' => NULL,
+    'path' => 'override/classes/form/CustomerFormatter.php',
     'type' => 'class',
   ),
   'CustomerFormatterCore' => 
@@ -1186,7 +1191,7 @@
   ),
   'CustomerLoginForm' => 
   array (
-    'path' => NULL,
+    'path' => 'override/classes/form/CustomerLoginForm.php',
     'type' => 'class',
   ),
   'CustomerLoginFormCore' => 

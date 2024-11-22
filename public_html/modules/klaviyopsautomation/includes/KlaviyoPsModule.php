@@ -22,11 +22,15 @@ if (!defined('_PS_VERSION_')) {
     exit;
 }
 
-use Klaviyo\Exception\KlaviyoException;
+use KlaviyoPs\Classes\KlaviyoCouponUsageLimitType;
+use KlaviyoV3Sdk\Exception\KlaviyoException;
 use KlaviyoPs\Classes\HooksHandler;
 use KlaviyoPs\Classes\BusinessLogicServices\ProductPayloadService;
+use KlaviyoPs\Classes\KlaviyoServices\CustomerEventService;
 use KlaviyoPs\Classes\KlaviyoServices\OrderEventService;
 use KlaviyoPs\Classes\KlaviyoUtils;
+use KlaviyoPs\Classes\PrestashopServices\ContextService;
+use KlaviyoPs\Classes\PrestashopServices\CustomerService;
 use KlaviyoPs\Classes\PrestashopServices\LoggerService;
 use KlaviyoPs\Classes\PrestashopServices\OrderService;
 use PrestaShop\ModuleLibServiceContainer\DependencyInjection\ServiceContainer;
@@ -42,6 +46,12 @@ class KlaviyoPsModule extends Module
         'KLAVIYO_ORDER_STATUS_MAP',
         'KLAVIYO_TRANSACTIONAL_EMAIL_ENABLE',
         'KLAVIYO_REAL_TIME_EVENT_ENABLE',
+        'KLAVIYO_IS_SYNCING_SMS_SUBSCRIBERS',
+        'KLAVIYO_SMS_SUBSCRIBER_LIST',
+        'KLAVIYO_SMS_SUBSCRIBE_TRIGGER',
+        'KLAVIYO_SMS_CONSENT_LABEL',
+        'KLAVIYO_SMS_CONSENT_DISCLOSURE_TEXT',
+        'KLAVIYO_COUPON_USAGE_LIMIT_TYPE',
     ];
 
     const ADMIN_CONTROLLERS = array(
@@ -105,20 +115,16 @@ class KlaviyoPsModule extends Module
 
         $this->tab = 'advertising_marketing';
         $this->need_instance = 0;
-        $this->ps_versions_compliancy = [
-            'min' => '1.7',
-            'max' => _PS_VERSION_
-        ];
         $this->bootstrap = true;
 
         parent::__construct();
 
-        $this->description = $this->l('Klaviyo module to integrate PrestaShop with Klaviyo.');
+        $this->description = $this->l('Klaviyo module to integrate PrestaShop with Klaviyo.', 'klaviyopsmodule');
 
-        $this->confirmUninstall = $this->l('Are you sure you want to uninstall?');
+        $this->confirmUninstall = $this->l('Are you sure you want to uninstall?', 'klaviyopsmodule');
 
         if (!Configuration::get('KLAVIYO')) {
-            $this->warning = $this->l('No name provided');
+            $this->warning = $this->l('No name provided', 'klaviyopsmodule');
         }
     }
 
@@ -164,6 +170,7 @@ class KlaviyoPsModule extends Module
             Configuration::updateValue('KLAVIYO', $this->name) &&
             Configuration::updateValue('KLAVIYO_REAL_TIME_EVENT_ENABLE', 0) &&
             Configuration::updateValue('KLAVIYO_TRANSACTIONAL_EMAIL_ENABLE', 0) &&
+            Configuration::updateValue('KLAVIYO_COUPON_USAGE_LIMIT_TYPE', KlaviyoCouponUsageLimitType::LIMIT_PREFIX) &&
             $this->registerControllersAndHooks() &&
             $this->setupWebservice() &&
             $this->installTabs();
@@ -251,14 +258,14 @@ class KlaviyoPsModule extends Module
             !Configuration::updateValue('KLAVIYO_WEBSERVICE_KEY', $webservice->key)
         ) {
             $this->_errors[] =
-                $this->l('It was not possible to install the Klaviyo module: webservice key creation error.');
+                $this->l('It was not possible to install the Klaviyo module: webservice key creation error.', 'klaviyopsmodule');
             return false;
         }
 
         // Set webservice key permissions
         if (!$this->setWebservicePermissionsForAccount($webservice->id, $this->getWebservicePermissions())) {
             $this->_errors[] =
-                $this->l('It was not possible to install the Klaviyo module: webservice key permissions setup error.');
+                $this->l('It was not possible to install the Klaviyo module: webservice key permissions setup error.', 'klaviyopsmodule');
             return false;
         }
         return true;
@@ -341,7 +348,11 @@ class KlaviyoPsModule extends Module
             $this->registerHook('actionAdminControllerSetMedia') &&
             $this->registerHook('actionFrontControllerSetMedia') &&
             $this->registerHook('actionEmailSendBefore') &&
-            $this->registerHook('actionOrderStatusPostUpdate');
+            $this->registerHook('actionOrderStatusPostUpdate') &&
+            $this->registerHook('additionalCustomerAddressFields') &&
+            $this->registerHook('actionSubmitCustomerAddressForm') &&
+            $this->registerHook('displayOrderConfirmation') &&
+            $this->registerHook('actionFrontControllerInitAfter');
     }
 
     /**
@@ -393,7 +404,11 @@ class KlaviyoPsModule extends Module
             $this->unregisterHook('actionFrontControllerSetMedia') &&
             $this->unregisterHook('actionEmailSendBefore') &&
             $this->unregisterHook('actionOrderStatusPostUpdate') &&
-            $this->unregisterHook('displayAdminAfterHeader');
+            $this->unregisterHook('displayAdminAfterHeader') &&
+            $this->unregisterHook('additionalCustomerAddressFields') &&
+            $this->unregisterHook('actionSubmitCustomerAddressForm') &&
+            $this->unregisterHook('displayOrderConfirmation') &&
+            $this->unregisterHook('actionFrontControllerInitAfter');
     }
 
     /**
@@ -447,19 +462,19 @@ class KlaviyoPsModule extends Module
      * @param $configKey
      * @return bool|string|null
      */
-    public function getConfigurationValueOrNull($configKey)
+    public function getConfigurationValueOrNull($configKey, $idLang = null)
     {
         // If Multi-store is not active, getContext() returns Shop::CONTEXT_SHOP.
         if (!Shop::isFeatureActive()) {
-            return Configuration::get($configKey);
+            return Configuration::get($configKey, $idLang);
         }
 
-        if ($this->context->shop->getContext() === Shop::CONTEXT_SHOP && Configuration::hasKey($configKey, null, null, $this->context->shop->id)) {
-            return Configuration::get($configKey, null, null, $this->context->shop->id);
-        } elseif ($this->context->shop->getContext() === Shop::CONTEXT_GROUP && Configuration::hasKey($configKey, null, Shop::getContextShopGroupID(true))) {
-            return Configuration::get($configKey, null, Shop::getContextShopGroupID(true));
+        if ($this->context->shop->getContext() === Shop::CONTEXT_SHOP && Configuration::hasKey($configKey, $idLang, null, $this->context->shop->id)) {
+            return Configuration::get($configKey, $idLang, null, $this->context->shop->id);
+        } elseif ($this->context->shop->getContext() === Shop::CONTEXT_GROUP && Configuration::hasKey($configKey, $idLang, Shop::getContextShopGroupID(true))) {
+            return Configuration::get($configKey, $idLang, Shop::getContextShopGroupID(true));
         } elseif ($this->context->shop->getContext() === Shop::CONTEXT_ALL) {
-            return Configuration::get($configKey);
+            return Configuration::get($configKey, $idLang);
         }
 
         return null;
@@ -486,7 +501,14 @@ class KlaviyoPsModule extends Module
             }
 
             // Can throw Exception ServiceNotFoundException if there is a cache issue
-            return $this->get($serviceName);
+            $service = $this->get($serviceName);
+
+            // In some case Module::get can return false if the Symfony container is not available (some modules can broke it for example)
+            if ($service === false) {
+                throw new Exception();
+            }
+
+            return $service;
         } catch (Exception $e) {
             $this->klaviyoContainer = new ServiceContainer(
                 $this->name,
@@ -517,7 +539,13 @@ class KlaviyoPsModule extends Module
 
         $distPath = $this->cacheManifest[$name];
 
-        return "{$moduleUrl}dist{$distPath}";
+        switch ($this->context->controller->controller_type) {
+            case 'admin':
+            case 'moduleadmin':
+                return "{$moduleUrl}dist{$distPath}";
+            default:
+                return "modules/{$this->name}/dist{$distPath}";
+        }
     }
 
     /**
@@ -565,7 +593,10 @@ class KlaviyoPsModule extends Module
     public function hookActionCustomerAccountAdd(array $params)
     {
         $hooksHandler = new HooksHandler($this);
-        $hooksHandler->handleActionCustomerAccount($params);
+        $hooksHandler->handleActionCustomerAccount(
+            $params,
+            'Account Created'
+        );
     }
 
     /**
@@ -575,7 +606,10 @@ class KlaviyoPsModule extends Module
     public function hookActionCustomerAccountUpdate(array $params)
     {
         $hooksHandler = new HooksHandler($this);
-        $hooksHandler->handleActionCustomerAccount($params);
+        $hooksHandler->handleActionCustomerAccount(
+            $params,
+            'Account Updated'
+        );
     }
 
     /**
@@ -753,6 +787,83 @@ class KlaviyoPsModule extends Module
     }
 
     /**
+     * Display SMS Consent to customer address form
+     *
+     * @param  array $params
+     * @return array
+     */
+    public function HookAdditionalCustomerAddressFields($params)
+    {
+        if (!isset($params['fields'])) {
+            return [];
+        }
+
+        $hooksHandler = new HooksHandler($this);
+        return $hooksHandler->handleAdditionalCustomerAddressFields($params);
+    }
+
+    /**
+     * Send SMS Consent to Klaviyo
+     *
+     * @param  array $params
+     * @return void
+     */
+    public function HookActionSubmitCustomerAddressForm($params)
+    {
+        $hooksHandler = new HooksHandler($this);
+        return $hooksHandler->handleActionSubmitCustomerAddressForm($params);
+    }
+
+    /**
+     * Send SMS Consent to Klaviyo (Place order)
+     *
+     * @param  mixed $params
+     * @return void
+     */
+    public function hookDisplayOrderConfirmation($params)
+    {
+        $hooksHandler = new HooksHandler($this);
+        return $hooksHandler->handleDisplayOrderConfirmation($params);
+    }
+
+    public function hookActionFrontControllerInitAfter($params)
+    {
+        if (
+            $this->context->controller instanceof CartController &&
+            CartRule::isFeatureActive() &&
+            Tools::getIsset('addDiscount') &&
+            $couponConfigValue = Configuration::get('KLAVIYO_COUPON_USAGE_LIMIT_TYPE')
+        ) {
+            $cartRuleService = $this->getService('klaviyops.prestashop_services.cart_rule');
+            $cart = $this->context->cart;
+
+            switch ($couponConfigValue) {
+                case KlaviyoCouponUsageLimitType::LIMIT_PREFIX:
+                    $code = trim(Tools::getValue('discount_name', ''));
+                    $prefix = $cartRuleService->getCartRuleCodePrefix($code);
+
+                    if ($prefix === null) {
+                        return;
+                    }
+
+                    $cartRule = $cartRuleService->getCartRuleByPrefix($cart, $prefix);
+
+                    if ($cartRule === null) {
+                        return;
+                    }
+
+                    $errorMsg = $this->l('This voucher is not combinable with a voucher already in your cart:', 'klaviyopsmodule');
+                    $this->context->controller->errors[] = $errorMsg . " $cartRule->name";
+                case KlaviyoCouponUsageLimitType::LIMIT_ONE:
+                    $cartRules = $cart->getCartRules(CartRule::FILTER_ACTION_ALL, false);
+                    if (count($cartRules) > 0) {
+                        $this->context->controller->errors[] = $this->l('Limit of one voucher per cart.', 'klaviyopsmodule');
+                    }
+            }
+        }
+    }
+
+    /**
      * Register klaviyo.js and identify javascript code along with customer data if
      * public API key is set.
      */
@@ -762,7 +873,7 @@ class KlaviyoPsModule extends Module
             $this->addIdentifyData();
             $this->context->controller->registerJavascript(
                 'module-' . $this->name . '-analytics',
-                'https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=' . $this->getConfigurationValueOrNull('KLAVIYO_PUBLIC_API'),
+                'https://static.klaviyo.com/onsite/js/' . $this->getConfigurationValueOrNull('KLAVIYO_PUBLIC_API') . '/klaviyo.js',
                 array(
                     'server' => 'remote',
                     'priority' => 450,
@@ -784,16 +895,39 @@ class KlaviyoPsModule extends Module
      */
     protected function addIdentifyData()
     {
-        $customer = $this->context->customer;
-        Media::addJsDef(
-            array(
-                'klCustomer' => array(
-                    'email' => $customer->email,
-                    'firstName' => $customer->firstname,
-                    'lastName' => $customer->lastname,
-                )
-            )
-        );
+        try {
+            /** @var ContextService $contextService */
+            $contextService = $this->getService('klaviyops.prestashop_services.context');
+            /** @var CustomerService $customerService */
+            $customerService = $this->getService('klaviyops.prestashop_services.customer');
+            /** @var CustomerEventService $customerEventService */
+            $customerEventService = $this->getService('klaviyops.klaviyo_service.customer_event_service');
+
+            $customer = null;
+
+            if (Validate::isLoadedObject($this->context->customer)) {
+                $context = $contextService->normalize(); // Current context
+                $customer = $customerService->normalize(
+                    $this->context->customer,
+                    $context
+                );
+
+                $customer = $customerEventService->buildPayloadForJs($customer);
+            }
+
+            Media::addJsDef([
+                'klCustomer' => $customer,
+            ]);
+        } catch (Exception $e) {
+            /** @var LoggerService $logger */
+            $logger = $this->getService('klaviyops.prestashop_services.logger');
+
+            if (Validate::isLoadedObject($this->context->customer)) {
+                $logger->error("An error occured in addIdentifyData for customer {$this->context->customer->email}");
+            } else {
+                $logger->error('An error occured in addIdentifyData');
+            }
+        }
     }
 
     /**
@@ -859,6 +993,10 @@ class KlaviyoPsModule extends Module
         $link = new Link();
         $productLink = $link->getProductLink($product);
 
+        // Get product price without tax. This returns a float while
+        // price attribute returns a string with 6 significant digits.
+        $price = $product->getPrice(false);
+
         Media::addJsDef(
             array(
                 'klProduct' => array(
@@ -866,16 +1004,33 @@ class KlaviyoPsModule extends Module
                     'ProductID' => $product_id,
                     'SKU' => $product->reference,
                     'Tags' => ProductPayloadService::getProductTagsArray($product_id, $lang_id),
-                    'Price' => KlaviyoUtils::formatPrice($product->price),
+                    'Price' => KlaviyoUtils::formatPrice($price),
                     'PriceInclTax' => KlaviyoUtils::formatPrice($product->getPrice()),
                     'SpecialPrice' => KlaviyoUtils::formatPrice(Product::getPriceStatic($product_id)),
                     'Categories' => $productCategories,
                     'Image' => ProductPayloadService::buildProductImageUrls($product),
                     'Link' => $productLink,
                     'ShopID' => $shop_id,
-                    'LangID' => $lang_id
+                    'LangID' => $lang_id,
+                    'eventValue' => is_numeric($price) ? $price : 0
                 )
             )
+        );
+    }
+
+    /**
+     * Define js object to support custom base URI for added to cart module route.
+     * @return void
+     */
+    protected function addAddedToCartData()
+    {
+        $addedToCartUrl = rtrim(__PS_BASE_URI__, '/') . '/klaviyo/events/add-to-cart';
+        Media::addJsDef(
+            [
+                'klAddedToCart' => [
+                    'url' => $addedToCartUrl
+                ]
+            ]
         );
     }
 
@@ -884,6 +1039,7 @@ class KlaviyoPsModule extends Module
      */
     protected function setupAddToCart()
     {
+        $this->addAddedToCartData();
         $this->context->controller->registerJavascript(
             'module-' . $this->name . '-add-to-cart',
             $this->getDistPathUri('add-to-cart.js'),

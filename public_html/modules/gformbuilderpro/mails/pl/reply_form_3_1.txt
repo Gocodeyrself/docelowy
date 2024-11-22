@@ -1,3 +1,27 @@
+
+
+
+
+
+
+
+
+
+{shop_name}
+E-mail: {shop_email}
+Adres: {shop_address}
+
+
+
+
+
+Hi {sender_email}!
+
+
+
+
+
+
 {reply_message}
 
 
@@ -5,5 +29,9 @@
 
 
 {shop_name}
+
+
+
+
 
 

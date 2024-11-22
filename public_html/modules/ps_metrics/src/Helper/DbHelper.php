@@ -18,11 +18,9 @@
  * @copyright Since 2007 PrestaShop SA and Contributors
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License version 3.0
  */
-
 namespace PrestaShop\Module\Ps_metrics\Helper;
 
 use Db;
-
 class DbHelper
 {
     /**
@@ -37,7 +35,6 @@ class DbHelper
     {
         return Db::getInstance()->{$dbRequestType}($sql);
     }
-
     /**
      * Executes return the result of $sql as array by requesting
      *
@@ -49,7 +46,6 @@ class DbHelper
     {
         return (array) $this->request('executeS', $sql);
     }
-
     /**
      * Returns a value from the first row, first column of a SELECT query
      *
@@ -61,7 +57,6 @@ class DbHelper
     {
         return $this->request('getValue', $sql);
     }
-
     /**
      * Returns an associative array containing the first row of the query This function automatically adds "LIMIT 1" to the query.
      *

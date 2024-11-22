@@ -18,7 +18,6 @@
  * @copyright Since 2007 PrestaShop SA and Contributors
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License version 3.0
  */
-
 namespace PrestaShop\Module\Ps_metrics;
 
 use PrestaShop\Module\Ps_metrics\Config\Env;
@@ -32,27 +31,21 @@ use PrestaShop\Module\Ps_metrics\Module\Install;
 use PrestaShop\Module\Ps_metrics\Repository\ConfigurationRepository;
 use PrestaShop\Module\Ps_metrics\Repository\HookModuleRepository;
 use PrestaShop\Module\Ps_metrics\Tracker\Segment;
-
 class LegacyModuleInstaller
 {
     /**
      * @var \Ps_metrics
      */
     private $module;
-
     /**
      * @var ConfigurationRepository
      */
     private $configurationRepository;
-
     public function __construct(\Ps_metrics $module)
     {
         $this->module = $module;
-        $this->configurationRepository = (new ConfigurationRepository(
-            (new PrestaShopHelper())
-        ));
+        $this->configurationRepository = new ConfigurationRepository(new PrestaShopHelper());
     }
-
     /**
      * The service container is not available during the install process.
      * This method is used to manually instantiate PrestaShop\Module\Ps_metrics\Module\Install required
@@ -64,13 +57,8 @@ class LegacyModuleInstaller
      */
     public function legacyModuleInstaller()
     {
-        return new Install(
-            $this->module,
-            $this->configurationRepository,
-            (new HookModuleRepository())
-        );
+        return new Install($this->module, $this->configurationRepository, new HookModuleRepository());
     }
-
     /**
      * The service container is not available during the install process.
      * This method is used to manually instantiate PrestaShop\Module\Ps_metrics\Helper\SegmentHelper required
@@ -82,19 +70,8 @@ class LegacyModuleInstaller
      */
     public function legacyModuleInstallerSegment()
     {
-        return new Segment(
-            (new SegmentHelper(
-                (new ConfigHelper(
-                    (new Env($this->module))
-                ))
-            )),
-            (new PrestaShopHelper()),
-            (new ShopHelper(
-                (new ToolsHelper())
-            ))
-        );
+        return new Segment(new SegmentHelper(new ConfigHelper(new Env($this->module))), new PrestaShopHelper(), new ShopHelper(new ToolsHelper()));
     }
-
     /**
      * The service container is not available during the install process.
      * This method is used to manually instantiate PrestaShop\Module\Ps_metrics\Helper\SegmentHelper required

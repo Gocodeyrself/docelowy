@@ -1,10 +1,9 @@
 <?php
 
-namespace Http\Message\Authentication;
+namespace ps_metrics_module_v4_0_8\Http\Message\Authentication;
 
-use Http\Message\Authentication;
+use ps_metrics_module_v4_0_8\Http\Message\Authentication;
 use Psr\Http\Message\RequestInterface;
-
 /**
  * Authenticate a PSR-7 Request using a token.
  *
@@ -16,7 +15,6 @@ final class Bearer implements Authentication
      * @var string
      */
     private $token;
-
     /**
      * @param string $token
      */
@@ -24,14 +22,9 @@ final class Bearer implements Authentication
     {
         $this->token = $token;
     }
-
-    /**
-     * {@inheritdoc}
-     */
     public function authenticate(RequestInterface $request)
     {
-        $header = sprintf('Bearer %s', $this->token);
-
+        $header = \sprintf('Bearer %s', $this->token);
         return $request->withHeader('Authorization', $header);
     }
 }

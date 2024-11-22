@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 4.3.1, created on 2024-10-15 10:07:42
+/* Smarty version 4.3.1, created on 2024-11-22 08:56:17
   from 'module:ps_imagesliderviewstemplateshookslider.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.1',
-  'unifunc' => 'content_670e22ce7a1932_00706736',
+  'unifunc' => 'content_674039210c8a52_09466036',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -18,13 +18,13 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   ),
   'cache_lifetime' => 31536000,
 ),true)) {
-function content_670e22ce7a1932_00706736 (Smarty_Internal_Template $_smarty_tpl) {
+function content_674039210c8a52_09466036 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->smarty->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
   'renderLogo' => 
   array (
     'compiled_filepath' => '/home/qisogexqbz/domains/cezos.exis24.pl/public_html/var/cache/prod/smarty/compile/classiclayouts_layout_full_width_tpl/ed/d0/a8/edd0a83d7e312b5429093b7e36fb04ce2ddbd44c_2.file.helpers.tpl.php',
     'uid' => 'edd0a83d7e312b5429093b7e36fb04ce2ddbd44c',
-    'call_name' => 'smarty_template_function_renderLogo_1220440509670cdd9d6ab1e3_23650861',
+    'call_name' => 'smarty_template_function_renderLogo_5626056336740334d357ac1_70770946',
   ),
 ));
 ?>
@@ -37,17 +37,17 @@ $_smarty_tpl->smarty->ext->_tplFunction->registerTplFunctions($_smarty_tpl, arra
     <ul class="carousel-inner" role="listbox" aria-label="Carousel container">
               <li class="carousel-item active" role="option" aria-hidden="false">
           <a href="https://sklep.cezos.com/en/10408-CONTROLLERS">            <figure>
-              <img src="https://sklep.cezos.com/modules/ps_imageslider/images/274fec69c2a4e4f78862eb8c659d4fae81af7155_Artboard 2 copy 3.jpg" alt="" loading="lazy" width="1110" height="340">
+              <img src="https://cezos.com/modules/ps_imageslider/images/274fec69c2a4e4f78862eb8c659d4fae81af7155_Artboard 2 copy 3.jpg" alt="" loading="lazy" width="1110" height="340">
                           </figure>
           </a>        </li>
               <li class="carousel-item " role="option" aria-hidden="true">
           <a href="https://sklep.cezos.com/en/10434-ROLLI">            <figure>
-              <img src="https://sklep.cezos.com/modules/ps_imageslider/images/2bdae4283c442ef03a99cebb064578cc7e9effdc_Artboard 3 copy 4.jpg" alt="" loading="lazy" width="1110" height="340">
+              <img src="https://cezos.com/modules/ps_imageslider/images/2bdae4283c442ef03a99cebb064578cc7e9effdc_Artboard 3 copy 4.jpg" alt="" loading="lazy" width="1110" height="340">
                           </figure>
           </a>        </li>
               <li class="carousel-item " role="option" aria-hidden="true">
           <a href="https://sklep.cezos.com/en/10407-ALUMINUM-PROFILES">            <figure>
-              <img src="https://sklep.cezos.com/modules/ps_imageslider/images/a0db6cead9c986e9fe2ee8e307fb179b4e2c20bd_Artboard 1 copy 3.jpg" alt="" loading="lazy" width="1110" height="340">
+              <img src="https://cezos.com/modules/ps_imageslider/images/a0db6cead9c986e9fe2ee8e307fb179b4e2c20bd_Artboard 1 copy 3.jpg" alt="" loading="lazy" width="1110" height="340">
                           </figure>
           </a>        </li>
           </ul>

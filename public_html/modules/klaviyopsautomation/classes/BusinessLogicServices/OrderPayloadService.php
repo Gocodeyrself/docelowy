@@ -25,12 +25,14 @@ if (!defined('_PS_VERSION_')) {
 }
 
 use CartRule;
-use Customer;
+use KlaviyoPsModule;
 use ObjectModelCore;
 use OrderCore;
 use Product;
 use KlaviyoPs\Classes\BusinessLogicServices\PayloadServiceInterface;
 use KlaviyoPs\Classes\KlaviyoUtils;
+use KlaviyoPs\Classes\PrestashopServices\CustomerService;
+use KlaviyoPs\Classes\PrestashopServices\OrderService;
 use Order;
 
 class OrderPayloadService extends PayloadServiceInterface
@@ -45,10 +47,23 @@ class OrderPayloadService extends PayloadServiceInterface
     ];
 
     /**
+     * @param Order $order
      * @inheritDoc
      */
     public static function buildPayload(ObjectModelCore $order, $id_shop = null)
     {
+        $module = KlaviyoPsModule::getInstance();
+        /** @var OrderService $orderService */
+        $orderService = $module->getService('klaviyops.prestashop_services.order');
+        /** @var CustomerService $customerService */
+        $customerService = $module->getService('klaviyops.prestashop_services.customer');
+
+        $normalizedOrder = $orderService->normalize($order);
+        // Getting normalized Customer from normalized Order
+        // In order to have id_country in context data
+        // This allows to have $locale data in customer payload
+        $normalizedCustomer = $orderService->getCustomer($normalizedOrder);
+
         // Method getProducts() returns an associative array and we want indexed.
         $orderProducts = array_values($order->getProducts());
         $hydratedOrderProducts = array();
@@ -75,7 +90,11 @@ class OrderPayloadService extends PayloadServiceInterface
         return array_merge(
             self::removeSensitiveKeys($order, self::SENSITIVE_KEYS),
             array(
-                'customer' => CustomerPayloadService::buildPayload(new Customer($order->id_customer)),
+                'customer' => CustomerPayloadService::buildPayload(
+                    $customerService->getObject($normalizedCustomer),
+                    $order->id_shop,
+                    $normalizedCustomer
+                ),
                 'line_items' => $hydratedOrderProducts,
                 'date_add_utc' => self::convertDateStringToUTC($order->date_add),  // UTC timestamp for Klaviyo events
                 'date_upd_utc' => self::convertDateStringToUTC($order->date_upd),  // UTC timestamp for Klaviyo events

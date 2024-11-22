@@ -53,6 +53,7 @@
     line-height: 0;
     margin-right: 3px;
     vertical-align: 2px;
+    display: none;
 }
 .layout_layout1 .mm_menus_li.mm_has_sub.mm_no_border > a::after {
     background-color: inherit !important;

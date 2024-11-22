@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 4.3.1, created on 2024-10-14 11:11:54
+/* Smarty version 4.3.1, created on 2024-11-22 08:31:08
   from '/home/qisogexqbz/domains/cezos.exis24.pl/public_html/modules/ps_mbo/views/templates/hook/dashboard-zone-two.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.1',
-  'unifunc' => 'content_670ce05a928633_77303439',
+  'unifunc' => 'content_6740333c58bb76_02784735',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_670ce05a928633_77303439 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6740333c58bb76_02784735 (Smarty_Internal_Template $_smarty_tpl) {
 echo '<script'; ?>
 >
   if (typeof window.mboCdc == undefined || typeof window.mboCdc == "undefined") {

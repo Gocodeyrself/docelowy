@@ -18,19 +18,16 @@
  * @copyright Since 2007 PrestaShop SA and Contributors
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License version 3.0
  */
-
 namespace PrestaShop\Module\Ps_metrics\Middleware;
 
 use PrestaShop\Module\Ps_metrics\Helper\JsonHelper;
 use Psr\Http\Message\ResponseInterface;
-
-class CheckResponseMiddleware extends Middleware
+class CheckResponseMiddleware extends \PrestaShop\Module\Ps_metrics\Middleware\Middleware
 {
     /**
      * @var JsonHelper
      */
     private $jsonHelper;
-
     /**
      * CheckResponseAnalyticsMiddleware constructor.
      *
@@ -42,7 +39,6 @@ class CheckResponseMiddleware extends Middleware
     {
         $this->jsonHelper = $jsonHelper;
     }
-
     /**
      * @param mixed $response
      *
@@ -52,30 +48,18 @@ class CheckResponseMiddleware extends Middleware
     {
         /** @var ResponseInterface $response */
         $response = $response;
-
-        $responseFormatted = [
-            'code' => $response->getStatusCode(),
-            'body' => [],
-            'error' => '',
-        ];
-
+        $responseFormatted = ['code' => $response->getStatusCode(), 'body' => [], 'error' => ''];
         $content = '';
-
-        if (
-            200 != $response->getStatusCode() &&
-            201 != $response->getStatusCode()
-        ) {
+        if (200 != $response->getStatusCode() && 201 != $response->getStatusCode()) {
             $responseFormatted['error'] = 'There was an error with the request. Code: ' . $response->getStatusCode();
         } else {
             $content = $response->getBody()->getContents();
         }
-
         if (!empty($content) && $this->jsonHelper->isJson($content)) {
-            $responseFormatted['body'] = $this->jsonHelper->jsonDecode($content, true);
+            $responseFormatted['body'] = $this->jsonHelper->jsonDecode($content, \true);
         } else {
             $responseFormatted['body'] = $content;
         }
-
         return parent::execute($responseFormatted);
     }
 }

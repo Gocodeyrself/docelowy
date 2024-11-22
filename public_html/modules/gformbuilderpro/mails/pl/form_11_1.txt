@@ -1,0 +1,159 @@
+
+
+
+
+
+
+
+
+
+Nazwa Polska
+{input_2933}
+
+
+Nazwa Angielska
+{input_67611}
+
+
+Cena brutto
+{input_85939}
+
+
+Kategoria
+{select_95846}
+
+
+Podkategoria - Profile Alu
+{select_54568}
+
+
+Waga brutto
+{input_24701}
+
+
+Podkategoria - Sterowniki
+{select_80369}
+
+
+Podkategoria - Taśmy LED
+{select_53066}
+
+
+Podkategoria - Moduły LED
+{select_39323}
+
+
+Podkategoria - Projektory
+{select_12271}
+
+
+Podkategoria - Zasilacze
+{select_37098}
+
+
+Podkategoria - Komponenty elektroniczne
+{select_91651}
+
+
+Podkategoria - Części do lamp
+{select_86830}
+
+
+Podkategoria - Zawiesia linkowe
+{select_35510}
+
+
+Podkategoria - oprawy stałe
+{select_16590}
+
+
+Podkategoria - Oprawy regulowane
+{select_68336}
+
+
+Podkategoria - Plafony
+{select_67304}
+
+
+Podkategoria - Stelaże
+{select_38181}
+
+
+Podkategoria - Elementy Mechaniczne
+{select_63820}
+
+
+Podkategoria - Elementy pasywne
+{select_17252}
+
+
+Podkategoria - LED
+{select_8463}
+
+
+Podkategoria - Półprzewodniki
+{select_1635}
+
+
+Magazyn w Streamsoft
+{input_77046}
+
+
+Producent
+{input_53434}
+
+
+Szerokość brutto
+{input_53339}
+
+
+Wysokość brutto
+{input_50784}
+
+
+Głębokość brutto
+{input_49035}
+
+
+KOD EAN / INDEKS
+{input_57247}
+
+
+Polski opis do produktu
+{textarea_29403}
+
+
+Dokumentacja 1
+{fileupload_11631}
+
+
+Dokumentacja 2
+{fileupload_52688}
+
+
+Dokumentacja 3
+{fileupload_34234}
+
+
+Produkty powiązane
+{textarea_89761}
+
+
+Imię i nazwisko
+{input_63944}
+
+
+CECHY PRODUKTÓW
+{textarea_10685}
+
+
+Gwarancja
+{select_2841}
+
+
+
+
+
+{shop_name}
+
+

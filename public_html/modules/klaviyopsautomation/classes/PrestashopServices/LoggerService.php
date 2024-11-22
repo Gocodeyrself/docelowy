@@ -20,6 +20,10 @@
 
 namespace KlaviyoPs\Classes\PrestashopServices;
 
+if (!defined('_PS_VERSION_')) {
+    exit;
+}
+
 use PrestaShop\PrestaShop\Adapter\LegacyLogger;
 
 class LoggerService extends LegacyLogger

@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 4.3.1, created on 2024-10-14 11:18:30
+/* Smarty version 4.3.1, created on 2024-11-22 08:31:39
   from 'module:ph_simpleblogviewstemplatesfront1.7_partialspostminiature.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.1',
-  'unifunc' => 'content_670ce1e6af9d07_99989353',
+  'unifunc' => 'content_6740335b8dd7b9_40265723',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -28,7 +28,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'module:ph_simpleblog/views/templates/front/1.7/_partials/post-miniature-footer.tpl' => 1,
   ),
 ),false)) {
-function content_670ce1e6af9d07_99989353 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6740335b8dd7b9_40265723 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'/home/qisogexqbz/domains/cezos.exis24.pl/public_html/vendor/smarty/smarty/libs/plugins/function.cycle.php','function'=>'smarty_function_cycle',),));
 ?>
 <div class="simpleblog__listing__post

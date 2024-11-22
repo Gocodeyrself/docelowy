@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 4.3.1, created on 2024-10-14 11:18:30
+/* Smarty version 4.3.1, created on 2024-11-22 08:31:39
   from 'module:ph_simpleblogviewstemplatesfront1.7_partialstypedefaultpostbottomline.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.1',
-  'unifunc' => 'content_670ce1e6b123a1_05780006',
+  'unifunc' => 'content_6740335b8e9839_15418218',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_670ce1e6b123a1_05780006 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6740335b8e9839_15418218 (Smarty_Internal_Template $_smarty_tpl) {
 if (Configuration::get('PH_BLOG_DISPLAY_MORE')) {?>
 <div class="simpleblog__listing__post__wrapper__content__footer">
     <a href="<?php echo htmlspecialchars((string) $_smarty_tpl->tpl_vars['post']->value['url'], ENT_QUOTES, 'UTF-8');?>

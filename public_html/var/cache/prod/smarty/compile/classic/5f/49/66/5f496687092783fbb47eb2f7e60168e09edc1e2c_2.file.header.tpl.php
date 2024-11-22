@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 4.3.1, created on 2024-10-14 11:00:13
+/* Smarty version 4.3.1, created on 2024-11-22 08:31:07
   from '/home/qisogexqbz/domains/cezos.exis24.pl/public_html/modules/fblogin/header.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.1',
-  'unifunc' => 'content_670cdd9d4d27b5_53732746',
+  'unifunc' => 'content_6740333bcf0496_58328011',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_670cdd9d4d27b5_53732746 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6740333bcf0496_58328011 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 
 <?php echo '<script'; ?>

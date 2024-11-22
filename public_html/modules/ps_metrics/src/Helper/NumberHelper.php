@@ -18,7 +18,6 @@
  * @copyright Since 2007 PrestaShop SA and Contributors
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License version 3.0
  */
-
 namespace PrestaShop\Module\Ps_metrics\Helper;
 
 class NumberHelper
@@ -36,14 +35,11 @@ class NumberHelper
         if (0 === $number) {
             return 0;
         }
-
         if (0 === $byNumber) {
             $byNumber = 1;
         }
-
         return $number / $byNumber;
     }
-
     /**
      * @param float $all
      * @param float $find
@@ -56,14 +52,11 @@ class NumberHelper
         if ($all != 0 && $find == 0) {
             return 100;
         }
-
         if ($all == 0) {
             return 0;
         }
-
         // Get the percentage of abandoned carts
-        $percent = 100 - ($find / $all) * 100;
-
-        return round($percent, 2);
+        $percent = 100 - $find / $all * 100;
+        return \round($percent, 2);
     }
 }

@@ -1,11 +1,10 @@
 <?php
 
-namespace Http\Message\Formatter;
+namespace ps_metrics_module_v4_0_8\Http\Message\Formatter;
 
-use Http\Message\Formatter;
+use ps_metrics_module_v4_0_8\Http\Message\Formatter;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
-
 /**
  * Normalize a request or a response into a string or an array.
  *
@@ -14,32 +13,14 @@ use Psr\Http\Message\ResponseInterface;
  */
 class SimpleFormatter implements Formatter
 {
-    /**
-     * {@inheritdoc}
-     */
     public function formatRequest(RequestInterface $request)
     {
-        return sprintf(
-            '%s %s %s',
-            $request->getMethod(),
-            $request->getUri()->__toString(),
-            $request->getProtocolVersion()
-        );
+        return \sprintf('%s %s %s', $request->getMethod(), $request->getUri()->__toString(), $request->getProtocolVersion());
     }
-
-    /**
-     * {@inheritdoc}
-     */
     public function formatResponse(ResponseInterface $response)
     {
-        return sprintf(
-            '%s %s %s',
-            $response->getStatusCode(),
-            $response->getReasonPhrase(),
-            $response->getProtocolVersion()
-        );
+        return \sprintf('%s %s %s', $response->getStatusCode(), $response->getReasonPhrase(), $response->getProtocolVersion());
     }
-
     /**
      * Formats a response in context of its request.
      *

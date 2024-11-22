@@ -1,6 +1,6 @@
 <?php
 
-namespace Dotenv\Environment;
+namespace ps_metrics_module_v4_0_8\Dotenv\Environment;
 
 /**
  * This environment factory interface.
@@ -16,7 +16,6 @@ interface FactoryInterface
      * @return \Dotenv\Environment\VariablesInterface
      */
     public function create();
-
     /**
      * Creates a new immutable environment variables instance.
      *

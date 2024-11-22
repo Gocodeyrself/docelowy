@@ -26,7 +26,7 @@ if (!defined('_PS_VERSION_')) {
 
 use ArrayObject;
 use Exception;
-use Klaviyo\Exception\KlaviyoException;
+use KlaviyoV3Sdk\Exception\KlaviyoException;
 use KlaviyoPs\Classes\BusinessLogicServices\OrderPayloadService;
 use KlaviyoPs\Classes\KlaviyoApiWrapper;
 use KlaviyoPs\Classes\KlaviyoUtils;
@@ -90,7 +90,7 @@ class OrderEventService
 
         $this->klaviyoApiWrapper->trackEvent([
             'event' => $this->buildEvent($mappedOrderStatus),
-            'customer_properties' => $this->customerEventService->buildPayload($customer),
+            'customer_properties' => $this->buildCustomerPayload($order, $customer),
             'properties' => $this->buildPayload($order),
             'time' => $orderTime - 1, // -1 because we want this event before Ordered Product events
         ]);
@@ -264,5 +264,23 @@ class OrderEventService
             default:
                 throw new KlaviyoException('Mapped order status is not valid');
         }
+    }
+
+    /**
+     * @return array
+     */
+    protected function buildCustomerPayload(
+        ArrayObject $order,
+        ArrayObject $customer
+    ) {
+        $currency = $this->orderService->getCurrencyCode($order);
+
+        $result = $this->customerEventService->buildPayload($customer);
+
+        if ($currency !== null) {
+            $result['PrestaShop Recent Order Currency'] = $currency;
+        }
+
+        return $result;
     }
 }

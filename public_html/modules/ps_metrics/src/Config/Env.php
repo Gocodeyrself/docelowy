@@ -18,11 +18,9 @@
  * @copyright Since 2007 PrestaShop SA and Contributors
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License version 3.0
  */
-
 namespace PrestaShop\Module\Ps_metrics\Config;
 
-use Dotenv\Dotenv;
-
+use ps_metrics_module_v4_0_8\Dotenv\Dotenv;
 /**
  * This class allows to retrieve config data that can be overwritten by a .env file.
  * Otherwise it returns by default from the Config class.
@@ -31,12 +29,11 @@ class Env
 {
     public function __construct(\Ps_metrics $module)
     {
-        if (file_exists(_PS_MODULE_DIR_ . $module->name . '/.env')) {
+        if (\file_exists(_PS_MODULE_DIR_ . $module->name . '/.env')) {
             $dotenv = Dotenv::create(_PS_MODULE_DIR_ . $module->name . '/');
             $dotenv->load();
         }
     }
-
     /**
      * @param string $key
      *
@@ -47,7 +44,6 @@ class Env
         if (!empty($_ENV[$key])) {
             return $_ENV[$key];
         }
-
         //TODO implement config class
         //return constant(Config::class . '::' . $key);
         return '';

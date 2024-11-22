@@ -1,9 +1,8 @@
 <?php
 
-namespace Dotenv\Environment;
+namespace ps_metrics_module_v4_0_8\Dotenv\Environment;
 
 use ArrayAccess;
-
 /**
  * This environment variables interface.
  */
@@ -15,7 +14,6 @@ interface VariablesInterface extends ArrayAccess
      * @return bool
      */
     public function isImmutable();
-
     /**
      * Tells whether environment variable has been defined.
      *
@@ -24,7 +22,6 @@ interface VariablesInterface extends ArrayAccess
      * @return bool
      */
     public function has($name);
-
     /**
      * Get an environment variable.
      *
@@ -35,7 +32,6 @@ interface VariablesInterface extends ArrayAccess
      * @return string|null
      */
     public function get($name);
-
     /**
      * Set an environment variable.
      *
@@ -47,7 +43,6 @@ interface VariablesInterface extends ArrayAccess
      * @return void
      */
     public function set($name, $value = null);
-
     /**
      * Clear an environment variable.
      *

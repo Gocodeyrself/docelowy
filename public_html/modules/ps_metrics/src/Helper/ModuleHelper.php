@@ -18,23 +18,18 @@
  * @copyright Since 2007 PrestaShop SA and Contributors
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License version 3.0
  */
-
 namespace PrestaShop\Module\Ps_metrics\Helper;
 
 use ModuleCore;
 use PrestaShopBundle\Service\Routing\Router;
-use Ps_metrics;
-
 class ModuleHelper
 {
-    /** @var Ps_metrics */
+    /** @var \Ps_metrics */
     private $module;
-
-    public function __construct(Ps_metrics $module)
+    public function __construct(\Ps_metrics $module)
     {
         $this->module = $module;
     }
-
     /**
      * @param string $moduleName
      *
@@ -44,7 +39,6 @@ class ModuleHelper
     {
         return \ModuleCore::isInstalled($moduleName);
     }
-
     /**
      * @param string $moduleName
      *
@@ -54,7 +48,6 @@ class ModuleHelper
     {
         return \ModuleCore::isEnabled($moduleName);
     }
-
     /**
      * @param string $moduleName
      *
@@ -64,7 +57,6 @@ class ModuleHelper
     {
         return ModuleCore::getInstanceByName($moduleName);
     }
-
     /**
      * returns the installation link of the module if it is not installed. If installed, returns an empty string
      *
@@ -74,26 +66,16 @@ class ModuleHelper
      */
     public function getInstallLink(string $moduleName)
     {
-        if (true === $this->isInstalled($moduleName)) {
+        if (\true === $this->isInstalled($moduleName)) {
             return '';
         }
         /** @var Router $router * */
         $router = $this->module->getService('router');
-
         if ($moduleName === 'ps_mbo') {
-            return substr(\Tools::getShopDomainSsl(true) . __PS_BASE_URI__, 0, -1) .
-            $router->generate('metrics_api_resolver', [
-                'query' => 'installPsMbo',
-            ]);
+            return \substr(\Tools::getShopDomainSsl(\true) . __PS_BASE_URI__, 0, -1) . $router->generate('metrics_api_resolver', ['query' => 'installPsMbo']);
         }
-
-        return substr(\Tools::getShopDomainSsl(true) . __PS_BASE_URI__, 0, -1) .
-            $router->generate('admin_module_manage_action', [
-                'action' => 'install',
-                'module_name' => $moduleName,
-            ]);
+        return \substr(\Tools::getShopDomainSsl(\true) . __PS_BASE_URI__, 0, -1) . $router->generate('admin_module_manage_action', ['action' => 'install', 'module_name' => $moduleName]);
     }
-
     /**
      * returns the enable link of the module if it is not enabled. If enabled, returns an empty string
      *
@@ -103,20 +85,13 @@ class ModuleHelper
      */
     public function getEnableLink(string $moduleName)
     {
-        if (true === $this->isEnabled($moduleName)) {
+        if (\true === $this->isEnabled($moduleName)) {
             return '';
         }
-
         /** @var Router $router * */
         $router = $this->module->getService('router');
-
-        return substr(\Tools::getShopDomainSsl(true) . __PS_BASE_URI__, 0, -1) .
-            $router->generate('admin_module_manage_action', [
-                'action' => 'enable',
-                'module_name' => $moduleName,
-            ]);
+        return \substr(\Tools::getShopDomainSsl(\true) . __PS_BASE_URI__, 0, -1) . $router->generate('admin_module_manage_action', ['action' => 'enable', 'module_name' => $moduleName]);
     }
-
     /**
      * returns the update link of the module if it is not enabled. If enabled, returns an empty string
      *
@@ -128,14 +103,8 @@ class ModuleHelper
     {
         /** @var Router $router * */
         $router = $this->module->getService('router');
-
-        return substr(\Tools::getShopDomainSsl(true) . __PS_BASE_URI__, 0, -1) .
-            $router->generate('admin_module_manage_action', [
-                'action' => 'upgrade',
-                'module_name' => $moduleName,
-            ]);
+        return \substr(\Tools::getShopDomainSsl(\true) . __PS_BASE_URI__, 0, -1) . $router->generate('admin_module_manage_action', ['action' => 'upgrade', 'module_name' => $moduleName]);
     }
-
     /**
      * get ps_analytics module version
      *
@@ -145,35 +114,24 @@ class ModuleHelper
      */
     public function getModuleVersion(string $moduleName)
     {
-        if (false === $this->isInstalled($moduleName)) {
+        if (\false === $this->isInstalled($moduleName)) {
             return '0.0.0';
         }
-
         $module = \Module::getInstanceByName($moduleName);
-
-        if (false === $module) {
+        if (\false === $module) {
             return '0.0.0';
         }
-
         return $module->version;
     }
-
     /**
-     * Build informations about module
+     * Build information about module
      *
      * @param string $moduleName
      *
      * @return array
      */
-    public function buildModuleInformations(string $moduleName)
+    public function buildModuleInformation(string $moduleName)
     {
-        return [
-            'isInstalled' => $this->isInstalled($moduleName),
-            'isEnabled' => $this->isEnabled($moduleName),
-            'linkEnable' => $this->getEnableLink($moduleName),
-            'linkInstall' => $this->getInstallLink($moduleName),
-            'linkUpdate' => $this->getUpdateLink($moduleName),
-            'version' => $this->getModuleVersion($moduleName),
-        ];
+        return ['isInstalled' => $this->isInstalled($moduleName), 'isEnabled' => $this->isEnabled($moduleName), 'linkEnable' => $this->getEnableLink($moduleName), 'linkInstall' => $this->getInstallLink($moduleName), 'linkUpdate' => $this->getUpdateLink($moduleName), 'version' => $this->getModuleVersion($moduleName)];
     }
 }

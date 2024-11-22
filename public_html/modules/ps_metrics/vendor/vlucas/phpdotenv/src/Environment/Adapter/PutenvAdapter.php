@@ -1,9 +1,8 @@
 <?php
 
-namespace Dotenv\Environment\Adapter;
+namespace ps_metrics_module_v4_0_8\Dotenv\Environment\Adapter;
 
-use PhpOption\Option;
-
+use ps_metrics_module_v4_0_8\PhpOption\Option;
 class PutenvAdapter implements AdapterInterface
 {
     /**
@@ -13,9 +12,8 @@ class PutenvAdapter implements AdapterInterface
      */
     public function isSupported()
     {
-        return function_exists('putenv');
+        return \function_exists('putenv');
     }
-
     /**
      * Get an environment variable, if it exists.
      *
@@ -25,9 +23,8 @@ class PutenvAdapter implements AdapterInterface
      */
     public function get($name)
     {
-        return Option::fromValue(getenv($name), false);
+        return Option::fromValue(\getenv($name), \false);
     }
-
     /**
      * Set an environment variable.
      *
@@ -38,9 +35,8 @@ class PutenvAdapter implements AdapterInterface
      */
     public function set($name, $value = null)
     {
-        putenv("$name=$value");
+        \putenv("{$name}={$value}");
     }
-
     /**
      * Clear an environment variable.
      *
@@ -50,6 +46,6 @@ class PutenvAdapter implements AdapterInterface
      */
     public function clear($name)
     {
-        putenv($name);
+        \putenv($name);
     }
 }

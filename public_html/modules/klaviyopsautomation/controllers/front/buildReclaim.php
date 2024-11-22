@@ -23,10 +23,17 @@ if (!defined('_PS_VERSION_')) {
 }
 
 use KlaviyoPs\Classes\KlaviyoApiWrapper;
+use KlaviyoPs\Classes\KlaviyoServices\CustomerEventService;
 use KlaviyoPs\Classes\KlaviyoUtils;
+use KlaviyoPs\Classes\PrestashopServices\ContextService;
+use KlaviyoPs\Classes\PrestashopServices\CustomerService;
+use KlaviyoPs\Classes\PrestashopServices\LoggerService;
 use KlaviyoPs\KlaviyoPsAjaxModuleFrontController;
+use KlaviyoV3Sdk\Exception\KlaviyoException;
 
 /**
+ * @property Klaviyops $module
+ *
  * Class KlaviyoPsBuildReclaimModuleFrontController
  *
  * Available at /klaviyo/reclaim/build-reclaim. Fetch a cart from the db and reload it for the customer.
@@ -78,37 +85,47 @@ class KlaviyoPsBuildReclaimModuleFrontController extends KlaviyoPsAjaxModuleFron
      */
     private function sendStartedCheckoutEvent($cartId, $email)
     {
-        $shop = $this->context->shop;
-        $shop_id = $shop->id;
-        $cart = new Cart($cartId, $this->context->language->id);
-        $cartLineItemsArray = KlaviyoUtils::buildCartLineItemsArray($cart);
+        try {
+            /** @var KlaviyoApiWrapper $api */
+            $api = $this->module->getService('klaviyops.klaviyo_api_wrapper');
 
-        // NOTE: This hook fires on each step of the checkout process.
-        // Cart IDs are unique in db so we can use as $event_id.
-        $eventConfig = array(
-            'event' => '$started_checkout',
-            'customer_properties' => array('$email' => $email),
-            'properties' => array(
-                '$event_id' => $cartId,
-                '$service' => 'prestashop',
-                '$value' => number_format($cart->getOrderTotal(), 2),
-                '$extra' => array(
-                    'line_items' => $cartLineItemsArray['lineItems']
+            $shop = $this->context->shop;
+            $shop_id = $shop->id;
+            $cart = new Cart($cartId, $this->context->language->id);
+            $cartLineItemsArray = KlaviyoUtils::buildCartLineItemsArray($cart);
+
+            // NOTE: This hook fires on each step of the checkout process.
+            // Cart IDs are unique in db so we can use as $event_id.
+            $eventConfig = array(
+                'event' => '$started_checkout',
+                'customer_properties' => $this->buildCustomerPayload($email),
+                'properties' => array(
+                    '$event_id' => $cartId,
+                    '$service' => 'prestashop',
+                    '$value' => (float) $cart->getOrderTotal(),
+                    '$extra' => array(
+                        'line_items' => $cartLineItemsArray['lineItems']
+                    ),
+                    'Language' => $this->context->language->id,
+                    'CartID' => $cartId,
+                    'Items' => $cartLineItemsArray['itemNames'],
+                    'ItemCount' => $cartLineItemsArray['itemCount'],
+                    'TotalDiscounts' => (float) number_format($this->getCartDiscountTotal($cart), 2),
+                    'Categories' => $cartLineItemsArray['uniqueCategories'],
+                    'Tags' => $cartLineItemsArray['uniqueTags'],
+                    'ShopId' => $shop_id,
+                    'ReclaimCartUrl' => KlaviyoUtils::buildReclaimCartUrl($cart),
                 ),
-                'Language' => $this->context->language->id,
-                'CartID' => $cartId,
-                'Items' => $cartLineItemsArray['itemNames'],
-                'ItemCount' => $cartLineItemsArray['itemCount'],
-                'TotalDiscounts' => (float) number_format($this->getCartDiscountTotal($cart), 2),
-                'Categories' => $cartLineItemsArray['uniqueCategories'],
-                'Tags' => $cartLineItemsArray['uniqueTags'],
-                'ShopId' => $shop_id,
-                'ReclaimCartUrl' => KlaviyoUtils::buildReclaimCartUrl($cart),
-            ),
-        );
+            );
 
-        $api = new KlaviyoApiWrapper();
-        return $api->trackEvent($eventConfig);
+            return $api->trackEvent($eventConfig);
+        } catch (Exception $e) {
+            /** @var LoggerService $logger */
+            $logger = $this->module->getService('klaviyops.prestashop_services.logger');
+
+            $logger->error("{$e->getCode()} error while sending Started Checkout event. {$e->getMessage()}");
+            return false;
+        }
     }
 
     /**
@@ -127,6 +144,58 @@ class KlaviyoPsBuildReclaimModuleFrontController extends KlaviyoPsAjaxModuleFron
         }
 
         return $discount_total;
+    }
+
+    /**
+     * @param string $email
+     * @return Customer|null
+     */
+    private function getCustomerByEmail($email)
+    {
+        $customer = new Customer();
+        $customer = $customer->getByEmail($email);
+
+        if (!Validate::isLoadedObject($customer)) {
+            return null;
+        }
+
+        return $customer;
+    }
+
+    /**
+     * @param string $email
+     * @return array
+     * @throws KlaviyoException
+     */
+    private function buildCustomerPayload($email)
+    {
+        /** @var ContextService $contextService */
+        $contextService = $this->module->getService('klaviyops.prestashop_services.context');
+        /** @var CustomerService $customerService */
+        $customerService = $this->module->getService('klaviyops.prestashop_services.customer');
+        /** @var CustomerEventService $customerEventService */
+        $customerEventService = $this->module->getService('klaviyops.klaviyo_service.customer_event_service');
+
+        $customer = $this->getCustomerByEmail($email);
+
+        // When the customer is not connected in the checkout, he set his mail in the first step
+        // Then, started-checkout.js send a request to this controller with the mail
+        // To keep this feature in the case where the customer has not yet an account
+        // We need to build a normalized guest customer Object with the mail only
+        // Then, CustomerEventService will build "restricted" data as guest customer
+        if ($customer === null) {
+            $customer = [
+                'email' => $email,
+            ];
+        }
+
+        $normalizedContext = $contextService->normalize(); // Current context
+        $normalizedCustomer = $customerService->normalize(
+            $customer,
+            $normalizedContext
+        );
+
+        return $customerEventService->buildPayload($normalizedCustomer);
     }
 }
 

@@ -1,11 +1,10 @@
 <?php
 
-namespace Dotenv\Environment;
+namespace ps_metrics_module_v4_0_8\Dotenv\Environment;
 
-use Dotenv\Environment\Adapter\ArrayAdapter;
+use ps_metrics_module_v4_0_8\Dotenv\Environment\Adapter\ArrayAdapter;
 use InvalidArgumentException;
 use ReturnTypeWillChange;
-
 /**
  * This is the abstract variables implementation.
  *
@@ -19,14 +18,12 @@ abstract class AbstractVariables implements VariablesInterface
      * @var bool
      */
     private $immutable;
-
     /**
      * The record of loaded variables.
      *
      * @var \Dotenv\Environment\Adapter\ArrayAdapter
      */
     private $loaded;
-
     /**
      * Create a new environment variables instance.
      *
@@ -39,7 +36,6 @@ abstract class AbstractVariables implements VariablesInterface
         $this->immutable = $immutable;
         $this->loaded = new ArrayAdapter();
     }
-
     /**
      * Get an environment variable.
      *
@@ -51,13 +47,11 @@ abstract class AbstractVariables implements VariablesInterface
      */
     public function get($name)
     {
-        if (!is_string($name)) {
+        if (!\is_string($name)) {
             throw new InvalidArgumentException('Expected name to be a string.');
         }
-
         return $this->getInternal($name);
     }
-
     /**
      * Get an environment variable.
      *
@@ -65,8 +59,7 @@ abstract class AbstractVariables implements VariablesInterface
      *
      * @return string|null
      */
-    abstract protected function getInternal($name);
-
+    protected abstract function getInternal($name);
     /**
      * Set an environment variable.
      *
@@ -79,20 +72,17 @@ abstract class AbstractVariables implements VariablesInterface
      */
     public function set($name, $value = null)
     {
-        if (!is_string($name)) {
+        if (!\is_string($name)) {
             throw new InvalidArgumentException('Expected name to be a string.');
         }
-
         // Don't overwrite existing environment variables if we're immutable
         // Ruby's dotenv does this with `ENV[key] ||= value`.
         if ($this->isImmutable() && $this->get($name) !== null && $this->loaded->get($name)->isEmpty()) {
             return;
         }
-
         $this->setInternal($name, $value);
         $this->loaded->set($name, '');
     }
-
     /**
      * Set an environment variable.
      *
@@ -101,8 +91,7 @@ abstract class AbstractVariables implements VariablesInterface
      *
      * @return void
      */
-    abstract protected function setInternal($name, $value = null);
-
+    protected abstract function setInternal($name, $value = null);
     /**
      * Clear an environment variable.
      *
@@ -114,18 +103,15 @@ abstract class AbstractVariables implements VariablesInterface
      */
     public function clear($name)
     {
-        if (!is_string($name)) {
+        if (!\is_string($name)) {
             throw new InvalidArgumentException('Expected name to be a string.');
         }
-
         // Don't clear anything if we're immutable.
         if ($this->isImmutable()) {
             return;
         }
-
         $this->clearInternal($name);
     }
-
     /**
      * Clear an environment variable.
      *
@@ -133,8 +119,7 @@ abstract class AbstractVariables implements VariablesInterface
      *
      * @return void
      */
-    abstract protected function clearInternal($name);
-
+    protected abstract function clearInternal($name);
     /**
      * Determine if the environment is immutable.
      *
@@ -144,7 +129,6 @@ abstract class AbstractVariables implements VariablesInterface
     {
         return $this->immutable;
     }
-
     /**
      * Tells whether environment variable has been defined.
      *
@@ -154,9 +138,8 @@ abstract class AbstractVariables implements VariablesInterface
      */
     public function has($name)
     {
-        return is_string($name) && $this->get($name) !== null;
+        return \is_string($name) && $this->get($name) !== null;
     }
-
     /**
      * {@inheritdoc}
      */
@@ -165,7 +148,6 @@ abstract class AbstractVariables implements VariablesInterface
     {
         return $this->has($offset);
     }
-
     /**
      * {@inheritdoc}
      */
@@ -174,7 +156,6 @@ abstract class AbstractVariables implements VariablesInterface
     {
         return $this->get($offset);
     }
-
     /**
      * {@inheritdoc}
      */
@@ -183,7 +164,6 @@ abstract class AbstractVariables implements VariablesInterface
     {
         $this->set($offset, $value);
     }
-
     /**
      * {@inheritdoc}
      */

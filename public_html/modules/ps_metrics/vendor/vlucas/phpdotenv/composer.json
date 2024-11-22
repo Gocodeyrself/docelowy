@@ -1,33 +1,37 @@
 {
-    "name": "vlucas/phpdotenv",
+    "name": "vlucas\/phpdotenv",
     "description": "Loads environment variables from `.env` to `getenv()`, `$_ENV` and `$_SERVER` automagically.",
-    "keywords": ["env", "dotenv", "environment"],
+    "keywords": [
+        "env",
+        "dotenv",
+        "environment"
+    ],
     "license": "BSD-3-Clause",
     "authors": [
         {
             "name": "Graham Campbell",
             "email": "hello@gjcampbell.co.uk",
-            "homepage": "https://github.com/GrahamCampbell"
+            "homepage": "https:\/\/github.com\/GrahamCampbell"
         },
         {
             "name": "Vance Lucas",
             "email": "vance@vancelucas.com",
-            "homepage": "https://github.com/vlucas"
+            "homepage": "https:\/\/github.com\/vlucas"
         }
     ],
     "require": {
         "php": "^5.4 || ^7.0 || ^8.0",
-        "phpoption/phpoption": "^1.5.2",
-        "symfony/polyfill-ctype": "^1.17"
+        "phpoption\/phpoption": "^1.5.2",
+        "symfony\/polyfill-ctype": "^1.17"
     },
     "require-dev": {
         "ext-filter": "*",
         "ext-pcre": "*",
-        "phpunit/phpunit": "^4.8.36 || ^5.7.27 || ^6.5.14 || ^7.5.20 || ^8.5.21"
+        "phpunit\/phpunit": "^4.8.36 || ^5.7.27 || ^6.5.14 || ^7.5.20 || ^8.5.21"
     },
     "autoload": {
         "psr-4": {
-            "Dotenv\\": "src/"
+            "ps_metrics_module_v4_0_8\\Dotenv\\": "src\/"
         }
     },
     "suggest": {

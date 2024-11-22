@@ -29,6 +29,7 @@ class Config
     public const REQUIRED_PS_CLOUDSYNC_VERSION = '1.9.4';
 
     public const USE_LOCAL_VUE_APP = false;
+    public const USE_LIVE_VUE_APP = false;
     public const PSX_FACEBOOK_CDN_URL = 'https://storage.googleapis.com/psxfacebook/v1.x.x/js/';
 
     public const HOOK_LIST = [
@@ -61,8 +62,8 @@ class Config
     public const PS_FACEBOOK_PRODUCT_SYNC_FIRST_START = 'PS_FACEBOOK_PRODUCT_SYNC_FIRST_START';
     public const PS_FACEBOOK_PRODUCT_SYNC_ON = 'PS_FACEBOOK_PRODUCT_SYNC_ON';
 
-    public const AVAILABLE_FBE_FEATURES = ['messenger_chat', 'page_cta', 'page_shop'/*, 'ig_shopping'*/];
-    public const CONFIGURABLE_FBE_FEATURES = ['messenger_chat'];
+    public const AVAILABLE_FBE_FEATURES = ['page_cta', 'page_shop'/*, 'ig_shopping'*/];
+    public const CONFIGURABLE_FBE_FEATURES = [];
     public const FBE_FEATURES_REQUIRING_PRODUCT_SYNC = ['page_shop', 'ig_shopping'];
     public const FBE_FEATURE_CONFIGURATION = 'PS_FACEBOOK_FBE_FEATURE_CONFIG_';
 

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.1, created on 2024-10-16 13:09:04
+/* Smarty version 4.3.1, created on 2024-11-22 08:34:54
   from 'module:ph_simpleblogviewstemplatesfront1.7_partialspostauthor.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.1',
-  'unifunc' => 'content_670f9ed04c9387_59452386',
+  'unifunc' => 'content_6740341eb4a913_49565405',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '90ba3558acd1cf288b97b3922e28c6258896ea6c' => 
     array (
       0 => 'module:ph_simpleblogviewstemplatesfront1.7_partialspostauthor.tpl',
-      1 => 1717758683,
+      1 => 1729490480,
       2 => 'module',
     ),
   ),
@@ -20,12 +20,19 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_670f9ed04c9387_59452386 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6740341eb4a913_49565405 (Smarty_Internal_Template $_smarty_tpl) {
 ?><div class="cardblog author-card blog-mb" id="blog-author">
     <div class="card-block">
-        <div class="author-card__row">
+        <div class="author-card__row" style="
+        display: flex;
+        align-items: center;
+        ">
             <?php if ($_smarty_tpl->tpl_vars['author']->value->photo) {?>
-            <div class="author-card__block author-card__block--thumb">
+            <div class="author-card__block author-card__block--thumb" style="
+            margin-right: 20px;
+            width: 200px;
+            height: auto;
+            ">
                 <img src="<?php echo htmlspecialchars((string) $_smarty_tpl->tpl_vars['author']->value->photo, ENT_QUOTES, 'UTF-8');?>
 " class="img-fluid blog-author-thumb">
             </div>
@@ -56,7 +63,10 @@ function content_670f9ed04c9387_59452386 (Smarty_Internal_Template $_smarty_tpl)
         </div>
     </div>
     <div class="card-footer">
-        <ul class="authorMiniature__links blogsocial">
+        <ul class="authorMiniature__links blogsocial" style="
+                    display: flex;
+                    gap: 20px;
+                    ">
             <?php if ($_smarty_tpl->tpl_vars['author']->value->twitter) {?>
             <li class="blogsocial__elem">
                 <a class="btn btn-blog-social btn-blog-social--twitter" href="<?php echo htmlspecialchars((string) $_smarty_tpl->tpl_vars['author']->value->twitter, ENT_QUOTES, 'UTF-8');?>

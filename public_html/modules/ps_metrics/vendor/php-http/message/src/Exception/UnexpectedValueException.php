@@ -1,9 +1,8 @@
 <?php
 
-namespace Http\Message\Exception;
+namespace ps_metrics_module_v4_0_8\Http\Message\Exception;
 
-use Http\Message\Exception;
-
+use ps_metrics_module_v4_0_8\Http\Message\Exception;
 final class UnexpectedValueException extends \UnexpectedValueException implements Exception
 {
 }

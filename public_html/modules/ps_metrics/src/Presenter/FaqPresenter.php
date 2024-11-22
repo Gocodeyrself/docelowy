@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright since 2007 PrestaShop SA and Contributors
  * PrestaShop is an International Registered Trademark & Property of PrestaShop SA
@@ -17,58 +18,46 @@
  * @copyright Since 2007 PrestaShop SA and Contributors
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License version 3.0
  */
-
 namespace PrestaShop\Module\Ps_metrics\Presenter;
 
 use PrestaShop\Module\Ps_metrics\Api\HttpApi;
 use PrestaShop\Module\Ps_metrics\Helper\JsonHelper;
 use PrestaShop\Module\Ps_metrics\Helper\PrestaShopHelper;
-use Ps_metrics;
-
 class FaqPresenter
 {
     /**
      * @var JsonHelper
      */
     private $jsonHelper;
-
     /**
-     * @var Ps_metrics
+     * @var \Ps_metrics
      */
     private $module;
-
     /**
      * @var PrestaShopHelper
      */
     private $prestashopHelper;
-
     /**
      * @var HttpApi
      */
     private $httpApi;
-
     /**
      * Presenter constructor.
      *
      * @param JsonHelper $jsonHelper
-     * @param Ps_metrics $module
+     * @param \Ps_metrics $module
      * @param PrestaShopHelper $prestashopHelper
      * @param HttpApi $httpApi
      *
      * @return void
      */
-    public function __construct(
-        JsonHelper $jsonHelper,
-        Ps_metrics $module,
-        PrestaShopHelper $prestashopHelper,
-        HttpApi $httpApi
-    ) {
+    public function __construct(JsonHelper $jsonHelper, \Ps_metrics $module, PrestaShopHelper $prestashopHelper, HttpApi $httpApi)
+    {
         $this->jsonHelper = $jsonHelper;
         $this->module = $module;
         $this->prestashopHelper = $prestashopHelper;
         $this->httpApi = $httpApi;
     }
-
     /**
      * Get faq content from addons
      *

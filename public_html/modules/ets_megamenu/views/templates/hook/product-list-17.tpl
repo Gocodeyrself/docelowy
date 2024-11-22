@@ -44,12 +44,12 @@
                 </span></br>
                 <span class="h5 product-title" itemprop="indeks">
                     <a href="{$product.url|escape:'html':'UTF-8'}">
-                        {l s='Numer katalogowy' d='Shop.Theme.Exis'}: {$product.ean13}
+                        {l s='Catalog Number:' d='Shop.Theme.Global'}: {$product.ean13}
                     </a>
                 </span></br>
                 <span class="h5 product-title" itemprop="indeks">
                     <a href="{$product.url|escape:'html':'UTF-8'}">
-                        {l s='Indeks' d='Shop.Theme.Exis'}: {$product.reference}
+                        {l s='Reference' d='Shop.Theme.Catalog'}: {$product.reference}
                     </a>
                 </span>
               {/block}

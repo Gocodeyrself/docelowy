@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 4.3.1, created on 2024-10-15 10:07:42
+/* Smarty version 4.3.1, created on 2024-11-22 08:56:16
   from 'module:ps_featuredproductsviewstemplateshookps_featuredproducts.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.1',
-  'unifunc' => 'content_670e22ce1895d1_85617354',
+  'unifunc' => 'content_67403920d45919_80326475',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -24,7 +24,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     '0b2443e3f4bf25e7c195b1aa97e2fae1fed69f24' => 
     array (
       0 => '/home/qisogexqbz/domains/cezos.exis24.pl/public_html/themes/classic/templates/catalog/_partials/miniatures/product.tpl',
-      1 => 1721907742,
+      1 => 1729853479,
       2 => 'file',
     ),
     'c806284826cd4cd0e567179b37f9da9426bb778a' => 
@@ -36,7 +36,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   ),
   'cache_lifetime' => 31536000,
 ),true)) {
-function content_670e22ce1895d1_85617354 (Smarty_Internal_Template $_smarty_tpl) {
+function content_67403920d45919_80326475 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->smarty->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
 ));
 ?><section class="featured-products clearfix">
@@ -47,17 +47,168 @@ $_smarty_tpl->smarty->ext->_tplFunction->registerTplFunctions($_smarty_tpl, arra
 <div class="products owl-carousel products-container">
             
 <div class="js-product product no-border short_product">
+  <article class="product-miniature js-product-miniature" data-id-product="37312" data-id-product-attribute="0">
+    <div class="thumbnail-container">
+      <div class="thumbnail-top">
+        
+                      <a href="https://cezos.com/en/ROLLI/37312-ROLLI-CX---SET-STANDARDOWY-37312.html" class="thumbnail product-thumbnail">
+              <picture>
+                                                <img
+                  src="https://cezos.com/9035-home_default/ROLLI-CX---SET-STANDARDOWY.jpg"
+                  alt="Rolli_coax_set.jpg"
+                  loading="lazy"
+                  data-full-size-image-url="https://cezos.com/9035-large_default/ROLLI-CX---SET-STANDARDOWY.jpg"
+                  width="250"
+                  height="250"
+                />
+              </picture>
+            </a>
+                  
+      </div>
+
+      <div class="product-description">
+        
+            <p class="product-index pl-0">Catalog Number: 37312</p>
+            <h2 class="h3 product-title"><a href="https://cezos.com/en/ROLLI/37312-ROLLI-CX---SET-STANDARDOWY-37312.html" content="https://cezos.com/en/ROLLI/37312-ROLLI-CX---SET-STANDARDOWY-37312.html">Rolli - Anod. Set of Mechanism Type. Coax 2.4m</a></h2>
+
+            <ul class="product-short-features">
+                                                                                                          <li><dl><dt>Brand</dt><dd>Cezos</dd></dl></li>
+                                                                                                                                        <li><dl><dt>Height Adjustment</dt><dd>No</dd></dl></li>
+                                                                                                                                        <li><dl><dt>Maximum Load</dt><dd>3 kg</dd></dl></li>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      </ul>
+        
+
+        
+                      <div class="product-price-and-shipping">
+              <div class="price-container-miniature ">
+                <span class="price-whithout-tax hidden">69,89 €<p class="price-sign">Price tax excl.</p></span>
+
+
+                
+
+                <span class="price" aria-label="Price">
+                                                        €85.96
+                                                      <p class="price-sign">Price tax incl.</p>
+                </span>
+
+                                              </div>
+              <a 
+            class="
+                          disabled
+             quick-view js-quick-view btn btn-primary" href="#" data-link-action="quickview"><i class="material-icons shopping-cart" aria-hidden="true">shopping_cart</i></a>
+
+              
+
+              
+            </div>
+                  
+
+        
+          
+<div class="product-list-reviews" data-id="37312" data-url="https://cezos.com/en/module/productcomments/CommentGrade">
+  <div class="grade-stars small-stars"></div>
+  <div class="comments-nb"></div>
+</div>
+
+        
+      </div>
+
+      
+    <ul class="product-flags js-product-flags">
+                                                        </ul>
+
+    </div>
+  </article>
+</div>
+
+            
+<div class="js-product product no-border short_product">
+  <article class="product-miniature js-product-miniature" data-id-product="31651" data-id-product-attribute="0">
+    <div class="thumbnail-container">
+      <div class="thumbnail-top">
+        
+                      <a href="https://cezos.com/en/ROLLI/31651-ROLLI-LW----BLACK-31651.html" class="thumbnail product-thumbnail">
+              <picture>
+                                                <img
+                  src="https://cezos.com/8681-home_default/ROLLI-LW----BLACK.jpg"
+                  alt="Rolli_czarny_kabel.jpg"
+                  loading="lazy"
+                  data-full-size-image-url="https://cezos.com/8681-large_default/ROLLI-LW----BLACK.jpg"
+                  width="250"
+                  height="250"
+                />
+              </picture>
+            </a>
+                  
+      </div>
+
+      <div class="product-description">
+        
+            <p class="product-index pl-0">Catalog Number: 31651</p>
+            <h2 class="h3 product-title"><a href="https://cezos.com/en/ROLLI/31651-ROLLI-LW----BLACK-31651.html" content="https://cezos.com/en/ROLLI/31651-ROLLI-LW----BLACK-31651.html">Rolli Mechanism type. Light Weight 2,4m &quot;-&quot;</a></h2>
+
+            <ul class="product-short-features">
+                                                                                                          <li><dl><dt>Brand</dt><dd>Cezos</dd></dl></li>
+                                                                                                                                        <li><dl><dt>Height Adjustment</dt><dd>No</dd></dl></li>
+                                                                                                                                        <li><dl><dt>Maximum Load</dt><dd>1,1 kg</dd></dl></li>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              </ul>
+        
+
+        
+                      <div class="product-price-and-shipping">
+              <div class="price-container-miniature ">
+                <span class="price-whithout-tax hidden">12,49 €<p class="price-sign">Price tax excl.</p></span>
+
+
+                
+
+                <span class="price" aria-label="Price">
+                                                        €15.36
+                                                      <p class="price-sign">Price tax incl.</p>
+                </span>
+
+                                              </div>
+              <a 
+            class="
+             quick-view js-quick-view btn btn-primary" href="#" data-link-action="quickview"><i class="material-icons shopping-cart" aria-hidden="true">shopping_cart</i></a>
+
+              
+
+              
+            </div>
+                  
+
+        
+          
+<div class="product-list-reviews" data-id="31651" data-url="https://cezos.com/en/module/productcomments/CommentGrade">
+  <div class="grade-stars small-stars"></div>
+  <div class="comments-nb"></div>
+</div>
+
+        
+      </div>
+
+      
+    <ul class="product-flags js-product-flags">
+                                    </ul>
+
+    </div>
+  </article>
+</div>
+
+            
+<div class="js-product product no-border short_product">
   <article class="product-miniature js-product-miniature" data-id-product="36688" data-id-product-attribute="0">
     <div class="thumbnail-container">
       <div class="thumbnail-top">
         
-                      <a href="https://sklep.cezos.com/en/ROLLI/36688-ROLLI-ST---SET-WHITE-36688.html" class="thumbnail product-thumbnail">
+                      <a href="https://cezos.com/en/ROLLI/36688-ROLLI-ST---SET-WHITE-36688.html" class="thumbnail product-thumbnail">
               <picture>
                                                 <img
-                  src="https://sklep.cezos.com/6466-home_default/ROLLI-ST---SET-WHITE.jpg"
+                  src="https://cezos.com/8972-home_default/ROLLI-ST---SET-WHITE.jpg"
                   alt="Rolli_White.jpg"
                   loading="lazy"
-                  data-full-size-image-url="https://sklep.cezos.com/6466-large_default/ROLLI-ST---SET-WHITE.jpg"
+                  data-full-size-image-url="https://cezos.com/8972-large_default/ROLLI-ST---SET-WHITE.jpg"
                   width="250"
                   height="250"
                 />
@@ -69,32 +220,31 @@ $_smarty_tpl->smarty->ext->_tplFunction->registerTplFunctions($_smarty_tpl, arra
       <div class="product-description">
         
             <p class="product-index pl-0">Catalog Number: 36688</p>
-            <h2 class="h3 product-title"><a href="https://sklep.cezos.com/en/ROLLI/36688-ROLLI-ST---SET-WHITE-36688.html" content="https://sklep.cezos.com/en/ROLLI/36688-ROLLI-ST---SET-WHITE-36688.html">Rolli - White Set of Mechsnisms Type. Standard 2.4m</a></h2>
+            <h2 class="h3 product-title"><a href="https://cezos.com/en/ROLLI/36688-ROLLI-ST---SET-WHITE-36688.html" content="https://cezos.com/en/ROLLI/36688-ROLLI-ST---SET-WHITE-36688.html">Rolli - White Set of Mechsnisms Type. Standard 2.4m</a></h2>
 
             <ul class="product-short-features">
                                                                                                           <li><dl><dt>Brand</dt><dd>Cezos</dd></dl></li>
                                                                                                                                         <li><dl><dt>Height Adjustment</dt><dd>No</dd></dl></li>
                                                                                                                                         <li><dl><dt>Maximum Load</dt><dd>2,2 kg</dd></dl></li>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </ul>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              </ul>
         
 
         
                       <div class="product-price-and-shipping">
               <div class="price-container-miniature ">
-                <span class="price-whithout-tax hidden">81,92 €<p class="price-sign">Price tax excl.</p></span>
+                <span class="price-whithout-tax hidden">81,26 €<p class="price-sign">Price tax excl.</p></span>
 
 
                 
 
                 <span class="price" aria-label="Price">
-                                                        €100.76
+                                                        €99.95
                                                       <p class="price-sign">Price tax incl.</p>
                 </span>
 
                                               </div>
               <a 
             class="
-                          disabled
              quick-view js-quick-view btn btn-primary" href="#" data-link-action="quickview"><i class="material-icons shopping-cart" aria-hidden="true">shopping_cart</i></a>
 
               
@@ -105,7 +255,7 @@ $_smarty_tpl->smarty->ext->_tplFunction->registerTplFunctions($_smarty_tpl, arra
 
         
           
-<div class="product-list-reviews" data-id="36688" data-url="https://sklep.cezos.com/en/module/productcomments/CommentGrade">
+<div class="product-list-reviews" data-id="36688" data-url="https://cezos.com/en/module/productcomments/CommentGrade">
   <div class="grade-stars small-stars"></div>
   <div class="comments-nb"></div>
 </div>
@@ -115,7 +265,7 @@ $_smarty_tpl->smarty->ext->_tplFunction->registerTplFunctions($_smarty_tpl, arra
 
       
     <ul class="product-flags js-product-flags">
-                                                                            </ul>
+                                                        </ul>
 
     </div>
   </article>
@@ -127,13 +277,13 @@ $_smarty_tpl->smarty->ext->_tplFunction->registerTplFunctions($_smarty_tpl, arra
     <div class="thumbnail-container">
       <div class="thumbnail-top">
         
-                      <a href="https://sklep.cezos.com/en/ROLLI/35220-ROLLI-CX-35220.html" class="thumbnail product-thumbnail">
+                      <a href="https://cezos.com/en/ROLLI/35220-ROLLI-CX-35220.html" class="thumbnail product-thumbnail">
               <picture>
                                                 <img
-                  src="https://sklep.cezos.com/6445-home_default/ROLLI-CX.jpg"
+                  src="https://cezos.com/8944-home_default/ROLLI-CX.jpg"
                   alt="Rolli_coax.jpg"
                   loading="lazy"
-                  data-full-size-image-url="https://sklep.cezos.com/6445-large_default/ROLLI-CX.jpg"
+                  data-full-size-image-url="https://cezos.com/8944-large_default/ROLLI-CX.jpg"
                   width="250"
                   height="250"
                 />
@@ -145,25 +295,25 @@ $_smarty_tpl->smarty->ext->_tplFunction->registerTplFunctions($_smarty_tpl, arra
       <div class="product-description">
         
             <p class="product-index pl-0">Catalog Number: 35220</p>
-            <h2 class="h3 product-title"><a href="https://sklep.cezos.com/en/ROLLI/35220-ROLLI-CX-35220.html" content="https://sklep.cezos.com/en/ROLLI/35220-ROLLI-CX-35220.html">Rolli Mechanism type. Coax. 2,4m &quot;+ / -&quot;</a></h2>
+            <h2 class="h3 product-title"><a href="https://cezos.com/en/ROLLI/35220-ROLLI-CX-35220.html" content="https://cezos.com/en/ROLLI/35220-ROLLI-CX-35220.html">Rolli Mechanism type. Coax. 2,4m &quot;+ / -&quot;</a></h2>
 
             <ul class="product-short-features">
                                                                                                           <li><dl><dt>Brand</dt><dd>Cezos</dd></dl></li>
                                                                                                                                         <li><dl><dt>Height Adjustment</dt><dd>No</dd></dl></li>
                                                                                                                                         <li><dl><dt>Maximum Load</dt><dd>3 kg</dd></dl></li>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </ul>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      </ul>
         
 
         
                       <div class="product-price-and-shipping">
               <div class="price-container-miniature ">
-                <span class="price-whithout-tax hidden">12,72 €<p class="price-sign">Price tax excl.</p></span>
+                <span class="price-whithout-tax hidden">18,08 €<p class="price-sign">Price tax excl.</p></span>
 
 
                 
 
                 <span class="price" aria-label="Price">
-                                                        €15.65
+                                                        €22.24
                                                       <p class="price-sign">Price tax incl.</p>
                 </span>
 
@@ -181,7 +331,7 @@ $_smarty_tpl->smarty->ext->_tplFunction->registerTplFunctions($_smarty_tpl, arra
 
         
           
-<div class="product-list-reviews" data-id="35220" data-url="https://sklep.cezos.com/en/module/productcomments/CommentGrade">
+<div class="product-list-reviews" data-id="35220" data-url="https://cezos.com/en/module/productcomments/CommentGrade">
   <div class="grade-stars small-stars"></div>
   <div class="comments-nb"></div>
 </div>
@@ -200,17 +350,92 @@ $_smarty_tpl->smarty->ext->_tplFunction->registerTplFunctions($_smarty_tpl, arra
 
             
 <div class="js-product product no-border short_product">
+  <article class="product-miniature js-product-miniature" data-id-product="31650" data-id-product-attribute="0">
+    <div class="thumbnail-container">
+      <div class="thumbnail-top">
+        
+                      <a href="https://cezos.com/en/ROLLI/31650-ROLLI-LW-RED-31650.html" class="thumbnail product-thumbnail">
+              <picture>
+                                                <img
+                  src="https://cezos.com/8674-home_default/ROLLI-LW-RED.jpg"
+                  alt="Rolli_czerwony_kabel.jpg"
+                  loading="lazy"
+                  data-full-size-image-url="https://cezos.com/8674-large_default/ROLLI-LW-RED.jpg"
+                  width="250"
+                  height="250"
+                />
+              </picture>
+            </a>
+                  
+      </div>
+
+      <div class="product-description">
+        
+            <p class="product-index pl-0">Catalog Number: 31650</p>
+            <h2 class="h3 product-title"><a href="https://cezos.com/en/ROLLI/31650-ROLLI-LW-RED-31650.html" content="https://cezos.com/en/ROLLI/31650-ROLLI-LW-RED-31650.html">Rolli Mechanism type. Light Weight 2,4m &quot;+&quot;</a></h2>
+
+            <ul class="product-short-features">
+                                                                                                          <li><dl><dt>Brand</dt><dd>Cezos</dd></dl></li>
+                                                                                                                                        <li><dl><dt>Height Adjustment</dt><dd>No</dd></dl></li>
+                                                                                                                                        <li><dl><dt>Maximum Load</dt><dd>1,2 kg</dd></dl></li>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              </ul>
+        
+
+        
+                      <div class="product-price-and-shipping">
+              <div class="price-container-miniature ">
+                <span class="price-whithout-tax hidden">12,49 €<p class="price-sign">Price tax excl.</p></span>
+
+
+                
+
+                <span class="price" aria-label="Price">
+                                                        €15.36
+                                                      <p class="price-sign">Price tax incl.</p>
+                </span>
+
+                                              </div>
+              <a 
+            class="
+             quick-view js-quick-view btn btn-primary" href="#" data-link-action="quickview"><i class="material-icons shopping-cart" aria-hidden="true">shopping_cart</i></a>
+
+              
+
+              
+            </div>
+                  
+
+        
+          
+<div class="product-list-reviews" data-id="31650" data-url="https://cezos.com/en/module/productcomments/CommentGrade">
+  <div class="grade-stars small-stars"></div>
+  <div class="comments-nb"></div>
+</div>
+
+        
+      </div>
+
+      
+    <ul class="product-flags js-product-flags">
+                                    </ul>
+
+    </div>
+  </article>
+</div>
+
+            
+<div class="js-product product no-border short_product">
   <article class="product-miniature js-product-miniature" data-id-product="31241" data-id-product-attribute="0">
     <div class="thumbnail-container">
       <div class="thumbnail-top">
         
-                      <a href="https://sklep.cezos.com/en/ROLLI/31241-ROLLI-ST----BLACK-31241.html" class="thumbnail product-thumbnail">
+                      <a href="https://cezos.com/en/ROLLI/31241-ROLLI-ST----BLACK-31241.html" class="thumbnail product-thumbnail">
               <picture>
                                                 <img
-                  src="https://sklep.cezos.com/6170-home_default/ROLLI-ST----BLACK.jpg"
+                  src="https://cezos.com/8667-home_default/ROLLI-ST----BLACK.jpg"
                   alt="Rolli_czarny_kabel.jpg"
                   loading="lazy"
-                  data-full-size-image-url="https://sklep.cezos.com/6170-large_default/ROLLI-ST----BLACK.jpg"
+                  data-full-size-image-url="https://cezos.com/8667-large_default/ROLLI-ST----BLACK.jpg"
                   width="250"
                   height="250"
                 />
@@ -222,32 +447,31 @@ $_smarty_tpl->smarty->ext->_tplFunction->registerTplFunctions($_smarty_tpl, arra
       <div class="product-description">
         
             <p class="product-index pl-0">Catalog Number: 31241</p>
-            <h2 class="h3 product-title"><a href="https://sklep.cezos.com/en/ROLLI/31241-ROLLI-ST----BLACK-31241.html" content="https://sklep.cezos.com/en/ROLLI/31241-ROLLI-ST----BLACK-31241.html">Rolli Mechanism type. Standard 2,4m &quot;-&quot;</a></h2>
+            <h2 class="h3 product-title"><a href="https://cezos.com/en/ROLLI/31241-ROLLI-ST----BLACK-31241.html" content="https://cezos.com/en/ROLLI/31241-ROLLI-ST----BLACK-31241.html">Rolli Mechanism type. Standard 2,4m &quot;-&quot;</a></h2>
 
             <ul class="product-short-features">
                                                                                                           <li><dl><dt>Brand</dt><dd>Cezos</dd></dl></li>
                                                                                                                                         <li><dl><dt>Height Adjustment</dt><dd>No</dd></dl></li>
                                                                                                                                         <li><dl><dt>Maximum Load</dt><dd>1,1 kg</dd></dl></li>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </ul>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              </ul>
         
 
         
                       <div class="product-price-and-shipping">
               <div class="price-container-miniature ">
-                <span class="price-whithout-tax hidden">9,25 €<p class="price-sign">Price tax excl.</p></span>
+                <span class="price-whithout-tax hidden">12,86 €<p class="price-sign">Price tax excl.</p></span>
 
 
                 
 
                 <span class="price" aria-label="Price">
-                                                        €11.38
+                                                        €15.82
                                                       <p class="price-sign">Price tax incl.</p>
                 </span>
 
                                               </div>
               <a 
             class="
-                          disabled
              quick-view js-quick-view btn btn-primary" href="#" data-link-action="quickview"><i class="material-icons shopping-cart" aria-hidden="true">shopping_cart</i></a>
 
               
@@ -258,7 +482,7 @@ $_smarty_tpl->smarty->ext->_tplFunction->registerTplFunctions($_smarty_tpl, arra
 
         
           
-<div class="product-list-reviews" data-id="31241" data-url="https://sklep.cezos.com/en/module/productcomments/CommentGrade">
+<div class="product-list-reviews" data-id="31241" data-url="https://cezos.com/en/module/productcomments/CommentGrade">
   <div class="grade-stars small-stars"></div>
   <div class="comments-nb"></div>
 </div>
@@ -268,235 +492,7 @@ $_smarty_tpl->smarty->ext->_tplFunction->registerTplFunctions($_smarty_tpl, arra
 
       
     <ul class="product-flags js-product-flags">
-                                                        </ul>
-
-    </div>
-  </article>
-</div>
-
-            
-<div class="js-product product no-border short_product">
-  <article class="product-miniature js-product-miniature" data-id-product="37312" data-id-product-attribute="0">
-    <div class="thumbnail-container">
-      <div class="thumbnail-top">
-        
-                      <a href="https://sklep.cezos.com/en/ROLLI/37312-ROLLI-CX---SET-STANDARDOWY-37312.html" class="thumbnail product-thumbnail">
-              <picture>
-                                                <img
-                  src="https://sklep.cezos.com/6529-home_default/ROLLI-CX---SET-STANDARDOWY.jpg"
-                  alt="Rolli_coax_set.jpg"
-                  loading="lazy"
-                  data-full-size-image-url="https://sklep.cezos.com/6529-large_default/ROLLI-CX---SET-STANDARDOWY.jpg"
-                  width="250"
-                  height="250"
-                />
-              </picture>
-            </a>
-                  
-      </div>
-
-      <div class="product-description">
-        
-            <p class="product-index pl-0">Catalog Number: 37312</p>
-            <h2 class="h3 product-title"><a href="https://sklep.cezos.com/en/ROLLI/37312-ROLLI-CX---SET-STANDARDOWY-37312.html" content="https://sklep.cezos.com/en/ROLLI/37312-ROLLI-CX---SET-STANDARDOWY-37312.html">Rolli - Anod. Set of Mechanism Type. Coax 2.4m</a></h2>
-
-            <ul class="product-short-features">
-                                                                                                          <li><dl><dt>Brand</dt><dd>Cezos</dd></dl></li>
-                                                                                                                                        <li><dl><dt>Height Adjustment</dt><dd>No</dd></dl></li>
-                                                                                                                                        <li><dl><dt>Maximum Load</dt><dd>3 kg</dd></dl></li>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </ul>
-        
-
-        
-                      <div class="product-price-and-shipping">
-              <div class="price-container-miniature ">
-                <span class="price-whithout-tax hidden">70,55 €<p class="price-sign">Price tax excl.</p></span>
-
-
-                
-
-                <span class="price" aria-label="Price">
-                                                        €86.78
-                                                      <p class="price-sign">Price tax incl.</p>
-                </span>
-
-                                              </div>
-              <a 
-            class="
-                          disabled
-             quick-view js-quick-view btn btn-primary" href="#" data-link-action="quickview"><i class="material-icons shopping-cart" aria-hidden="true">shopping_cart</i></a>
-
-              
-
-              
-            </div>
-                  
-
-        
-          
-<div class="product-list-reviews" data-id="37312" data-url="https://sklep.cezos.com/en/module/productcomments/CommentGrade">
-  <div class="grade-stars small-stars"></div>
-  <div class="comments-nb"></div>
-</div>
-
-        
-      </div>
-
-      
-    <ul class="product-flags js-product-flags">
-                                                        </ul>
-
-    </div>
-  </article>
-</div>
-
-            
-<div class="js-product product no-border short_product">
-  <article class="product-miniature js-product-miniature" data-id-product="33776" data-id-product-attribute="0">
-    <div class="thumbnail-container">
-      <div class="thumbnail-top">
-        
-                      <a href="https://sklep.cezos.com/en/ROLLI/33776-ROLLI-ST---SET-33776.html" class="thumbnail product-thumbnail">
-              <picture>
-                                                <img
-                  src="https://sklep.cezos.com/6370-home_default/ROLLI-ST---SET.jpg"
-                  alt="Rolli_Anode.jpg"
-                  loading="lazy"
-                  data-full-size-image-url="https://sklep.cezos.com/6370-large_default/ROLLI-ST---SET.jpg"
-                  width="250"
-                  height="250"
-                />
-              </picture>
-            </a>
-                  
-      </div>
-
-      <div class="product-description">
-        
-            <p class="product-index pl-0">Catalog Number: 33776</p>
-            <h2 class="h3 product-title"><a href="https://sklep.cezos.com/en/ROLLI/33776-ROLLI-ST---SET-33776.html" content="https://sklep.cezos.com/en/ROLLI/33776-ROLLI-ST---SET-33776.html">Rolli - Anod. Set of Mechanisms Type. Standard 2.4m</a></h2>
-
-            <ul class="product-short-features">
-                                                                                                          <li><dl><dt>Brand</dt><dd>Cezos</dd></dl></li>
-                                                                                                                                        <li><dl><dt>Height Adjustment</dt><dd>No</dd></dl></li>
-                                                                                                                                        <li><dl><dt>Maximum Load</dt><dd>2,2 kg</dd></dl></li>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </ul>
-        
-
-        
-                      <div class="product-price-and-shipping">
-              <div class="price-container-miniature ">
-                <span class="price-whithout-tax hidden">68,37 €<p class="price-sign">Price tax excl.</p></span>
-
-
-                
-
-                <span class="price" aria-label="Price">
-                                                        €84.10
-                                                      <p class="price-sign">Price tax incl.</p>
-                </span>
-
-                                              </div>
-              <a 
-            class="
-                          disabled
-             quick-view js-quick-view btn btn-primary" href="#" data-link-action="quickview"><i class="material-icons shopping-cart" aria-hidden="true">shopping_cart</i></a>
-
-              
-
-              
-            </div>
-                  
-
-        
-          
-<div class="product-list-reviews" data-id="33776" data-url="https://sklep.cezos.com/en/module/productcomments/CommentGrade">
-  <div class="grade-stars small-stars"></div>
-  <div class="comments-nb"></div>
-</div>
-
-        
-      </div>
-
-      
-    <ul class="product-flags js-product-flags">
-                                                        </ul>
-
-    </div>
-  </article>
-</div>
-
-            
-<div class="js-product product no-border short_product">
-  <article class="product-miniature js-product-miniature" data-id-product="33124" data-id-product-attribute="0">
-    <div class="thumbnail-container">
-      <div class="thumbnail-top">
-        
-                      <a href="https://sklep.cezos.com/en/ROLLI/33124-ROLLI-HD----BLACK-33124.html" class="thumbnail product-thumbnail">
-              <picture>
-                                                <img
-                  src="https://sklep.cezos.com/6359-home_default/ROLLI-HD----BLACK.jpg"
-                  alt="Rolli_czarny_kabel.jpg"
-                  loading="lazy"
-                  data-full-size-image-url="https://sklep.cezos.com/6359-large_default/ROLLI-HD----BLACK.jpg"
-                  width="250"
-                  height="250"
-                />
-              </picture>
-            </a>
-                  
-      </div>
-
-      <div class="product-description">
-        
-            <p class="product-index pl-0">Catalog Number: 33124</p>
-            <h2 class="h3 product-title"><a href="https://sklep.cezos.com/en/ROLLI/33124-ROLLI-HD----BLACK-33124.html" content="https://sklep.cezos.com/en/ROLLI/33124-ROLLI-HD----BLACK-33124.html">Rolli Mechanism type. Heavy Duty 2,4m &quot;-&quot;</a></h2>
-
-            <ul class="product-short-features">
-                                                                                                          <li><dl><dt>Brand</dt><dd>Cezos</dd></dl></li>
-                                                                                                                                        <li><dl><dt>Height Adjustment</dt><dd>No</dd></dl></li>
-                                                                                                                                        <li><dl><dt>Maximum Load</dt><dd>3 kg</dd></dl></li>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </ul>
-        
-
-        
-                      <div class="product-price-and-shipping">
-              <div class="price-container-miniature ">
-                <span class="price-whithout-tax hidden">11,11 €<p class="price-sign">Price tax excl.</p></span>
-
-
-                
-
-                <span class="price" aria-label="Price">
-                                                        €13.66
-                                                      <p class="price-sign">Price tax incl.</p>
-                </span>
-
-                                              </div>
-              <a 
-            class="
-                          disabled
-             quick-view js-quick-view btn btn-primary" href="#" data-link-action="quickview"><i class="material-icons shopping-cart" aria-hidden="true">shopping_cart</i></a>
-
-              
-
-              
-            </div>
-                  
-
-        
-          
-<div class="product-list-reviews" data-id="33124" data-url="https://sklep.cezos.com/en/module/productcomments/CommentGrade">
-  <div class="grade-stars small-stars"></div>
-  <div class="comments-nb"></div>
-</div>
-
-        
-      </div>
-
-      
-    <ul class="product-flags js-product-flags">
-                                                        </ul>
+                                    </ul>
 
     </div>
   </article>
@@ -508,13 +504,13 @@ $_smarty_tpl->smarty->ext->_tplFunction->registerTplFunctions($_smarty_tpl, arra
     <div class="thumbnail-container">
       <div class="thumbnail-top">
         
-                      <a href="https://sklep.cezos.com/en/ROLLI/33777-ROLLI-HD---SET-33777.html" class="thumbnail product-thumbnail">
+                      <a href="https://cezos.com/en/ROLLI/33777-ROLLI-HD---SET-33777.html" class="thumbnail product-thumbnail">
               <picture>
                                                 <img
-                  src="https://sklep.cezos.com/6379-home_default/ROLLI-HD---SET.jpg"
+                  src="https://cezos.com/8878-home_default/ROLLI-HD---SET.jpg"
                   alt="Rolli_Anode.jpg"
                   loading="lazy"
-                  data-full-size-image-url="https://sklep.cezos.com/6379-large_default/ROLLI-HD---SET.jpg"
+                  data-full-size-image-url="https://cezos.com/8878-large_default/ROLLI-HD---SET.jpg"
                   width="250"
                   height="250"
                 />
@@ -526,32 +522,31 @@ $_smarty_tpl->smarty->ext->_tplFunction->registerTplFunctions($_smarty_tpl, arra
       <div class="product-description">
         
             <p class="product-index pl-0">Catalog Number: 33777</p>
-            <h2 class="h3 product-title"><a href="https://sklep.cezos.com/en/ROLLI/33777-ROLLI-HD---SET-33777.html" content="https://sklep.cezos.com/en/ROLLI/33777-ROLLI-HD---SET-33777.html">Rolli - Anod. Set of Mechanisms Type. Heavy Duty 2.4m</a></h2>
+            <h2 class="h3 product-title"><a href="https://cezos.com/en/ROLLI/33777-ROLLI-HD---SET-33777.html" content="https://cezos.com/en/ROLLI/33777-ROLLI-HD---SET-33777.html">Rolli - Anod. Set of Mechanisms Type. Heavy Duty 2.4m</a></h2>
 
             <ul class="product-short-features">
                                                                                                           <li><dl><dt>Brand</dt><dd>Cezos</dd></dl></li>
                                                                                                                                         <li><dl><dt>Height Adjustment</dt><dd>No</dd></dl></li>
                                                                                                                                         <li><dl><dt>Maximum Load</dt><dd>6 kg</dd></dl></li>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            </ul>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      </ul>
         
 
         
                       <div class="product-price-and-shipping">
               <div class="price-container-miniature ">
-                <span class="price-whithout-tax hidden">72,35 €<p class="price-sign">Price tax excl.</p></span>
+                <span class="price-whithout-tax hidden">71,76 €<p class="price-sign">Price tax excl.</p></span>
 
 
                 
 
                 <span class="price" aria-label="Price">
-                                                        €88.99
+                                                        €88.26
                                                       <p class="price-sign">Price tax incl.</p>
                 </span>
 
                                               </div>
               <a 
             class="
-                          disabled
              quick-view js-quick-view btn btn-primary" href="#" data-link-action="quickview"><i class="material-icons shopping-cart" aria-hidden="true">shopping_cart</i></a>
 
               
@@ -562,7 +557,7 @@ $_smarty_tpl->smarty->ext->_tplFunction->registerTplFunctions($_smarty_tpl, arra
 
         
           
-<div class="product-list-reviews" data-id="33777" data-url="https://sklep.cezos.com/en/module/productcomments/CommentGrade">
+<div class="product-list-reviews" data-id="33777" data-url="https://cezos.com/en/module/productcomments/CommentGrade">
   <div class="grade-stars small-stars"></div>
   <div class="comments-nb"></div>
 </div>
@@ -572,7 +567,7 @@ $_smarty_tpl->smarty->ext->_tplFunction->registerTplFunctions($_smarty_tpl, arra
 
       
     <ul class="product-flags js-product-flags">
-                                                        </ul>
+                                    </ul>
 
     </div>
   </article>
@@ -580,17 +575,17 @@ $_smarty_tpl->smarty->ext->_tplFunction->registerTplFunctions($_smarty_tpl, arra
 
             
 <div class="js-product product no-border short_product">
-  <article class="product-miniature js-product-miniature" data-id-product="36665" data-id-product-attribute="0">
+  <article class="product-miniature js-product-miniature" data-id-product="31240" data-id-product-attribute="0">
     <div class="thumbnail-container">
       <div class="thumbnail-top">
         
-                      <a href="https://sklep.cezos.com/en/ROLLI/36665-ROLLI-ST---SET-BLACK-36665.html" class="thumbnail product-thumbnail">
+                      <a href="https://cezos.com/en/ROLLI/31240-ROLLI-ST----RED-31240.html" class="thumbnail product-thumbnail">
               <picture>
                                                 <img
-                  src="https://sklep.cezos.com/6457-home_default/ROLLI-ST---SET-BLACK.jpg"
-                  alt="Rolli_black.jpg"
+                  src="https://cezos.com/8655-home_default/ROLLI-ST----RED.jpg"
+                  alt="Rolli_czerwony_kabel.jpg"
                   loading="lazy"
-                  data-full-size-image-url="https://sklep.cezos.com/6457-large_default/ROLLI-ST---SET-BLACK.jpg"
+                  data-full-size-image-url="https://cezos.com/8655-large_default/ROLLI-ST----RED.jpg"
                   width="250"
                   height="250"
                 />
@@ -601,33 +596,32 @@ $_smarty_tpl->smarty->ext->_tplFunction->registerTplFunctions($_smarty_tpl, arra
 
       <div class="product-description">
         
-            <p class="product-index pl-0">Catalog Number: 36665</p>
-            <h2 class="h3 product-title"><a href="https://sklep.cezos.com/en/ROLLI/36665-ROLLI-ST---SET-BLACK-36665.html" content="https://sklep.cezos.com/en/ROLLI/36665-ROLLI-ST---SET-BLACK-36665.html">Rolli - Black Set of Mechanisms Type. Standard 2.4m</a></h2>
+            <p class="product-index pl-0">Catalog Number: 31240</p>
+            <h2 class="h3 product-title"><a href="https://cezos.com/en/ROLLI/31240-ROLLI-ST----RED-31240.html" content="https://cezos.com/en/ROLLI/31240-ROLLI-ST----RED-31240.html">Rolli Mechanism type. Standard 2,4m &quot;+&quot;</a></h2>
 
             <ul class="product-short-features">
                                                                                                           <li><dl><dt>Brand</dt><dd>Cezos</dd></dl></li>
                                                                                                                                         <li><dl><dt>Height Adjustment</dt><dd>No</dd></dl></li>
-                                                                                                                                        <li><dl><dt>Maximum Load</dt><dd>2,2 kg</dd></dl></li>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </ul>
+                                                                                                                                        <li><dl><dt>Maximum Load</dt><dd>1,1 kg</dd></dl></li>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              </ul>
         
 
         
                       <div class="product-price-and-shipping">
               <div class="price-container-miniature ">
-                <span class="price-whithout-tax hidden">81,92 €<p class="price-sign">Price tax excl.</p></span>
+                <span class="price-whithout-tax hidden">12,86 €<p class="price-sign">Price tax excl.</p></span>
 
 
                 
 
                 <span class="price" aria-label="Price">
-                                                        €100.76
+                                                        €15.82
                                                       <p class="price-sign">Price tax incl.</p>
                 </span>
 
                                               </div>
               <a 
             class="
-                          disabled
              quick-view js-quick-view btn btn-primary" href="#" data-link-action="quickview"><i class="material-icons shopping-cart" aria-hidden="true">shopping_cart</i></a>
 
               
@@ -638,7 +632,7 @@ $_smarty_tpl->smarty->ext->_tplFunction->registerTplFunctions($_smarty_tpl, arra
 
         
           
-<div class="product-list-reviews" data-id="36665" data-url="https://sklep.cezos.com/en/module/productcomments/CommentGrade">
+<div class="product-list-reviews" data-id="31240" data-url="https://cezos.com/en/module/productcomments/CommentGrade">
   <div class="grade-stars small-stars"></div>
   <div class="comments-nb"></div>
 </div>
@@ -648,7 +642,7 @@ $_smarty_tpl->smarty->ext->_tplFunction->registerTplFunctions($_smarty_tpl, arra
 
       
     <ul class="product-flags js-product-flags">
-                                                        </ul>
+                                    </ul>
 
     </div>
   </article>
@@ -657,7 +651,7 @@ $_smarty_tpl->smarty->ext->_tplFunction->registerTplFunctions($_smarty_tpl, arra
     </div>
   </div>
   <a class="banner" href="https://sklep.cezos.com/en/10465-CONSTANT-VOLTAGE-CV?q=Length-100+mm" title="POS">
-      <img src="https://sklep.cezos.com/modules/ps_banner/img/e87ae5ed375841fccf2c2fb7ff6553e5.jpg" alt="POS" title="POS" class="img-fluid" loading="lazy" width="auto" height="auto">
+      <img src="https://cezos.com/modules/ps_banner/img/e87ae5ed375841fccf2c2fb7ff6553e5.jpg" alt="POS" title="POS" class="img-fluid" loading="lazy" width="auto" height="auto">
     <span>POS</span>
   </a>
 
@@ -668,17 +662,17 @@ $_smarty_tpl->smarty->ext->_tplFunction->registerTplFunctions($_smarty_tpl, arra
 <div class="products owl-carousel products-container">
             
 <div class="js-product product no-border short_product">
-  <article class="product-miniature js-product-miniature" data-id-product="37241" data-id-product-attribute="0">
+  <article class="product-miniature js-product-miniature" data-id-product="37517" data-id-product-attribute="0">
     <div class="thumbnail-container">
       <div class="thumbnail-top">
         
-                      <a href="https://sklep.cezos.com/en/E27/37241-OPRAWA-ZWIESZAKOWA-STRING-SZWEDZKI-BRAZOWY-37241.html" class="thumbnail product-thumbnail">
+                      <a href="https://cezos.com/en/E27/37517-Adjustable-Suspension---Sweeden-Blue-37517.html" class="thumbnail product-thumbnail">
               <picture>
                                                 <img
-                  src="https://sklep.cezos.com/6508-home_default/OPRAWA-ZWIESZAKOWA-STRING-SZWEDZKI-BRAZOWY.jpg"
-                  alt="Swing1.jpg"
+                  src="https://cezos.com/9057-home_default/Adjustable-Suspension---Sweeden-Blue.jpg"
+                  alt="Artboard 1.jpg"
                   loading="lazy"
-                  data-full-size-image-url="https://sklep.cezos.com/6508-large_default/OPRAWA-ZWIESZAKOWA-STRING-SZWEDZKI-BRAZOWY.jpg"
+                  data-full-size-image-url="https://cezos.com/9057-large_default/Adjustable-Suspension---Sweeden-Blue.jpg"
                   width="250"
                   height="250"
                 />
@@ -689,26 +683,26 @@ $_smarty_tpl->smarty->ext->_tplFunction->registerTplFunctions($_smarty_tpl, arra
 
       <div class="product-description">
         
-            <p class="product-index pl-0">Catalog Number: 37241</p>
-            <h2 class="h3 product-title"><a href="https://sklep.cezos.com/en/E27/37241-OPRAWA-ZWIESZAKOWA-STRING-SZWEDZKI-BRAZOWY-37241.html" content="https://sklep.cezos.com/en/E27/37241-OPRAWA-ZWIESZAKOWA-STRING-SZWEDZKI-BRAZOWY-37241.html">Adjustable Suspension - Sweeden String Brown</a></h2>
+            <p class="product-index pl-0">Catalog Number: 37517</p>
+            <h2 class="h3 product-title"><a href="https://cezos.com/en/E27/37517-Adjustable-Suspension---Sweeden-Blue-37517.html" content="https://cezos.com/en/E27/37517-Adjustable-Suspension---Sweeden-Blue-37517.html">Adjustable Suspension - Blue</a></h2>
 
             <ul class="product-short-features">
                                                                                                           <li><dl><dt>Brand</dt><dd>Cezos</dd></dl></li>
                                                                                                                                         <li><dl><dt>Ceiling Type</dt><dd>Swedish</dd></dl></li>
                                                                                                                                         <li><dl><dt>Height Adjustment</dt><dd>No</dd></dl></li>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </ul>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              </ul>
         
 
         
                       <div class="product-price-and-shipping">
               <div class="price-container-miniature ">
-                <span class="price-whithout-tax hidden">2,82 €<p class="price-sign">Price tax excl.</p></span>
+                <span class="price-whithout-tax hidden">7,36 €<p class="price-sign">Price tax excl.</p></span>
 
 
                 
 
                 <span class="price" aria-label="Price">
-                                                        €3.47
+                                                        €9.05
                                                       <p class="price-sign">Price tax incl.</p>
                 </span>
 
@@ -725,7 +719,82 @@ $_smarty_tpl->smarty->ext->_tplFunction->registerTplFunctions($_smarty_tpl, arra
 
         
           
-<div class="product-list-reviews" data-id="37241" data-url="https://sklep.cezos.com/en/module/productcomments/CommentGrade">
+<div class="product-list-reviews" data-id="37517" data-url="https://cezos.com/en/module/productcomments/CommentGrade">
+  <div class="grade-stars small-stars"></div>
+  <div class="comments-nb"></div>
+</div>
+
+        
+      </div>
+
+      
+    <ul class="product-flags js-product-flags">
+                                    </ul>
+
+    </div>
+  </article>
+</div>
+
+            
+<div class="js-product product no-border short_product">
+  <article class="product-miniature js-product-miniature" data-id-product="37238" data-id-product-attribute="0">
+    <div class="thumbnail-container">
+      <div class="thumbnail-top">
+        
+                      <a href="https://cezos.com/en/E27/37238-OPRAWA-ZWIESZAKOWA-STRING-SZWEDZKI-CZARNY-37238.html" class="thumbnail product-thumbnail">
+              <picture>
+                                                <img
+                  src="https://cezos.com/9005-home_default/OPRAWA-ZWIESZAKOWA-STRING-SZWEDZKI-CZARNY.jpg"
+                  alt="Swing1.jpg"
+                  loading="lazy"
+                  data-full-size-image-url="https://cezos.com/9005-large_default/OPRAWA-ZWIESZAKOWA-STRING-SZWEDZKI-CZARNY.jpg"
+                  width="250"
+                  height="250"
+                />
+              </picture>
+            </a>
+                  
+      </div>
+
+      <div class="product-description">
+        
+            <p class="product-index pl-0">Catalog Number: 37238</p>
+            <h2 class="h3 product-title"><a href="https://cezos.com/en/E27/37238-OPRAWA-ZWIESZAKOWA-STRING-SZWEDZKI-CZARNY-37238.html" content="https://cezos.com/en/E27/37238-OPRAWA-ZWIESZAKOWA-STRING-SZWEDZKI-CZARNY-37238.html">Adjustable Suspension - String Black</a></h2>
+
+            <ul class="product-short-features">
+                                                                                                          <li><dl><dt>Brand</dt><dd>Cezos</dd></dl></li>
+                                                                                                                                        <li><dl><dt>Ceiling Type</dt><dd>Swedish</dd></dl></li>
+                                                                                                                                        <li><dl><dt>Height Adjustment</dt><dd>No</dd></dl></li>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      </ul>
+        
+
+        
+                      <div class="product-price-and-shipping">
+              <div class="price-container-miniature ">
+                <span class="price-whithout-tax hidden">6,52 €<p class="price-sign">Price tax excl.</p></span>
+
+
+                
+
+                <span class="price" aria-label="Price">
+                                                        €8.02
+                                                      <p class="price-sign">Price tax incl.</p>
+                </span>
+
+                                              </div>
+              <a 
+            class="
+             quick-view js-quick-view btn btn-primary" href="#" data-link-action="quickview"><i class="material-icons shopping-cart" aria-hidden="true">shopping_cart</i></a>
+
+              
+
+              
+            </div>
+                  
+
+        
+          
+<div class="product-list-reviews" data-id="37238" data-url="https://cezos.com/en/module/productcomments/CommentGrade">
   <div class="grade-stars small-stars"></div>
   <div class="comments-nb"></div>
 </div>
@@ -744,169 +813,17 @@ $_smarty_tpl->smarty->ext->_tplFunction->registerTplFunctions($_smarty_tpl, arra
 
             
 <div class="js-product product no-border short_product">
-  <article class="product-miniature js-product-miniature" data-id-product="37519" data-id-product-attribute="0">
-    <div class="thumbnail-container">
-      <div class="thumbnail-top">
-        
-                      <a href="https://sklep.cezos.com/en/E27/37519-Adjustable-Suspension---Sweeden-Beige-37519.html" class="thumbnail product-thumbnail">
-              <picture>
-                                                <img
-                  src="https://sklep.cezos.com/6553-home_default/Adjustable-Suspension---Sweeden-Beige.jpg"
-                  alt="Artboard 1.jpg"
-                  loading="lazy"
-                  data-full-size-image-url="https://sklep.cezos.com/6553-large_default/Adjustable-Suspension---Sweeden-Beige.jpg"
-                  width="250"
-                  height="250"
-                />
-              </picture>
-            </a>
-                  
-      </div>
-
-      <div class="product-description">
-        
-            <p class="product-index pl-0">Catalog Number: 37519</p>
-            <h2 class="h3 product-title"><a href="https://sklep.cezos.com/en/E27/37519-Adjustable-Suspension---Sweeden-Beige-37519.html" content="https://sklep.cezos.com/en/E27/37519-Adjustable-Suspension---Sweeden-Beige-37519.html">Adjustable Suspension - Sweeden Beige</a></h2>
-
-            <ul class="product-short-features">
-                                                                                                          <li><dl><dt>Brand</dt><dd>Cezos</dd></dl></li>
-                                                                                                                                        <li><dl><dt>Ceiling Type</dt><dd>Swedish</dd></dl></li>
-                                                                                                                                        <li><dl><dt>Height Adjustment</dt><dd>No</dd></dl></li>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            </ul>
-        
-
-        
-                      <div class="product-price-and-shipping">
-              <div class="price-container-miniature ">
-                <span class="price-whithout-tax hidden">5,09 €<p class="price-sign">Price tax excl.</p></span>
-
-
-                
-
-                <span class="price" aria-label="Price">
-                                                        €6.26
-                                                      <p class="price-sign">Price tax incl.</p>
-                </span>
-
-                                              </div>
-              <a 
-            class="
-                          disabled
-             quick-view js-quick-view btn btn-primary" href="#" data-link-action="quickview"><i class="material-icons shopping-cart" aria-hidden="true">shopping_cart</i></a>
-
-              
-
-              
-            </div>
-                  
-
-        
-          
-<div class="product-list-reviews" data-id="37519" data-url="https://sklep.cezos.com/en/module/productcomments/CommentGrade">
-  <div class="grade-stars small-stars"></div>
-  <div class="comments-nb"></div>
-</div>
-
-        
-      </div>
-
-      
-    <ul class="product-flags js-product-flags">
-                                                                            </ul>
-
-    </div>
-  </article>
-</div>
-
-            
-<div class="js-product product no-border short_product">
-  <article class="product-miniature js-product-miniature" data-id-product="23735" data-id-product-attribute="0">
-    <div class="thumbnail-container">
-      <div class="thumbnail-top">
-        
-                      <a href="https://sklep.cezos.com/en/E27/23735-Adjustable-Suspension---Sweeden-Silver-23735.html" class="thumbnail product-thumbnail">
-              <picture>
-                                                <img
-                  src="https://sklep.cezos.com/6129-home_default/Adjustable-Suspension---Sweeden-Silver.jpg"
-                  alt="Artboard 1.jpg"
-                  loading="lazy"
-                  data-full-size-image-url="https://sklep.cezos.com/6129-large_default/Adjustable-Suspension---Sweeden-Silver.jpg"
-                  width="250"
-                  height="250"
-                />
-              </picture>
-            </a>
-                  
-      </div>
-
-      <div class="product-description">
-        
-            <p class="product-index pl-0">Catalog Number: 23735</p>
-            <h2 class="h3 product-title"><a href="https://sklep.cezos.com/en/E27/23735-Adjustable-Suspension---Sweeden-Silver-23735.html" content="https://sklep.cezos.com/en/E27/23735-Adjustable-Suspension---Sweeden-Silver-23735.html">Adjustable Suspension - Sweeden Silver</a></h2>
-
-            <ul class="product-short-features">
-                                                                                                          <li><dl><dt>Brand</dt><dd>Cezos</dd></dl></li>
-                                                                                                                                        <li><dl><dt>Ceiling Type</dt><dd>Swedish</dd></dl></li>
-                                                                                                                                        <li><dl><dt>Height Adjustment</dt><dd>No</dd></dl></li>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            </ul>
-        
-
-        
-                      <div class="product-price-and-shipping">
-              <div class="price-container-miniature ">
-                <span class="price-whithout-tax hidden">5,09 €<p class="price-sign">Price tax excl.</p></span>
-
-
-                
-
-                <span class="price" aria-label="Price">
-                                                        €6.26
-                                                      <p class="price-sign">Price tax incl.</p>
-                </span>
-
-                                              </div>
-              <a 
-            class="
-                          disabled
-             quick-view js-quick-view btn btn-primary" href="#" data-link-action="quickview"><i class="material-icons shopping-cart" aria-hidden="true">shopping_cart</i></a>
-
-              
-
-              
-            </div>
-                  
-
-        
-          
-<div class="product-list-reviews" data-id="23735" data-url="https://sklep.cezos.com/en/module/productcomments/CommentGrade">
-  <div class="grade-stars small-stars"></div>
-  <div class="comments-nb"></div>
-</div>
-
-        
-      </div>
-
-      
-    <ul class="product-flags js-product-flags">
-                                                                            </ul>
-
-    </div>
-  </article>
-</div>
-
-            
-<div class="js-product product no-border short_product">
   <article class="product-miniature js-product-miniature" data-id-product="37239" data-id-product-attribute="0">
     <div class="thumbnail-container">
       <div class="thumbnail-top">
         
-                      <a href="https://sklep.cezos.com/en/E27/37239-OPRAWA-ZWIESZAKOWA-STRING-SZWEDZKI-BIALY-37239.html" class="thumbnail product-thumbnail">
+                      <a href="https://cezos.com/en/E27/37239-OPRAWA-ZWIESZAKOWA-STRING-SZWEDZKI-BIALY-37239.html" class="thumbnail product-thumbnail">
               <picture>
                                                 <img
-                  src="https://sklep.cezos.com/6502-home_default/OPRAWA-ZWIESZAKOWA-STRING-SZWEDZKI-BIALY.jpg"
+                  src="https://cezos.com/9008-home_default/OPRAWA-ZWIESZAKOWA-STRING-SZWEDZKI-BIALY.jpg"
                   alt="Swing1.jpg"
                   loading="lazy"
-                  data-full-size-image-url="https://sklep.cezos.com/6502-large_default/OPRAWA-ZWIESZAKOWA-STRING-SZWEDZKI-BIALY.jpg"
+                  data-full-size-image-url="https://cezos.com/9008-large_default/OPRAWA-ZWIESZAKOWA-STRING-SZWEDZKI-BIALY.jpg"
                   width="250"
                   height="250"
                 />
@@ -918,25 +835,25 @@ $_smarty_tpl->smarty->ext->_tplFunction->registerTplFunctions($_smarty_tpl, arra
       <div class="product-description">
         
             <p class="product-index pl-0">Catalog Number: 37239</p>
-            <h2 class="h3 product-title"><a href="https://sklep.cezos.com/en/E27/37239-OPRAWA-ZWIESZAKOWA-STRING-SZWEDZKI-BIALY-37239.html" content="https://sklep.cezos.com/en/E27/37239-OPRAWA-ZWIESZAKOWA-STRING-SZWEDZKI-BIALY-37239.html">Adjustable Suspension - Sweeden String White</a></h2>
+            <h2 class="h3 product-title"><a href="https://cezos.com/en/E27/37239-OPRAWA-ZWIESZAKOWA-STRING-SZWEDZKI-BIALY-37239.html" content="https://cezos.com/en/E27/37239-OPRAWA-ZWIESZAKOWA-STRING-SZWEDZKI-BIALY-37239.html">Adjustable Suspension - String White</a></h2>
 
             <ul class="product-short-features">
                                                                                                           <li><dl><dt>Brand</dt><dd>Cezos</dd></dl></li>
                                                                                                                                         <li><dl><dt>Ceiling Type</dt><dd>Swedish</dd></dl></li>
                                                                                                                                         <li><dl><dt>Height Adjustment</dt><dd>No</dd></dl></li>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </ul>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      </ul>
         
 
         
                       <div class="product-price-and-shipping">
               <div class="price-container-miniature ">
-                <span class="price-whithout-tax hidden">2,82 €<p class="price-sign">Price tax excl.</p></span>
+                <span class="price-whithout-tax hidden">6,52 €<p class="price-sign">Price tax excl.</p></span>
 
 
                 
 
                 <span class="price" aria-label="Price">
-                                                        €3.47
+                                                        €8.02
                                                       <p class="price-sign">Price tax incl.</p>
                 </span>
 
@@ -953,7 +870,7 @@ $_smarty_tpl->smarty->ext->_tplFunction->registerTplFunctions($_smarty_tpl, arra
 
         
           
-<div class="product-list-reviews" data-id="37239" data-url="https://sklep.cezos.com/en/module/productcomments/CommentGrade">
+<div class="product-list-reviews" data-id="37239" data-url="https://cezos.com/en/module/productcomments/CommentGrade">
   <div class="grade-stars small-stars"></div>
   <div class="comments-nb"></div>
 </div>
@@ -976,13 +893,13 @@ $_smarty_tpl->smarty->ext->_tplFunction->registerTplFunctions($_smarty_tpl, arra
     <div class="thumbnail-container">
       <div class="thumbnail-top">
         
-                      <a href="https://sklep.cezos.com/en/E27/37245-OPRAWA-ZWIESZAKOWA-STRING-SZWEDZKI-BEZOWY-37245.html" class="thumbnail product-thumbnail">
+                      <a href="https://cezos.com/en/E27/37245-OPRAWA-ZWIESZAKOWA-STRING-SZWEDZKI-BEZOWY-37245.html" class="thumbnail product-thumbnail">
               <picture>
                                                 <img
-                  src="https://sklep.cezos.com/6520-home_default/OPRAWA-ZWIESZAKOWA-STRING-SZWEDZKI-BEZOWY.jpg"
+                  src="https://cezos.com/9026-home_default/OPRAWA-ZWIESZAKOWA-STRING-SZWEDZKI-BEZOWY.jpg"
                   alt="Swing1.jpg"
                   loading="lazy"
-                  data-full-size-image-url="https://sklep.cezos.com/6520-large_default/OPRAWA-ZWIESZAKOWA-STRING-SZWEDZKI-BEZOWY.jpg"
+                  data-full-size-image-url="https://cezos.com/9026-large_default/OPRAWA-ZWIESZAKOWA-STRING-SZWEDZKI-BEZOWY.jpg"
                   width="250"
                   height="250"
                 />
@@ -994,25 +911,25 @@ $_smarty_tpl->smarty->ext->_tplFunction->registerTplFunctions($_smarty_tpl, arra
       <div class="product-description">
         
             <p class="product-index pl-0">Catalog Number: 37245</p>
-            <h2 class="h3 product-title"><a href="https://sklep.cezos.com/en/E27/37245-OPRAWA-ZWIESZAKOWA-STRING-SZWEDZKI-BEZOWY-37245.html" content="https://sklep.cezos.com/en/E27/37245-OPRAWA-ZWIESZAKOWA-STRING-SZWEDZKI-BEZOWY-37245.html">Adjustable Suspension - Sweeden String Beige</a></h2>
+            <h2 class="h3 product-title"><a href="https://cezos.com/en/E27/37245-OPRAWA-ZWIESZAKOWA-STRING-SZWEDZKI-BEZOWY-37245.html" content="https://cezos.com/en/E27/37245-OPRAWA-ZWIESZAKOWA-STRING-SZWEDZKI-BEZOWY-37245.html">Adjustable Suspension - String Beige</a></h2>
 
             <ul class="product-short-features">
                                                                                                           <li><dl><dt>Brand</dt><dd>Cezos</dd></dl></li>
                                                                                                                                         <li><dl><dt>Ceiling Type</dt><dd>Swedish</dd></dl></li>
                                                                                                                                         <li><dl><dt>Height Adjustment</dt><dd>No</dd></dl></li>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </ul>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      </ul>
         
 
         
                       <div class="product-price-and-shipping">
               <div class="price-container-miniature ">
-                <span class="price-whithout-tax hidden">2,82 €<p class="price-sign">Price tax excl.</p></span>
+                <span class="price-whithout-tax hidden">6,52 €<p class="price-sign">Price tax excl.</p></span>
 
 
                 
 
                 <span class="price" aria-label="Price">
-                                                        €3.47
+                                                        €8.02
                                                       <p class="price-sign">Price tax incl.</p>
                 </span>
 
@@ -1029,7 +946,7 @@ $_smarty_tpl->smarty->ext->_tplFunction->registerTplFunctions($_smarty_tpl, arra
 
         
           
-<div class="product-list-reviews" data-id="37245" data-url="https://sklep.cezos.com/en/module/productcomments/CommentGrade">
+<div class="product-list-reviews" data-id="37245" data-url="https://cezos.com/en/module/productcomments/CommentGrade">
   <div class="grade-stars small-stars"></div>
   <div class="comments-nb"></div>
 </div>
@@ -1048,169 +965,17 @@ $_smarty_tpl->smarty->ext->_tplFunction->registerTplFunctions($_smarty_tpl, arra
 
             
 <div class="js-product product no-border short_product">
-  <article class="product-miniature js-product-miniature" data-id-product="17701" data-id-product-attribute="0">
+  <article class="product-miniature js-product-miniature" data-id-product="37246" data-id-product-attribute="0">
     <div class="thumbnail-container">
       <div class="thumbnail-top">
         
-                      <a href="https://sklep.cezos.com/en/E27/17701-Adjustable-Suspension---Sweeden-White-17701.html" class="thumbnail product-thumbnail">
+                      <a href="https://cezos.com/en/E27/37246-OPRAWA-ZWIESZAKOWA-STRING-SZWEDZKI-SREBRNY-37246.html" class="thumbnail product-thumbnail">
               <picture>
                                                 <img
-                  src="https://sklep.cezos.com/6059-home_default/Adjustable-Suspension---Sweeden-White.jpg"
-                  alt="Artboard 1.jpg"
-                  loading="lazy"
-                  data-full-size-image-url="https://sklep.cezos.com/6059-large_default/Adjustable-Suspension---Sweeden-White.jpg"
-                  width="250"
-                  height="250"
-                />
-              </picture>
-            </a>
-                  
-      </div>
-
-      <div class="product-description">
-        
-            <p class="product-index pl-0">Catalog Number: 17701</p>
-            <h2 class="h3 product-title"><a href="https://sklep.cezos.com/en/E27/17701-Adjustable-Suspension---Sweeden-White-17701.html" content="https://sklep.cezos.com/en/E27/17701-Adjustable-Suspension---Sweeden-White-17701.html">Adjustable Suspension - Sweeden White</a></h2>
-
-            <ul class="product-short-features">
-                                                                                                          <li><dl><dt>Brand</dt><dd>Cezos</dd></dl></li>
-                                                                                                                                        <li><dl><dt>Ceiling Type</dt><dd>Swedish</dd></dl></li>
-                                                                                                                                        <li><dl><dt>Height Adjustment</dt><dd>No</dd></dl></li>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            </ul>
-        
-
-        
-                      <div class="product-price-and-shipping">
-              <div class="price-container-miniature ">
-                <span class="price-whithout-tax hidden">4,85 €<p class="price-sign">Price tax excl.</p></span>
-
-
-                
-
-                <span class="price" aria-label="Price">
-                                                        €5.97
-                                                      <p class="price-sign">Price tax incl.</p>
-                </span>
-
-                                              </div>
-              <a 
-            class="
-                          disabled
-             quick-view js-quick-view btn btn-primary" href="#" data-link-action="quickview"><i class="material-icons shopping-cart" aria-hidden="true">shopping_cart</i></a>
-
-              
-
-              
-            </div>
-                  
-
-        
-          
-<div class="product-list-reviews" data-id="17701" data-url="https://sklep.cezos.com/en/module/productcomments/CommentGrade">
-  <div class="grade-stars small-stars"></div>
-  <div class="comments-nb"></div>
-</div>
-
-        
-      </div>
-
-      
-    <ul class="product-flags js-product-flags">
-                                                                            </ul>
-
-    </div>
-  </article>
-</div>
-
-            
-<div class="js-product product no-border short_product">
-  <article class="product-miniature js-product-miniature" data-id-product="17700" data-id-product-attribute="0">
-    <div class="thumbnail-container">
-      <div class="thumbnail-top">
-        
-                      <a href="https://sklep.cezos.com/en/E27/17700-Adjustable-Suspension---Sweeden-Gold-17700.html" class="thumbnail product-thumbnail">
-              <picture>
-                                                <img
-                  src="https://sklep.cezos.com/6056-home_default/Adjustable-Suspension---Sweeden-Gold.jpg"
-                  alt="Artboard 1.jpg"
-                  loading="lazy"
-                  data-full-size-image-url="https://sklep.cezos.com/6056-large_default/Adjustable-Suspension---Sweeden-Gold.jpg"
-                  width="250"
-                  height="250"
-                />
-              </picture>
-            </a>
-                  
-      </div>
-
-      <div class="product-description">
-        
-            <p class="product-index pl-0">Catalog Number: 17700</p>
-            <h2 class="h3 product-title"><a href="https://sklep.cezos.com/en/E27/17700-Adjustable-Suspension---Sweeden-Gold-17700.html" content="https://sklep.cezos.com/en/E27/17700-Adjustable-Suspension---Sweeden-Gold-17700.html">Adjustable Suspension - Sweeden Gold</a></h2>
-
-            <ul class="product-short-features">
-                                                                                                          <li><dl><dt>Brand</dt><dd>Cezos</dd></dl></li>
-                                                                                                                                        <li><dl><dt>Ceiling Type</dt><dd>Swedish</dd></dl></li>
-                                                                                                                                        <li><dl><dt>Height Adjustment</dt><dd>No</dd></dl></li>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            </ul>
-        
-
-        
-                      <div class="product-price-and-shipping">
-              <div class="price-container-miniature ">
-                <span class="price-whithout-tax hidden">5,09 €<p class="price-sign">Price tax excl.</p></span>
-
-
-                
-
-                <span class="price" aria-label="Price">
-                                                        €6.26
-                                                      <p class="price-sign">Price tax incl.</p>
-                </span>
-
-                                              </div>
-              <a 
-            class="
-                          disabled
-             quick-view js-quick-view btn btn-primary" href="#" data-link-action="quickview"><i class="material-icons shopping-cart" aria-hidden="true">shopping_cart</i></a>
-
-              
-
-              
-            </div>
-                  
-
-        
-          
-<div class="product-list-reviews" data-id="17700" data-url="https://sklep.cezos.com/en/module/productcomments/CommentGrade">
-  <div class="grade-stars small-stars"></div>
-  <div class="comments-nb"></div>
-</div>
-
-        
-      </div>
-
-      
-    <ul class="product-flags js-product-flags">
-                                                                            </ul>
-
-    </div>
-  </article>
-</div>
-
-            
-<div class="js-product product no-border short_product">
-  <article class="product-miniature js-product-miniature" data-id-product="37244" data-id-product-attribute="0">
-    <div class="thumbnail-container">
-      <div class="thumbnail-top">
-        
-                      <a href="https://sklep.cezos.com/en/E27/37244-OPRAWA-ZWIESZAKOWA-STRING-SZWEDZKI-CZERWONY-37244.html" class="thumbnail product-thumbnail">
-              <picture>
-                                                <img
-                  src="https://sklep.cezos.com/6517-home_default/OPRAWA-ZWIESZAKOWA-STRING-SZWEDZKI-CZERWONY.jpg"
+                  src="https://cezos.com/9029-home_default/OPRAWA-ZWIESZAKOWA-STRING-SZWEDZKI-SREBRNY.jpg"
                   alt="Swing1.jpg"
                   loading="lazy"
-                  data-full-size-image-url="https://sklep.cezos.com/6517-large_default/OPRAWA-ZWIESZAKOWA-STRING-SZWEDZKI-CZERWONY.jpg"
+                  data-full-size-image-url="https://cezos.com/9029-large_default/OPRAWA-ZWIESZAKOWA-STRING-SZWEDZKI-SREBRNY.jpg"
                   width="250"
                   height="250"
                 />
@@ -1221,26 +986,26 @@ $_smarty_tpl->smarty->ext->_tplFunction->registerTplFunctions($_smarty_tpl, arra
 
       <div class="product-description">
         
-            <p class="product-index pl-0">Catalog Number: 37244</p>
-            <h2 class="h3 product-title"><a href="https://sklep.cezos.com/en/E27/37244-OPRAWA-ZWIESZAKOWA-STRING-SZWEDZKI-CZERWONY-37244.html" content="https://sklep.cezos.com/en/E27/37244-OPRAWA-ZWIESZAKOWA-STRING-SZWEDZKI-CZERWONY-37244.html">Adjustable Suspension - Sweeden String Red</a></h2>
+            <p class="product-index pl-0">Catalog Number: 37246</p>
+            <h2 class="h3 product-title"><a href="https://cezos.com/en/E27/37246-OPRAWA-ZWIESZAKOWA-STRING-SZWEDZKI-SREBRNY-37246.html" content="https://cezos.com/en/E27/37246-OPRAWA-ZWIESZAKOWA-STRING-SZWEDZKI-SREBRNY-37246.html">Adjustable Suspension - String Silver</a></h2>
 
             <ul class="product-short-features">
                                                                                                           <li><dl><dt>Brand</dt><dd>Cezos</dd></dl></li>
                                                                                                                                         <li><dl><dt>Ceiling Type</dt><dd>Swedish</dd></dl></li>
                                                                                                                                         <li><dl><dt>Height Adjustment</dt><dd>No</dd></dl></li>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </ul>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      </ul>
         
 
         
                       <div class="product-price-and-shipping">
               <div class="price-container-miniature ">
-                <span class="price-whithout-tax hidden">2,82 €<p class="price-sign">Price tax excl.</p></span>
+                <span class="price-whithout-tax hidden">6,52 €<p class="price-sign">Price tax excl.</p></span>
 
 
                 
 
                 <span class="price" aria-label="Price">
-                                                        €3.47
+                                                        €8.02
                                                       <p class="price-sign">Price tax incl.</p>
                 </span>
 
@@ -1257,7 +1022,7 @@ $_smarty_tpl->smarty->ext->_tplFunction->registerTplFunctions($_smarty_tpl, arra
 
         
           
-<div class="product-list-reviews" data-id="37244" data-url="https://sklep.cezos.com/en/module/productcomments/CommentGrade">
+<div class="product-list-reviews" data-id="37246" data-url="https://cezos.com/en/module/productcomments/CommentGrade">
   <div class="grade-stars small-stars"></div>
   <div class="comments-nb"></div>
 </div>
@@ -1274,27 +1039,19 @@ $_smarty_tpl->smarty->ext->_tplFunction->registerTplFunctions($_smarty_tpl, arra
   </article>
 </div>
 
-    </div>
-  </div>
-
-  <div class="featured-products-container section-box-shadow">
-    <h4 class="head-title">LED Controllers - Sterowniki</h4>    
-    
-
-<div class="products owl-carousel products-container">
             
 <div class="js-product product no-border short_product">
-  <article class="product-miniature js-product-miniature" data-id-product="31158" data-id-product-attribute="0">
+  <article class="product-miniature js-product-miniature" data-id-product="37516" data-id-product-attribute="0">
     <div class="thumbnail-container">
       <div class="thumbnail-top">
         
-                      <a href="https://sklep.cezos.com/en/CONSTANT-VOLTAGE-CV/31158-DMX-512-1CH-LED-Controller-CV-31158.html" class="thumbnail product-thumbnail">
+                      <a href="https://cezos.com/en/E27/37516-Adjustable-Suspension---Sweeden-Green-37516.html" class="thumbnail product-thumbnail">
               <picture>
                                                 <img
-                  src="https://sklep.cezos.com/6151-home_default/DMX-512-1CH-LED-Controller-CV.jpg"
-                  alt="XEMITY_1CH.jpg"
+                  src="https://cezos.com/9054-home_default/Adjustable-Suspension---Sweeden-Green.jpg"
+                  alt="Artboard 1.jpg"
                   loading="lazy"
-                  data-full-size-image-url="https://sklep.cezos.com/6151-large_default/DMX-512-1CH-LED-Controller-CV.jpg"
+                  data-full-size-image-url="https://cezos.com/9054-large_default/Adjustable-Suspension---Sweeden-Green.jpg"
                   width="250"
                   height="250"
                 />
@@ -1305,26 +1062,26 @@ $_smarty_tpl->smarty->ext->_tplFunction->registerTplFunctions($_smarty_tpl, arra
 
       <div class="product-description">
         
-            <p class="product-index pl-0">Catalog Number: 31158</p>
-            <h2 class="h3 product-title"><a href="https://sklep.cezos.com/en/CONSTANT-VOLTAGE-CV/31158-DMX-512-1CH-LED-Controller-CV-31158.html" content="https://sklep.cezos.com/en/CONSTANT-VOLTAGE-CV/31158-DMX-512-1CH-LED-Controller-CV-31158.html">DMX-512 1CH LED Controller (CV)</a></h2>
+            <p class="product-index pl-0">Catalog Number: 37516</p>
+            <h2 class="h3 product-title"><a href="https://cezos.com/en/E27/37516-Adjustable-Suspension---Sweeden-Green-37516.html" content="https://cezos.com/en/E27/37516-Adjustable-Suspension---Sweeden-Green-37516.html">Adjustable Suspension - Green</a></h2>
 
             <ul class="product-short-features">
                                                                                                           <li><dl><dt>Brand</dt><dd>Cezos</dd></dl></li>
-                                                                                                                                        <li><dl><dt>Control</dt><dd>DMX</dd></dl></li>
-                                                                                                                                        <li><dl><dt>Max Output Current</dt><dd>19 A</dd></dl></li>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            </ul>
+                                                                                                                                        <li><dl><dt>Ceiling Type</dt><dd>Swedish</dd></dl></li>
+                                                                                                                                        <li><dl><dt>Height Adjustment</dt><dd>No</dd></dl></li>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              </ul>
         
 
         
                       <div class="product-price-and-shipping">
               <div class="price-container-miniature ">
-                <span class="price-whithout-tax hidden">24,79 €<p class="price-sign">Price tax excl.</p></span>
+                <span class="price-whithout-tax hidden">7,36 €<p class="price-sign">Price tax excl.</p></span>
 
 
                 
 
                 <span class="price" aria-label="Price">
-                                                        €30.49
+                                                        €9.05
                                                       <p class="price-sign">Price tax incl.</p>
                 </span>
 
@@ -1341,7 +1098,7 @@ $_smarty_tpl->smarty->ext->_tplFunction->registerTplFunctions($_smarty_tpl, arra
 
         
           
-<div class="product-list-reviews" data-id="31158" data-url="https://sklep.cezos.com/en/module/productcomments/CommentGrade">
+<div class="product-list-reviews" data-id="37516" data-url="https://cezos.com/en/module/productcomments/CommentGrade">
   <div class="grade-stars small-stars"></div>
   <div class="comments-nb"></div>
 </div>
@@ -1359,17 +1116,17 @@ $_smarty_tpl->smarty->ext->_tplFunction->registerTplFunctions($_smarty_tpl, arra
 
             
 <div class="js-product product no-border short_product">
-  <article class="product-miniature js-product-miniature" data-id-product="30974" data-id-product-attribute="0">
+  <article class="product-miniature js-product-miniature" data-id-product="37240" data-id-product-attribute="0">
     <div class="thumbnail-container">
       <div class="thumbnail-top">
         
-                      <a href="https://sklep.cezos.com/en/CONSTANT-VOLTAGE-CV/30974-Proxi-Dimmer-for-Single-Color-Lights-1x10A-30974.html" class="thumbnail product-thumbnail">
+                      <a href="https://cezos.com/en/E27/37240-OPRAWA-ZWIESZAKOWA-STRING-SZWEDZKI-ZLOTY-37240.html" class="thumbnail product-thumbnail">
               <picture>
                                                 <img
-                  src="https://sklep.cezos.com/6148-home_default/Proxi-Dimmer-for-Single-Color-Lights-1x10A.jpg"
-                  alt="PROXIDIMMER_L489.jpg"
+                  src="https://cezos.com/9011-home_default/OPRAWA-ZWIESZAKOWA-STRING-SZWEDZKI-ZLOTY.jpg"
+                  alt="Swing1.jpg"
                   loading="lazy"
-                  data-full-size-image-url="https://sklep.cezos.com/6148-large_default/Proxi-Dimmer-for-Single-Color-Lights-1x10A.jpg"
+                  data-full-size-image-url="https://cezos.com/9011-large_default/OPRAWA-ZWIESZAKOWA-STRING-SZWEDZKI-ZLOTY.jpg"
                   width="250"
                   height="250"
                 />
@@ -1380,26 +1137,26 @@ $_smarty_tpl->smarty->ext->_tplFunction->registerTplFunctions($_smarty_tpl, arra
 
       <div class="product-description">
         
-            <p class="product-index pl-0">Catalog Number: 30974</p>
-            <h2 class="h3 product-title"><a href="https://sklep.cezos.com/en/CONSTANT-VOLTAGE-CV/30974-Proxi-Dimmer-for-Single-Color-Lights-1x10A-30974.html" content="https://sklep.cezos.com/en/CONSTANT-VOLTAGE-CV/30974-Proxi-Dimmer-for-Single-Color-Lights-1x10A-30974.html">Proxi Dimmer for Single Color Lights 1x10A</a></h2>
+            <p class="product-index pl-0">Catalog Number: 37240</p>
+            <h2 class="h3 product-title"><a href="https://cezos.com/en/E27/37240-OPRAWA-ZWIESZAKOWA-STRING-SZWEDZKI-ZLOTY-37240.html" content="https://cezos.com/en/E27/37240-OPRAWA-ZWIESZAKOWA-STRING-SZWEDZKI-ZLOTY-37240.html">Adjustable Suspension - String Gold </a></h2>
 
             <ul class="product-short-features">
                                                                                                           <li><dl><dt>Brand</dt><dd>Cezos</dd></dl></li>
-                                                                                                                                        <li><dl><dt>Control</dt><dd>Touchless dimmer</dd></dl></li>
-                                                                                                                                        <li><dl><dt>Max Output Current</dt><dd>10 A</dd></dl></li>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </ul>
+                                                                                                                                        <li><dl><dt>Ceiling Type</dt><dd>Swedish</dd></dl></li>
+                                                                                                                                        <li><dl><dt>Height Adjustment</dt><dd>No</dd></dl></li>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      </ul>
         
 
         
                       <div class="product-price-and-shipping">
               <div class="price-container-miniature ">
-                <span class="price-whithout-tax hidden">10,59 €<p class="price-sign">Price tax excl.</p></span>
+                <span class="price-whithout-tax hidden">6,52 €<p class="price-sign">Price tax excl.</p></span>
 
 
                 
 
                 <span class="price" aria-label="Price">
-                                                        €13.03
+                                                        €8.02
                                                       <p class="price-sign">Price tax incl.</p>
                 </span>
 
@@ -1416,7 +1173,166 @@ $_smarty_tpl->smarty->ext->_tplFunction->registerTplFunctions($_smarty_tpl, arra
 
         
           
-<div class="product-list-reviews" data-id="30974" data-url="https://sklep.cezos.com/en/module/productcomments/CommentGrade">
+<div class="product-list-reviews" data-id="37240" data-url="https://cezos.com/en/module/productcomments/CommentGrade">
+  <div class="grade-stars small-stars"></div>
+  <div class="comments-nb"></div>
+</div>
+
+        
+      </div>
+
+      
+    <ul class="product-flags js-product-flags">
+                                            <li class="product-flag bestseller">Bestseller</li>
+            </ul>
+
+    </div>
+  </article>
+</div>
+
+            
+<div class="js-product product no-border short_product">
+  <article class="product-miniature js-product-miniature" data-id-product="23735" data-id-product-attribute="0">
+    <div class="thumbnail-container">
+      <div class="thumbnail-top">
+        
+                      <a href="https://cezos.com/en/E27/23735-Adjustable-Suspension---Sweeden-Silver-23735.html" class="thumbnail product-thumbnail">
+              <picture>
+                                                <img
+                  src="https://cezos.com/8587-home_default/Adjustable-Suspension---Sweeden-Silver.jpg"
+                  alt="Artboard 1.jpg"
+                  loading="lazy"
+                  data-full-size-image-url="https://cezos.com/8587-large_default/Adjustable-Suspension---Sweeden-Silver.jpg"
+                  width="250"
+                  height="250"
+                />
+              </picture>
+            </a>
+                  
+      </div>
+
+      <div class="product-description">
+        
+            <p class="product-index pl-0">Catalog Number: 23735</p>
+            <h2 class="h3 product-title"><a href="https://cezos.com/en/E27/23735-Adjustable-Suspension---Sweeden-Silver-23735.html" content="https://cezos.com/en/E27/23735-Adjustable-Suspension---Sweeden-Silver-23735.html">Adjustable Suspension - Silver</a></h2>
+
+            <ul class="product-short-features">
+                                                                                                          <li><dl><dt>Brand</dt><dd>Cezos</dd></dl></li>
+                                                                                                                                        <li><dl><dt>Ceiling Type</dt><dd>Swedish</dd></dl></li>
+                                                                                                                                        <li><dl><dt>Height Adjustment</dt><dd>No</dd></dl></li>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              </ul>
+        
+
+        
+                      <div class="product-price-and-shipping">
+              <div class="price-container-miniature ">
+                <span class="price-whithout-tax hidden">7,36 €<p class="price-sign">Price tax excl.</p></span>
+
+
+                
+
+                <span class="price" aria-label="Price">
+                                                        €9.05
+                                                      <p class="price-sign">Price tax incl.</p>
+                </span>
+
+                                              </div>
+              <a 
+            class="
+             quick-view js-quick-view btn btn-primary" href="#" data-link-action="quickview"><i class="material-icons shopping-cart" aria-hidden="true">shopping_cart</i></a>
+
+              
+
+              
+            </div>
+                  
+
+        
+          
+<div class="product-list-reviews" data-id="23735" data-url="https://cezos.com/en/module/productcomments/CommentGrade">
+  <div class="grade-stars small-stars"></div>
+  <div class="comments-nb"></div>
+</div>
+
+        
+      </div>
+
+      
+    <ul class="product-flags js-product-flags">
+                                    </ul>
+
+    </div>
+  </article>
+</div>
+
+    </div>
+  </div>
+
+  <div class="featured-products-container section-box-shadow">
+    <h4 class="head-title">LED Controllers - Sterowniki</h4>    
+    
+
+<div class="products owl-carousel products-container">
+            
+<div class="js-product product no-border short_product">
+  <article class="product-miniature js-product-miniature" data-id-product="30973" data-id-product-attribute="0">
+    <div class="thumbnail-container">
+      <div class="thumbnail-top">
+        
+                      <a href="https://cezos.com/en/CONSTANT-VOLTAGE-CV/30973-Proxi-Dimmer-for-Tunable-White-Lights-2x5A-30973.html" class="thumbnail product-thumbnail">
+              <picture>
+                                                <img
+                  src="https://cezos.com/8640-home_default/Proxi-Dimmer-for-Tunable-White-Lights-2x5A.jpg"
+                  alt="PROXIDIMMER_L488.jpg"
+                  loading="lazy"
+                  data-full-size-image-url="https://cezos.com/8640-large_default/Proxi-Dimmer-for-Tunable-White-Lights-2x5A.jpg"
+                  width="250"
+                  height="250"
+                />
+              </picture>
+            </a>
+                  
+      </div>
+
+      <div class="product-description">
+        
+            <p class="product-index pl-0">Catalog Number: 30973</p>
+            <h2 class="h3 product-title"><a href="https://cezos.com/en/CONSTANT-VOLTAGE-CV/30973-Proxi-Dimmer-for-Tunable-White-Lights-2x5A-30973.html" content="https://cezos.com/en/CONSTANT-VOLTAGE-CV/30973-Proxi-Dimmer-for-Tunable-White-Lights-2x5A-30973.html">Proxi Dimmer for Tunable White Lights 2x5A</a></h2>
+
+            <ul class="product-short-features">
+                                                                                                          <li><dl><dt>Brand</dt><dd>Cezos</dd></dl></li>
+                                                                                                                                        <li><dl><dt>Height</dt><dd>3 mm</dd></dl></li>
+                                                                                                                                        <li><dl><dt>Width</dt><dd>10 mm</dd></dl></li>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      </ul>
+        
+
+        
+                      <div class="product-price-and-shipping">
+              <div class="price-container-miniature ">
+                <span class="price-whithout-tax hidden">8,58 €<p class="price-sign">Price tax excl.</p></span>
+
+
+                
+
+                <span class="price" aria-label="Price">
+                                                        €10.55
+                                                      <p class="price-sign">Price tax incl.</p>
+                </span>
+
+                                              </div>
+              <a 
+            class="
+             quick-view js-quick-view btn btn-primary" href="#" data-link-action="quickview"><i class="material-icons shopping-cart" aria-hidden="true">shopping_cart</i></a>
+
+              
+
+              
+            </div>
+                  
+
+        
+          
+<div class="product-list-reviews" data-id="30973" data-url="https://cezos.com/en/module/productcomments/CommentGrade">
   <div class="grade-stars small-stars"></div>
   <div class="comments-nb"></div>
 </div>
@@ -1438,13 +1354,13 @@ $_smarty_tpl->smarty->ext->_tplFunction->registerTplFunctions($_smarty_tpl, arra
     <div class="thumbnail-container">
       <div class="thumbnail-top">
         
-                      <a href="https://sklep.cezos.com/en/CONSTANT-VOLTAGE-CV/31099-STEROWNIK-CLICK-DIMMER-DW-18MM-L492-31099.html" class="thumbnail product-thumbnail">
+                      <a href="https://cezos.com/en/CONSTANT-VOLTAGE-CV/31099-STEROWNIK-CLICK-DIMMER-DW-18MM-L492-31099.html" class="thumbnail product-thumbnail">
               <picture>
                                                 <img
-                  src="https://sklep.cezos.com/6149-home_default/STEROWNIK-CLICK-DIMMER-DW-18MM-L492.jpg"
+                  src="https://cezos.com/8642-home_default/STEROWNIK-CLICK-DIMMER-DW-18MM-L492.jpg"
                   alt="SINGLETASTER.jpg"
                   loading="lazy"
-                  data-full-size-image-url="https://sklep.cezos.com/6149-large_default/STEROWNIK-CLICK-DIMMER-DW-18MM-L492.jpg"
+                  data-full-size-image-url="https://cezos.com/8642-large_default/STEROWNIK-CLICK-DIMMER-DW-18MM-L492.jpg"
                   width="250"
                   height="250"
                 />
@@ -1456,25 +1372,25 @@ $_smarty_tpl->smarty->ext->_tplFunction->registerTplFunctions($_smarty_tpl, arra
       <div class="product-description">
         
             <p class="product-index pl-0">Catalog Number: 31099</p>
-            <h2 class="h3 product-title"><a href="https://sklep.cezos.com/en/CONSTANT-VOLTAGE-CV/31099-STEROWNIK-CLICK-DIMMER-DW-18MM-L492-31099.html" content="https://sklep.cezos.com/en/CONSTANT-VOLTAGE-CV/31099-STEROWNIK-CLICK-DIMMER-DW-18MM-L492-31099.html">Dimmer PSU for Two-Color Lights 2x2.5A</a></h2>
+            <h2 class="h3 product-title"><a href="https://cezos.com/en/CONSTANT-VOLTAGE-CV/31099-STEROWNIK-CLICK-DIMMER-DW-18MM-L492-31099.html" content="https://cezos.com/en/CONSTANT-VOLTAGE-CV/31099-STEROWNIK-CLICK-DIMMER-DW-18MM-L492-31099.html">Dimmer PSU for Two-Color Lights 2x2.5A</a></h2>
 
             <ul class="product-short-features">
                                                                                                           <li><dl><dt>Brand</dt><dd>Cezos</dd></dl></li>
-                                                                                                                                        <li><dl><dt>Control</dt><dd>Push-button dimmer</dd></dl></li>
-                                                                                                                                        <li><dl><dt>Max Output Current</dt><dd>2 x 2,5 A</dd></dl></li>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            </ul>
+                                                                                                                                        <li><dl><dt>Height</dt><dd>7 mm</dd></dl></li>
+                                                                                                                                        <li><dl><dt>Width</dt><dd>18 mm</dd></dl></li>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              </ul>
         
 
         
                       <div class="product-price-and-shipping">
               <div class="price-container-miniature ">
-                <span class="price-whithout-tax hidden">5,47 €<p class="price-sign">Price tax excl.</p></span>
+                <span class="price-whithout-tax hidden">5,59 €<p class="price-sign">Price tax excl.</p></span>
 
 
                 
 
                 <span class="price" aria-label="Price">
-                                                        €6.73
+                                                        €6.88
                                                       <p class="price-sign">Price tax incl.</p>
                 </span>
 
@@ -1491,7 +1407,7 @@ $_smarty_tpl->smarty->ext->_tplFunction->registerTplFunctions($_smarty_tpl, arra
 
         
           
-<div class="product-list-reviews" data-id="31099" data-url="https://sklep.cezos.com/en/module/productcomments/CommentGrade">
+<div class="product-list-reviews" data-id="31099" data-url="https://cezos.com/en/module/productcomments/CommentGrade">
   <div class="grade-stars small-stars"></div>
   <div class="comments-nb"></div>
 </div>
@@ -1509,17 +1425,17 @@ $_smarty_tpl->smarty->ext->_tplFunction->registerTplFunctions($_smarty_tpl, arra
 
             
 <div class="js-product product no-border short_product">
-  <article class="product-miniature js-product-miniature" data-id-product="34962" data-id-product-attribute="0">
+  <article class="product-miniature js-product-miniature" data-id-product="31157" data-id-product-attribute="0">
     <div class="thumbnail-container">
       <div class="thumbnail-top">
         
-                      <a href="https://sklep.cezos.com/en/CONSTANT-VOLTAGE-CV/34962-Sterownik-double-click-dimmer-4x4A-L533-34962.html" class="thumbnail product-thumbnail">
+                      <a href="https://cezos.com/en/CONSTANT-VOLTAGE-CV/31157-DMX-512-2CH-LED-Controller-CV-31157.html" class="thumbnail product-thumbnail">
               <picture>
                                                 <img
-                  src="https://sklep.cezos.com/6437-home_default/Sterownik-double-click-dimmer-4x4A-L533.jpg"
-                  alt="DOUBLETASTER.jpg"
+                  src="https://cezos.com/8643-home_default/DMX-512-2CH-LED-Controller-CV.jpg"
+                  alt="XEMITY_2CH.jpg"
                   loading="lazy"
-                  data-full-size-image-url="https://sklep.cezos.com/6437-large_default/Sterownik-double-click-dimmer-4x4A-L533.jpg"
+                  data-full-size-image-url="https://cezos.com/8643-large_default/DMX-512-2CH-LED-Controller-CV.jpg"
                   width="250"
                   height="250"
                 />
@@ -1530,26 +1446,26 @@ $_smarty_tpl->smarty->ext->_tplFunction->registerTplFunctions($_smarty_tpl, arra
 
       <div class="product-description">
         
-            <p class="product-index pl-0">Catalog Number: 34962</p>
-            <h2 class="h3 product-title"><a href="https://sklep.cezos.com/en/CONSTANT-VOLTAGE-CV/34962-Sterownik-double-click-dimmer-4x4A-L533-34962.html" content="https://sklep.cezos.com/en/CONSTANT-VOLTAGE-CV/34962-Sterownik-double-click-dimmer-4x4A-L533-34962.html">Sterownik double click dimmer 4x4A L533</a></h2>
+            <p class="product-index pl-0">Catalog Number: 31157</p>
+            <h2 class="h3 product-title"><a href="https://cezos.com/en/CONSTANT-VOLTAGE-CV/31157-DMX-512-2CH-LED-Controller-CV-31157.html" content="https://cezos.com/en/CONSTANT-VOLTAGE-CV/31157-DMX-512-2CH-LED-Controller-CV-31157.html">DMX-512 2CH LED Controller (CV)</a></h2>
 
             <ul class="product-short-features">
                                                                                                           <li><dl><dt>Brand</dt><dd>Cezos</dd></dl></li>
-                                                                                                                                        <li><dl><dt>Control</dt><dd>Push-button dimmer</dd></dl></li>
-                                                                                                                                        <li><dl><dt>Max Output Current</dt><dd>4 x 2,5 A</dd></dl></li>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </ul>
+                                                                                                                                        <li><dl><dt>Height</dt><dd>16 mm</dd></dl></li>
+                                                                                                                                        <li><dl><dt>Width</dt><dd>28 mm</dd></dl></li>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      </ul>
         
 
         
                       <div class="product-price-and-shipping">
               <div class="price-container-miniature ">
-                <span class="price-whithout-tax hidden">7,16 €<p class="price-sign">Price tax excl.</p></span>
+                <span class="price-whithout-tax hidden">27,02 €<p class="price-sign">Price tax excl.</p></span>
 
 
                 
 
                 <span class="price" aria-label="Price">
-                                                        €8.81
+                                                        €33.24
                                                       <p class="price-sign">Price tax incl.</p>
                 </span>
 
@@ -1566,7 +1482,7 @@ $_smarty_tpl->smarty->ext->_tplFunction->registerTplFunctions($_smarty_tpl, arra
 
         
           
-<div class="product-list-reviews" data-id="34962" data-url="https://sklep.cezos.com/en/module/productcomments/CommentGrade">
+<div class="product-list-reviews" data-id="31157" data-url="https://cezos.com/en/module/productcomments/CommentGrade">
   <div class="grade-stars small-stars"></div>
   <div class="comments-nb"></div>
 </div>
@@ -1584,17 +1500,17 @@ $_smarty_tpl->smarty->ext->_tplFunction->registerTplFunctions($_smarty_tpl, arra
 
             
 <div class="js-product product no-border short_product">
-  <article class="product-miniature js-product-miniature" data-id-product="32666" data-id-product-attribute="0">
+  <article class="product-miniature js-product-miniature" data-id-product="31173" data-id-product-attribute="0">
     <div class="thumbnail-container">
       <div class="thumbnail-top">
         
-                      <a href="https://sklep.cezos.com/en/CONSTANT-VOLTAGE-CV/32666-Chromoemity-3CH-Radio-Controller-CV-32666.html" class="thumbnail product-thumbnail">
+                      <a href="https://cezos.com/en/CONSTANT-VOLTAGE-CV/31173-DMX-RDM-4CH-LED-Controller-CV-31173.html" class="thumbnail product-thumbnail">
               <picture>
                                                 <img
-                  src="https://sklep.cezos.com/6348-home_default/Chromoemity-3CH-Radio-Controller-CV.jpg"
-                  alt="CHROMOEMITY_3CH_CV.jpg"
+                  src="https://cezos.com/8650-home_default/DMX-RDM-4CH-LED-Controller-CV.jpg"
+                  alt="XEMITY_RDM_4CH.jpg"
                   loading="lazy"
-                  data-full-size-image-url="https://sklep.cezos.com/6348-large_default/Chromoemity-3CH-Radio-Controller-CV.jpg"
+                  data-full-size-image-url="https://cezos.com/8650-large_default/DMX-RDM-4CH-LED-Controller-CV.jpg"
                   width="250"
                   height="250"
                 />
@@ -1605,26 +1521,26 @@ $_smarty_tpl->smarty->ext->_tplFunction->registerTplFunctions($_smarty_tpl, arra
 
       <div class="product-description">
         
-            <p class="product-index pl-0">Catalog Number: 32666</p>
-            <h2 class="h3 product-title"><a href="https://sklep.cezos.com/en/CONSTANT-VOLTAGE-CV/32666-Chromoemity-3CH-Radio-Controller-CV-32666.html" content="https://sklep.cezos.com/en/CONSTANT-VOLTAGE-CV/32666-Chromoemity-3CH-Radio-Controller-CV-32666.html">Chromoemity 3CH Radio Controller (CV)</a></h2>
+            <p class="product-index pl-0">Catalog Number: 31173</p>
+            <h2 class="h3 product-title"><a href="https://cezos.com/en/CONSTANT-VOLTAGE-CV/31173-DMX-RDM-4CH-LED-Controller-CV-31173.html" content="https://cezos.com/en/CONSTANT-VOLTAGE-CV/31173-DMX-RDM-4CH-LED-Controller-CV-31173.html">DMX-RDM 4CH LED Controller (CV)</a></h2>
 
             <ul class="product-short-features">
                                                                                                           <li><dl><dt>Brand</dt><dd>Cezos</dd></dl></li>
-                                                                                                                                        <li><dl><dt>Control</dt><dd>Radio</dd></dl></li>
-                                                                                                                                        <li><dl><dt>Max Output Current</dt><dd>3 A/CH</dd></dl></li>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </ul>
+                                                                                                                                        <li><dl><dt>Height</dt><dd>13 mm</dd></dl></li>
+                                                                                                                                        <li><dl><dt>Width</dt><dd>28 mm</dd></dl></li>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              </ul>
         
 
         
                       <div class="product-price-and-shipping">
               <div class="price-container-miniature ">
-                <span class="price-whithout-tax hidden">22,15 €<p class="price-sign">Price tax excl.</p></span>
+                <span class="price-whithout-tax hidden">34,85 €<p class="price-sign">Price tax excl.</p></span>
 
 
                 
 
                 <span class="price" aria-label="Price">
-                                                        €27.24
+                                                        €42.87
                                                       <p class="price-sign">Price tax incl.</p>
                 </span>
 
@@ -1642,7 +1558,7 @@ $_smarty_tpl->smarty->ext->_tplFunction->registerTplFunctions($_smarty_tpl, arra
 
         
           
-<div class="product-list-reviews" data-id="32666" data-url="https://sklep.cezos.com/en/module/productcomments/CommentGrade">
+<div class="product-list-reviews" data-id="31173" data-url="https://cezos.com/en/module/productcomments/CommentGrade">
   <div class="grade-stars small-stars"></div>
   <div class="comments-nb"></div>
 </div>
@@ -1660,17 +1576,17 @@ $_smarty_tpl->smarty->ext->_tplFunction->registerTplFunctions($_smarty_tpl, arra
 
             
 <div class="js-product product no-border short_product">
-  <article class="product-miniature js-product-miniature" data-id-product="36128" data-id-product-attribute="0">
+  <article class="product-miniature js-product-miniature" data-id-product="32691" data-id-product-attribute="0">
     <div class="thumbnail-container">
       <div class="thumbnail-top">
         
-                      <a href="https://sklep.cezos.com/en/CONSTANT-VOLTAGE-CV/36128-Dali-LED-Controller-2CH-CV-36128.html" class="thumbnail product-thumbnail">
+                      <a href="https://cezos.com/en/CONSTANT-VOLTAGE-CV/32691-Chromoemity-1CH-Radio-Controller-CV-32691.html" class="thumbnail product-thumbnail">
               <picture>
                                                 <img
-                  src="https://sklep.cezos.com/6454-home_default/Dali-LED-Controller-2CH-CV.jpg"
-                  alt="DALIRADE_2CH.jpg"
+                  src="https://cezos.com/8848-home_default/Chromoemity-1CH-Radio-Controller-CV.jpg"
+                  alt="CHROMOEMITY_1CH_CV.jpg"
                   loading="lazy"
-                  data-full-size-image-url="https://sklep.cezos.com/6454-large_default/Dali-LED-Controller-2CH-CV.jpg"
+                  data-full-size-image-url="https://cezos.com/8848-large_default/Chromoemity-1CH-Radio-Controller-CV.jpg"
                   width="250"
                   height="250"
                 />
@@ -1681,26 +1597,102 @@ $_smarty_tpl->smarty->ext->_tplFunction->registerTplFunctions($_smarty_tpl, arra
 
       <div class="product-description">
         
-            <p class="product-index pl-0">Catalog Number: 36128</p>
-            <h2 class="h3 product-title"><a href="https://sklep.cezos.com/en/CONSTANT-VOLTAGE-CV/36128-Dali-LED-Controller-2CH-CV-36128.html" content="https://sklep.cezos.com/en/CONSTANT-VOLTAGE-CV/36128-Dali-LED-Controller-2CH-CV-36128.html">Dali LED Controller 2CH (CV)</a></h2>
+            <p class="product-index pl-0">Catalog Number: 32691</p>
+            <h2 class="h3 product-title"><a href="https://cezos.com/en/CONSTANT-VOLTAGE-CV/32691-Chromoemity-1CH-Radio-Controller-CV-32691.html" content="https://cezos.com/en/CONSTANT-VOLTAGE-CV/32691-Chromoemity-1CH-Radio-Controller-CV-32691.html">Chromoemity 1CH Radio Controller (CV)</a></h2>
 
             <ul class="product-short-features">
                                                                                                           <li><dl><dt>Brand</dt><dd>Cezos</dd></dl></li>
-                                                                                                                                        <li><dl><dt>Control</dt><dd>DALI</dd></dl></li>
-                                                                                                                                        <li><dl><dt>Max Output Current</dt><dd>5 A/CH</dd></dl></li>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            </ul>
+                                                                                                                                        <li><dl><dt>Height</dt><dd>16 mm</dd></dl></li>
+                                                                                                                                        <li><dl><dt>Width</dt><dd>28 mm</dd></dl></li>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              </ul>
         
 
         
                       <div class="product-price-and-shipping">
               <div class="price-container-miniature ">
-                <span class="price-whithout-tax hidden">22,51 €<p class="price-sign">Price tax excl.</p></span>
+                <span class="price-whithout-tax hidden">21,80 €<p class="price-sign">Price tax excl.</p></span>
 
 
                 
 
                 <span class="price" aria-label="Price">
-                                                        €27.69
+                                                        €26.82
+                                                      <p class="price-sign">Price tax incl.</p>
+                </span>
+
+                                              </div>
+              <a 
+            class="
+                          disabled
+             quick-view js-quick-view btn btn-primary" href="#" data-link-action="quickview"><i class="material-icons shopping-cart" aria-hidden="true">shopping_cart</i></a>
+
+              
+
+              
+            </div>
+                  
+
+        
+          
+<div class="product-list-reviews" data-id="32691" data-url="https://cezos.com/en/module/productcomments/CommentGrade">
+  <div class="grade-stars small-stars"></div>
+  <div class="comments-nb"></div>
+</div>
+
+        
+      </div>
+
+      
+    <ul class="product-flags js-product-flags">
+                                                        </ul>
+
+    </div>
+  </article>
+</div>
+
+            
+<div class="js-product product no-border short_product">
+  <article class="product-miniature js-product-miniature" data-id-product="30974" data-id-product-attribute="0">
+    <div class="thumbnail-container">
+      <div class="thumbnail-top">
+        
+                      <a href="https://cezos.com/en/CONSTANT-VOLTAGE-CV/30974-Proxi-Dimmer-for-Single-Color-Lights-1x10A-30974.html" class="thumbnail product-thumbnail">
+              <picture>
+                                                <img
+                  src="https://cezos.com/8641-home_default/Proxi-Dimmer-for-Single-Color-Lights-1x10A.jpg"
+                  alt="PROXIDIMMER_L489.jpg"
+                  loading="lazy"
+                  data-full-size-image-url="https://cezos.com/8641-large_default/Proxi-Dimmer-for-Single-Color-Lights-1x10A.jpg"
+                  width="250"
+                  height="250"
+                />
+              </picture>
+            </a>
+                  
+      </div>
+
+      <div class="product-description">
+        
+            <p class="product-index pl-0">Catalog Number: 30974</p>
+            <h2 class="h3 product-title"><a href="https://cezos.com/en/CONSTANT-VOLTAGE-CV/30974-Proxi-Dimmer-for-Single-Color-Lights-1x10A-30974.html" content="https://cezos.com/en/CONSTANT-VOLTAGE-CV/30974-Proxi-Dimmer-for-Single-Color-Lights-1x10A-30974.html">Proxi Dimmer for Single Color Lights 1x10A</a></h2>
+
+            <ul class="product-short-features">
+                                                                                                          <li><dl><dt>Brand</dt><dd>Cezos</dd></dl></li>
+                                                                                                                                        <li><dl><dt>Height</dt><dd>3 mm</dd></dl></li>
+                                                                                                                                        <li><dl><dt>Width</dt><dd>10 mm</dd></dl></li>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      </ul>
+        
+
+        
+                      <div class="product-price-and-shipping">
+              <div class="price-container-miniature ">
+                <span class="price-whithout-tax hidden">10,63 €<p class="price-sign">Price tax excl.</p></span>
+
+
+                
+
+                <span class="price" aria-label="Price">
+                                                        €13.07
                                                       <p class="price-sign">Price tax incl.</p>
                 </span>
 
@@ -1717,7 +1709,7 @@ $_smarty_tpl->smarty->ext->_tplFunction->registerTplFunctions($_smarty_tpl, arra
 
         
           
-<div class="product-list-reviews" data-id="36128" data-url="https://sklep.cezos.com/en/module/productcomments/CommentGrade">
+<div class="product-list-reviews" data-id="30974" data-url="https://cezos.com/en/module/productcomments/CommentGrade">
   <div class="grade-stars small-stars"></div>
   <div class="comments-nb"></div>
 </div>
@@ -1735,17 +1727,93 @@ $_smarty_tpl->smarty->ext->_tplFunction->registerTplFunctions($_smarty_tpl, arra
 
             
 <div class="js-product product no-border short_product">
+  <article class="product-miniature js-product-miniature" data-id-product="31171" data-id-product-attribute="0">
+    <div class="thumbnail-container">
+      <div class="thumbnail-top">
+        
+                      <a href="https://cezos.com/en/CONSTANT-VOLTAGE-CV/31171-DMX-RDM-2CH-LED-Controller-CV-31171.html" class="thumbnail product-thumbnail">
+              <picture>
+                                                <img
+                  src="https://cezos.com/8648-home_default/DMX-RDM-2CH-LED-Controller-CV.jpg"
+                  alt="XEMITY_RDM_2CH.jpg"
+                  loading="lazy"
+                  data-full-size-image-url="https://cezos.com/8648-large_default/DMX-RDM-2CH-LED-Controller-CV.jpg"
+                  width="250"
+                  height="250"
+                />
+              </picture>
+            </a>
+                  
+      </div>
+
+      <div class="product-description">
+        
+            <p class="product-index pl-0">Catalog Number: 31171</p>
+            <h2 class="h3 product-title"><a href="https://cezos.com/en/CONSTANT-VOLTAGE-CV/31171-DMX-RDM-2CH-LED-Controller-CV-31171.html" content="https://cezos.com/en/CONSTANT-VOLTAGE-CV/31171-DMX-RDM-2CH-LED-Controller-CV-31171.html">DMX-RDM 2CH LED Controller (CV)</a></h2>
+
+            <ul class="product-short-features">
+                                                                                                          <li><dl><dt>Brand</dt><dd>Cezos</dd></dl></li>
+                                                                                                                                        <li><dl><dt>Height</dt><dd>16 mm</dd></dl></li>
+                                                                                                                                        <li><dl><dt>Width</dt><dd>28 mm</dd></dl></li>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              </ul>
+        
+
+        
+                      <div class="product-price-and-shipping">
+              <div class="price-container-miniature ">
+                <span class="price-whithout-tax hidden">36,72 €<p class="price-sign">Price tax excl.</p></span>
+
+
+                
+
+                <span class="price" aria-label="Price">
+                                                        €45.16
+                                                      <p class="price-sign">Price tax incl.</p>
+                </span>
+
+                                              </div>
+              <a 
+            class="
+                          disabled
+             quick-view js-quick-view btn btn-primary" href="#" data-link-action="quickview"><i class="material-icons shopping-cart" aria-hidden="true">shopping_cart</i></a>
+
+              
+
+              
+            </div>
+                  
+
+        
+          
+<div class="product-list-reviews" data-id="31171" data-url="https://cezos.com/en/module/productcomments/CommentGrade">
+  <div class="grade-stars small-stars"></div>
+  <div class="comments-nb"></div>
+</div>
+
+        
+      </div>
+
+      
+    <ul class="product-flags js-product-flags">
+                                                        </ul>
+
+    </div>
+  </article>
+</div>
+
+            
+<div class="js-product product no-border short_product">
   <article class="product-miniature js-product-miniature" data-id-product="31939" data-id-product-attribute="0">
     <div class="thumbnail-container">
       <div class="thumbnail-top">
         
-                      <a href="https://sklep.cezos.com/en/CONSTANT-VOLTAGE-CV/31939-LED-Controller-HCL-Dayemity-RDS-2CH-31939.html" class="thumbnail product-thumbnail">
+                      <a href="https://cezos.com/en/CONSTANT-VOLTAGE-CV/31939-LED-Controller-HCL-Dayemity-RDS-2CH-31939.html" class="thumbnail product-thumbnail">
               <picture>
                                                 <img
-                  src="https://sklep.cezos.com/6192-home_default/LED-Controller-HCL-Dayemity-RDS-2CH.jpg"
+                  src="https://cezos.com/8689-home_default/LED-Controller-HCL-Dayemity-RDS-2CH.jpg"
                   alt="DAYEMITY.jpg"
                   loading="lazy"
-                  data-full-size-image-url="https://sklep.cezos.com/6192-large_default/LED-Controller-HCL-Dayemity-RDS-2CH.jpg"
+                  data-full-size-image-url="https://cezos.com/8689-large_default/LED-Controller-HCL-Dayemity-RDS-2CH.jpg"
                   width="250"
                   height="250"
                 />
@@ -1757,25 +1825,25 @@ $_smarty_tpl->smarty->ext->_tplFunction->registerTplFunctions($_smarty_tpl, arra
       <div class="product-description">
         
             <p class="product-index pl-0">Catalog Number: 31939</p>
-            <h2 class="h3 product-title"><a href="https://sklep.cezos.com/en/CONSTANT-VOLTAGE-CV/31939-LED-Controller-HCL-Dayemity-RDS-2CH-31939.html" content="https://sklep.cezos.com/en/CONSTANT-VOLTAGE-CV/31939-LED-Controller-HCL-Dayemity-RDS-2CH-31939.html">LED Controller HCL Dayemity RDS 2CH</a></h2>
+            <h2 class="h3 product-title"><a href="https://cezos.com/en/CONSTANT-VOLTAGE-CV/31939-LED-Controller-HCL-Dayemity-RDS-2CH-31939.html" content="https://cezos.com/en/CONSTANT-VOLTAGE-CV/31939-LED-Controller-HCL-Dayemity-RDS-2CH-31939.html">LED Controller HCL Dayemity RDS 2CH</a></h2>
 
             <ul class="product-short-features">
                                                                                                           <li><dl><dt>Brand</dt><dd>Cezos</dd></dl></li>
-                                                                                                                                        <li><dl><dt>Control</dt><dd>HCL</dd></dl></li>
-                                                                                                                                        <li><dl><dt>Max Output Current</dt><dd>10 A</dd></dl></li>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </ul>
+                                                                                                                                        <li><dl><dt>Height</dt><dd>16 mm</dd></dl></li>
+                                                                                                                                        <li><dl><dt>Width</dt><dd>28 mm</dd></dl></li>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              </ul>
         
 
         
                       <div class="product-price-and-shipping">
               <div class="price-container-miniature ">
-                <span class="price-whithout-tax hidden">25,15 €<p class="price-sign">Price tax excl.</p></span>
+                <span class="price-whithout-tax hidden">24,98 €<p class="price-sign">Price tax excl.</p></span>
 
 
                 
 
                 <span class="price" aria-label="Price">
-                                                        €30.93
+                                                        €30.72
                                                       <p class="price-sign">Price tax incl.</p>
                 </span>
 
@@ -1792,7 +1860,7 @@ $_smarty_tpl->smarty->ext->_tplFunction->registerTplFunctions($_smarty_tpl, arra
 
         
           
-<div class="product-list-reviews" data-id="31939" data-url="https://sklep.cezos.com/en/module/productcomments/CommentGrade">
+<div class="product-list-reviews" data-id="31939" data-url="https://cezos.com/en/module/productcomments/CommentGrade">
   <div class="grade-stars small-stars"></div>
   <div class="comments-nb"></div>
 </div>
@@ -1805,82 +1873,6 @@ $_smarty_tpl->smarty->ext->_tplFunction->registerTplFunctions($_smarty_tpl, arra
                             <li class="product-flag new">New</li>
                                     <li class="product-flag bestseller">Bestseller</li>
             </ul>
-
-    </div>
-  </article>
-</div>
-
-            
-<div class="js-product product no-border short_product">
-  <article class="product-miniature js-product-miniature" data-id-product="28684" data-id-product-attribute="0">
-    <div class="thumbnail-container">
-      <div class="thumbnail-top">
-        
-                      <a href="https://sklep.cezos.com/en/CONSTANT-VOLTAGE-CV/28684-STEROWNIK-CLICK-DIMMER-MONO-28684.html" class="thumbnail product-thumbnail">
-              <picture>
-                                                <img
-                  src="https://sklep.cezos.com/6138-home_default/STEROWNIK-CLICK-DIMMER-MONO.jpg"
-                  alt="CLICKDIMMER_L436_DW.jpg"
-                  loading="lazy"
-                  data-full-size-image-url="https://sklep.cezos.com/6138-large_default/STEROWNIK-CLICK-DIMMER-MONO.jpg"
-                  width="250"
-                  height="250"
-                />
-              </picture>
-            </a>
-                  
-      </div>
-
-      <div class="product-description">
-        
-            <p class="product-index pl-0">Catalog Number: 28684</p>
-            <h2 class="h3 product-title"><a href="https://sklep.cezos.com/en/CONSTANT-VOLTAGE-CV/28684-STEROWNIK-CLICK-DIMMER-MONO-28684.html" content="https://sklep.cezos.com/en/CONSTANT-VOLTAGE-CV/28684-STEROWNIK-CLICK-DIMMER-MONO-28684.html">Button Dimmer for White Single Color Lights 1x3A</a></h2>
-
-            <ul class="product-short-features">
-                                                                                                          <li><dl><dt>Brand</dt><dd>Cezos</dd></dl></li>
-                                                                                                                                        <li><dl><dt>Control</dt><dd>Push-button dimmer</dd></dl></li>
-                                                                                                                                        <li><dl><dt>Max Output Current</dt><dd>3 A</dd></dl></li>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </ul>
-        
-
-        
-                      <div class="product-price-and-shipping">
-              <div class="price-container-miniature ">
-                <span class="price-whithout-tax hidden">3,58 €<p class="price-sign">Price tax excl.</p></span>
-
-
-                
-
-                <span class="price" aria-label="Price">
-                                                        €4.40
-                                                      <p class="price-sign">Price tax incl.</p>
-                </span>
-
-                                              </div>
-              <a 
-            class="
-                          disabled
-             quick-view js-quick-view btn btn-primary" href="#" data-link-action="quickview"><i class="material-icons shopping-cart" aria-hidden="true">shopping_cart</i></a>
-
-              
-
-              
-            </div>
-                  
-
-        
-          
-<div class="product-list-reviews" data-id="28684" data-url="https://sklep.cezos.com/en/module/productcomments/CommentGrade">
-  <div class="grade-stars small-stars"></div>
-  <div class="comments-nb"></div>
-</div>
-
-        
-      </div>
-
-      
-    <ul class="product-flags js-product-flags">
-                                                        </ul>
 
     </div>
   </article>

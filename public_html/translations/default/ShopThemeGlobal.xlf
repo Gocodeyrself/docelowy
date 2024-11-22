@@ -743,4 +743,31 @@
       </trans-unit>
     </body>
   </file>
+  <file original="themes/classic/templates/catalog/product.tpl" source-language="en-US" target-language="en" datatype="plaintext">
+    <body>
+         <trans-unit id="cd566815388ecd48c2385e2fcd64237c" approved="yes">
+            <source>Merchant return policy</source>
+            <target>Merchant return policy</target>
+			<note>Line: 236</note>
+        </trans-unit>
+	</body>
+	</file>
+	<file original="themes/classic/templates/_partials/header.tpl" source-language="en-US" target-language="en" datatype="plaintext">
+    <body>
+         <trans-unit id="dc758f5a98321ee25dae004b018350b7" approved="yes">
+            <source>Store Launch! Products are still being added</source>
+            <target>Store Launch! Products are still being added</target>
+			<note>Line: 68</note>
+        </trans-unit>
+	</body>
+	</file>
+	<file original="themes/classic/templates/catalog/product.tpl" source-language="en-US" target-language="en" datatype="plaintext">
+    <body>
+         <trans-unit id="aa99366fc1f1a198bca1c307d6820e6f" approved="yes">
+            <source>2-4 days</source>
+            <target>2-4 days</target>
+			<note>Line: 254</note>
+        </trans-unit>
+	</body>
+	</file>
 </xliff>

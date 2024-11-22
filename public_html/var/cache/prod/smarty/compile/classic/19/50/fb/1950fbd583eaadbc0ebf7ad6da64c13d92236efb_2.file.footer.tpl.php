@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 4.3.1, created on 2024-10-14 11:00:14
+/* Smarty version 4.3.1, created on 2024-11-22 08:31:08
   from '/home/qisogexqbz/domains/cezos.exis24.pl/public_html/modules/fblogin/footer.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.1',
-  'unifunc' => 'content_670cdd9e262668_78067165',
+  'unifunc' => 'content_6740333c4bd326_50970560',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_670cdd9e262668_78067165 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6740333c4bd326_50970560 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <div class="fbloader"></div>
 <?php if ($_smarty_tpl->tpl_vars['fb_psver']->value == 4) {?>

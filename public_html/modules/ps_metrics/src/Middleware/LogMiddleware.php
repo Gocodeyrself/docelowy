@@ -18,23 +18,19 @@
  * @copyright Since 2007 PrestaShop SA and Contributors
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License version 3.0
  */
-
 namespace PrestaShop\Module\Ps_metrics\Middleware;
 
 use PrestaShop\Module\Ps_metrics\Adapter\LoggerAdapter;
-
-class LogMiddleware extends Middleware
+class LogMiddleware extends \PrestaShop\Module\Ps_metrics\Middleware\Middleware
 {
     /**
      * @var LoggerAdapter
      */
     private $loggerAdapter;
-
     public function __construct(LoggerAdapter $loggerAdapter)
     {
         $this->loggerAdapter = $loggerAdapter;
     }
-
     /**
      * @param array $response
      *

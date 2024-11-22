@@ -18,44 +18,36 @@
  * @copyright Since 2007 PrestaShop SA and Contributors
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License version 3.0
  */
-
 namespace PrestaShop\Module\Ps_metrics\Provider;
 
 use PrestaShop\Module\Ps_metrics\Api\AnalyticsApi;
 use PrestaShop\Module\Ps_metrics\Repository\ConfigurationRepository;
-
 class AnalyticsAccountsListProvider
 {
     /**
      * @var array
      */
     private $accountsList;
-
     /**
      * @var ConfigurationRepository
      */
     private $configurationRepository;
-
     /**
      * @var AnalyticsApi
      */
     private $analyticsApi;
-
     /**
      * AnalyticsAccountsListProvider constructor.
      *
      * @param ConfigurationRepository $configurationRepository
      * @param AnalyticsApi $analyticsApi
      */
-    public function __construct(
-        ConfigurationRepository $configurationRepository,
-        AnalyticsApi $analyticsApi
-    ) {
+    public function __construct(ConfigurationRepository $configurationRepository, AnalyticsApi $analyticsApi)
+    {
         $this->analyticsApi = $analyticsApi;
         $this->accountsList = [];
         $this->configurationRepository = $configurationRepository;
     }
-
     /**
      * getAccountsList
      *
@@ -63,14 +55,12 @@ class AnalyticsAccountsListProvider
      */
     public function getAccountsList()
     {
-        if (false === $this->configurationRepository->getGoogleLinkedValue()) {
+        if (\false === $this->configurationRepository->getGoogleLinkedValue()) {
             return [];
         }
         $apiReturn = $this->analyticsApi->getAccountsList();
-
         return $this->formatAccountListArray($apiReturn);
     }
-
     /**
      * Get the selected account from the account list
      *
@@ -79,16 +69,13 @@ class AnalyticsAccountsListProvider
     public function getSelectedAccount()
     {
         foreach ($this->accountsList as $uaTag => $accountData) {
-            if (true === $accountData['selected']) {
+            if (\true === $accountData['selected']) {
                 $accountData['webPropertyId'] = $uaTag;
-
                 return $accountData;
             }
         }
-
         return null;
     }
-
     /**
      * Get username
      *
@@ -96,16 +83,13 @@ class AnalyticsAccountsListProvider
      */
     public function getUserName()
     {
-        if (false === empty($this->accountsList)) {
-            $webPropertyList = array_keys($this->accountsList);
-            $firstWebProperty = current($webPropertyList);
-
+        if (\false === empty($this->accountsList)) {
+            $webPropertyList = \array_keys($this->accountsList);
+            $firstWebProperty = \current($webPropertyList);
             return $this->accountsList[$firstWebProperty]['username'];
         }
-
         return '';
     }
-
     /**
      * retrieveAccountsList
      *
@@ -118,18 +102,15 @@ class AnalyticsAccountsListProvider
         if (empty($accountList)) {
             return [];
         }
-
         foreach ($accountList as $accounts) {
             foreach ($accounts as $account) {
                 foreach ($account as $key => $property) {
                     $this->accountsList[$key] = $property;
                     $this->accountsList[$key]['webPropertyId'] = $key;
-                    $this->accountsList[$key]['typeSource'] =
-                        $property['type_source'];
+                    $this->accountsList[$key]['typeSource'] = $property['type_source'];
                 }
             }
         }
-
         return $this->accountsList;
     }
 }

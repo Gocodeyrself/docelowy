@@ -1,6 +1,6 @@
 <?php
 
-namespace Http\Message\Encoding\Filter;
+namespace ps_metrics_module_v4_0_8\Http\Message\Encoding\Filter;
 
 /**
  * Userland implementation of the chunk stream filter.
@@ -9,19 +9,16 @@ namespace Http\Message\Encoding\Filter;
  */
 class Chunk extends \php_user_filter
 {
-    public function filter($in, $out, &$consumed, $closing): int
+    public function filter($in, $out, &$consumed, $closing) : int
     {
-        while ($bucket = stream_bucket_make_writeable($in)) {
-            $lenbucket = stream_bucket_new($this->stream, dechex($bucket->datalen)."\r\n");
-            stream_bucket_append($out, $lenbucket);
-
+        while ($bucket = \stream_bucket_make_writeable($in)) {
+            $lenbucket = \stream_bucket_new($this->stream, \dechex($bucket->datalen) . "\r\n");
+            \stream_bucket_append($out, $lenbucket);
             $consumed += $bucket->datalen;
-            stream_bucket_append($out, $bucket);
-
-            $lenbucket = stream_bucket_new($this->stream, "\r\n");
-            stream_bucket_append($out, $lenbucket);
+            \stream_bucket_append($out, $bucket);
+            $lenbucket = \stream_bucket_new($this->stream, "\r\n");
+            \stream_bucket_append($out, $lenbucket);
         }
-
-        return PSFS_PASS_ON;
+        return \PSFS_PASS_ON;
     }
 }

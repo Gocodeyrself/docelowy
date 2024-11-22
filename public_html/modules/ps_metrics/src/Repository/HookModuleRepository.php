@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright since 2007 PrestaShop SA and Contributors
  * PrestaShop is an International Registered Trademark & Property of PrestaShop SA
@@ -17,15 +18,12 @@
  * @copyright Since 2007 PrestaShop SA and Contributors
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License version 3.0
  */
-
 namespace PrestaShop\Module\Ps_metrics\Repository;
 
 use Db;
-
 class HookModuleRepository
 {
     const TABLE_NAME = 'hook_module';
-
     /**
      * setModuleHookPosition
      *
@@ -37,12 +35,6 @@ class HookModuleRepository
      */
     public function setModuleHookPosition($hookId, $moduleId, $position)
     {
-        return Db::getInstance()->update(
-            self::TABLE_NAME,
-            [
-                'position' => $position,
-            ],
-            'id_hook = ' . (int) $hookId . ' AND id_module = ' . (int) $moduleId
-        );
+        return Db::getInstance()->update(self::TABLE_NAME, ['position' => $position], 'id_hook = ' . (int) $hookId . ' AND id_module = ' . (int) $moduleId);
     }
 }

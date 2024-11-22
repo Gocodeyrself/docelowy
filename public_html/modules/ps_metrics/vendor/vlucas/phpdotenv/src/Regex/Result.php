@@ -1,6 +1,6 @@
 <?php
 
-namespace Dotenv\Regex;
+namespace ps_metrics_module_v4_0_8\Dotenv\Regex;
 
 abstract class Result
 {
@@ -9,8 +9,7 @@ abstract class Result
      *
      * @return \PhpOption\Option
      */
-    abstract public function success();
-
+    public abstract function success();
     /**
      * Get the error value, if possible.
      *
@@ -20,7 +19,6 @@ abstract class Result
     {
         return $this->success()->get();
     }
-
     /**
      * Map over the success value.
      *
@@ -28,15 +26,13 @@ abstract class Result
      *
      * @return \Dotenv\Regex\Result
      */
-    abstract public function mapSuccess(callable $f);
-
+    public abstract function mapSuccess(callable $f);
     /**
      * Get the error option value.
      *
      * @return \PhpOption\Option
      */
-    abstract public function error();
-
+    public abstract function error();
     /**
      * Get the error value, if possible.
      *
@@ -46,7 +42,6 @@ abstract class Result
     {
         return $this->error()->get();
     }
-
     /**
      * Map over the error value.
      *
@@ -54,5 +49,5 @@ abstract class Result
      *
      * @return \Dotenv\Regex\Result
      */
-    abstract public function mapError(callable $f);
+    public abstract function mapError(callable $f);
 }

@@ -1,17 +1,15 @@
 <?php
 
-namespace Dotenv\Regex;
+namespace ps_metrics_module_v4_0_8\Dotenv\Regex;
 
-use PhpOption\None;
-use PhpOption\Some;
-
+use ps_metrics_module_v4_0_8\PhpOption\None;
+use ps_metrics_module_v4_0_8\PhpOption\Some;
 class Error extends Result
 {
     /**
      * @var string
      */
     private $value;
-
     /**
      * Internal constructor for an error value.
      *
@@ -23,7 +21,6 @@ class Error extends Result
     {
         $this->value = $value;
     }
-
     /**
      * Create a new error value.
      *
@@ -35,7 +32,6 @@ class Error extends Result
     {
         return new self($value);
     }
-
     /**
      * Get the success option value.
      *
@@ -45,7 +41,6 @@ class Error extends Result
     {
         return None::create();
     }
-
     /**
      * Map over the success value.
      *
@@ -57,7 +52,6 @@ class Error extends Result
     {
         return self::create($this->value);
     }
-
     /**
      * Get the error option value.
      *
@@ -67,7 +61,6 @@ class Error extends Result
     {
         return Some::create($this->value);
     }
-
     /**
      * Map over the error value.
      *

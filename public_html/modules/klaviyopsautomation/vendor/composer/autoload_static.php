@@ -4,9 +4,21 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit7773eac5738196a430fe2a45170d4c64
+class ComposerStaticInitdd339b2fefac0ed6da613de268b8c4ed
 {
+    public static $files = array (
+        '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
+    );
+
     public static $prefixLengthsPsr4 = array (
+        'l' => 
+        array (
+            'libphonenumber\\' => 15,
+        ),
+        'S' => 
+        array (
+            'Symfony\\Polyfill\\Mbstring\\' => 26,
+        ),
         'P' => 
         array (
             'PrestaShop\\PsAccountsInstaller\\' => 31,
@@ -15,12 +27,24 @@ class ComposerStaticInit7773eac5738196a430fe2a45170d4c64
         ),
         'K' => 
         array (
-            'Klaviyo\\' => 8,
+            'KlaviyoV3Sdk\\' => 13,
             'KlaviyoPs\\Classes\\' => 18,
+        ),
+        'G' => 
+        array (
+            'Giggsey\\Locale\\' => 15,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
+        'libphonenumber\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/giggsey/libphonenumber-for-php/src',
+        ),
+        'Symfony\\Polyfill\\Mbstring\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/polyfill-mbstring',
+        ),
         'PrestaShop\\PsAccountsInstaller\\' => 
         array (
             0 => __DIR__ . '/..' . '/prestashop/prestashop-accounts-installer/src',
@@ -33,13 +57,17 @@ class ComposerStaticInit7773eac5738196a430fe2a45170d4c64
         array (
             0 => __DIR__ . '/..' . '/prestashop/module-lib-cache-directory-provider/src',
         ),
-        'Klaviyo\\' => 
+        'KlaviyoV3Sdk\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/klaviyo-sdk',
+            0 => __DIR__ . '/../..' . '/klaviyo-v3-sdk',
         ),
         'KlaviyoPs\\Classes\\' => 
         array (
             0 => __DIR__ . '/../..' . '/classes',
+        ),
+        'Giggsey\\Locale\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/giggsey/locale/src',
         ),
     );
 
@@ -53,9 +81,9 @@ class ComposerStaticInit7773eac5738196a430fe2a45170d4c64
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit7773eac5738196a430fe2a45170d4c64::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit7773eac5738196a430fe2a45170d4c64::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit7773eac5738196a430fe2a45170d4c64::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitdd339b2fefac0ed6da613de268b8c4ed::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitdd339b2fefac0ed6da613de268b8c4ed::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInitdd339b2fefac0ed6da613de268b8c4ed::$classMap;
 
         }, null, ClassLoader::class);
     }

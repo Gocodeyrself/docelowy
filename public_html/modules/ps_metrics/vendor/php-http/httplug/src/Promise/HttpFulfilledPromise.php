@@ -3,16 +3,14 @@
 namespace Http\Client\Promise;
 
 use Http\Client\Exception;
-use Http\Promise\Promise;
+use ps_metrics_module_v4_0_8\Http\Promise\Promise;
 use Psr\Http\Message\ResponseInterface;
-
 final class HttpFulfilledPromise implements Promise
 {
     /**
      * @var ResponseInterface
      */
     private $response;
-
     /**
      * @param ResponseInterface $response
      */
@@ -20,7 +18,6 @@ final class HttpFulfilledPromise implements Promise
     {
         $this->response = $response;
     }
-
     /**
      * {@inheritdoc}
      */
@@ -29,14 +26,12 @@ final class HttpFulfilledPromise implements Promise
         if (null === $onFulfilled) {
             return $this;
         }
-
         try {
             return new self($onFulfilled($this->response));
         } catch (Exception $e) {
-            return new HttpRejectedPromise($e);
+            return new \Http\Client\Promise\HttpRejectedPromise($e);
         }
     }
-
     /**
      * {@inheritdoc}
      */
@@ -44,11 +39,10 @@ final class HttpFulfilledPromise implements Promise
     {
         return Promise::FULFILLED;
     }
-
     /**
      * {@inheritdoc}
      */
-    public function wait($unwrap = true)
+    public function wait($unwrap = \true)
     {
         if ($unwrap) {
             return $this->response;

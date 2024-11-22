@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 4.3.1, created on 2024-10-16 13:09:04
+/* Smarty version 4.3.1, created on 2024-11-22 08:34:54
   from 'module:ph_simpleblogviewstemplatesfront1.7commentslayout.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.1',
-  'unifunc' => 'content_670f9ed04dcdb6_28225875',
+  'unifunc' => 'content_6740341eba5f46_20831794',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -21,7 +21,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'module:ph_simpleblog/views/templates/front/1.7/comments/form.tpl' => 1,
   ),
 ),false)) {
-function content_670f9ed04dcdb6_28225875 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6740341eba5f46_20831794 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'/home/qisogexqbz/domains/cezos.exis24.pl/public_html/vendor/smarty/smarty/libs/plugins/modifier.count.php','function'=>'smarty_modifier_count',),));
 ?>
 <div class="blog-mb simpleblog__comments<?php if ($_smarty_tpl->tpl_vars['post']->value->comments == 0) {?>-empty<?php }?>" id="phsimpleblog_comments">

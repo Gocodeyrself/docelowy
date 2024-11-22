@@ -139,19 +139,22 @@ class FrontContainer extends \PrestaShop\PrestaShop\Adapter\Container\LegacyCont
             'PrestaShop\\Module\\PsxMarketingWithGoogle\\Adapter\\ConfigurationAdapter' => 'getConfigurationAdapterService',
             'PrestaShop\\Module\\PsxMarketingWithGoogle\\Buffer\\TemplateBuffer' => 'getTemplateBufferService',
             'PrestaShop\\Module\\PsxMarketingWithGoogle\\Config\\Env' => 'getEnvService',
+            'PrestaShop\\Module\\PsxMarketingWithGoogle\\Conversion\\EnhancedConversionToggle' => 'getEnhancedConversionToggleService',
+            'PrestaShop\\Module\\PsxMarketingWithGoogle\\Conversion\\UserDataProvider' => 'getUserDataProviderService',
             'PrestaShop\\Module\\PsxMarketingWithGoogle\\Handler\\ErrorHandler' => 'getErrorHandler2Service',
             'PrestaShop\\Module\\PsxMarketingWithGoogle\\Handler\\RemarketingHookHandler' => 'getRemarketingHookHandlerService',
             'PrestaShop\\Module\\PsxMarketingWithGoogle\\Provider\\CartEventDataProvider' => 'getCartEventDataProviderService',
-            'PrestaShop\\Module\\PsxMarketingWithGoogle\\Provider\\ConversionEventDataProvider' => 'getConversionEventDataProviderService',
             'PrestaShop\\Module\\PsxMarketingWithGoogle\\Provider\\PageViewEventDataProvider' => 'getPageViewEventDataProviderService',
             'PrestaShop\\Module\\PsxMarketingWithGoogle\\Provider\\ProductDataProvider' => 'getProductDataProvider2Service',
             'PrestaShop\\Module\\PsxMarketingWithGoogle\\Provider\\PurchaseEventDataProvider' => 'getPurchaseEventDataProviderService',
             'PrestaShop\\Module\\PsxMarketingWithGoogle\\Provider\\VerificationTagDataProvider' => 'getVerificationTagDataProviderService',
             'PrestaShop\\Module\\PsxMarketingWithGoogle\\Repository\\AttributesRepository' => 'getAttributesRepositoryService',
             'PrestaShop\\Module\\PsxMarketingWithGoogle\\Repository\\CarrierRepository' => 'getCarrierRepository2Service',
+            'PrestaShop\\Module\\PsxMarketingWithGoogle\\Repository\\CategoryRepository' => 'getCategoryRepository2Service',
             'PrestaShop\\Module\\PsxMarketingWithGoogle\\Repository\\CountryRepository' => 'getCountryRepository2Service',
             'PrestaShop\\Module\\PsxMarketingWithGoogle\\Repository\\CurrencyRepository' => 'getCurrencyRepository2Service',
             'PrestaShop\\Module\\PsxMarketingWithGoogle\\Repository\\LanguageRepository' => 'getLanguageRepository2Service',
+            'PrestaShop\\Module\\PsxMarketingWithGoogle\\Repository\\ManufacturerRepository' => 'getManufacturerRepository2Service',
             'PrestaShop\\Module\\PsxMarketingWithGoogle\\Repository\\ProductRepository' => 'getProductRepository2Service',
             'PrestaShop\\Module\\PsxMarketingWithGoogle\\Repository\\StateRepository' => 'getStateRepository2Service',
             'PrestaShop\\Module\\PsxMarketingWithGoogle\\Repository\\TabRepository' => 'getTabRepositoryService',
@@ -213,11 +216,13 @@ class FrontContainer extends \PrestaShop\PrestaShop\Adapter\Container\LegacyCont
             'klaviyops.klaviyo_service.coupon_generator' => 'getKlaviyops_KlaviyoService_CouponGeneratorService',
             'klaviyops.klaviyo_service.customer_event_service' => 'getKlaviyops_KlaviyoService_CustomerEventServiceService',
             'klaviyops.klaviyo_service.order_event' => 'getKlaviyops_KlaviyoService_OrderEventService',
+            'klaviyops.klaviyo_service.profile_event' => 'getKlaviyops_KlaviyoService_ProfileEventService',
             'klaviyops.module' => 'getKlaviyops_ModuleService',
             'klaviyops.prestashop_components.context' => 'getKlaviyops_PrestashopComponents_ContextService',
             'klaviyops.prestashop_services.cart_rule' => 'getKlaviyops_PrestashopServices_CartRuleService',
             'klaviyops.prestashop_services.context' => 'getKlaviyops_PrestashopServices_ContextService',
             'klaviyops.prestashop_services.customer' => 'getKlaviyops_PrestashopServices_CustomerService',
+            'klaviyops.prestashop_services.datetime' => 'getKlaviyops_PrestashopServices_DatetimeService',
             'klaviyops.prestashop_services.logger' => 'getKlaviyops_PrestashopServices_LoggerService',
             'klaviyops.prestashop_services.order' => 'getKlaviyops_PrestashopServices_OrderService',
             'klaviyops.prestashop_services.product' => 'getKlaviyops_PrestashopServices_ProductService',
@@ -274,11 +279,13 @@ class FrontContainer extends \PrestaShop\PrestaShop\Adapter\Container\LegacyCont
             'ps_eventbus.shop' => 'getPsEventbus_ShopService',
             'ps_eventbus.smarty' => 'getPsEventbus_SmartyService',
             'psxmarketingwithgoogle' => 'getPsxmarketingwithgoogleService',
+            'psxmarketingwithgoogle.cart' => 'getPsxmarketingwithgoogle_CartService',
             'psxmarketingwithgoogle.context' => 'getPsxmarketingwithgoogle_ContextService',
             'psxmarketingwithgoogle.controller' => 'getPsxmarketingwithgoogle_ControllerService',
             'psxmarketingwithgoogle.cookie' => 'getPsxmarketingwithgoogle_CookieService',
             'psxmarketingwithgoogle.country' => 'getPsxmarketingwithgoogle_CountryService',
             'psxmarketingwithgoogle.currency' => 'getPsxmarketingwithgoogle_CurrencyService',
+            'psxmarketingwithgoogle.customer' => 'getPsxmarketingwithgoogle_CustomerService',
             'psxmarketingwithgoogle.db' => 'getPsxmarketingwithgoogle_DbService',
             'psxmarketingwithgoogle.language' => 'getPsxmarketingwithgoogle_LanguageService',
             'psxmarketingwithgoogle.link' => 'getPsxmarketingwithgoogle_LinkService',
@@ -1516,6 +1523,26 @@ class FrontContainer extends \PrestaShop\PrestaShop\Adapter\Container\LegacyCont
     }
 
     /**
+     * Gets the public 'PrestaShop\Module\PsxMarketingWithGoogle\Conversion\EnhancedConversionToggle' shared service.
+     *
+     * @return \PrestaShop\Module\PsxMarketingWithGoogle\Conversion\EnhancedConversionToggle
+     */
+    protected function getEnhancedConversionToggleService()
+    {
+        return $this->services['PrestaShop\\Module\\PsxMarketingWithGoogle\\Conversion\\EnhancedConversionToggle'] = new \PrestaShop\Module\PsxMarketingWithGoogle\Conversion\EnhancedConversionToggle(($this->services['PrestaShop\\Module\\PsxMarketingWithGoogle\\Adapter\\ConfigurationAdapter'] ?? $this->getConfigurationAdapterService()));
+    }
+
+    /**
+     * Gets the public 'PrestaShop\Module\PsxMarketingWithGoogle\Conversion\UserDataProvider' shared service.
+     *
+     * @return \PrestaShop\Module\PsxMarketingWithGoogle\Conversion\UserDataProvider
+     */
+    protected function getUserDataProviderService()
+    {
+        return $this->services['PrestaShop\\Module\\PsxMarketingWithGoogle\\Conversion\\UserDataProvider'] = new \PrestaShop\Module\PsxMarketingWithGoogle\Conversion\UserDataProvider(($this->services['psxmarketingwithgoogle.customer'] ?? $this->getPsxmarketingwithgoogle_CustomerService()), ($this->services['psxmarketingwithgoogle.cart'] ?? $this->getPsxmarketingwithgoogle_CartService()));
+    }
+
+    /**
      * Gets the public 'PrestaShop\Module\PsxMarketingWithGoogle\Handler\ErrorHandler' shared service.
      *
      * @return \PrestaShop\Module\PsxMarketingWithGoogle\Handler\ErrorHandler
@@ -1546,16 +1573,6 @@ class FrontContainer extends \PrestaShop\PrestaShop\Adapter\Container\LegacyCont
     }
 
     /**
-     * Gets the public 'PrestaShop\Module\PsxMarketingWithGoogle\Provider\ConversionEventDataProvider' shared service.
-     *
-     * @return \PrestaShop\Module\PsxMarketingWithGoogle\Provider\ConversionEventDataProvider
-     */
-    protected function getConversionEventDataProviderService()
-    {
-        return $this->services['PrestaShop\\Module\\PsxMarketingWithGoogle\\Provider\\ConversionEventDataProvider'] = new \PrestaShop\Module\PsxMarketingWithGoogle\Provider\ConversionEventDataProvider(($this->services['psxmarketingwithgoogle.context'] ?? $this->getPsxmarketingwithgoogle_ContextService()));
-    }
-
-    /**
      * Gets the public 'PrestaShop\Module\PsxMarketingWithGoogle\Provider\PageViewEventDataProvider' shared service.
      *
      * @return \PrestaShop\Module\PsxMarketingWithGoogle\Provider\PageViewEventDataProvider
@@ -1582,7 +1599,7 @@ class FrontContainer extends \PrestaShop\PrestaShop\Adapter\Container\LegacyCont
      */
     protected function getPurchaseEventDataProviderService()
     {
-        return $this->services['PrestaShop\\Module\\PsxMarketingWithGoogle\\Provider\\PurchaseEventDataProvider'] = new \PrestaShop\Module\PsxMarketingWithGoogle\Provider\PurchaseEventDataProvider(($this->services['PrestaShop\\Module\\PsxMarketingWithGoogle\\Provider\\ProductDataProvider'] ?? $this->getProductDataProvider2Service()), ($this->services['psxmarketingwithgoogle.context'] ?? $this->getPsxmarketingwithgoogle_ContextService()), ($this->services['PrestaShop\\Module\\PsxMarketingWithGoogle\\Adapter\\ConfigurationAdapter'] ?? $this->getConfigurationAdapterService()), ($this->services['PrestaShop\\Module\\PsxMarketingWithGoogle\\Repository\\LanguageRepository'] ?? ($this->services['PrestaShop\\Module\\PsxMarketingWithGoogle\\Repository\\LanguageRepository'] = new \PrestaShop\Module\PsxMarketingWithGoogle\Repository\LanguageRepository())), ($this->services['PrestaShop\\Module\\PsxMarketingWithGoogle\\Repository\\CountryRepository'] ?? $this->getCountryRepository2Service()));
+        return $this->services['PrestaShop\\Module\\PsxMarketingWithGoogle\\Provider\\PurchaseEventDataProvider'] = new \PrestaShop\Module\PsxMarketingWithGoogle\Provider\PurchaseEventDataProvider(($this->services['PrestaShop\\Module\\PsxMarketingWithGoogle\\Provider\\ProductDataProvider'] ?? $this->getProductDataProvider2Service()), ($this->services['psxmarketingwithgoogle.context'] ?? $this->getPsxmarketingwithgoogle_ContextService()), ($this->services['PrestaShop\\Module\\PsxMarketingWithGoogle\\Adapter\\ConfigurationAdapter'] ?? $this->getConfigurationAdapterService()), ($this->services['PrestaShop\\Module\\PsxMarketingWithGoogle\\Repository\\LanguageRepository'] ?? $this->getLanguageRepository2Service()), ($this->services['PrestaShop\\Module\\PsxMarketingWithGoogle\\Repository\\CountryRepository'] ?? $this->getCountryRepository2Service()));
     }
 
     /**
@@ -1616,6 +1633,16 @@ class FrontContainer extends \PrestaShop\PrestaShop\Adapter\Container\LegacyCont
     }
 
     /**
+     * Gets the public 'PrestaShop\Module\PsxMarketingWithGoogle\Repository\CategoryRepository' shared service.
+     *
+     * @return \PrestaShop\Module\PsxMarketingWithGoogle\Repository\CategoryRepository
+     */
+    protected function getCategoryRepository2Service()
+    {
+        return $this->services['PrestaShop\\Module\\PsxMarketingWithGoogle\\Repository\\CategoryRepository'] = new \PrestaShop\Module\PsxMarketingWithGoogle\Repository\CategoryRepository(($this->services['psxmarketingwithgoogle.context'] ?? $this->getPsxmarketingwithgoogle_ContextService()));
+    }
+
+    /**
      * Gets the public 'PrestaShop\Module\PsxMarketingWithGoogle\Repository\CountryRepository' shared service.
      *
      * @return \PrestaShop\Module\PsxMarketingWithGoogle\Repository\CountryRepository
@@ -1642,7 +1669,17 @@ class FrontContainer extends \PrestaShop\PrestaShop\Adapter\Container\LegacyCont
      */
     protected function getLanguageRepository2Service()
     {
-        return $this->services['PrestaShop\\Module\\PsxMarketingWithGoogle\\Repository\\LanguageRepository'] = new \PrestaShop\Module\PsxMarketingWithGoogle\Repository\LanguageRepository();
+        return $this->services['PrestaShop\\Module\\PsxMarketingWithGoogle\\Repository\\LanguageRepository'] = new \PrestaShop\Module\PsxMarketingWithGoogle\Repository\LanguageRepository(($this->services['psxmarketingwithgoogle.shop'] ?? $this->getPsxmarketingwithgoogle_ShopService())->id);
+    }
+
+    /**
+     * Gets the public 'PrestaShop\Module\PsxMarketingWithGoogle\Repository\ManufacturerRepository' shared service.
+     *
+     * @return \PrestaShop\Module\PsxMarketingWithGoogle\Repository\ManufacturerRepository
+     */
+    protected function getManufacturerRepository2Service()
+    {
+        return $this->services['PrestaShop\\Module\\PsxMarketingWithGoogle\\Repository\\ManufacturerRepository'] = new \PrestaShop\Module\PsxMarketingWithGoogle\Repository\ManufacturerRepository(($this->services['psxmarketingwithgoogle.context'] ?? $this->getPsxmarketingwithgoogle_ContextService()));
     }
 
     /**
@@ -1962,15 +1999,15 @@ class FrontContainer extends \PrestaShop\PrestaShop\Adapter\Container\LegacyCont
         $c = new \Doctrine\Persistence\Mapping\Driver\MappingDriverChain();
 
         $d = ($this->services['annotation_reader'] ?? ($this->services['annotation_reader'] = new \Doctrine\Common\Annotations\AnnotationReader()));
-        $e = new \Doctrine\ORM\Mapping\Driver\AnnotationDriver($d, [0 => '/home/qisogexqbz/domains/cezos.exis24.pl/public_html/modules/inpostshipping/src/Entity']);
-        $e->addExcludePaths([0 => '/home/qisogexqbz/domains/cezos.exis24.pl/public_html/modules/inpostshipping/src/Entity/index.php']);
-        $f = new \Doctrine\ORM\Mapping\Driver\AnnotationDriver($d, [0 => '/home/qisogexqbz/domains/cezos.exis24.pl/public_html/modules/productcomments/src/Entity']);
-        $f->addExcludePaths([0 => '/home/qisogexqbz/domains/cezos.exis24.pl/public_html/modules/productcomments/src/Entity/index.php']);
+        $e = new \Doctrine\ORM\Mapping\Driver\AnnotationDriver($d, [0 => '/home/qisogexqbz/domains/cezos.exis24.pl/public_html/modules/productcomments/src/Entity']);
+        $e->addExcludePaths([0 => '/home/qisogexqbz/domains/cezos.exis24.pl/public_html/modules/productcomments/src/Entity/index.php']);
+        $f = new \Doctrine\ORM\Mapping\Driver\AnnotationDriver($d, [0 => '/home/qisogexqbz/domains/cezos.exis24.pl/public_html/modules/inpostshipping/src/Entity']);
+        $f->addExcludePaths([0 => '/home/qisogexqbz/domains/cezos.exis24.pl/public_html/modules/inpostshipping/src/Entity/index.php']);
 
         $c->addDriver(new \Doctrine\ORM\Mapping\Driver\AnnotationDriver($d, [0 => '/home/qisogexqbz/domains/cezos.exis24.pl/public_html/src/PrestaShopBundle/Entity']), 'PrestaShop');
-        $c->addDriver($e, 'InPost\\Shipping\\Entity');
+        $c->addDriver($e, 'PrestaShop\\Module\\ProductComment\\Entity');
         $c->addDriver(new \Doctrine\ORM\Mapping\Driver\AnnotationDriver($d, [0 => '/home/qisogexqbz/domains/cezos.exis24.pl/public_html/modules/ps_accounts/src/Entity']), 'PrestaShop\\Module\\PsAccounts\\Entity');
-        $c->addDriver($f, 'PrestaShop\\Module\\ProductComment\\Entity');
+        $c->addDriver($f, 'InPost\\Shipping\\Entity');
 
         $a->setEntityNamespaces(['PrestaShopBundle\\Entity' => 'PrestaShop']);
         $a->setMetadataCache($b);
@@ -1987,9 +2024,9 @@ class FrontContainer extends \PrestaShop\PrestaShop\Adapter\Container\LegacyCont
         $a->setEntityListenerResolver(new \Doctrine\Bundle\DoctrineBundle\Mapping\ContainerEntityListenerResolver($this));
         $a->setRepositoryFactory(new \Doctrine\Bundle\DoctrineBundle\Repository\ContainerRepositoryFactory(new \Symfony\Component\DependencyInjection\ServiceLocator([])));
         $a->addCustomStringFunction('regexp', 'DoctrineExtensions\\Query\\Mysql\\Regexp');
-        $a->addEntityNamespace('Moduleinpostshipping', 'InPost\\Shipping\\Entity');
-        $a->addEntityNamespace('ModulepsAccounts', 'PrestaShop\\Module\\PsAccounts\\Entity');
         $a->addEntityNamespace('Moduleproductcomments', 'PrestaShop\\Module\\ProductComment\\Entity');
+        $a->addEntityNamespace('ModulepsAccounts', 'PrestaShop\\Module\\PsAccounts\\Entity');
+        $a->addEntityNamespace('Moduleinpostshipping', 'InPost\\Shipping\\Entity');
 
         $this->services['doctrine.orm.default_entity_manager'] = $instance = \Doctrine\ORM\EntityManager::create(($this->services['doctrine.dbal.default_connection'] ?? $this->getDoctrine_Dbal_DefaultConnectionService()), $a);
 
@@ -2285,7 +2322,7 @@ class FrontContainer extends \PrestaShop\PrestaShop\Adapter\Container\LegacyCont
      */
     protected function getKlaviyops_KlaviyoService_CustomerEventServiceService()
     {
-        return $this->services['klaviyops.klaviyo_service.customer_event_service'] = new \KlaviyoPs\Classes\KlaviyoServices\CustomerEventService(($this->services['klaviyops.prestashop_services.customer'] ?? $this->getKlaviyops_PrestashopServices_CustomerService()));
+        return $this->services['klaviyops.klaviyo_service.customer_event_service'] = new \KlaviyoPs\Classes\KlaviyoServices\CustomerEventService(($this->services['klaviyops.prestashop_services.datetime'] ?? ($this->services['klaviyops.prestashop_services.datetime'] = new \KlaviyoPs\Classes\PrestashopServices\DateTimeService())), ($this->services['klaviyops.prestashop_services.context'] ?? $this->getKlaviyops_PrestashopServices_ContextService()), ($this->services['klaviyops.prestashop_services.customer'] ?? $this->getKlaviyops_PrestashopServices_CustomerService()));
     }
 
     /**
@@ -2296,6 +2333,16 @@ class FrontContainer extends \PrestaShop\PrestaShop\Adapter\Container\LegacyCont
     protected function getKlaviyops_KlaviyoService_OrderEventService()
     {
         return $this->services['klaviyops.klaviyo_service.order_event'] = new \KlaviyoPs\Classes\KlaviyoServices\OrderEventService(($this->services['klaviyops.klaviyo_api_wrapper'] ?? ($this->services['klaviyops.klaviyo_api_wrapper'] = new \KlaviyoPs\Classes\KlaviyoApiWrapper())), ($this->services['klaviyops.prestashop_services.order'] ?? $this->getKlaviyops_PrestashopServices_OrderService()), ($this->services['klaviyops.prestashop_services.product'] ?? ($this->services['klaviyops.prestashop_services.product'] = new \KlaviyoPs\Classes\PrestashopServices\ProductService())), ($this->services['klaviyops.klaviyo_service.customer_event_service'] ?? $this->getKlaviyops_KlaviyoService_CustomerEventServiceService()));
+    }
+
+    /**
+     * Gets the public 'klaviyops.klaviyo_service.profile_event' shared service.
+     *
+     * @return \KlaviyoPs\Classes\KlaviyoServices\ProfileEventService
+     */
+    protected function getKlaviyops_KlaviyoService_ProfileEventService()
+    {
+        return $this->services['klaviyops.klaviyo_service.profile_event'] = new \KlaviyoPs\Classes\KlaviyoServices\ProfileEventService(($this->services['klaviyops.klaviyo_api_wrapper'] ?? ($this->services['klaviyops.klaviyo_api_wrapper'] = new \KlaviyoPs\Classes\KlaviyoApiWrapper())), ($this->services['klaviyops.klaviyo_service.customer_event_service'] ?? $this->getKlaviyops_KlaviyoService_CustomerEventServiceService()));
     }
 
     /**
@@ -2345,7 +2392,17 @@ class FrontContainer extends \PrestaShop\PrestaShop\Adapter\Container\LegacyCont
      */
     protected function getKlaviyops_PrestashopServices_CustomerService()
     {
-        return $this->services['klaviyops.prestashop_services.customer'] = new \KlaviyoPs\Classes\PrestashopServices\CustomerService(($this->services['klaviyops.prestashop_services.validate'] ?? ($this->services['klaviyops.prestashop_services.validate'] = new \KlaviyoPs\Classes\PrestashopServices\ValidateService())));
+        return $this->services['klaviyops.prestashop_services.customer'] = new \KlaviyoPs\Classes\PrestashopServices\CustomerService(($this->services['klaviyops.prestashop_services.validate'] ?? ($this->services['klaviyops.prestashop_services.validate'] = new \KlaviyoPs\Classes\PrestashopServices\ValidateService())), ($this->services['klaviyops.prestashop_services.datetime'] ?? ($this->services['klaviyops.prestashop_services.datetime'] = new \KlaviyoPs\Classes\PrestashopServices\DateTimeService())), ($this->services['klaviyops.prestashop_services.context'] ?? $this->getKlaviyops_PrestashopServices_ContextService()));
+    }
+
+    /**
+     * Gets the public 'klaviyops.prestashop_services.datetime' shared service.
+     *
+     * @return \KlaviyoPs\Classes\PrestashopServices\DateTimeService
+     */
+    protected function getKlaviyops_PrestashopServices_DatetimeService()
+    {
+        return $this->services['klaviyops.prestashop_services.datetime'] = new \KlaviyoPs\Classes\PrestashopServices\DateTimeService();
     }
 
     /**
@@ -2933,6 +2990,16 @@ class FrontContainer extends \PrestaShop\PrestaShop\Adapter\Container\LegacyCont
     }
 
     /**
+     * Gets the public 'psxmarketingwithgoogle.cart' shared service.
+     *
+     * @return \Currency
+     */
+    protected function getPsxmarketingwithgoogle_CartService()
+    {
+        return $this->services['psxmarketingwithgoogle.cart'] = \PrestaShop\Module\PsxMarketingWithGoogle\Factory\ContextFactory::getCart();
+    }
+
+    /**
      * Gets the public 'psxmarketingwithgoogle.context' shared service.
      *
      * @return \Context
@@ -2980,6 +3047,16 @@ class FrontContainer extends \PrestaShop\PrestaShop\Adapter\Container\LegacyCont
     protected function getPsxmarketingwithgoogle_CurrencyService()
     {
         return $this->services['psxmarketingwithgoogle.currency'] = \PrestaShop\Module\PsxMarketingWithGoogle\Factory\ContextFactory::getCurrency();
+    }
+
+    /**
+     * Gets the public 'psxmarketingwithgoogle.customer' shared service.
+     *
+     * @return \Currency
+     */
+    protected function getPsxmarketingwithgoogle_CustomerService()
+    {
+        return $this->services['psxmarketingwithgoogle.customer'] = \PrestaShop\Module\PsxMarketingWithGoogle\Factory\ContextFactory::getCustomer();
     }
 
     /**
@@ -3185,79 +3262,79 @@ class FrontContainer extends \PrestaShop\PrestaShop\Adapter\Container\LegacyCont
                 11 => 'ps_specials',
                 12 => 'ps_newproducts',
                 13 => 'ps_bestsellers',
-                14 => 'ps_emailsubscription',
-                15 => 'ps_customeraccountlinks',
-                16 => 'productcomments',
-                17 => 'ps_categorytree',
-                18 => 'contactform',
-                19 => 'ps_sharebuttons',
-                20 => 'gsitemap',
-                21 => 'statsnewsletter',
-                22 => 'klaviyopsautomation',
-                23 => 'ps_wirepayment',
-                24 => 'ps_viewedproduct',
-                25 => 'ps_metrics',
-                26 => 'mbeshipping',
-                27 => 'ps_crossselling',
-                28 => 'statssales',
-                29 => 'ps_edition_basic',
-                30 => 'ps_googleanalytics',
-                31 => 'statscheckup',
-                32 => 'dashactivity',
-                33 => 'ps_accounts',
-                34 => 'ps_eventbus',
-                35 => 'ps_mbo',
-                36 => 'pagesnotfound',
-                37 => 'gamification',
-                38 => 'graphnvd3',
-                39 => 'ps_dataprivacy',
-                40 => 'statsdata',
-                41 => 'dashproducts',
-                42 => 'statsproduct',
-                43 => 'ps_themecusto',
-                44 => 'statsbestmanufacturers',
-                45 => 'psxmarketingwithgoogle',
-                46 => 'statscatalog',
-                47 => 'statsbestproducts',
-                48 => 'ps_distributionapiclient',
-                49 => 'statsbestsuppliers',
-                50 => 'statsregistrations',
-                51 => 'gridhtml',
-                52 => 'ps_cashondelivery',
-                53 => 'statsstock',
-                54 => 'statsforecast',
-                55 => 'ps_faviconnotificationbo',
-                56 => 'statsbestvouchers',
-                57 => 'dashtrends',
-                58 => 'ps_emailalerts',
-                59 => 'statsbestcategories',
-                60 => 'statssearch',
-                61 => 'statsbestcustomers',
-                62 => 'ps_categoryproducts',
-                63 => 'dashgoals',
-                64 => 'statscarrier',
-                65 => 'statspersonalinfos',
-                66 => 'ps_facetedsearch',
-                67 => 'ps_banner_two',
-                68 => 'gmomni',
-                69 => 'price_alert',
-                70 => 'ets_megamenu',
-                71 => 'trustedshopseasyintegration',
-                72 => 'przelewy24',
-                73 => 'inpostshipping',
-                74 => 'arlg',
-                75 => 'categoriesbanners',
-                76 => 'fblogin',
-                77 => 'glogin',
-                78 => 'ph_simpleblog',
-                79 => 'phblogrecentposts',
-                80 => 'blockwishlist',
-                81 => 'sensbitgls',
-                82 => 'blog_images',
-                83 => 'pi_gusloader',
-                84 => 'smartargetsocialfollowbar',
-                85 => 'cs_invisible_recaptcha_v2',
-                86 => 'gformbuilderpro',
+                14 => 'ps_customeraccountlinks',
+                15 => 'productcomments',
+                16 => 'ps_categorytree',
+                17 => 'contactform',
+                18 => 'ps_sharebuttons',
+                19 => 'gsitemap',
+                20 => 'klaviyopsautomation',
+                21 => 'ps_wirepayment',
+                22 => 'ps_viewedproduct',
+                23 => 'ps_metrics',
+                24 => 'mbeshipping',
+                25 => 'ps_crossselling',
+                26 => 'statssales',
+                27 => 'ps_edition_basic',
+                28 => 'ps_googleanalytics',
+                29 => 'statscheckup',
+                30 => 'dashactivity',
+                31 => 'ps_accounts',
+                32 => 'ps_eventbus',
+                33 => 'ps_mbo',
+                34 => 'pagesnotfound',
+                35 => 'gamification',
+                36 => 'graphnvd3',
+                37 => 'ps_dataprivacy',
+                38 => 'statsdata',
+                39 => 'dashproducts',
+                40 => 'statsproduct',
+                41 => 'ps_themecusto',
+                42 => 'statsbestmanufacturers',
+                43 => 'psxmarketingwithgoogle',
+                44 => 'statscatalog',
+                45 => 'statsbestproducts',
+                46 => 'ps_distributionapiclient',
+                47 => 'statsbestsuppliers',
+                48 => 'statsregistrations',
+                49 => 'gridhtml',
+                50 => 'ps_cashondelivery',
+                51 => 'statsstock',
+                52 => 'statsforecast',
+                53 => 'ps_faviconnotificationbo',
+                54 => 'statsbestvouchers',
+                55 => 'dashtrends',
+                56 => 'ps_emailalerts',
+                57 => 'statsbestcategories',
+                58 => 'statssearch',
+                59 => 'statsbestcustomers',
+                60 => 'ps_categoryproducts',
+                61 => 'dashgoals',
+                62 => 'statscarrier',
+                63 => 'statspersonalinfos',
+                64 => 'ps_facetedsearch',
+                65 => 'ps_banner_two',
+                66 => 'gmomni',
+                67 => 'price_alert',
+                68 => 'ets_megamenu',
+                69 => 'trustedshopseasyintegration',
+                70 => 'przelewy24',
+                71 => 'inpostshipping',
+                72 => 'arlg',
+                73 => 'categoriesbanners',
+                74 => 'seigicookie',
+                75 => 'fblogin',
+                76 => 'glogin',
+                77 => 'ph_simpleblog',
+                78 => 'phblogrecentposts',
+                79 => 'blockwishlist',
+                80 => 'blog_images',
+                81 => 'pi_gusloader',
+                82 => 'smartargetsocialfollowbar',
+                83 => 'cs_invisible_recaptcha_v2',
+                84 => 'gformbuilderpro',
+                85 => 'recaptcharegistration',
+                86 => 'ets_recaptcha_free',
             ],
             'ps_cache_dir' => '/home/qisogexqbz/domains/cezos.exis24.pl/public_html/var/cache/prod/',
             'mail_themes_uri' => '/mails/themes',
@@ -3331,6 +3408,10 @@ class FrontContainer extends \PrestaShop\PrestaShop\Adapter\Container\LegacyCont
             'doctrine.orm.auto_generate_proxy_classes' => false,
             'doctrine.orm.proxy_dir' => '/home/qisogexqbz/domains/cezos.exis24.pl/public_html/var/cache/prod//doctrine/orm/Proxies',
             'doctrine.orm.proxy_namespace' => 'Proxies',
+            'ps_eventbus.proxy_api_url' => 'https://eventbus-proxy.psessentials.net',
+            'ps_eventbus.sync_api_url' => 'https://eventbus-sync.psessentials.net',
+            'ps_eventbus.sentry_dsn' => 'https://457f191226df4b8f9a0d7bf6f250bab2@o298402.ingest.sentry.io/6066714',
+            'ps_eventbus.sentry_env' => 'production',
             'ps_accounts.environment' => 'production',
             'ps_accounts.accounts_api_url' => 'https://accounts-api.distribution.prestashop.net/v1/',
             'ps_accounts.accounts_ui_url' => 'https://accounts.distribution.prestashop.net',
@@ -3350,10 +3431,6 @@ class FrontContainer extends \PrestaShop\PrestaShop\Adapter\Container\LegacyCont
             'ps_accounts.oauth2_url_resource_owner_details' => 'https://oauth.prestashop.com/userinfo',
             'ps_accounts.oauth2_url_session_logout' => 'https://oauth.prestashop.com/oauth2/sessions/logout',
             'ps_accounts.testimonials_url' => 'https://assets.prestashop3.com/dst/accounts/assets/testimonials.json',
-            'ps_eventbus.proxy_api_url' => 'https://eventbus-proxy.psessentials.net',
-            'ps_eventbus.sync_api_url' => 'https://eventbus-sync.psessentials.net',
-            'ps_eventbus.sentry_dsn' => 'https://457f191226df4b8f9a0d7bf6f250bab2@o298402.ingest.sentry.io/6066714',
-            'ps_eventbus.sentry_env' => 'production',
         ];
     }
 }

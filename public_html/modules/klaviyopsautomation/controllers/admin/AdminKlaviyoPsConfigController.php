@@ -22,7 +22,8 @@ if (!defined('_PS_VERSION_')) {
     exit;
 }
 
-use Klaviyo\Exception\KlaviyoException;
+use KlaviyoPs\Classes\KlaviyoCouponUsageLimitType;
+use KlaviyoV3Sdk\Exception\KlaviyoException;
 use KlaviyoPs\Classes\KlaviyoApiWrapper;
 use KlaviyoPs\Classes\BusinessLogicServices\OrderPayloadService;
 use KlaviyoPs\Classes\KlaviyoServices\CouponGeneratorService;
@@ -40,6 +41,16 @@ class AdminKlaviyoPsConfigController extends ModuleAdminController
     const PUBLIC_KEY_VALIDATION_REGEX = '/^[a-zA-Z0-9]{6}$/';
     const PRIVATE_KEY_VALIDATION_REGEX = '/^(pk_)[a-zA-Z0-9]{34}$/';
 
+    const KLAVIYO_SMS_CONSENT_LABEL_DEFAULT = [
+        'en' => 'Subscribe to SMS updates',
+        'fr' => 'S\'abonner aux actualités SMS',
+    ];
+
+    const KLAVIYO_SMS_CONSENT_DISCLOSURE_TEXT = [
+        'en' => 'By checking this box and entering your phone number above, you consent to receive marketing text messages (e.g. promos, cart reminders) from [Company Name] at the number provided, including messages sent by autodialer. Consent is not a condition of purchase. Msg & data rates may apply. Msg frequency varies. Unsubscribe at any time by replying STOP or clicking the unsubscribe link (where available). Privacy Policy [link] & Terms [link]',
+        'fr' => 'En cochant cette case et en saisissant votre numéro de téléphone ci-dessus, vous acceptez de recevoir des SMS marketing (par exemple, des promos, des rappels de panier) de [Nom de l\'entreprise] au numéro fourni, y compris des messages envoyés par composeur automatique. Le consentement n\'est pas une condition d\'achat. Des frais de message et de données peuvent s\'appliquer. La fréquence des messages varie. Vous pouvez vous désabonner à tout moment en répondant STOP ou en cliquant sur le lien de désabonnement (le cas échéant). Politique de confidentialité & Conditions.',
+    ];
+
     /** @var string Minimum version compatible for subscribing profiles using default newsletter form. */
     const PS_EMAILSUBSCRIPTION_MIN_VERSION = '2.6.0';
 
@@ -54,16 +65,22 @@ class AdminKlaviyoPsConfigController extends ModuleAdminController
     {
         $allValues = Tools::getAllValues();
 
+        // help center links
+        $cgiHelpDocUrl = $this->l('https://help.klaviyo.com/hc/en-us/articles/15311862315803');
+        $generalHelpDocUrl = $this->l('https://help.klaviyo.com/hc/en-us/articles/360054551492');
+        $createAccountUrl = $this->l('https://www.klaviyo.com/signup/prestashop?utm_medium=app-store&utm_source=platform-partner&utm_campaign=');
+
         if (Tools::isSubmit('submit' . $this->module->name)) {
             $this->validateAndSaveConfig('validateConfigValues', 'saveFormKlaviyoValues', $allValues);
         } elseif (Tools::isSubmit('submit' . $this->module->name . 'OrderStatus')) {
             $this->validateAndSaveConfig('validateOrderStatusMapValues', 'saveFormOrderStatusMapValues', $allValues);
         } elseif (Tools::isSubmit('submit' . $this->module->name . 'CouponsGenerator')) {
             $this->validateAndGenerateCoupons();
+        } elseif (Tools::isSubmit('submit' . $this->module->name . 'CouponConfig')) {
+            $this->handleCouponConfigForm();
         }
 
         if (!$this->module->getConfigurationValueOrNull('KLAVIYO_PUBLIC_API')) {
-            $createAccountUrl = 'https://www.klaviyo.com/signup/prestashop?utm_medium=app-store&utm_source=platform-partner&utm_campaign=';
             /** @var EnvService $envService */
             $envService = $this->module->getService('klaviyops.util_services.env');
             if ($envService->get('IS_EDITION_MODE')) {
@@ -72,15 +89,16 @@ class AdminKlaviyoPsConfigController extends ModuleAdminController
                 $createAccountUrl .= KlaviyoValue::UTM_CAMPAIGN_PROJECT;
             }
 
-            $text_question = $this->l('Don\'t have a Klaviyo account?');
-            $text_create_account = $this->l('Create your account here.');
-
-            $this->informations[] = $text_question . sprintf(' <a target="_blank" href="%s">', $createAccountUrl) . $text_create_account . '</a>';
+            $this->informations[] = sprintf(
+                $this->l('Don\t have a Klaviyo account? %sCreate your account here.%s'),
+                sprintf(' <a target="_blank" href="%s">', $createAccountUrl),
+                '</a>'
+            );
         }
 
         $this->informations[] = sprintf(
             $this->l('For step-by-step instructions on how to integrate Prestashop with Klaviyo, refer to our %shelp documentation.%s'),
-            '<a target="_blank" href="https://help.klaviyo.com/hc/en-us/articles/360054551492">',
+            sprintf(' <a target="_blank" href="%s">', $generalHelpDocUrl),
             '</a>'
         );
 
@@ -91,11 +109,11 @@ class AdminKlaviyoPsConfigController extends ModuleAdminController
 
         // Display warning if php running as CGI to help avoid auth errors
         if (KlaviyoUtils::shouldWarnCGI()) {
-            $this->errors[] = $this->l('It appears you are running PHP as a CGI. Please follow the ')
-                . '<a target="_blank" href="https://help.klaviyo.com/hc/en-us/articles/15311862315803">'
-                . $this->l('instructions here')
-                . '</a>'
-                . $this->l(' to ensure Klaviyo can access your API.');
+            $this->errors[] = sprintf(
+                $this->l('It appears you are running PHP as a CGI. Please follow the %sinstructions here%s to ensure Klaviyo can access your API'),
+                sprintf('<a target="_blank" href="%s">', $cgiHelpDocUrl),
+                '</a>'
+            );
         }
 
         $this->content .= $this->renderContent();
@@ -120,6 +138,7 @@ class AdminKlaviyoPsConfigController extends ModuleAdminController
         $this->context->smarty->assign([
             'psAccounts' => $this->renderPsAccounts(),
             'form' => $this->renderForm(),
+            'couponConfig' => $this->renderCouponConfigForm(),
             'orderStatusMapForm' => $this->renderOrderStatusMapForm(),
             'couponsGenerator' => $this->renderCouponsGenerator(),
             'chunkVendorJs' => $this->module->getDistPathUri('chunk-vendors.js'),
@@ -193,6 +212,33 @@ class AdminKlaviyoPsConfigController extends ModuleAdminController
     {
         // Get default language
         $defaultLang = (int)Configuration::get('PS_LANG_DEFAULT');
+
+        // help center link
+        $apiKeyHelpDocLink = $this->l('https://help.klaviyo.com/hc/en-us/articles/115005062267#h_01HRFPP8R1AEVQ744SE33FQTEC');
+        $smsSubscribeHelpDocLink = $this->l('https://help.klaviyo.com/hc/en-us/articles/4404274419355');
+
+        // Configuration values
+        $klaviyoSubscriberList = $this->module->getConfigurationValueOrNull('KLAVIYO_SUBSCRIBER_LIST');
+        $klaviyoSmsSubscriberList = $this->module->getConfigurationValueOrNull('KLAVIYO_SMS_SUBSCRIBER_LIST');
+
+        $klaviyoSmsConsentLabelValues = $this->getConfigInMultipleLangs('KLAVIYO_SMS_CONSENT_LABEL');
+        $klaviyoSmsConsentDisclosureTextValues = $this->getConfigInMultipleLangs('KLAVIYO_SMS_CONSENT_DISCLOSURE_TEXT');
+
+        foreach (Language::getLanguages(false) as $lang) {
+            if (empty($klaviyoSmsConsentLabelValues[$lang['id_lang']])) {
+                $klaviyoSmsConsentLabelValues[$lang['id_lang']] = (isset(self::KLAVIYO_SMS_CONSENT_LABEL_DEFAULT[$lang['iso_code']]) ?
+                    self::KLAVIYO_SMS_CONSENT_LABEL_DEFAULT[$lang['iso_code']] :
+                    self::KLAVIYO_SMS_CONSENT_LABEL_DEFAULT['en']
+                );
+            }
+            if (empty($klaviyoSmsConsentDisclosureTextValues[$lang['id_lang']])) {
+                $klaviyoSmsConsentDisclosureTextValues[$lang['id_lang']] = (isset(self::KLAVIYO_SMS_CONSENT_DISCLOSURE_TEXT[$lang['iso_code']]) ?
+                    self::KLAVIYO_SMS_CONSENT_DISCLOSURE_TEXT[$lang['iso_code']] :
+                    self::KLAVIYO_SMS_CONSENT_DISCLOSURE_TEXT['en']
+                );
+            }
+        }
+
         // Init Fields form array
         $fieldsForm[0]['form'] = [
             'legend' => [
@@ -218,7 +264,11 @@ class AdminKlaviyoPsConfigController extends ModuleAdminController
                     'value' => Configuration::get('KLAVIYO_PRIVATE_API'),
                     'size' => 50,
                     'required' => true,
-                    'desc' => '<a target="_blank" href="https://help.klaviyo.com/hc/en-us/articles/115005062267-Manage-Your-Account-s-API-Keys">Need help finding your API keys?</a>'
+                    'desc' => sprintf(
+                        $this->l('%sNeed help finding your API keys?%s'),
+                        sprintf('<a target="_blank" href="%s">', $apiKeyHelpDocLink),
+                        '</a>'
+                    )
                 ],
                 [
                     'type' => 'switch',
@@ -261,7 +311,7 @@ class AdminKlaviyoPsConfigController extends ModuleAdminController
                 ],
                 [
                     'type' => 'switch',
-                    'label' => $this->l('Sync subscribers to a list in Klaviyo'),
+                    'label' => $this->l('Sync PrestaShop email subscribers to Klaviyo'),
                     'name' => 'KLAVIYO_IS_SYNCING_SUBSCRIBERS',
                     'is_bool' => true,
                     'values' => array(
@@ -277,6 +327,29 @@ class AdminKlaviyoPsConfigController extends ModuleAdminController
                         )
                     ),
                 ],
+                [
+                    'type' => 'switch',
+                    'label' => $this->l('Sync PrestaShop SMS subscribers to Klaviyo'),
+                    'name' => 'KLAVIYO_IS_SYNCING_SMS_SUBSCRIBERS',
+                    'is_bool' => true,
+                    'values' => array(
+                        array(
+                            'id' => 'active_on',
+                            'value' => true,
+                            'label' => $this->l('Enabled'),
+                        ),
+                        array(
+                            'id' => 'active_off',
+                            'value' => false,
+                            'label' => $this->l('Disabled'),
+                        )
+                    ),
+                    'desc' => sprintf(
+                        $this->l('For the configuration to work SMS must be set up in Klaviyo. %sLearn how to set up SMS%s'),
+                        sprintf('<a target="_blank" href="%s">', $smsSubscribeHelpDocLink),
+                        '</a>'
+                    )
+                ],
             ],
             'submit' => [
                 'title' => $this->l('Save'),
@@ -286,19 +359,25 @@ class AdminKlaviyoPsConfigController extends ModuleAdminController
 
         // Fetch lists for Account.
         $lists = [];
-        if ($this->module->getConfigurationValueOrNull('KLAVIYO_PRIVATE_API')) {
+        if (
+            $this->module->getConfigurationValueOrNull('KLAVIYO_PRIVATE_API')
+            && (
+                $this->module->getConfigurationValueOrNull('KLAVIYO_IS_SYNCING_SUBSCRIBERS')
+                || $this->module->getConfigurationValueOrNull('KLAVIYO_IS_SYNCING_SMS_SUBSCRIBERS')
+            )
+        ) {
             try {
                 $api = new KlaviyoApiWrapper();
                 $lists = $api->getLists();
             } catch (KlaviyoException $e) {
                 $this->errors[] = $this->l(
-                    'There was an error accessing lists for account: ' . Configuration::get('KLAVIYO_PUBLIC_API')
-                );
+                    'There was an error accessing lists for account: '
+                ) . Configuration::get('KLAVIYO_PUBLIC_API');
             }
         }
 
         // Ensure we have an array and lists in it.
-        if (is_array($lists) && !empty($lists) && $this->module->getConfigurationValueOrNull('KLAVIYO_IS_SYNCING_SUBSCRIBERS')) {
+        if (is_array($lists) && !empty($lists)) {
             // Add default value and "placeholder" option. Defaults to null in db if saved.
             $list_arr = [
                 array(
@@ -309,51 +388,124 @@ class AdminKlaviyoPsConfigController extends ModuleAdminController
             ];
             foreach ($lists as $list) {
                 $list_arr[] = array(
-                    'id_option' => $list['list_id'],
-                    'name' => $list['list_name'],
-                    'value' => $list['list_id'],
+                    'id_option' => $list['id'],
+                    'name' => $list['attributes']['name'],
+                    'value' => $list['id'],
                     'default' => array(
-                        'value' => $list['list_id'],
+                        'value' => $list['id'],
                         'label' => 'list'
                     ),
                 );
             }
 
-            // TODO: We might want to allow someone to reset this value to null.
-            // TODO: Provide option whether to subscribe use members or subscribe endpoint.
-            // Build form to select Klaviyo list.
-            $fieldsForm[]['form'] = [
-                'legend' => [
-                    'title' => $this->l('Lists'),
-                ],
-                'input' => [
+            // Email Subscriber Configuration part
+            if ($this->module->getConfigurationValueOrNull('KLAVIYO_IS_SYNCING_SUBSCRIBERS')) {
+                // TODO: We might want to allow someone to reset this value to null.
+                // TODO: Provide option whether to subscribe use members or subscribe endpoint.
+                // Build form to select Klaviyo Email Subscriber list.
+                $fieldsForm[1]['form'] = [
+                    'legend' => [
+                        'title' => $this->l('Email Subscriber Configuration'),
+                    ],
+                    'input' => [
+                        [
+                            'type' => 'select',
+                            'label' => $this->l('Email subscriber list'),
+                            'name' => 'KLAVIYO_SUBSCRIBER_LIST',
+                            'required' => false,
+                            'options' => [
+                                'query' => $list_arr,
+                                'id' => 'id_option',
+                                'name' => 'name'
+                            ],
+                            'desc' => $this->l('Klaviyo will adhere to the double opt-in settings for the selected list.'),
+                        ]
+                    ],
+                    'submit' => [
+                        'title' => $this->l('Save'),
+                        'class' => 'btn btn-default pull-right'
+                    ]
+                ];
+
+                // Check version of ps_emailsubscription module and display notice if incompatible for list subscription.
+                if (!$this->isPsEmailsubscriptionCompatible()) {
+                    $fieldsForm[1]['form']['warning'] = sprintf(
+                        $this->l(
+                            'If you want to subscribe profiles to a Klaviyo list using the
+                        PrestaShop \'Newsletter Subscription\' module, please make sure the
+                        module is enabled and at least version %s or higher.'
+                        ),
+                        self::PS_EMAILSUBSCRIPTION_MIN_VERSION
+                    );
+                }
+            }
+
+            // SMS Subscriber Configuration part
+            if ($this->module->getConfigurationValueOrNull('KLAVIYO_IS_SYNCING_SMS_SUBSCRIBERS')) {
+                // Build form to select Klaviyo SNS Subscriber list.
+                $fieldsForm[2]['form'] = [
+                    'legend' => [
+                        'title' => $this->l('SMS Subscriber Configuration'),
+                    ]
+                ];
+
+
+                // Check version of ps_emailsubscription module and display notice if incompatible for list subscription.
+                if (!is_null($klaviyoSubscriberList) && !is_null($klaviyoSmsSubscriberList) && $klaviyoSmsSubscriberList === $klaviyoSubscriberList) {
+                    $fieldsForm[2]['form']['warning'] = $this->l('We recommend using a separate list for SMS subscribers to help better manage campaign and flow SMS message recipients.');
+                }
+
+                $fieldsForm[2]['form']['input'] = [
                     [
                         'type' => 'select',
-                        'label' => 'Klaviyo Subscriber List',
-                        'name' => 'KLAVIYO_SUBSCRIBER_LIST',
+                        'label' => $this->l('SMS subscriber list'),
+                        'name' => 'KLAVIYO_SMS_SUBSCRIBER_LIST',
                         'required' => false,
                         'options' => [
                             'query' => $list_arr,
                             'id' => 'id_option',
                             'name' => 'name'
                         ],
-                        'desc' => $this->l('Klaviyo will adhere to the double opt-in settings for the selected list.'),
-                    ]
-                ],
-                'submit' => [
+                    ],
+                    [
+                        'type' => 'select',
+                        'label' => $this->l('When do customers subscribe?'),
+                        'name' => 'KLAVIYO_SMS_SUBSCRIBE_TRIGGER',
+                        'required' => false,
+                        'options' => [
+                            'query' => [
+                                ['id_option' => 'start_checkout', 'name' => $this->l('Start checkout')],
+                                ['id_option' => 'place_order', 'name' => $this->l('Place order')],
+                            ],
+                            'id' => 'id_option',
+                            'name' => 'name'
+                        ],
+                    ],
+                    [
+                        'type' => 'text',
+                        'label' => $this->l('Consent label'),
+                        'id' => 'kl_sms_consent_label',
+                        'name' => 'KLAVIYO_SMS_CONSENT_LABEL',
+                        'value' => $klaviyoSmsConsentLabelValues,
+                        'required' => true,
+                        'lang' => true,
+                    ],
+                    [
+                        'type' => 'textarea',
+                        'label' => $this->l('Consent disclosure text'),
+                        'id' => 'kl_sms_consent_disclosure_text',
+                        'class' => 'kl_tinymce_no_paragraph',
+                        'name' => 'KLAVIYO_SMS_CONSENT_DISCLOSURE_TEXT',
+                        'value' => $klaviyoSmsConsentDisclosureTextValues,
+                        'required' => true,
+                        'lang' => true,
+                        'rows' => 10,
+                    ],
+                ];
+                $fieldsForm[2]['form']['submit'] = [
                     'title' => $this->l('Save'),
                     'class' => 'btn btn-default pull-right'
-                ]
-            ];
-
-            // Check version of ps_emailsubscription module and display notice if incompatible for list subscription.
-            if (!$this->isPsEmailsubscriptionCompatible()) {
-                $fieldsForm[1]['form']['warning'] = $this->l(sprintf(
-                    'If you want to subscribe profiles to a Klaviyo list using the
-                    PrestaShop \'Newsletter Subscription\' module, please make sure the
-                    module is enabled and at least version %s or higher.',
-                    self::PS_EMAILSUBSCRIPTION_MIN_VERSION
-                ));
+                ];
             }
         }
 
@@ -368,6 +520,7 @@ class AdminKlaviyoPsConfigController extends ModuleAdminController
         // Language
         $helper->default_form_language = $defaultLang;
         $helper->allow_employee_form_lang = $defaultLang;
+        $helper->languages = $this->context->controller->getLanguages();
 
         // Title and toolbar
         $helper->title = $this->module->displayName;
@@ -393,8 +546,80 @@ class AdminKlaviyoPsConfigController extends ModuleAdminController
         $helper->fields_value['KLAVIYO_REAL_TIME_EVENT_ENABLE'] = $this->module->getConfigurationValueOrNull('KLAVIYO_REAL_TIME_EVENT_ENABLE');
         $helper->fields_value['KLAVIYO_TRANSACTIONAL_EMAIL_ENABLE'] = $this->module->getConfigurationValueOrNull('KLAVIYO_TRANSACTIONAL_EMAIL_ENABLE');
         $helper->fields_value['KLAVIYO_IS_SYNCING_SUBSCRIBERS'] = $this->module->getConfigurationValueOrNull('KLAVIYO_IS_SYNCING_SUBSCRIBERS');
+        $helper->fields_value['KLAVIYO_IS_SYNCING_SMS_SUBSCRIBERS'] = $this->module->getConfigurationValueOrNull('KLAVIYO_IS_SYNCING_SMS_SUBSCRIBERS');
+        $helper->fields_value['KLAVIYO_SMS_SUBSCRIBER_LIST'] = $this->module->getConfigurationValueOrNull('KLAVIYO_SMS_SUBSCRIBER_LIST');
+        $helper->fields_value['KLAVIYO_SMS_SUBSCRIBE_TRIGGER'] = $this->module->getConfigurationValueOrNull('KLAVIYO_SMS_SUBSCRIBE_TRIGGER');
+        $helper->fields_value['KLAVIYO_SMS_CONSENT_LABEL'] = $klaviyoSmsConsentLabelValues;
+        $helper->fields_value['KLAVIYO_SMS_CONSENT_DISCLOSURE_TEXT'] = $klaviyoSmsConsentDisclosureTextValues;
 
         $helper->fields_value['KLAVIYO_LANGUAGE'] = Configuration::get('KLAVIYO_LANGUAGE');
+        return $helper->generateForm($fieldsForm);
+    }
+
+    public function renderCouponConfigForm()
+    {
+        $fieldsForm = [];
+
+        $helpDocLink = $this->l('https://help.klaviyo.com/hc/en-us/articles/25151598311195#h_01HYDKX0A9J9WCEY9QCR2C52AF');
+
+        $fieldsForm[]['form'] = array(
+            'legend' => [
+                'title' => $this->l('Cart Rule Limit'),
+            ],
+            'description' => sprintf(
+                $this->l('This allows you to limit the use of cart rules in your shop. %sLearn more%s'),
+                sprintf('<a href="%s" target="_blank">', $helpDocLink),
+                '</a>'
+            ),
+            'input' => [
+                [
+                    'type' => 'select',
+                    'label' => $this->l('Limit cart rule usage'),
+                    'name' => 'KLAVIYO_COUPON_USAGE_LIMIT_TYPE',
+                    'options' => [
+                        'query' => [
+                            ['id_option' => KlaviyoCouponUsageLimitType::LIMIT_PREFIX, 'name' => $this->l('One cart rule per prefix')],
+                            ['id_option' => KlaviyoCouponUsageLimitType::LIMIT_ONE, 'name' => $this->l('One cart rule per order')],
+                            ['id_option' => KlaviyoCouponUsageLimitType::LIMIT_NONE, 'name' => $this->l('No limit')],
+                        ],
+                        'id' => 'id_option',
+                        'name' => 'name'
+                    ],
+                ],
+            ],
+            'submit' => [
+                'title' => $this->l('Save'),
+                'class' => 'btn btn-default pull-right'
+            ],
+        );
+
+        $helper = new HelperForm();
+
+        // Module, token and currentIndex
+        $helper->module = $this->module;
+        $helper->name_controller = $this->module->name;
+        $helper->token = Tools::getAdminTokenLite($this->controller_name);
+        $helper->currentIndex = AdminController::$currentIndex . '&configure=' . $this->module->name;
+
+        // Language
+        $helper->default_form_language = $this->context->language->id;
+        $helper->allow_employee_form_lang = $this->context->language->id;
+
+        // Title and toolbar
+        $helper->title = $this->module->displayName;
+        $helper->show_toolbar = true;        // false -> remove toolbar
+        $helper->toolbar_scroll = true;      // yes - > Toolbar is always visible on the top of the screen.
+        $helper->submit_action = 'submit' . $this->module->name . 'CouponConfig';
+
+        // Load current values
+        $helper->tpl_vars = array(
+            'fields_value' => [
+                'KLAVIYO_COUPON_USAGE_LIMIT_TYPE' => $this->module->getConfigurationValueOrNull('KLAVIYO_COUPON_USAGE_LIMIT_TYPE'),
+            ],
+            'languages'    => $this->context->controller->getLanguages(),
+            'id_language'  => $this->context->language->id,
+        );
+
         return $helper->generateForm($fieldsForm);
     }
 
@@ -516,13 +741,16 @@ class AdminKlaviyoPsConfigController extends ModuleAdminController
     {
         $fieldsForm = [];
 
+        // help center link
+        $couponCodeHelpDocLink = $this->l('https://help.klaviyo.com/hc/en-us/articles/115005084727#h_01H9NXQT7NPQ0N7QES86K2ZVZN');
+
         $fieldsForm[]['form'] = array(
             'legend' => [
                 'title' => $this->l('Coupons'),
             ],
             'description' => sprintf(
                 $this->l('This tool allows you to generate unique coupons based on an existing PrestaShop cart rule and then export them in CSV format to your Klaviyo account. To use coupons in Klaviyo, you can follow %sour guide%s.'),
-                '<a href="https://help.klaviyo.com/hc/en-us/articles/115005084727-Getting-started-with-coupon-codes-in-Klaviyo#prepare-your-list-of-coupon-codes" target="_blank">',
+                sprintf('<a href="%s" target="_blank">', $couponCodeHelpDocLink),
                 '</a>'
             ),
             'input' => [
@@ -578,6 +806,12 @@ class AdminKlaviyoPsConfigController extends ModuleAdminController
         return $helper->generateForm($fieldsForm);
     }
 
+    private function handleCouponConfigForm()
+    {
+        $configValue = Tools::getValue('KLAVIYO_COUPON_USAGE_LIMIT_TYPE', '');
+        Configuration::updateValue('KLAVIYO_COUPON_USAGE_LIMIT_TYPE', $configValue);
+    }
+
     /**
      * Check "Coupons" form validation and duplicate the desired cart rule by the number of quantity entered
      * Then a CSV file is generated to import it into Klaviyo
@@ -629,7 +863,7 @@ class AdminKlaviyoPsConfigController extends ModuleAdminController
             );
 
             $data = $couponGeneratorService->buildPayload($generatedCartRules);
-            $data = $csvService->serialize($data, [
+            $data = $csvService->csvSerialize($data, [
                 'enclosure' => '',
             ]);
 
@@ -640,8 +874,12 @@ class AdminKlaviyoPsConfigController extends ModuleAdminController
             header('Content-Type: application/force-download; charset=UTF-8');
             header('Content-disposition: attachment; filename="' . $filename . '"');
 
-            $this->ajaxRender($data);
-            exit;
+            if (version_compare(_PS_VERSION_, '1.7.5.0', '>=')) {
+                $this->ajaxRender($data);
+                exit;
+            } else {
+                $this->ajaxDie($data);
+            }
         } catch (KlaviyoException $e) {
             $this->errors[] = $e->getMessage();
         }
@@ -679,15 +917,15 @@ class AdminKlaviyoPsConfigController extends ModuleAdminController
         $err = [];
 
         if ($public_key && !preg_match(self::PUBLIC_KEY_VALIDATION_REGEX, $public_key)) {
-            array_push($err, 'Invalid Public API Key.');
+            array_push($err, $this->l('Invalid Public API Key.'));
         }
 
         if ($private_key && !preg_match(self::PRIVATE_KEY_VALIDATION_REGEX, $private_key)) {
-            array_push($err, 'Invalid Private API Key.');
+            array_push($err, $this->l('Invalid Private API Key.'));
         }
 
         if (!$public_key || !$private_key) {
-            array_push($err, 'Public and Private API keys are required.');
+            array_push($err, $this->l('Public and Private API keys are required.'));
         }
 
         return $err;
@@ -700,18 +938,42 @@ class AdminKlaviyoPsConfigController extends ModuleAdminController
      */
     private function saveFormKlaviyoValues($values)
     {
+        $multilangFleds = [];
         foreach ($values as $key => $value) {
             if (in_array($key, KlaviyoPsModule::CONFIG_KEYS)) {
                 Configuration::updateValue($key, trim($value));
+            } elseif (strpos($key, 'KLAVIYO_SMS_CONSENT_LABEL_') !== false) {
+                $idLang = (int)str_replace('KLAVIYO_SMS_CONSENT_LABEL_', '', $key);
+                $multilangFleds['KLAVIYO_SMS_CONSENT_LABEL'][$idLang] = $value;
+            } elseif (strpos($key, 'KLAVIYO_SMS_CONSENT_DISCLOSURE_TEXT_') !== false) {
+                $idLang = (int)str_replace('KLAVIYO_SMS_CONSENT_DISCLOSURE_TEXT_', '', $key);
+                $multilangFleds['KLAVIYO_SMS_CONSENT_DISCLOSURE_TEXT'][$idLang] = $value;
             }
         }
+
         // Ensure KLAVIYO_SUBSCRIBER_LIST is null if KLAVIYO_IS_SYNCING_SUBSCRIBERS is false.
         if (!$values['KLAVIYO_IS_SYNCING_SUBSCRIBERS'] && array_key_exists('KLAVIYO_SUBSCRIBER_LIST', $values)) {
             Configuration::updateValue('KLAVIYO_SUBSCRIBER_LIST', null);
         }
 
+        // Ensure KLAVIYO_SMS_SUBSCRIBER_LIST is null if KLAVIYO_IS_SYNCING_SMS_SUBSCRIBERS is false.
+        if (!$values['KLAVIYO_IS_SYNCING_SMS_SUBSCRIBERS'] && array_key_exists('KLAVIYO_SMS_SUBSCRIBER_LIST', $values)) {
+            Configuration::updateValue('KLAVIYO_SMS_SUBSCRIBER_LIST', null);
+        }
+
         if (!isset($values['KLAVIYO_TRANSACTIONAL_EMAIL_ENABLE'])) {
             Configuration::updateValue('KLAVIYO_TRANSACTIONAL_EMAIL_ENABLE', 0);
+        }
+
+        // Multilang fields
+        if (!empty($multilangFleds)) {
+            foreach ($multilangFleds as $key => $values) {
+                $html = false;
+                if ($key === 'KLAVIYO_SMS_CONSENT_DISCLOSURE_TEXT') {
+                    $html = true;
+                }
+                Configuration::updateValue($key, $values, $html);
+            }
         }
     }
 
@@ -731,7 +993,7 @@ class AdminKlaviyoPsConfigController extends ModuleAdminController
 
         $err = array();
         if (count(array_unique($allSelectedOrderStatuses)) < count($allSelectedOrderStatuses)) {
-            $err[] = 'Cannot select the same order status in multiple event maps.';
+            $err[] = $this->l('Cannot select the same order status in multiple event maps.');
         }
 
         return $err;
@@ -792,5 +1054,24 @@ class AdminKlaviyoPsConfigController extends ModuleAdminController
             return version_compare($emailsubs_module->version, self::PS_EMAILSUBSCRIPTION_MIN_VERSION, '>=');
         }
         return false;
+    }
+
+    /**
+     * Helper method to support multi-language configuration values across PS 1.7 & 8.
+     * Configuration::getInt is the deprecated method, it was deprecated in 1.7.8.0 and
+     * removed in version 8.0.0.
+     *
+     * https://github.com/PrestaShop/PrestaShop/blob/1.7.8.0/classes/Configuration.php#L260-L263
+     *
+     * @param string $configKey
+     * @return mixed
+     */
+    private function getConfigInMultipleLangs($configKey)
+    {
+        if (version_compare(_PS_VERSION_, '8.0.0', '>=')) {
+            return Configuration::getConfigInMultipleLangs($configKey);
+        }
+
+        return Configuration::getInt($configKey);
     }
 }

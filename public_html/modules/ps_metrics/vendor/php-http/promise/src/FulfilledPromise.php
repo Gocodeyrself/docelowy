@@ -1,6 +1,6 @@
 <?php
 
-namespace Http\Promise;
+namespace ps_metrics_module_v4_0_8\Http\Promise;
 
 /**
  * A promise already fulfilled.
@@ -13,46 +13,33 @@ final class FulfilledPromise implements Promise
      * @var mixed
      */
     private $result;
-
     /**
-     * @param $result
+     * @param mixed $result
      */
     public function __construct($result)
     {
         $this->result = $result;
     }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function then(callable $onFulfilled = null, callable $onRejected = null)
+    public function then(?callable $onFulfilled = null, ?callable $onRejected = null)
     {
         if (null === $onFulfilled) {
             return $this;
         }
-
         try {
             return new self($onFulfilled($this->result));
         } catch (\Exception $e) {
             return new RejectedPromise($e);
         }
     }
-
-    /**
-     * {@inheritdoc}
-     */
     public function getState()
     {
         return Promise::FULFILLED;
     }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function wait($unwrap = true)
+    public function wait($unwrap = \true)
     {
         if ($unwrap) {
             return $this->result;
         }
+        return null;
     }
 }

@@ -135,21 +135,21 @@ class Ps_metricsAdminContainer extends Container
     /**
      * Gets the public 'ps_accounts.facade' shared service.
      *
-     * @return \PrestaShop\PsAccountsInstaller\Installer\Facade\PsAccounts
+     * @return \ps_metrics_module_v4_0_8\PrestaShop\PsAccountsInstaller\Installer\Facade\PsAccounts
      */
     protected function getPsAccounts_FacadeService()
     {
-        return $this->services['ps_accounts.facade'] = new \PrestaShop\PsAccountsInstaller\Installer\Facade\PsAccounts(($this->services['ps_accounts.installer'] ?? ($this->services['ps_accounts.installer'] = new \PrestaShop\PsAccountsInstaller\Installer\Installer('5.0'))));
+        return $this->services['ps_accounts.facade'] = new \ps_metrics_module_v4_0_8\PrestaShop\PsAccountsInstaller\Installer\Facade\PsAccounts(($this->services['ps_accounts.installer'] ?? ($this->services['ps_accounts.installer'] = new \ps_metrics_module_v4_0_8\PrestaShop\PsAccountsInstaller\Installer\Installer('5.0'))));
     }
 
     /**
      * Gets the public 'ps_accounts.installer' shared service.
      *
-     * @return \PrestaShop\PsAccountsInstaller\Installer\Installer
+     * @return \ps_metrics_module_v4_0_8\PrestaShop\PsAccountsInstaller\Installer\Installer
      */
     protected function getPsAccounts_InstallerService()
     {
-        return $this->services['ps_accounts.installer'] = new \PrestaShop\PsAccountsInstaller\Installer\Installer('5.0');
+        return $this->services['ps_accounts.installer'] = new \ps_metrics_module_v4_0_8\PrestaShop\PsAccountsInstaller\Installer\Installer('5.0');
     }
 
     /**

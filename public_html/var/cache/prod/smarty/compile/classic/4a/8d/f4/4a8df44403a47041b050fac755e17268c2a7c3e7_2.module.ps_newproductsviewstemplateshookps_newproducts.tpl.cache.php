@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 4.3.1, created on 2024-10-14 11:04:35
+/* Smarty version 4.3.1, created on 2024-11-22 08:31:33
   from 'module:ps_newproductsviewstemplateshookps_newproducts.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.1',
-  'unifunc' => 'content_670cdea3c30cc7_37622470',
+  'unifunc' => 'content_67403355a15ad8_63098132',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -21,8 +21,8 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:catalog/_partials/productlist.tpl' => 1,
   ),
 ),false)) {
-function content_670cdea3c30cc7_37622470 (Smarty_Internal_Template $_smarty_tpl) {
-$_smarty_tpl->compiled->nocache_hash = '535482283670cdea3c2cc53_92604975';
+function content_67403355a15ad8_63098132 (Smarty_Internal_Template $_smarty_tpl) {
+$_smarty_tpl->compiled->nocache_hash = '50061266267403355a13de3_32797337';
 ?>
 
 <?php if ((isset($_smarty_tpl->tpl_vars['tilesCategoriesTwo']->value))) {?>

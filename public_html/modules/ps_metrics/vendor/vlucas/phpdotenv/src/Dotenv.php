@@ -1,11 +1,10 @@
 <?php
 
-namespace Dotenv;
+namespace ps_metrics_module_v4_0_8\Dotenv;
 
-use Dotenv\Environment\DotenvFactory;
-use Dotenv\Environment\FactoryInterface;
-use Dotenv\Exception\InvalidPathException;
-
+use ps_metrics_module_v4_0_8\Dotenv\Environment\DotenvFactory;
+use ps_metrics_module_v4_0_8\Dotenv\Environment\FactoryInterface;
+use ps_metrics_module_v4_0_8\Dotenv\Exception\InvalidPathException;
 /**
  * This is the dotenv class.
  *
@@ -20,7 +19,6 @@ class Dotenv
      * @var \Dotenv\Loader
      */
     protected $loader;
-
     /**
      * Create a new dotenv instance.
      *
@@ -32,7 +30,6 @@ class Dotenv
     {
         $this->loader = $loader;
     }
-
     /**
      * Create a new dotenv instance.
      *
@@ -44,15 +41,9 @@ class Dotenv
      */
     public static function create($paths, $file = null, FactoryInterface $envFactory = null)
     {
-        $loader = new Loader(
-            self::getFilePaths((array) $paths, $file ?: '.env'),
-            $envFactory ?: new DotenvFactory(),
-            true
-        );
-
+        $loader = new Loader(self::getFilePaths((array) $paths, $file ?: '.env'), $envFactory ?: new DotenvFactory(), \true);
         return new self($loader);
     }
-
     /**
      * Returns the full paths to the files.
      *
@@ -63,11 +54,10 @@ class Dotenv
      */
     private static function getFilePaths(array $paths, $file)
     {
-        return array_map(function ($path) use ($file) {
-            return rtrim($path, DIRECTORY_SEPARATOR).DIRECTORY_SEPARATOR.$file;
+        return \array_map(function ($path) use($file) {
+            return \rtrim($path, \DIRECTORY_SEPARATOR) . \DIRECTORY_SEPARATOR . $file;
         }, $paths);
     }
-
     /**
      * Load environment file in given directory.
      *
@@ -79,7 +69,6 @@ class Dotenv
     {
         return $this->loadData();
     }
-
     /**
      * Load environment file in given directory, silently failing if it doesn't exist.
      *
@@ -96,7 +85,6 @@ class Dotenv
             return [];
         }
     }
-
     /**
      * Load environment file in given directory.
      *
@@ -106,9 +94,8 @@ class Dotenv
      */
     public function overload()
     {
-        return $this->loadData(true);
+        return $this->loadData(\true);
     }
-
     /**
      * Actually load the data.
      *
@@ -118,11 +105,10 @@ class Dotenv
      *
      * @return array<string|null>
      */
-    protected function loadData($overload = false)
+    protected function loadData($overload = \false)
     {
         return $this->loader->setImmutable(!$overload)->load();
     }
-
     /**
      * Required ensures that the specified variables exist, and returns a new validator object.
      *
@@ -134,7 +120,6 @@ class Dotenv
     {
         return new Validator((array) $variables, $this->loader);
     }
-
     /**
      * Returns a new validator object that won't check if the specified variables exist.
      *
@@ -144,9 +129,8 @@ class Dotenv
      */
     public function ifPresent($variables)
     {
-        return new Validator((array) $variables, $this->loader, false);
+        return new Validator((array) $variables, $this->loader, \false);
     }
-
     /**
      * Get the list of environment variables declared inside the 'env' file.
      *

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.1, created on 2024-10-14 11:00:13
+/* Smarty version 4.3.1, created on 2024-11-22 08:31:08
   from '/home/qisogexqbz/domains/cezos.exis24.pl/public_html/modules/ets_megamenu/views/templates/hook/menu-html.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.1',
-  'unifunc' => 'content_670cdd9d8e4114_03438905',
+  'unifunc' => 'content_6740333c0bd935_24104745',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'd7c0799ac02c10e7e88fc6f91d269c598be00f5e' => 
     array (
       0 => '/home/qisogexqbz/domains/cezos.exis24.pl/public_html/modules/ets_megamenu/views/templates/hook/menu-html.tpl',
-      1 => 1723119366,
+      1 => 1731488275,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_670cdd9d8e4114_03438905 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6740333c0bd935_24104745 (Smarty_Internal_Template $_smarty_tpl) {
 if ((isset($_smarty_tpl->tpl_vars['menus']->value)) && $_smarty_tpl->tpl_vars['menus']->value) {?>
     <ul class="mm_menus_ul <?php if ((isset($_smarty_tpl->tpl_vars['mm_config']->value['ETS_MM_CLICK_TEXT_SHOW_SUB'])) && $_smarty_tpl->tpl_vars['mm_config']->value['ETS_MM_CLICK_TEXT_SHOW_SUB']) {?> clicktext_show_submenu<?php }?> <?php if ((isset($_smarty_tpl->tpl_vars['mm_config']->value['ETS_MM_SHOW_ICON_VERTICAL'])) && !$_smarty_tpl->tpl_vars['mm_config']->value['ETS_MM_SHOW_ICON_VERTICAL']) {?> hide_icon_vertical<?php }?>">
         <li class="close_menu">
@@ -141,8 +141,7 @@ echo htmlspecialchars((string) call_user_func_array($_smarty_tpl->registered_plu
                                             <span class="mm_tab_name mm_tab_toggle<?php if ($_smarty_tpl->tpl_vars['tab']->value['columns']) {?> mm_tab_has_child<?php }?>">
                                                 <span class="mm_tab_toggle_title">
                                                     <?php if ($_smarty_tpl->tpl_vars['tab']->value['url']) {?>
-                                                        <a class="ets_mm_url" href="<?php echo htmlspecialchars((string) call_user_func_array($_smarty_tpl->registered_plugins[ 'modifier' ][ 'escape' ][ 0 ], array( $_smarty_tpl->tpl_vars['tab']->value['url'],'html','UTF-8' )), ENT_QUOTES, 'UTF-8');?>
-">
+                                                                                                                                                                        <a class="ets_mm_url" href="#" onclick="event.preventDefault();">
                                                     <?php }?>
                                                         <?php if ($_smarty_tpl->tpl_vars['tab']->value['tab_img_link']) {?>
                                                             <img src="<?php echo htmlspecialchars((string) call_user_func_array($_smarty_tpl->registered_plugins[ 'modifier' ][ 'escape' ][ 0 ], array( $_smarty_tpl->tpl_vars['tab']->value['tab_img_link'],'html','UTF-8' )), ENT_QUOTES, 'UTF-8');?>

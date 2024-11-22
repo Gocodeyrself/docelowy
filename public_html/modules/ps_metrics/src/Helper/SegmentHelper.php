@@ -18,18 +18,15 @@
  * @copyright Since 2007 PrestaShop SA and Contributors
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License version 3.0
  */
-
 namespace PrestaShop\Module\Ps_metrics\Helper;
 
-use Segment;
-
+use ps_metrics_module_v4_0_8\Segment;
 class SegmentHelper
 {
     /**
      * @var ConfigHelper
      */
     private $configHelper;
-
     /**
      * SegmentHelper constructor.
      *
@@ -37,11 +34,10 @@ class SegmentHelper
      *
      * @return void
      */
-    public function __construct(ConfigHelper $configHelper)
+    public function __construct(\PrestaShop\Module\Ps_metrics\Helper\ConfigHelper $configHelper)
     {
         $this->configHelper = $configHelper;
     }
-
     /**
      * Init segment
      *
@@ -51,7 +47,6 @@ class SegmentHelper
     {
         Segment::init($this->configHelper->getSegmentApiKey());
     }
-
     /**
      * @param array $message
      *
@@ -61,7 +56,6 @@ class SegmentHelper
     {
         Segment::track($message);
     }
-
     /**
      * Flush segment
      *

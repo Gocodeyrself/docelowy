@@ -1,0 +1,71 @@
+
+
+
+
+
+
+
+
+
+{shop_name}
+E-mail: {shop_email}
+Adres: {shop_address}
+
+
+
+
+
+Hi !
+You have just received a new submission of the "{form_title}" form
+
+
+
+
+
+
+Imię i Nazwisko
+{input_93172_1730317259}
+
+
+Nazwa Firmy
+{input_217150_1730317259}
+
+
+Telefon
+{input_486438_1730317259}
+
+
+Adres e-mail
+{input_381746_1730317259}
+
+
+Numer zamówienia
+{orderreference_982319_1730317259}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Wiadomość
+{textarea_35564_1730317259}
+
+
+
+
+
+{shop_name}
+
+
+
+
+
+

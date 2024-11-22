@@ -18,7 +18,6 @@
  * @copyright Since 2007 PrestaShop SA and Contributors
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License version 3.0
  */
-
 namespace PrestaShop\Module\Ps_metrics\Api\Client;
 
 use PrestaShop\Module\Ps_metrics\Handler\GuzzleApiResponseExceptionHandler;
@@ -26,16 +25,14 @@ use PrestaShop\Module\Ps_metrics\Middleware\CheckResponseMiddleware;
 use PrestaShop\Module\Ps_metrics\Middleware\LogMiddleware;
 use PrestaShop\Module\Ps_metrics\Middleware\ResponseMiddleware;
 use PrestaShop\Module\Ps_metrics\Middleware\SentryMiddleware;
-use PrestaShop\PsAccountsInstaller\Installer\Exception\InstallerException;
-use PrestaShop\PsAccountsInstaller\Installer\Facade\PsAccounts;
-
-class AnalyticsClient extends HttpFactory
+use ps_metrics_module_v4_0_8\PrestaShop\PsAccountsInstaller\Installer\Exception\InstallerException;
+use ps_metrics_module_v4_0_8\PrestaShop\PsAccountsInstaller\Installer\Facade\PsAccounts;
+class AnalyticsClient extends \PrestaShop\Module\Ps_metrics\Api\Client\HttpFactory
 {
     /**
      * @var PsAccounts
      */
     private $psAccountsService;
-
     /**
      * AnalyticsClient constructor.
      *
@@ -46,18 +43,11 @@ class AnalyticsClient extends HttpFactory
      * @param ResponseMiddleware $responseMiddleWare
      * @param GuzzleApiResponseExceptionHandler $guzzleApiResponseExceptionHandler
      */
-    public function __construct(
-        PsAccounts $psAccounts,
-        CheckResponseMiddleware $checkResponseMiddleware,
-        LogMiddleware $logMiddleware,
-        SentryMiddleware $sentryMiddleware,
-        ResponseMiddleWare $responseMiddleWare,
-        GuzzleApiResponseExceptionHandler $guzzleApiResponseExceptionHandler
-    ) {
+    public function __construct(PsAccounts $psAccounts, CheckResponseMiddleware $checkResponseMiddleware, LogMiddleware $logMiddleware, SentryMiddleware $sentryMiddleware, ResponseMiddleWare $responseMiddleWare, GuzzleApiResponseExceptionHandler $guzzleApiResponseExceptionHandler)
+    {
         parent::__construct($checkResponseMiddleware, $logMiddleware, $sentryMiddleware, $responseMiddleWare, $guzzleApiResponseExceptionHandler);
         $this->psAccountsService = $psAccounts;
     }
-
     /**
      * @return string[]
      */
@@ -69,21 +59,14 @@ class AnalyticsClient extends HttpFactory
         } catch (InstallerException $e) {
             $refreshToken = '';
         }
-
-        return [
-            'Content-Type' => 'application/json',
-            'Accept' => 'application/json',
-            'Authorization' => 'Bearer ' . $refreshToken,
-        ];
+        return ['Content-Type' => 'application/json', 'Accept' => 'application/json', 'Authorization' => 'Bearer ' . $refreshToken];
     }
-
     /**
      * @return string|false
      */
     public function getShopId()
     {
         $psAccountsService = $this->psAccountsService->getPsAccountsService();
-
         return $psAccountsService->getShopUuidV4();
     }
 }

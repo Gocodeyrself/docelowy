@@ -26,7 +26,7 @@
 <div class="cart-detailed-totals js-cart-detailed-totals">
 
   <div class="card-block cart-detailed-subtotals js-cart-detailed-subtotals">
-      <div class="summary-text"><span class="label">{l s="Summary:" d="Shop.Pdf"}</span></div>
+      <div class="summary-text head-title"><span class="label">{l s="Summary:" d="Shop.Pdf"}</span></div>
     {foreach from=$cart.subtotals item="subtotal"}
       {if $subtotal && $subtotal.value|count_characters > 0 && $subtotal.type !== 'tax'}
         <div class="cart-summary-line" id="cart-subtotal-{$subtotal.type}">

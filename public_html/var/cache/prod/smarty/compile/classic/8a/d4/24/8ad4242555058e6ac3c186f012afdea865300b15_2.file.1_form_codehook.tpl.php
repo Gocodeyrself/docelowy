@@ -1,0 +1,53 @@
+<?php
+/* Smarty version 4.3.1, created on 2024-11-22 10:05:35
+  from '/home/qisogexqbz/domains/cezos.exis24.pl/public_html/modules/gformbuilderpro/views/templates/front/formtemplates/12/1/1_form_codehook.tpl' */
+
+/* @var Smarty_Internal_Template $_smarty_tpl */
+if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
+  'version' => '4.3.1',
+  'unifunc' => 'content_6740495fa51ba8_38067158',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    '8ad4242555058e6ac3c186f012afdea865300b15' => 
+    array (
+      0 => '/home/qisogexqbz/domains/cezos.exis24.pl/public_html/modules/gformbuilderpro/views/templates/front/formtemplates/12/1/1_form_codehook.tpl',
+      1 => 1732179160,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+),false)) {
+function content_6740495fa51ba8_38067158 (Smarty_Internal_Template $_smarty_tpl) {
+if ((isset($_smarty_tpl->tpl_vars['ispopup']->value)) && $_smarty_tpl->tpl_vars['ispopup']->value) {?> <a href="#gformbuilderpro_form_12" rel="12" class="btn btn-primary gformbuilderpro_openform"><?php echo htmlspecialchars((string) call_user_func_array($_smarty_tpl->registered_plugins[ 'modifier' ][ 'escape' ][ 0 ], array( $_smarty_tpl->tpl_vars['popup_label']->value,'html','UTF-8' )), ENT_QUOTES, 'UTF-8');?>
+</a>
+<?php }?><input type="hidden" id="gformbuilderpro_formValidity" value="<?php echo htmlspecialchars((string) $_smarty_tpl->tpl_vars['required_warrning']->value, ENT_QUOTES, 'UTF-8');?>
+"/><div id="gformbuilderpro_form_12" class="gformbuilderpro_form gformbuilderpro_form_12 <?php if ((isset($_smarty_tpl->tpl_vars['ispopup']->value)) && $_smarty_tpl->tpl_vars['ispopup']->value) {?> ispopup_form ghidden_form <?php }?>"> <?php if ((isset($_smarty_tpl->tpl_vars['_errors']->value))) {?> <div class="alert alert-danger" id="create_account_error"><ol><?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['_errors']->value, '_error');
+$_smarty_tpl->tpl_vars['_error']->do_else = true;
+if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['_error']->value) {
+$_smarty_tpl->tpl_vars['_error']->do_else = false;
+?> <li><?php echo htmlspecialchars((string) call_user_func_array($_smarty_tpl->registered_plugins[ 'modifier' ][ 'escape' ][ 0 ], array( $_smarty_tpl->tpl_vars['_error']->value,'html','UTF-8' )), ENT_QUOTES, 'UTF-8');?>
+</li> <?php
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?></ol></div> <?php }?> <form action="<?php echo htmlspecialchars((string) call_user_func_array($_smarty_tpl->registered_plugins[ 'modifier' ][ 'escape' ][ 0 ], array( $_smarty_tpl->tpl_vars['actionUrl']->value,'html','UTF-8' )), ENT_QUOTES, 'UTF-8');?>
+" method="POST" class="form_using_ajax row"><input type="hidden" name="usingajax" value="1"/><input type="hidden" name="idform" value="12"/><input type="hidden" name="id_lang" value="1"/><input type="hidden" name="id_shop" value="1"/><input type="hidden" name="Conditions" value="<?php echo htmlspecialchars((string) call_user_func_array($_smarty_tpl->registered_plugins[ 'modifier' ][ 'escape' ][ 0 ], array( $_smarty_tpl->tpl_vars['Conditions']->value,'html','UTF-8' )), ENT_QUOTES, 'UTF-8');?>
+"/><input type="hidden" name="ConditionsHide" value=""/><input type="hidden" name="gSubmitForm" value="1"/><div class="gformbuilderpro_content"><div class="formbuilder_group"><div class="formbuilder_column col-md-6 col-sm-12 col-xs-12"><div class="itemfield_wp"><div id="gformbuilderpro_486" class="itemfield"><div class="form-group input_box"><label for="input_52965" class="required_label">Imię i Nazwisko</label><input type="text" value="<?php echo htmlspecialchars((string) $_smarty_tpl->tpl_vars['customername']->value, ENT_QUOTES, 'UTF-8');?>
+" class="form-control input_52965 " id="input_52965" placeholder="Imię i Nazwisko" name="input_52965" required="required"/></div></div><div id="gformbuilderpro_487" class="itemfield"><div class="form-group input_box"><label for="input_77575" class="required_label">Adres e-mail</label><input type="text" value="<?php echo htmlspecialchars((string) $_smarty_tpl->tpl_vars['customeremail']->value, ENT_QUOTES, 'UTF-8');?>
+" class="form-control input_52965 " id="input_77575" placeholder="Adres e-mail" name="input_77575" required="required"/></div></div><div id="gformbuilderpro_488" class="itemfield"><div class="form-group input_box"><label for="input_8883">Telefon</label><input type="text" value="<?php echo htmlspecialchars((string) $_smarty_tpl->tpl_vars['customer_phone']->value, ENT_QUOTES, 'UTF-8');?>
+" class="form-control input_52965 " id="input_8883" placeholder="Numer telefonu" name="input_8883"/></div></div><div id="gformbuilderpro_489" class="itemfield"><div class="form-group input_box"><label for="input_32954">Nazwa Firmy</label><input type="text" value="<?php echo htmlspecialchars((string) $_smarty_tpl->tpl_vars['customercompany']->value, ENT_QUOTES, 'UTF-8');?>
+" class="form-control input_52965 " id="input_32954" placeholder="Nazwa Firmy" name="input_32954"/></div></div><div id="gformbuilderpro_490" class="itemfield"><?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['hook'][0], array( array('h'=>"displayGorderreference",'id'=>"490"),$_smarty_tpl ) );?>
+</div><div id="gformbuilderpro_491" class="itemfield"><div class="form-group checkbox_box"><label for="checkbox_82631" class=" required_label">Niewidoczny label 1</label><div class="checkbox_item_wp"><div class="row"><p class="col-xs-12 col-md-12"><input id="checkbox_checkbox_82631_0" type="checkbox" name="checkbox_82631[]" class="checkbox_82631" value="Oświadczam, że zapoznałem się z powyższą Klauzulą Informacyjną i akceptuję treść Regulaminu oraz Polityki Prywatności Cezos.*"/><label for="checkbox_checkbox_82631_0">Oświadczam, że zapoznałem się z powyższą Klauzulą Informacyjną i akceptuję treść Regulaminu oraz Polityki Prywatności Cezos.*</label></p></div></div></div></div><div id="gformbuilderpro_492" class="itemfield"><div class="form-group checkbox_box"><label for="checkbox_42880" class=" required_label">Niewidoczny label 2</label><div class="checkbox_item_wp"><div class="row"><p class="col-xs-12 col-md-12"><input id="checkbox_checkbox_42880_0" type="checkbox" name="checkbox_42880[]" class="checkbox_82631" value="Po zapoznaniu się z powyższą klauzulą informacyjną oświadczam, że wyrażam zgodę na przetwarzanie podanych w formularzu danych osobowych w tym adresu e-mail w celu przesyłania ofert handlowych drogą elektroniczną.*"/><label for="checkbox_checkbox_42880_0">Po zapoznaniu się z powyższą klauzulą informacyjną oświadczam, że wyrażam zgodę na przetwarzanie podanych w formularzu danych osobowych w tym adresu e-mail w celu przesyłania ofert handlowych drogą elektroniczną.*</label></p></div></div></div></div></div></div><div class="formbuilder_column col-md-6 col-sm-12 col-xs-12"><div class="itemfield_wp"><div id="gformbuilderpro_493" class="itemfield"><div class="form-group input_box"><label for="textarea_84599" class="required_label">Wiadomość</label><textarea class="form-control textarea_84599 " name="textarea_84599" id="textarea_84599" placeholder="Wprowadź swoją wiadomość" required="required" rows="7"></textarea></div></div></div></div></div><div class="formbuilder_group"><div class="formbuilder_column col-md-12 col-sm-12 col-xs-12"><div class="itemfield_wp"><div id="gformbuilderpro_513" class="itemfield"><?php if ((isset($_smarty_tpl->tpl_vars['using_v3']->value)) && $_smarty_tpl->tpl_vars['using_v3']->value) {?>
+    <input type="hidden" name="recaptcha_response" id="recaptchaResponse" data-sitekey="<?php echo htmlspecialchars((string) call_user_func_array($_smarty_tpl->registered_plugins[ 'modifier' ][ 'escape' ][ 0 ], array( $_smarty_tpl->tpl_vars['sitekey']->value,'html','UTF-8' )), ENT_QUOTES, 'UTF-8');?>
+"/>
+<?php } else { ?>
+
+            <div class="form-group capcha_box"><div class="row"><div class="col-xs-12 col-md-4"><label for="captcha_12470">reCAPTCHA</label></div><div class="col-xs-12 col-md-8"><div id="captcha_12470" class="g-recaptcha" data-sitekey="<?php echo htmlspecialchars((string) call_user_func_array($_smarty_tpl->registered_plugins[ 'modifier' ][ 'escape' ][ 0 ], array( $_smarty_tpl->tpl_vars['sitekey']->value,'html','UTF-8' )), ENT_QUOTES, 'UTF-8');?>
+" style="transform:scale(0.77);-webkit-transform:scale(0.77);transform-origin:0;-webkit-transform-origin:0;"></div></div></div></div>
+<?php }?></div><div id="gformbuilderpro_494" class="itemfield"><div class="submit_btn_left"><button type="button" name="submitForm" id="submitForm" class="button btn btn-default button-medium btn-primary"><span>Wyślij formularz</span></button></div></div><div id="gformbuilderpro_495" class="itemfield"><div class="hidden_box"><input type="hidden" value="Hidden Field" name="hidden_17795" id="hidden_17795" class=" hidden_17795"/></div></div></div></div></div> <?php if ((isset($_smarty_tpl->tpl_vars['id_module_gformbuilderpro']->value)) && $_smarty_tpl->tpl_vars['id_module_gformbuilderpro']->value > 0) {?>
+                <?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['hook'][0], array( array('h'=>'displayGDPRConsent','id_module'=>$_smarty_tpl->tpl_vars['id_module_gformbuilderpro']->value),$_smarty_tpl ) );?>
+
+            <?php }?></div><div style="clear:both;"></div></form><div style="clear:both;"></div></div><div style="clear:both;"></div><?php }
+}

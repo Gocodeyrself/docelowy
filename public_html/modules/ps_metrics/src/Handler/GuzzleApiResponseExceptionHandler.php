@@ -18,7 +18,6 @@
  * @copyright Since 2007 PrestaShop SA and Contributors
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License version 3.0
  */
-
 namespace PrestaShop\Module\Ps_metrics\Handler;
 
 class GuzzleApiResponseExceptionHandler
@@ -27,17 +26,14 @@ class GuzzleApiResponseExceptionHandler
      * @var string
      */
     private $reasonPhrase;
-
     /**
      * @var mixed
      */
     private $content;
-
     /**
      * @var int
      */
     private $statusCode;
-
     /**
      * @return string
      */
@@ -45,7 +41,6 @@ class GuzzleApiResponseExceptionHandler
     {
         return $this->reasonPhrase;
     }
-
     /**
      * @param string $reasonPhrase
      *
@@ -55,7 +50,6 @@ class GuzzleApiResponseExceptionHandler
     {
         $this->reasonPhrase = $reasonPhrase;
     }
-
     /**
      * @return mixed
      */
@@ -63,7 +57,6 @@ class GuzzleApiResponseExceptionHandler
     {
         return $this->content;
     }
-
     /**
      * @param mixed $content
      *
@@ -73,7 +66,6 @@ class GuzzleApiResponseExceptionHandler
     {
         $this->content = $content;
     }
-
     /**
      * @return int
      */
@@ -81,7 +73,6 @@ class GuzzleApiResponseExceptionHandler
     {
         return $this->statusCode;
     }
-
     /**
      * @param int $statusCode
      *
@@ -91,14 +82,12 @@ class GuzzleApiResponseExceptionHandler
     {
         $this->statusCode = $statusCode;
     }
-
     /**
      * GuzzleApiResponseExceptionHandler constructor.
      */
     public function __construct()
     {
     }
-
     /**
      * @param string $errorMessage
      *
@@ -109,7 +98,6 @@ class GuzzleApiResponseExceptionHandler
         $this->setStatusCode(500);
         $this->setContent(null);
         $this->setReasonPhrase($errorMessage);
-
         return $this;
     }
 }

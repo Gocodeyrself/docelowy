@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.1, created on 2024-10-14 11:04:36
+/* Smarty version 4.3.1, created on 2024-11-22 08:31:33
   from '/home/qisogexqbz/domains/cezos.exis24.pl/public_html/modules/ets_megamenu/views/templates/hook/menu-html_index.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.1',
-  'unifunc' => 'content_670cdea40f7131_52645470',
+  'unifunc' => 'content_67403355bb8dc6_92044724',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '49d8e56301eaba631e18a773dd59486f352cdc8c' => 
     array (
       0 => '/home/qisogexqbz/domains/cezos.exis24.pl/public_html/modules/ets_megamenu/views/templates/hook/menu-html_index.tpl',
-      1 => 1719473998,
+      1 => 1731486429,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_670cdea40f7131_52645470 (Smarty_Internal_Template $_smarty_tpl) {
+function content_67403355bb8dc6_92044724 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 
 <ul id="index-mega-menu">
@@ -37,8 +37,7 @@ $_smarty_tpl->tpl_vars['tab']->do_else = false;
                         <?php if ($_smarty_tpl->tpl_vars['tab']->value['url']) {?>
                             <?php echo htmlspecialchars((string) Tools::generateCategoryMiniatureById($_smarty_tpl->tpl_vars['tab']->value['id_category']), ENT_QUOTES, 'UTF-8');?>
 
-                            <a class="ets_mm_url" href="<?php echo htmlspecialchars((string) call_user_func_array($_smarty_tpl->registered_plugins[ 'modifier' ][ 'escape' ][ 0 ], array( $_smarty_tpl->tpl_vars['tab']->value['url'],'html','UTF-8' )), ENT_QUOTES, 'UTF-8');?>
-">
+                                                                                          <a class="ets_mm_url" href="#" onclick="event.preventDefault();">
                         <?php }?>
                             <?php if ($_smarty_tpl->tpl_vars['tab']->value['tab_img_link']) {?>
                                 <img src="<?php echo htmlspecialchars((string) call_user_func_array($_smarty_tpl->registered_plugins[ 'modifier' ][ 'escape' ][ 0 ], array( $_smarty_tpl->tpl_vars['tab']->value['tab_img_link'],'html','UTF-8' )), ENT_QUOTES, 'UTF-8');?>

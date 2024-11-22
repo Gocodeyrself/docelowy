@@ -26,19 +26,22 @@ class PsxmarketingwithgoogleFrontContainer extends Container
             'PrestaShop\\Module\\PsxMarketingWithGoogle\\Adapter\\ConfigurationAdapter' => 'getConfigurationAdapterService',
             'PrestaShop\\Module\\PsxMarketingWithGoogle\\Buffer\\TemplateBuffer' => 'getTemplateBufferService',
             'PrestaShop\\Module\\PsxMarketingWithGoogle\\Config\\Env' => 'getEnvService',
+            'PrestaShop\\Module\\PsxMarketingWithGoogle\\Conversion\\EnhancedConversionToggle' => 'getEnhancedConversionToggleService',
+            'PrestaShop\\Module\\PsxMarketingWithGoogle\\Conversion\\UserDataProvider' => 'getUserDataProviderService',
             'PrestaShop\\Module\\PsxMarketingWithGoogle\\Handler\\ErrorHandler' => 'getErrorHandlerService',
             'PrestaShop\\Module\\PsxMarketingWithGoogle\\Handler\\RemarketingHookHandler' => 'getRemarketingHookHandlerService',
             'PrestaShop\\Module\\PsxMarketingWithGoogle\\Provider\\CartEventDataProvider' => 'getCartEventDataProviderService',
-            'PrestaShop\\Module\\PsxMarketingWithGoogle\\Provider\\ConversionEventDataProvider' => 'getConversionEventDataProviderService',
             'PrestaShop\\Module\\PsxMarketingWithGoogle\\Provider\\PageViewEventDataProvider' => 'getPageViewEventDataProviderService',
             'PrestaShop\\Module\\PsxMarketingWithGoogle\\Provider\\ProductDataProvider' => 'getProductDataProviderService',
             'PrestaShop\\Module\\PsxMarketingWithGoogle\\Provider\\PurchaseEventDataProvider' => 'getPurchaseEventDataProviderService',
             'PrestaShop\\Module\\PsxMarketingWithGoogle\\Provider\\VerificationTagDataProvider' => 'getVerificationTagDataProviderService',
             'PrestaShop\\Module\\PsxMarketingWithGoogle\\Repository\\AttributesRepository' => 'getAttributesRepositoryService',
             'PrestaShop\\Module\\PsxMarketingWithGoogle\\Repository\\CarrierRepository' => 'getCarrierRepositoryService',
+            'PrestaShop\\Module\\PsxMarketingWithGoogle\\Repository\\CategoryRepository' => 'getCategoryRepositoryService',
             'PrestaShop\\Module\\PsxMarketingWithGoogle\\Repository\\CountryRepository' => 'getCountryRepositoryService',
             'PrestaShop\\Module\\PsxMarketingWithGoogle\\Repository\\CurrencyRepository' => 'getCurrencyRepositoryService',
             'PrestaShop\\Module\\PsxMarketingWithGoogle\\Repository\\LanguageRepository' => 'getLanguageRepositoryService',
+            'PrestaShop\\Module\\PsxMarketingWithGoogle\\Repository\\ManufacturerRepository' => 'getManufacturerRepositoryService',
             'PrestaShop\\Module\\PsxMarketingWithGoogle\\Repository\\ProductRepository' => 'getProductRepositoryService',
             'PrestaShop\\Module\\PsxMarketingWithGoogle\\Repository\\StateRepository' => 'getStateRepositoryService',
             'PrestaShop\\Module\\PsxMarketingWithGoogle\\Repository\\TabRepository' => 'getTabRepositoryService',
@@ -46,11 +49,13 @@ class PsxmarketingwithgoogleFrontContainer extends Container
             'PrestaShop\\Module\\PsxMarketingWithGoogle\\Repository\\VerificationTagRepository' => 'getVerificationTagRepositoryService',
             'PrestaShop\\Module\\PsxMarketingWithGoogle\\Tracker\\Segment' => 'getSegmentService',
             'psxmarketingwithgoogle' => 'getPsxmarketingwithgoogleService',
+            'psxmarketingwithgoogle.cart' => 'getPsxmarketingwithgoogle_CartService',
             'psxmarketingwithgoogle.context' => 'getPsxmarketingwithgoogle_ContextService',
             'psxmarketingwithgoogle.controller' => 'getPsxmarketingwithgoogle_ControllerService',
             'psxmarketingwithgoogle.cookie' => 'getPsxmarketingwithgoogle_CookieService',
             'psxmarketingwithgoogle.country' => 'getPsxmarketingwithgoogle_CountryService',
             'psxmarketingwithgoogle.currency' => 'getPsxmarketingwithgoogle_CurrencyService',
+            'psxmarketingwithgoogle.customer' => 'getPsxmarketingwithgoogle_CustomerService',
             'psxmarketingwithgoogle.db' => 'getPsxmarketingwithgoogle_DbService',
             'psxmarketingwithgoogle.language' => 'getPsxmarketingwithgoogle_LanguageService',
             'psxmarketingwithgoogle.link' => 'getPsxmarketingwithgoogle_LinkService',
@@ -110,6 +115,26 @@ class PsxmarketingwithgoogleFrontContainer extends Container
     }
 
     /**
+     * Gets the public 'PrestaShop\Module\PsxMarketingWithGoogle\Conversion\EnhancedConversionToggle' shared service.
+     *
+     * @return \PrestaShop\Module\PsxMarketingWithGoogle\Conversion\EnhancedConversionToggle
+     */
+    protected function getEnhancedConversionToggleService()
+    {
+        return $this->services['PrestaShop\\Module\\PsxMarketingWithGoogle\\Conversion\\EnhancedConversionToggle'] = new \PrestaShop\Module\PsxMarketingWithGoogle\Conversion\EnhancedConversionToggle(($this->services['PrestaShop\\Module\\PsxMarketingWithGoogle\\Adapter\\ConfigurationAdapter'] ?? $this->getConfigurationAdapterService()));
+    }
+
+    /**
+     * Gets the public 'PrestaShop\Module\PsxMarketingWithGoogle\Conversion\UserDataProvider' shared service.
+     *
+     * @return \PrestaShop\Module\PsxMarketingWithGoogle\Conversion\UserDataProvider
+     */
+    protected function getUserDataProviderService()
+    {
+        return $this->services['PrestaShop\\Module\\PsxMarketingWithGoogle\\Conversion\\UserDataProvider'] = new \PrestaShop\Module\PsxMarketingWithGoogle\Conversion\UserDataProvider(($this->services['psxmarketingwithgoogle.customer'] ?? $this->getPsxmarketingwithgoogle_CustomerService()), ($this->services['psxmarketingwithgoogle.cart'] ?? $this->getPsxmarketingwithgoogle_CartService()));
+    }
+
+    /**
      * Gets the public 'PrestaShop\Module\PsxMarketingWithGoogle\Handler\ErrorHandler' shared service.
      *
      * @return \PrestaShop\Module\PsxMarketingWithGoogle\Handler\ErrorHandler
@@ -140,16 +165,6 @@ class PsxmarketingwithgoogleFrontContainer extends Container
     }
 
     /**
-     * Gets the public 'PrestaShop\Module\PsxMarketingWithGoogle\Provider\ConversionEventDataProvider' shared service.
-     *
-     * @return \PrestaShop\Module\PsxMarketingWithGoogle\Provider\ConversionEventDataProvider
-     */
-    protected function getConversionEventDataProviderService()
-    {
-        return $this->services['PrestaShop\\Module\\PsxMarketingWithGoogle\\Provider\\ConversionEventDataProvider'] = new \PrestaShop\Module\PsxMarketingWithGoogle\Provider\ConversionEventDataProvider(($this->services['psxmarketingwithgoogle.context'] ?? $this->getPsxmarketingwithgoogle_ContextService()));
-    }
-
-    /**
      * Gets the public 'PrestaShop\Module\PsxMarketingWithGoogle\Provider\PageViewEventDataProvider' shared service.
      *
      * @return \PrestaShop\Module\PsxMarketingWithGoogle\Provider\PageViewEventDataProvider
@@ -176,7 +191,7 @@ class PsxmarketingwithgoogleFrontContainer extends Container
      */
     protected function getPurchaseEventDataProviderService()
     {
-        return $this->services['PrestaShop\\Module\\PsxMarketingWithGoogle\\Provider\\PurchaseEventDataProvider'] = new \PrestaShop\Module\PsxMarketingWithGoogle\Provider\PurchaseEventDataProvider(($this->services['PrestaShop\\Module\\PsxMarketingWithGoogle\\Provider\\ProductDataProvider'] ?? $this->getProductDataProviderService()), ($this->services['psxmarketingwithgoogle.context'] ?? $this->getPsxmarketingwithgoogle_ContextService()), ($this->services['PrestaShop\\Module\\PsxMarketingWithGoogle\\Adapter\\ConfigurationAdapter'] ?? $this->getConfigurationAdapterService()), ($this->services['PrestaShop\\Module\\PsxMarketingWithGoogle\\Repository\\LanguageRepository'] ?? ($this->services['PrestaShop\\Module\\PsxMarketingWithGoogle\\Repository\\LanguageRepository'] = new \PrestaShop\Module\PsxMarketingWithGoogle\Repository\LanguageRepository())), ($this->services['PrestaShop\\Module\\PsxMarketingWithGoogle\\Repository\\CountryRepository'] ?? $this->getCountryRepositoryService()));
+        return $this->services['PrestaShop\\Module\\PsxMarketingWithGoogle\\Provider\\PurchaseEventDataProvider'] = new \PrestaShop\Module\PsxMarketingWithGoogle\Provider\PurchaseEventDataProvider(($this->services['PrestaShop\\Module\\PsxMarketingWithGoogle\\Provider\\ProductDataProvider'] ?? $this->getProductDataProviderService()), ($this->services['psxmarketingwithgoogle.context'] ?? $this->getPsxmarketingwithgoogle_ContextService()), ($this->services['PrestaShop\\Module\\PsxMarketingWithGoogle\\Adapter\\ConfigurationAdapter'] ?? $this->getConfigurationAdapterService()), ($this->services['PrestaShop\\Module\\PsxMarketingWithGoogle\\Repository\\LanguageRepository'] ?? $this->getLanguageRepositoryService()), ($this->services['PrestaShop\\Module\\PsxMarketingWithGoogle\\Repository\\CountryRepository'] ?? $this->getCountryRepositoryService()));
     }
 
     /**
@@ -210,6 +225,16 @@ class PsxmarketingwithgoogleFrontContainer extends Container
     }
 
     /**
+     * Gets the public 'PrestaShop\Module\PsxMarketingWithGoogle\Repository\CategoryRepository' shared service.
+     *
+     * @return \PrestaShop\Module\PsxMarketingWithGoogle\Repository\CategoryRepository
+     */
+    protected function getCategoryRepositoryService()
+    {
+        return $this->services['PrestaShop\\Module\\PsxMarketingWithGoogle\\Repository\\CategoryRepository'] = new \PrestaShop\Module\PsxMarketingWithGoogle\Repository\CategoryRepository(($this->services['psxmarketingwithgoogle.context'] ?? $this->getPsxmarketingwithgoogle_ContextService()));
+    }
+
+    /**
      * Gets the public 'PrestaShop\Module\PsxMarketingWithGoogle\Repository\CountryRepository' shared service.
      *
      * @return \PrestaShop\Module\PsxMarketingWithGoogle\Repository\CountryRepository
@@ -236,7 +261,17 @@ class PsxmarketingwithgoogleFrontContainer extends Container
      */
     protected function getLanguageRepositoryService()
     {
-        return $this->services['PrestaShop\\Module\\PsxMarketingWithGoogle\\Repository\\LanguageRepository'] = new \PrestaShop\Module\PsxMarketingWithGoogle\Repository\LanguageRepository();
+        return $this->services['PrestaShop\\Module\\PsxMarketingWithGoogle\\Repository\\LanguageRepository'] = new \PrestaShop\Module\PsxMarketingWithGoogle\Repository\LanguageRepository(($this->services['psxmarketingwithgoogle.shop'] ?? $this->getPsxmarketingwithgoogle_ShopService())->id);
+    }
+
+    /**
+     * Gets the public 'PrestaShop\Module\PsxMarketingWithGoogle\Repository\ManufacturerRepository' shared service.
+     *
+     * @return \PrestaShop\Module\PsxMarketingWithGoogle\Repository\ManufacturerRepository
+     */
+    protected function getManufacturerRepositoryService()
+    {
+        return $this->services['PrestaShop\\Module\\PsxMarketingWithGoogle\\Repository\\ManufacturerRepository'] = new \PrestaShop\Module\PsxMarketingWithGoogle\Repository\ManufacturerRepository(($this->services['psxmarketingwithgoogle.context'] ?? $this->getPsxmarketingwithgoogle_ContextService()));
     }
 
     /**
@@ -310,6 +345,16 @@ class PsxmarketingwithgoogleFrontContainer extends Container
     }
 
     /**
+     * Gets the public 'psxmarketingwithgoogle.cart' shared service.
+     *
+     * @return \Currency
+     */
+    protected function getPsxmarketingwithgoogle_CartService()
+    {
+        return $this->services['psxmarketingwithgoogle.cart'] = \PrestaShop\Module\PsxMarketingWithGoogle\Factory\ContextFactory::getCart();
+    }
+
+    /**
      * Gets the public 'psxmarketingwithgoogle.context' shared service.
      *
      * @return \Context
@@ -357,6 +402,16 @@ class PsxmarketingwithgoogleFrontContainer extends Container
     protected function getPsxmarketingwithgoogle_CurrencyService()
     {
         return $this->services['psxmarketingwithgoogle.currency'] = \PrestaShop\Module\PsxMarketingWithGoogle\Factory\ContextFactory::getCurrency();
+    }
+
+    /**
+     * Gets the public 'psxmarketingwithgoogle.customer' shared service.
+     *
+     * @return \Currency
+     */
+    protected function getPsxmarketingwithgoogle_CustomerService()
+    {
+        return $this->services['psxmarketingwithgoogle.customer'] = \PrestaShop\Module\PsxMarketingWithGoogle\Factory\ContextFactory::getCustomer();
     }
 
     /**

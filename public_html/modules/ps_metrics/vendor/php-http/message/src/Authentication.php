@@ -1,9 +1,8 @@
 <?php
 
-namespace Http\Message;
+namespace ps_metrics_module_v4_0_8\Http\Message;
 
 use Psr\Http\Message\RequestInterface;
-
 /**
  * Add authentication information to a PSR-7 Request.
  *

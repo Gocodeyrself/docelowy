@@ -18,7 +18,6 @@
  * @copyright Since 2007 PrestaShop SA and Contributors
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License version 3.0
  */
-
 namespace PrestaShop\Module\Ps_metrics\Validation;
 
 class SelectAccountAnalytics
@@ -33,23 +32,12 @@ class SelectAccountAnalytics
     public function validate(array $data)
     {
         if (empty($data['webPropertyId'])) {
-            return false;
+            return \false;
         }
-
         /* Check if UA- is valid */
-        preg_match(
-            '/UA-\d{6,}-\d/m',
-            $data['webPropertyId'],
-            $matchWebPropertyId
-        );
-
+        \preg_match('/UA-\\d{6,}-\\d/m', $data['webPropertyId'], $matchWebPropertyId);
         /* Check if G- is valid */
-        preg_match(
-            '/properties\S{10,}/m',
-            $data['webPropertyId'],
-            $matchWebPropertyIdv4
-        );
-
-        return true;
+        \preg_match('/properties\\S{10,}/m', $data['webPropertyId'], $matchWebPropertyIdv4);
+        return \true;
     }
 }

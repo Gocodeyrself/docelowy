@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright since 2007 PrestaShop SA and Contributors
  * PrestaShop is an International Registered Trademark & Property of PrestaShop SA
@@ -17,17 +18,15 @@
  * @copyright Since 2007 PrestaShop SA and Contributors
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  */
-namespace Tests\Unit\DependencyInjection;
+namespace ps_metrics_module_v4_0_8\Tests\Unit\DependencyInjection;
 
-use PHPUnit\Framework\TestCase;
+use ps_metrics_module_v4_0_8\PHPUnit\Framework\TestCase;
 use PrestaShop\ModuleLibServiceContainer\DependencyInjection\ServiceContainer;
-
 class ServiceContainerTest extends TestCase
 {
     public function testItIsReturnValidInstance()
     {
         $serviceContainer = new ServiceContainer('test', __DIR__);
-
         $this->assertInstanceOf(ServiceContainer::class, $serviceContainer);
     }
 }

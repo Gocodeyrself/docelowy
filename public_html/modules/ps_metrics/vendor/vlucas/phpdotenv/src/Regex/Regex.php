@@ -1,6 +1,6 @@
 <?php
 
-namespace Dotenv\Regex;
+namespace ps_metrics_module_v4_0_8\Dotenv\Regex;
 
 class Regex
 {
@@ -14,11 +14,10 @@ class Regex
      */
     public static function match($pattern, $subject)
     {
-        return self::pregAndWrap(function ($subject) use ($pattern) {
-            return (int) @preg_match($pattern, $subject);
+        return self::pregAndWrap(function ($subject) use($pattern) {
+            return (int) @\preg_match($pattern, $subject);
         }, $subject);
     }
-
     /**
      * Perform a preg replace, wrapping up the result.
      *
@@ -30,11 +29,10 @@ class Regex
      */
     public static function replace($pattern, $replacement, $subject)
     {
-        return self::pregAndWrap(function ($subject) use ($pattern, $replacement) {
-            return (string) @preg_replace($pattern, $replacement, $subject);
+        return self::pregAndWrap(function ($subject) use($pattern, $replacement) {
+            return (string) @\preg_replace($pattern, $replacement, $subject);
         }, $subject);
     }
-
     /**
      * Perform a preg replace callback, wrapping up the result.
      *
@@ -46,11 +44,10 @@ class Regex
      */
     public static function replaceCallback($pattern, callable $callback, $subject)
     {
-        return self::pregAndWrap(function ($subject) use ($pattern, $callback) {
-            return (string) @preg_replace_callback($pattern, $callback, $subject);
+        return self::pregAndWrap(function ($subject) use($pattern, $callback) {
+            return (string) @\preg_replace_callback($pattern, $callback, $subject);
         }, $subject);
     }
-
     /**
      * Perform a preg operation, wrapping up the result.
      *
@@ -62,14 +59,11 @@ class Regex
     private static function pregAndWrap(callable $operation, $subject)
     {
         $result = $operation($subject);
-
-        if (($e = preg_last_error()) !== PREG_NO_ERROR) {
+        if (($e = \preg_last_error()) !== \PREG_NO_ERROR) {
             return Error::create(self::lookupError($e));
         }
-
         return Success::create($result);
     }
-
     /**
      * Lookup the preg error code.
      *
@@ -79,20 +73,19 @@ class Regex
      */
     private static function lookupError($code)
     {
-        if (defined('PREG_JIT_STACKLIMIT_ERROR') && $code === PREG_JIT_STACKLIMIT_ERROR) {
+        if (\defined('PREG_JIT_STACKLIMIT_ERROR') && $code === \PREG_JIT_STACKLIMIT_ERROR) {
             return 'JIT stack limit exhausted';
         }
-
         switch ($code) {
-            case PREG_INTERNAL_ERROR:
+            case \PREG_INTERNAL_ERROR:
                 return 'Internal error';
-            case PREG_BAD_UTF8_ERROR:
+            case \PREG_BAD_UTF8_ERROR:
                 return 'Malformed UTF-8 characters, possibly incorrectly encoded';
-            case PREG_BAD_UTF8_OFFSET_ERROR:
+            case \PREG_BAD_UTF8_OFFSET_ERROR:
                 return 'The offset did not correspond to the beginning of a valid UTF-8 code point';
-            case PREG_BACKTRACK_LIMIT_ERROR:
+            case \PREG_BACKTRACK_LIMIT_ERROR:
                 return 'Backtrack limit exhausted';
-            case PREG_RECURSION_LIMIT_ERROR:
+            case \PREG_RECURSION_LIMIT_ERROR:
                 return 'Recursion limit exhausted';
             default:
                 return 'Unknown error';

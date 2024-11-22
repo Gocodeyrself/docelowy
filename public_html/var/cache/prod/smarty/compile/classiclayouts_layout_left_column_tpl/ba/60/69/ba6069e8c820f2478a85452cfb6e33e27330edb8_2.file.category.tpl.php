@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 4.3.1, created on 2024-10-14 11:12:57
+/* Smarty version 4.3.1, created on 2024-11-22 08:31:08
   from '/home/qisogexqbz/domains/cezos.exis24.pl/public_html/themes/classic/templates/catalog/listing/category.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.1',
-  'unifunc' => 'content_670ce099a2a5f2_72251199',
+  'unifunc' => 'content_6740333c0121f6_71091936',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -22,30 +22,30 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:catalog/_partials/category-footer.tpl' => 1,
   ),
 ),false)) {
-function content_670ce099a2a5f2_72251199 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6740333c0121f6_71091936 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_995042207670ce099a21df0_88699219', 'product_list_header');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_17915357686740333c00e188_72357011', 'product_list_header');
 ?>
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1920762547670ce099a297e3_32318824', 'product_list_footer');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_9288452446740333c011c21_55988520', 'product_list_footer');
 ?>
 
 <?php $_smarty_tpl->inheritance->endChild($_smarty_tpl, 'catalog/listing/product-list.tpl');
 }
 /* {block 'product_list_header'} */
-class Block_995042207670ce099a21df0_88699219 extends Smarty_Internal_Block
+class Block_17915357686740333c00e188_72357011 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'product_list_header' => 
   array (
-    0 => 'Block_995042207670ce099a21df0_88699219',
+    0 => 'Block_17915357686740333c00e188_72357011',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -80,12 +80,12 @@ echo htmlspecialchars((string) $_smarty_tpl->tpl_vars['category']->value['name']
 }
 /* {/block 'product_list_header'} */
 /* {block 'product_list_footer'} */
-class Block_1920762547670ce099a297e3_32318824 extends Smarty_Internal_Block
+class Block_9288452446740333c011c21_55988520 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'product_list_footer' => 
   array (
-    0 => 'Block_1920762547670ce099a297e3_32318824',
+    0 => 'Block_9288452446740333c011c21_55988520',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {

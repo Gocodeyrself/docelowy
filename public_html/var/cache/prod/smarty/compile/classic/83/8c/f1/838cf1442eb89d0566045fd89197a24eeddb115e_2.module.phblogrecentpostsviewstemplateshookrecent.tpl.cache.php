@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 4.3.1, created on 2024-10-14 11:04:35
+/* Smarty version 4.3.1, created on 2024-11-22 08:31:33
   from 'module:phblogrecentpostsviewstemplateshookrecent.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.1',
-  'unifunc' => 'content_670cdea3ca6410_48771546',
+  'unifunc' => 'content_67403355a52f26_40116827',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -21,8 +21,8 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'module:ph_simpleblog/views/templates/front/1.7/_partials/post-miniature.tpl' => 1,
   ),
 ),false)) {
-function content_670cdea3ca6410_48771546 (Smarty_Internal_Template $_smarty_tpl) {
-$_smarty_tpl->compiled->nocache_hash = '1117983235670cdea3c9f142_78025556';
+function content_67403355a52f26_40116827 (Smarty_Internal_Template $_smarty_tpl) {
+$_smarty_tpl->compiled->nocache_hash = '72102821367403355a51327_33097218';
 if ((isset($_smarty_tpl->tpl_vars['recent_posts']->value)) && count($_smarty_tpl->tpl_vars['recent_posts']->value)) {?>
     <section class="simpleblog" id="phblogrecentposts">
     <div class="container">

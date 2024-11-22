@@ -18,18 +18,15 @@
  * @copyright Since 2007 PrestaShop SA and Contributors
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License version 3.0
  */
-
 namespace PrestaShop\Module\Ps_metrics\Helper;
 
 use PrestaShop\Module\Ps_metrics\Config\Env;
-
 class ConfigHelper
 {
     /**
      * @var Env
      */
     private $env;
-
     /**
      * __construct
      *
@@ -41,7 +38,6 @@ class ConfigHelper
     {
         $this->env = $env;
     }
-
     /**
      * Get webservice url
      *
@@ -51,7 +47,6 @@ class ConfigHelper
     {
         return $this->env->get('PHP_METRICS_API_URL');
     }
-
     /**
      * Get segment api key
      *
@@ -61,7 +56,6 @@ class ConfigHelper
     {
         return $this->env->get('SEGMENT_API_KEY');
     }
-
     /**
      * Get metrics cdn url
      *
@@ -71,7 +65,6 @@ class ConfigHelper
     {
         return $this->env->get('PS_METRICS_CDN_URL');
     }
-
     /**
      * Get metrics cdn enabled
      *
@@ -79,9 +72,8 @@ class ConfigHelper
      */
     public function getUseLocalVueApp()
     {
-        return ('false' === $this->env->get('USE_LOCAL_VUE_APP')) ? false : true;
+        return 'false' === $this->env->get('USE_LOCAL_VUE_APP') ? \false : \true;
     }
-
     /**
      * Get metrics cdn enabled
      *
@@ -89,6 +81,6 @@ class ConfigHelper
      */
     public function getUseBuildModeOnly()
     {
-        return ('false' === $this->env->get('USE_BUILD_MODE_ONLY')) ? false : true;
+        return 'false' === $this->env->get('USE_BUILD_MODE_ONLY') ? \false : \true;
     }
 }

@@ -18,30 +18,25 @@
  * @copyright Since 2007 PrestaShop SA and Contributors
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License version 3.0
  */
-
 namespace PrestaShop\Module\Ps_metrics\Api;
 
 use PrestaShop\Module\Ps_metrics\Api\Client\HttpClient;
-
 class HttpApi
 {
     /**
      * @var HttpClient
      */
     private $client;
-
     /**
      * HttpApi constructor.
      *
      * @param HttpClient $httpClient
      */
-    public function __construct(
-        HttpClient $httpClient
-    ) {
+    public function __construct(HttpClient $httpClient)
+    {
         $this->client = $httpClient;
         $this->client->setMiddlewares();
     }
-
     /**
      * @param string $moduleKey
      * @param string $isoCode
@@ -51,17 +46,9 @@ class HttpApi
      */
     public function getFaq($moduleKey, $isoCode, $psVersion)
     {
-        $url =
-            'https://api.addons.prestashop.com/request/faq/' .
-            $moduleKey .
-            '/' .
-            $psVersion .
-            '/' .
-            $isoCode;
+        $url = 'https://api.addons.prestashop.com/request/faq/' . $moduleKey . '/' . $psVersion . '/' . $isoCode;
         $this->client->setUrl($url);
-
         $faq = $this->client->get();
-
         return !empty($faq['error']) ? null : $faq['body'];
     }
 }

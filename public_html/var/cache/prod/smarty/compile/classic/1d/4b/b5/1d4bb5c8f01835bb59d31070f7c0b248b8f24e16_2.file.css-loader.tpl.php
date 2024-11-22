@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 4.3.1, created on 2024-10-14 11:00:14
+/* Smarty version 4.3.1, created on 2024-11-22 08:31:08
   from '/home/qisogexqbz/domains/cezos.exis24.pl/public_html/modules/trustedshopseasyintegration/views/templates/front/css-loader.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.1',
-  'unifunc' => 'content_670cdd9e361429_40786473',
+  'unifunc' => 'content_6740333c53e502_00684154',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_670cdd9e361429_40786473 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6740333c53e502_00684154 (Smarty_Internal_Template $_smarty_tpl) {
 echo '<script'; ?>
  type="text/javascript" src="<?php echo htmlspecialchars((string) $_smarty_tpl->tpl_vars['jsPathCssLoader']->value, ENT_QUOTES, 'UTF-8');?>
 "><?php echo '</script'; ?>

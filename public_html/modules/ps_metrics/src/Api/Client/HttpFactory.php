@@ -18,7 +18,6 @@
  * @copyright Since 2007 PrestaShop SA and Contributors
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License version 3.0
  */
-
 namespace PrestaShop\Module\Ps_metrics\Api\Client;
 
 use Exception;
@@ -29,55 +28,45 @@ use PrestaShop\Module\Ps_metrics\Middleware\LogMiddleware;
 use PrestaShop\Module\Ps_metrics\Middleware\Middleware;
 use PrestaShop\Module\Ps_metrics\Middleware\ResponseMiddleware;
 use PrestaShop\Module\Ps_metrics\Middleware\SentryMiddleware;
-use Prestashop\ModuleLibGuzzleAdapter\ClientFactory;
-
+use ps_metrics_module_v4_0_8\Prestashop\ModuleLibGuzzleAdapter\ClientFactory;
 class HttpFactory
 {
     /**
      * @var array
      */
     private $header;
-
     /**
      * @var string
      */
     private $url;
-
     /**
      * @var string
      */
     private $route = '';
-
     /**
      * @var Middleware
      */
     private $middlewareManager;
-
     /**
      * @var CheckResponseMiddleware
      */
     private $checkResponseMiddleware;
-
     /**
      * @var LogMiddleware
      */
     private $logMiddleware;
-
     /**
      * @var SentryMiddleware
      */
     private $sentryMiddleware;
-
     /**
      * @var ResponseMiddleware
      */
     private $responseMiddleWare;
-
     /**
      * @var GuzzleApiResponseExceptionHandler
      */
     private $guzzleApiResponseExceptionHandler;
-
     /**
      * ClientFactory constructor.
      *
@@ -87,47 +76,28 @@ class HttpFactory
      * @param ResponseMiddleware $responseMiddleWare
      * @param GuzzleApiResponseExceptionHandler $guzzleApiResponseExceptionHandler
      */
-    public function __construct(
-        CheckResponseMiddleware $checkResponseMiddleware,
-        LogMiddleware $logMiddleware,
-        SentryMiddleware $sentryMiddleware,
-        ResponseMiddleWare $responseMiddleWare,
-        GuzzleApiResponseExceptionHandler $guzzleApiResponseExceptionHandler
-    ) {
+    public function __construct(CheckResponseMiddleware $checkResponseMiddleware, LogMiddleware $logMiddleware, SentryMiddleware $sentryMiddleware, ResponseMiddleWare $responseMiddleWare, GuzzleApiResponseExceptionHandler $guzzleApiResponseExceptionHandler)
+    {
         $this->checkResponseMiddleware = $checkResponseMiddleware;
         $this->logMiddleware = $logMiddleware;
         $this->sentryMiddleware = $sentryMiddleware;
         $this->responseMiddleWare = $responseMiddleWare;
         $this->guzzleApiResponseExceptionHandler = $guzzleApiResponseExceptionHandler;
     }
-
     /**
      * @return array
      */
     public function get()
     {
-        $httpClientOptions = [
-             'base_url' => $this->getUrl(),
-             'defaults' => [
-                 'timeout' => 10,
-                 'exceptions' => false,
-                 'headers' => $this->getHeader(),
-             ],
-        ];
-
+        $httpClientOptions = ['base_url' => $this->getUrl(), 'defaults' => ['timeout' => 10, 'exceptions' => \false, 'headers' => $this->getHeader()]];
         $client = (new ClientFactory())->getClient($httpClientOptions);
-
         try {
-            $response = $client->sendRequest(
-                new Request('GET', $this->getRoute())
-            );
+            $response = $client->sendRequest(new Request('GET', $this->getRoute()));
         } catch (Exception $e) {
             $response = $this->guzzleApiResponseExceptionHandler->get($e->getMessage());
         }
-
         return $this->getMiddlewareManager()->execute($response);
     }
-
     /**
      * @param array $postBody
      * @param array $httpCustomOptions
@@ -136,32 +106,18 @@ class HttpFactory
      */
     public function post($postBody = [], $httpCustomOptions = [])
     {
-        $httpClientOptions = [
-             'base_url' => $this->getUrl(),
-             'defaults' => [
-                 'timeout' => 10,
-                 'exceptions' => false,
-                 'headers' => $this->getHeader(),
-             ],
-        ];
-
+        $httpClientOptions = ['base_url' => $this->getUrl(), 'defaults' => ['timeout' => 10, 'exceptions' => \false, 'headers' => $this->getHeader()]];
         if (isset($httpCustomOptions['json']) && !empty($httpCustomOptions['json'])) {
             $httpClientOptions['json'] = $httpCustomOptions['json'];
         }
-
         $client = (new ClientFactory())->getClient($httpClientOptions);
-
         try {
-            $response = $client->sendRequest(
-                new Request('POST', $this->getRoute(), [], (string) json_encode($postBody))
-            );
+            $response = $client->sendRequest(new Request('POST', $this->getRoute(), [], (string) \json_encode($postBody)));
         } catch (Exception $e) {
             $response = $this->guzzleApiResponseExceptionHandler->get($e->getMessage());
         }
-
         return $this->getMiddlewareManager()->execute($response);
     }
-
     /**
      * @return mixed
      */
@@ -169,7 +125,6 @@ class HttpFactory
     {
         return $this->url;
     }
-
     /**
      * @param string $url
      *
@@ -179,7 +134,6 @@ class HttpFactory
     {
         $this->url = $url;
     }
-
     /**
      * @return string
      */
@@ -187,7 +141,6 @@ class HttpFactory
     {
         return $this->route;
     }
-
     /**
      * @param string $route
      *
@@ -197,7 +150,6 @@ class HttpFactory
     {
         $this->route = $route;
     }
-
     /**
      * @return mixed
      */
@@ -205,7 +157,6 @@ class HttpFactory
     {
         return $this->header;
     }
-
     /**
      * @param array $header
      *
@@ -215,7 +166,6 @@ class HttpFactory
     {
         $this->header = $header;
     }
-
     /**
      * @return Middleware
      */
@@ -223,7 +173,6 @@ class HttpFactory
     {
         return $this->middlewareManager;
     }
-
     /**
      * @param Middleware $middlewareManager
      *
@@ -233,17 +182,13 @@ class HttpFactory
     {
         $this->middlewareManager = $middlewareManager;
     }
-
     /**
      * @return void
      */
     public function setMiddlewares()
     {
         $middlewareManager = $this->checkResponseMiddleware;
-        $middlewareManager
-            ->linkWith($this->logMiddleware)
-            ->linkWith($this->sentryMiddleware)
-            ->linkWith($this->responseMiddleWare);
+        $middlewareManager->linkWith($this->logMiddleware)->linkWith($this->sentryMiddleware)->linkWith($this->responseMiddleWare);
         $this->setMiddlewareManager($middlewareManager);
     }
 }

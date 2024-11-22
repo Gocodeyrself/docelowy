@@ -1,12 +1,11 @@
 <?php
 
-namespace Dotenv;
+namespace ps_metrics_module_v4_0_8\Dotenv;
 
-use Dotenv\Environment\FactoryInterface;
-use Dotenv\Exception\InvalidPathException;
-use Dotenv\Regex\Regex;
-use PhpOption\Option;
-
+use ps_metrics_module_v4_0_8\Dotenv\Environment\FactoryInterface;
+use ps_metrics_module_v4_0_8\Dotenv\Exception\InvalidPathException;
+use ps_metrics_module_v4_0_8\Dotenv\Regex\Regex;
+use ps_metrics_module_v4_0_8\PhpOption\Option;
 /**
  * This is the loader class.
  *
@@ -24,28 +23,24 @@ class Loader
      * @var string[]
      */
     protected $filePaths;
-
     /**
      * The environment factory instance.
      *
      * @var \Dotenv\Environment\FactoryInterface
      */
     protected $envFactory;
-
     /**
      * The environment variables instance.
      *
      * @var \Dotenv\Environment\VariablesInterface
      */
     protected $envVariables;
-
     /**
      * The list of environment variables declared inside the 'env' file.
      *
      * @var string[]
      */
     protected $variableNames = [];
-
     /**
      * Create a new loader instance.
      *
@@ -55,13 +50,12 @@ class Loader
      *
      * @return void
      */
-    public function __construct(array $filePaths, FactoryInterface $envFactory, $immutable = false)
+    public function __construct(array $filePaths, FactoryInterface $envFactory, $immutable = \false)
     {
         $this->filePaths = $filePaths;
         $this->envFactory = $envFactory;
         $this->setImmutable($immutable);
     }
-
     /**
      * Set immutable value.
      *
@@ -69,15 +63,11 @@ class Loader
      *
      * @return $this
      */
-    public function setImmutable($immutable = false)
+    public function setImmutable($immutable = \false)
     {
-        $this->envVariables = $immutable
-            ? $this->envFactory->createImmutable()
-            : $this->envFactory->create();
-
+        $this->envVariables = $immutable ? $this->envFactory->createImmutable() : $this->envFactory->create();
         return $this;
     }
-
     /**
      * Load the environment file from disk.
      *
@@ -87,11 +77,8 @@ class Loader
      */
     public function load()
     {
-        return $this->loadDirect(
-            self::findAndRead($this->filePaths)
-        );
+        return $this->loadDirect(self::findAndRead($this->filePaths));
     }
-
     /**
      * Directly load the given string.
      *
@@ -103,11 +90,8 @@ class Loader
      */
     public function loadDirect($content)
     {
-        return $this->processEntries(
-            Lines::process(preg_split("/(\r\n|\n|\r)/", $content))
-        );
+        return $this->processEntries(Lines::process(\preg_split("/(\r\n|\n|\r)/", $content)));
     }
-
     /**
      * Attempt to read the files in order.
      *
@@ -122,19 +106,14 @@ class Loader
         if ($filePaths === []) {
             throw new InvalidPathException('At least one environment file path must be provided.');
         }
-
         foreach ($filePaths as $filePath) {
             $lines = self::readFromFile($filePath);
             if ($lines->isDefined()) {
                 return $lines->get();
             }
         }
-
-        throw new InvalidPathException(
-            sprintf('Unable to read any of the environment file(s) at [%s].', implode(', ', $filePaths))
-        );
+        throw new InvalidPathException(\sprintf('Unable to read any of the environment file(s) at [%s].', \implode(', ', $filePaths)));
     }
-
     /**
      * Read the given file.
      *
@@ -144,11 +123,9 @@ class Loader
      */
     private static function readFromFile($filePath)
     {
-        $content = @file_get_contents($filePath);
-
-        return Option::fromValue($content, false);
+        $content = @\file_get_contents($filePath);
+        return Option::fromValue($content, \false);
     }
-
     /**
      * Process the environment variable entries.
      *
@@ -164,16 +141,13 @@ class Loader
     private function processEntries(array $entries)
     {
         $vars = [];
-
         foreach ($entries as $entry) {
             list($name, $value) = Parser::parse($entry);
             $vars[$name] = $this->resolveNestedVariables($value);
             $this->setEnvironmentVariable($name, $vars[$name]);
         }
-
         return $vars;
     }
-
     /**
      * Resolve the nested variables.
      *
@@ -186,23 +160,14 @@ class Loader
      */
     private function resolveNestedVariables($value = null)
     {
-        return Option::fromValue($value)
-            ->filter(function ($str) {
-                return strpos($str, '$') !== false;
-            })
-            ->flatMap(function ($str) {
-                return Regex::replaceCallback(
-                    '/\${([a-zA-Z0-9_.]+)}/',
-                    function (array $matches) {
-                        return Option::fromValue($this->getEnvironmentVariable($matches[1]))
-                            ->getOrElse($matches[0]);
-                    },
-                    $str
-                )->success();
-            })
-            ->getOrElse($value);
+        return Option::fromValue($value)->filter(function ($str) {
+            return \strpos($str, '$') !== \false;
+        })->flatMap(function ($str) {
+            return Regex::replaceCallback('/\\${([a-zA-Z0-9_.]+)}/', function (array $matches) {
+                return Option::fromValue($this->getEnvironmentVariable($matches[1]))->getOrElse($matches[0]);
+            }, $str)->success();
+        })->getOrElse($value);
     }
-
     /**
      * Search the different places for environment variables and return first value found.
      *
@@ -214,7 +179,6 @@ class Loader
     {
         return $this->envVariables->get($name);
     }
-
     /**
      * Set an environment variable.
      *
@@ -228,7 +192,6 @@ class Loader
         $this->variableNames[] = $name;
         $this->envVariables->set($name, $value);
     }
-
     /**
      * Clear an environment variable.
      *
@@ -242,7 +205,6 @@ class Loader
     {
         $this->envVariables->clear($name);
     }
-
     /**
      * Get the list of environment variables names.
      *

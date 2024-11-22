@@ -31,12 +31,14 @@ use Context;
 use Db;
 use Exception;
 use Image;
-use Klaviyo\Exception\KlaviyoException;
-use KlaviyoPs\Classes\BusinessLogicServices\OrderPayloadService;
 use Link;
 use Product;
-use KlaviyoPs\Classes\BusinessLogicServices\ProductPayloadService;
 use Validate;
+use KlaviyoV3Sdk\Exception\KlaviyoException;
+use KlaviyoPs\Classes\BusinessLogicServices\OrderPayloadService;
+use KlaviyoPs\Classes\BusinessLogicServices\ProductPayloadService;
+use libphonenumber\PhoneNumberFormat;
+use libphonenumber\PhoneNumberUtil;
 
 /**
  * Class KlaviyoUtils is a collection of utility methods reused across multiple KlaviyoPs module classes.
@@ -258,7 +260,7 @@ class KlaviyoUtils
      */
     public static function formatPrice($price)
     {
-        return number_format(is_numeric($price) ? $price : 0, 2);
+        return number_format(is_numeric($price) ? $price : 0, 2, '.', '');
     }
 
     /**
@@ -332,5 +334,33 @@ class KlaviyoUtils
         // strpos will either return the position of the substring or false.
         // If the value is an int, we know cgi is in the sapi name and we should warn the user.
         return is_int(strpos($sapi_type, 'cgi'));
+    }
+
+    /**
+     * Format phone number to international format like +12345678901
+     *
+     * @param  string $phone
+     * @param  string $isoCode
+     * @return string
+     */
+    public static function formatPhone($phone, $isoCode = '')
+    {
+        if (empty($phone) || empty($isoCode)) {
+            return $phone;
+        }
+
+        try {
+            $phoneUtil = PhoneNumberUtil::getInstance();
+            $parsed = $phoneUtil->parse($phone, $isoCode);
+
+            if (!$phoneUtil->isValidNumber($parsed)) {
+                return $phone;
+            }
+
+            $formated = $phoneUtil->format($parsed, PhoneNumberFormat::E164);
+            return $formated;
+        } catch (Exception $e) {
+            return $phone;
+        }
     }
 }

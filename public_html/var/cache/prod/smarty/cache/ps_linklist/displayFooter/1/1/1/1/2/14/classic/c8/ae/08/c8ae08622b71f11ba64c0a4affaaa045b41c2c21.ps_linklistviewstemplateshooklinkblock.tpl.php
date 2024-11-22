@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 4.3.1, created on 2024-10-14 11:00:16
+/* Smarty version 4.3.1, created on 2024-11-22 08:31:25
   from 'module:ps_linklistviewstemplateshooklinkblock.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.1',
-  'unifunc' => 'content_670cdda0859443_62400149',
+  'unifunc' => 'content_6740334d9d2307_03381344',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -18,13 +18,13 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   ),
   'cache_lifetime' => 31536000,
 ),true)) {
-function content_670cdda0859443_62400149 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6740334d9d2307_03381344 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->smarty->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
   'renderLogo' => 
   array (
     'compiled_filepath' => '/home/qisogexqbz/domains/cezos.exis24.pl/public_html/var/cache/prod/smarty/compile/classiclayouts_layout_full_width_tpl/ed/d0/a8/edd0a83d7e312b5429093b7e36fb04ce2ddbd44c_2.file.helpers.tpl.php',
     'uid' => 'edd0a83d7e312b5429093b7e36fb04ce2ddbd44c',
-    'call_name' => 'smarty_template_function_renderLogo_1220440509670cdd9d6ab1e3_23650861',
+    'call_name' => 'smarty_template_function_renderLogo_5626056336740334d357ac1_70770946',
   ),
 ));
 ?><div class="col-md-3 links footer-container-pt">
@@ -45,7 +45,7 @@ $_smarty_tpl->smarty->ext->_tplFunction->registerTplFunctions($_smarty_tpl, arra
             <a
                 id="link-cms-page-19-2"
                 class="cms-page-link"
-                href="https://sklep.cezos.com/pl/content/19-do-pobrania"
+                href="https://cezos.com/pl/content/19-do-pobrania"
                 title=""
                             >
               Do pobrania
@@ -55,7 +55,7 @@ $_smarty_tpl->smarty->ext->_tplFunction->registerTplFunctions($_smarty_tpl, arra
             <a
                 id="link-cms-page-39-2"
                 class="cms-page-link"
-                href="https://sklep.cezos.com/pl/content/39-faq-najczesciej-zadawane-pytania"
+                href="https://cezos.com/pl/content/39-faq-najczesciej-zadawane-pytania"
                 title=""
                             >
               FAQ - najczęściej zadawane pytania
@@ -65,7 +65,7 @@ $_smarty_tpl->smarty->ext->_tplFunction->registerTplFunctions($_smarty_tpl, arra
             <a
                 id="link-static-page-contact-2"
                 class="cms-page-link"
-                href="https://sklep.cezos.com/pl/kontakt"
+                href="https://cezos.com/pl/kontakt"
                 title="Skorzystaj z formularza kontaktowego"
                             >
               Kontakt z nami
@@ -89,7 +89,7 @@ $_smarty_tpl->smarty->ext->_tplFunction->registerTplFunctions($_smarty_tpl, arra
             <a
                 id="link-cms-page-1-1"
                 class="cms-page-link"
-                href="https://sklep.cezos.com/pl/content/1-regulamin-sklepu"
+                href="https://cezos.com/pl/content/1-regulamin-sklepu"
                 title=""
                             >
               Regulamin sklepu
@@ -99,7 +99,7 @@ $_smarty_tpl->smarty->ext->_tplFunction->registerTplFunctions($_smarty_tpl, arra
             <a
                 id="link-cms-page-2-1"
                 class="cms-page-link"
-                href="https://sklep.cezos.com/pl/content/2-polityka-prywatnosci"
+                href="https://cezos.com/pl/content/2-polityka-prywatnosci"
                 title=""
                             >
               Polityka prywatności
@@ -109,7 +109,7 @@ $_smarty_tpl->smarty->ext->_tplFunction->registerTplFunctions($_smarty_tpl, arra
             <a
                 id="link-cms-page-3-1"
                 class="cms-page-link"
-                href="https://sklep.cezos.com/pl/content/3-ogolne-warunki-gwarancji"
+                href="https://cezos.com/pl/content/3-ogolne-warunki-gwarancji"
                 title=""
                             >
               Ogólne warunki gwarancji
@@ -119,7 +119,7 @@ $_smarty_tpl->smarty->ext->_tplFunction->registerTplFunctions($_smarty_tpl, arra
             <a
                 id="link-cms-page-14-1"
                 class="cms-page-link"
-                href="https://sklep.cezos.com/pl/content/14-ogolne-warunki-sprzedazy"
+                href="https://cezos.com/pl/content/14-ogolne-warunki-sprzedazy"
                 title=""
                             >
               Ogólne warunki sprzedaży

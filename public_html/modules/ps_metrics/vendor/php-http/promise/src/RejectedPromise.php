@@ -1,6 +1,6 @@
 <?php
 
-namespace Http\Promise;
+namespace ps_metrics_module_v4_0_8\Http\Promise;
 
 /**
  * A rejected promise.
@@ -10,49 +10,33 @@ namespace Http\Promise;
 final class RejectedPromise implements Promise
 {
     /**
-     * @var \Exception
+     * @var \Throwable
      */
     private $exception;
-
-    /**
-     * @param \Exception $exception
-     */
-    public function __construct(\Exception $exception)
+    public function __construct(\Throwable $exception)
     {
         $this->exception = $exception;
     }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function then(callable $onFulfilled = null, callable $onRejected = null)
+    public function then(?callable $onFulfilled = null, ?callable $onRejected = null)
     {
         if (null === $onRejected) {
             return $this;
         }
-
         try {
             return new FulfilledPromise($onRejected($this->exception));
         } catch (\Exception $e) {
             return new self($e);
         }
     }
-
-    /**
-     * {@inheritdoc}
-     */
     public function getState()
     {
         return Promise::REJECTED;
     }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function wait($unwrap = true)
+    public function wait($unwrap = \true)
     {
         if ($unwrap) {
             throw $this->exception;
         }
+        return null;
     }
 }

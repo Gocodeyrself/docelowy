@@ -3,15 +3,13 @@
 namespace Http\Client\Promise;
 
 use Http\Client\Exception;
-use Http\Promise\Promise;
-
+use ps_metrics_module_v4_0_8\Http\Promise\Promise;
 final class HttpRejectedPromise implements Promise
 {
     /**
      * @var Exception
      */
     private $exception;
-
     /**
      * @param Exception $exception
      */
@@ -19,7 +17,6 @@ final class HttpRejectedPromise implements Promise
     {
         $this->exception = $exception;
     }
-
     /**
      * {@inheritdoc}
      */
@@ -28,14 +25,12 @@ final class HttpRejectedPromise implements Promise
         if (null === $onRejected) {
             return $this;
         }
-
         try {
-            return new HttpFulfilledPromise($onRejected($this->exception));
+            return new \Http\Client\Promise\HttpFulfilledPromise($onRejected($this->exception));
         } catch (Exception $e) {
             return new self($e);
         }
     }
-
     /**
      * {@inheritdoc}
      */
@@ -43,11 +38,10 @@ final class HttpRejectedPromise implements Promise
     {
         return Promise::REJECTED;
     }
-
     /**
      * {@inheritdoc}
      */
-    public function wait($unwrap = true)
+    public function wait($unwrap = \true)
     {
         if ($unwrap) {
             throw $this->exception;

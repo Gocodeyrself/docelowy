@@ -18,38 +18,31 @@
  * @copyright Since 2007 PrestaShop SA and Contributors
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License version 3.0
  */
-
 namespace PrestaShop\Module\Ps_metrics;
 
-use PrestaShop\PsAccountsInstaller\Installer\Exception\ModuleNotInstalledException;
-use PrestaShop\PsAccountsInstaller\Installer\Exception\ModuleVersionException;
-use PrestaShop\PsAccountsInstaller\Installer\Facade\PsAccounts;
-
+use ps_metrics_module_v4_0_8\PrestaShop\PsAccountsInstaller\Installer\Exception\ModuleNotInstalledException;
+use ps_metrics_module_v4_0_8\PrestaShop\PsAccountsInstaller\Installer\Exception\ModuleVersionException;
+use ps_metrics_module_v4_0_8\PrestaShop\PsAccountsInstaller\Installer\Facade\PsAccounts;
 class StatsTabManager
 {
     /**
      * @var \Ps_metrics
      */
     private $module;
-
     /**
      * @var PsAccounts
      */
     private $psAccountsFacade;
-
     /**
      * StatsTabManager constructor.
      *
      * @param \Ps_metrics $module
      */
-    public function __construct(
-        \Ps_metrics $module,
-        PsAccounts $psAccountsFacade
-    ) {
+    public function __construct(\Ps_metrics $module, PsAccounts $psAccountsFacade)
+    {
         $this->module = $module;
         $this->psAccountsFacade = $psAccountsFacade;
     }
-
     /**
      * Disable legacy stats controller and enable metrics controller instead
      *
@@ -63,17 +56,13 @@ class StatsTabManager
         try {
             $psAccountsService = $this->psAccountsFacade->getPsAccountsService();
         } catch (\Throwable $th) {
-            return true;
+            return \true;
         }
-
         if (!$psAccountsService->isAccountLinked()) {
-            return true;
+            return \true;
         }
-
-        return $this->toggleLegacyStatsController(false) &&
-            $this->enableMetricsController();
+        return $this->toggleLegacyStatsController(\false) && $this->enableMetricsController();
     }
-
     /**
      * Enable back legacy stats controller and delete metrics controller
      *
@@ -81,10 +70,8 @@ class StatsTabManager
      */
     public function uninstall()
     {
-        return $this->toggleLegacyStatsController(true) &&
-            $this->deleteMetricsController();
+        return $this->toggleLegacyStatsController(\true) && $this->deleteMetricsController();
     }
-
     /**
      * Enable or disable legacy stats controller
      *
@@ -100,10 +87,8 @@ class StatsTabManager
         $legacyStatsTab = new \Tab(\Tab::getIdFromClassName('AdminStats'));
         $legacyStatsTab->active = $bool;
         $legacyStatsTab->save();
-
         return $legacyStatsTab->save();
     }
-
     /**
      * Create and active metrics stats controller
      *
@@ -116,25 +101,20 @@ class StatsTabManager
     private function enableMetricsController()
     {
         $legacyStatsTab = new \Tab(\Tab::getIdFromClassName('AdminStats'));
-
         $metricsTab = \Tab::getIdFromClassName('MetricsController');
-
         if ($metricsTab) {
             $tab = new \Tab($metricsTab);
         } else {
             $tab = new \Tab();
         }
-
         $tab->name = $legacyStatsTab->name;
         $tab->class_name = 'MetricsController';
-        $tab->active = true;
+        $tab->active = \true;
         $tab->icon = 'assessment';
         $tab->module = $this->module->name;
         $tab->id_parent = $legacyStatsTab->id_parent;
-
         return $tab->save();
     }
-
     /**
      * Remove metrics stats controller
      *
@@ -146,7 +126,6 @@ class StatsTabManager
     private function deleteMetricsController()
     {
         $metricsTab = new \Tab(\Tab::getIdFromClassName('MetricsController'));
-
         return $metricsTab->delete();
     }
 }

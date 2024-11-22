@@ -4,7 +4,6 @@ namespace Http\Client;
 
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
-
 /**
  * Sends a PSR-7 Request and returns a PSR-7 response.
  *

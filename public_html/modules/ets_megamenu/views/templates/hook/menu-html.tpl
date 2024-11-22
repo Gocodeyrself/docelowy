@@ -96,7 +96,9 @@
                                             <span class="mm_tab_name mm_tab_toggle{if $tab.columns} mm_tab_has_child{/if}">
                                                 <span class="mm_tab_toggle_title">
                                                     {if $tab.url}
-                                                        <a class="ets_mm_url" href="{$tab.url|escape:'html':'UTF-8'}">
+                                                        {* Oryginalny kod - usunięty, aby zapobiec przekierowaniu *}
+                                                        {*<a class="ets_mm_url" href="{$tab.url|escape:'html':'UTF-8'}">8*}
+                                                        <a class="ets_mm_url" href="#" onclick="event.preventDefault();">
                                                     {/if}
                                                         {if $tab.tab_img_link}
                                                             <img src="{$tab.tab_img_link|escape:'html':'UTF-8'}" title="" alt="" width="20"/>

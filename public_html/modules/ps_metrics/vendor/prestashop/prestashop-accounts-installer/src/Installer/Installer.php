@@ -1,34 +1,28 @@
 <?php
 
-namespace PrestaShop\PsAccountsInstaller\Installer;
+namespace ps_metrics_module_v4_0_8\PrestaShop\PsAccountsInstaller\Installer;
 
 use PrestaShop\PrestaShop\Adapter\SymfonyContainer;
 use PrestaShop\PrestaShop\Core\Addon\Module\ModuleManagerBuilder;
-
 class Installer
 {
     const PS_ACCOUNTS_MODULE_NAME = 'ps_accounts';
-
     /**
      * @var string required version
      */
     private $moduleVersion;
-
     /**
      * @var string
      */
     private $moduleName = self::PS_ACCOUNTS_MODULE_NAME;
-
     /**
      * @var \Link
      */
     private $link;
-
     /**
      * @var mixed
      */
     private $moduleManager;
-
     /**
      * Installer constructor.
      *
@@ -38,18 +32,15 @@ class Installer
     public function __construct($psAccountsVersion, \Link $link = null)
     {
         $this->moduleVersion = $psAccountsVersion;
-
         if (null === $link) {
             $link = new \Link();
         }
         $this->link = $link;
-
-        if (true === $this->isShopVersion17()) {
+        if (\true === $this->isShopVersion17()) {
             $moduleManagerBuilder = ModuleManagerBuilder::getInstance();
             $this->moduleManager = $moduleManagerBuilder->build();
         }
     }
-
     /**
      * Install ps_accounts module if not installed
      * Method to call in every psx modules during the installation process
@@ -60,41 +51,34 @@ class Installer
      */
     public function install()
     {
-        if (true === $this->isModuleInstalled()) {
-            return true;
+        if (\true === $this->isModuleInstalled()) {
+            return \true;
         }
-
-        if (false === $this->isShopVersion17()) {
-            return true;
+        if (\false === $this->isShopVersion17()) {
+            return \true;
         }
-
         return $this->moduleManager->install($this->getModuleName());
     }
-
     /**
      * @return bool
      */
     public function isModuleInstalled()
     {
-        if (false === $this->isShopVersion17()) {
+        if (\false === $this->isShopVersion17()) {
             return \Module::isInstalled($this->getModuleName());
         }
-
         return $this->moduleManager->isInstalled($this->getModuleName());
     }
-
     /**
      * @return bool
      */
     public function isModuleEnabled()
     {
-        if (false === $this->isShopVersion17()) {
+        if (\false === $this->isShopVersion17()) {
             return \Module::isEnabled($this->getModuleName());
         }
-
         return $this->moduleManager->isEnabled($this->getModuleName());
     }
-
     /**
      * @return string | null
      *
@@ -104,19 +88,10 @@ class Installer
     {
         if ($this->isShopVersion17()) {
             $router = SymfonyContainer::getInstance()->get('router');
-
-            return \Tools::getHttpHost(true) . $router->generate('admin_module_manage_action', [
-                'action' => 'install',
-                'module_name' => $this->moduleName,
-            ]);
+            return \Tools::getHttpHost(\true) . $router->generate('admin_module_manage_action', ['action' => 'install', 'module_name' => $this->moduleName]);
         }
-
-        return $this->getAdminLink('AdminModules', true, [], [
-            'module_name' => $this->moduleName,
-            'install' => $this->moduleName,
-        ]);
+        return $this->getAdminLink('AdminModules', \true, [], ['module_name' => $this->moduleName, 'install' => $this->moduleName]);
     }
-
     /**
      * @return string | null
      *
@@ -126,19 +101,10 @@ class Installer
     {
         if ($this->isShopVersion17()) {
             $router = SymfonyContainer::getInstance()->get('router');
-
-            return \Tools::getHttpHost(true) . $router->generate('admin_module_manage_action', [
-                'action' => 'enable',
-                'module_name' => $this->moduleName,
-            ]);
+            return \Tools::getHttpHost(\true) . $router->generate('admin_module_manage_action', ['action' => 'enable', 'module_name' => $this->moduleName]);
         }
-
-        return $this->getAdminLink('AdminModules', true, [], [
-            'module_name' => $this->moduleName,
-            'enable' => 1,
-        ]);
+        return $this->getAdminLink('AdminModules', \true, [], ['module_name' => $this->moduleName, 'enable' => 1]);
     }
-
     /**
      * @return string | null
      *
@@ -148,45 +114,28 @@ class Installer
     {
         if ($this->isShopVersion17()) {
             $router = SymfonyContainer::getInstance()->get('router');
-
-            return \Tools::getHttpHost(true) . $router->generate('admin_module_manage_action', [
-                'action' => 'upgrade',
-                'module_name' => $this->moduleName,
-            ]);
+            return \Tools::getHttpHost(\true) . $router->generate('admin_module_manage_action', ['action' => 'upgrade', 'module_name' => $this->moduleName]);
         }
-
-        return $this->getAdminLink('AdminModules', true, [], [
-            'module_name' => $this->moduleName,
-            'upgrade' => $this->moduleName,
-        ]);
+        return $this->getAdminLink('AdminModules', \true, [], ['module_name' => $this->moduleName, 'upgrade' => $this->moduleName]);
     }
-
     /**
      * @return bool
      */
     public function isShopVersion17()
     {
-        return version_compare(_PS_VERSION_, '1.7.0.0', '>=');
+        return \version_compare(_PS_VERSION_, '1.7.0.0', '>=');
     }
-
     /**
      * @return bool
      */
     public function checkModuleVersion()
     {
         $module = \Module::getInstanceByName($this->getModuleName());
-
         if ($module instanceof \Ps_accounts) {
-            return version_compare(
-                $module->version,
-                $this->moduleVersion,
-                '>='
-            );
+            return \version_compare($module->version, $this->moduleVersion, '>=');
         }
-
-        return false;
+        return \false;
     }
-
     /**
      * @return string
      */
@@ -194,7 +143,6 @@ class Installer
     {
         return $this->moduleVersion;
     }
-
     /**
      * @return string
      */
@@ -202,7 +150,6 @@ class Installer
     {
         return $this->moduleName;
     }
-
     /**
      * Adapter for getAdminLink from prestashop link class
      *
@@ -215,20 +162,15 @@ class Installer
      *
      * @throws \PrestaShopException
      */
-    protected function getAdminLink($controller, $withToken = true, $sfRouteParams = [], $params = [])
+    protected function getAdminLink($controller, $withToken = \true, $sfRouteParams = [], $params = [])
     {
         if ($this->isShopVersion17()) {
             return $this->link->getAdminLink($controller, $withToken, $sfRouteParams, $params);
         }
         $paramsAsString = '';
         foreach ($params as $key => $value) {
-            $paramsAsString .= "&$key=$value";
+            $paramsAsString .= "&{$key}={$value}";
         }
-
-        return \Tools::getShopDomainSsl(true)
-            . __PS_BASE_URI__
-            . basename(_PS_ADMIN_DIR_)
-            . '/' . $this->link->getAdminLink($controller, $withToken)
-            . $paramsAsString;
+        return \Tools::getShopDomainSsl(\true) . __PS_BASE_URI__ . \basename(_PS_ADMIN_DIR_) . '/' . $this->link->getAdminLink($controller, $withToken) . $paramsAsString;
     }
 }

@@ -1,16 +1,14 @@
 <?php
 
-namespace Http\Message\StreamFactory;
+namespace ps_metrics_module_v4_0_8\Http\Message\StreamFactory;
 
-use Http\Message\StreamFactory;
-use Laminas\Diactoros\Stream as LaminasStream;
+use ps_metrics_module_v4_0_8\Http\Message\StreamFactory;
+use ps_metrics_module_v4_0_8\Laminas\Diactoros\Stream as LaminasStream;
 use Psr\Http\Message\StreamInterface;
-use Zend\Diactoros\Stream as ZendStream;
-
-if (!interface_exists(StreamFactory::class)) {
-    throw new \LogicException('You cannot use "Http\Message\MessageFactory\DiactorosStreamFactory" as the "php-http/message-factory" package is not installed. Try running "composer require php-http/message-factory". Note that this package is deprecated, use "psr/http-factory" instead');
+use ps_metrics_module_v4_0_8\Zend\Diactoros\Stream as ZendStream;
+if (!\interface_exists(StreamFactory::class)) {
+    throw new \LogicException('You cannot use "Http\\Message\\MessageFactory\\DiactorosStreamFactory" as the "php-http/message-factory" package is not installed. Try running "composer require php-http/message-factory". Note that this package is deprecated, use "psr/http-factory" instead');
 }
-
 /**
  * Creates Diactoros streams.
  *
@@ -20,33 +18,25 @@ if (!interface_exists(StreamFactory::class)) {
  */
 final class DiactorosStreamFactory implements StreamFactory
 {
-    /**
-     * {@inheritdoc}
-     */
     public function createStream($body = null)
     {
         if ($body instanceof StreamInterface) {
             return $body;
         }
-
-        if (is_resource($body)) {
-            if (class_exists(LaminasStream::class)) {
+        if (\is_resource($body)) {
+            if (\class_exists(LaminasStream::class)) {
                 return new LaminasStream($body);
             }
-
             return new ZendStream($body);
         }
-
-        if (class_exists(LaminasStream::class)) {
+        if (\class_exists(LaminasStream::class)) {
             $stream = new LaminasStream('php://memory', 'rw');
         } else {
             $stream = new ZendStream('php://memory', 'rw');
         }
-
         if (null !== $body && '' !== $body) {
             $stream->write((string) $body);
         }
-
         return $stream;
     }
 }

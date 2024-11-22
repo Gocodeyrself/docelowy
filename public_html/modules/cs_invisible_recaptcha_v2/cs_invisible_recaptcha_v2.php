@@ -241,7 +241,7 @@ class Cs_invisible_recaptcha_v2 extends Module
 	public function hookHeader($params)
 	{
 		// Display on the contact form
-		if ($this->context->controller instanceof ContactController){
+		if ($this->context->controller instanceof ContactController or $this->context->controller instanceof ProductController){
 			if(floatval(_PS_VERSION_) >= 1.6 && floatval(_PS_VERSION_) < 1.7){
 				$this->context->controller->addJS("modules/".$this->name.'/js/settings-16.js');
 			}elseif(floatval(_PS_VERSION_) >= 1.7){

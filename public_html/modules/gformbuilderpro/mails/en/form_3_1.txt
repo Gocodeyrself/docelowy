@@ -7,9 +7,167 @@
 
 
 
+{shop_name}
+E-mail: {shop_email}
+
+
+
+
+
+You just got a new one{form_title}" form
+
+
+
+
+
+
+Name
+{input_50653_1723626380}
+
+
+Name
+{input_268855_1723626380}
+
+
+Email
+{input_825606_1723626380}
+
+
+Phone number
+{input_973453_1723626380}
+
+
+Company name
+{input_655688_1723626380}
+
+
+Address
+{input_254236_1723626380}
+
+
+Postcode
+{input_286562_1723626380}
+
+
+Town
+{input_987350_1723626380}
+
+
+Select Country
+{selectcountry_255539_1723626380}
+
+
+VAT number
+{input_635968_1723626380}
+
+
+Name of the Project
+{input_439065_1723626380}
+
+
+Size of the LED module
+{input_48648}
+
+
+Module power
+{input_80481}
+
+
+Luminous flux
+{input_439}
+
+
+Colour temperature
+{input_47366}
+
+
+Additional features
+{survey_74340}
+
+
+Colour rendering index
+{input_23730}
+
+
+Light angle
+{input_82561}
+
+
+Supply type
+{radio_29399}
+
+
+Operating current
+{input_73311}
+
+
+Supply voltage
+{input_86360}
+
+
+Place of application
+{select_9824}
+
+
+Max. ambient temperature
+{select_21409}
+
+
+Different ambient temperature
+{input_35259}
+
+
+Additional heatsink
+{radio_97126}
+
+
+Number of channels
+{input_97548}
+
+
+Shape of the LED module
+{input_19428}
+
+
+Quantitative thresholds
+{input_91516}
+
+
+File 1
+{fileupload_87091}
+
+
+File 2
+{fileupload_72918}
+
+
+File 3
+{fileupload_31050}
+
+
+File 4
+{fileupload_51612}
+
+
+File 5
+{fileupload_99299}
+
+
+How many files do you want to add?
+{select_35131}
+
+
+Additional information
+{textarea_34747}
+
+
 
 
 
 {shop_name}
+
+
+
+
 
 

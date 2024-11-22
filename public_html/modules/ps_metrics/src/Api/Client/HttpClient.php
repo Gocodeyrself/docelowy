@@ -18,7 +18,6 @@
  * @copyright Since 2007 PrestaShop SA and Contributors
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License version 3.0
  */
-
 namespace PrestaShop\Module\Ps_metrics\Api\Client;
 
 use PrestaShop\Module\Ps_metrics\Handler\GuzzleApiResponseExceptionHandler;
@@ -26,8 +25,7 @@ use PrestaShop\Module\Ps_metrics\Middleware\CheckResponseMiddleware;
 use PrestaShop\Module\Ps_metrics\Middleware\LogMiddleware;
 use PrestaShop\Module\Ps_metrics\Middleware\ResponseMiddleware;
 use PrestaShop\Module\Ps_metrics\Middleware\SentryMiddleware;
-
-class HttpClient extends HttpFactory
+class HttpClient extends \PrestaShop\Module\Ps_metrics\Api\Client\HttpFactory
 {
     /**
      * AnalyticsClient constructor.
@@ -38,13 +36,8 @@ class HttpClient extends HttpFactory
      * @param ResponseMiddleware $responseMiddleWare
      * @param GuzzleApiResponseExceptionHandler $guzzleApiResponseExceptionHandler
      */
-    public function __construct(
-        CheckResponseMiddleware $checkResponseMiddleware,
-        LogMiddleware $logMiddleware,
-        SentryMiddleware $sentryMiddleware,
-        ResponseMiddleWare $responseMiddleWare,
-        GuzzleApiResponseExceptionHandler $guzzleApiResponseExceptionHandler
-    ) {
+    public function __construct(CheckResponseMiddleware $checkResponseMiddleware, LogMiddleware $logMiddleware, SentryMiddleware $sentryMiddleware, ResponseMiddleWare $responseMiddleWare, GuzzleApiResponseExceptionHandler $guzzleApiResponseExceptionHandler)
+    {
         parent::__construct($checkResponseMiddleware, $logMiddleware, $sentryMiddleware, $responseMiddleWare, $guzzleApiResponseExceptionHandler);
     }
 }

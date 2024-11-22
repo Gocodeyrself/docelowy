@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 4.3.1, created on 2024-10-14 11:18:30
+/* Smarty version 4.3.1, created on 2024-11-22 08:31:39
   from 'module:ph_simpleblogviewstemplatesfront1.7_partialspostminiaturefooter.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.1',
-  'unifunc' => 'content_670ce1e6b22ee6_88607715',
+  'unifunc' => 'content_6740335b8f0e82_73380393',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_670ce1e6b22ee6_88607715 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6740335b8f0e82_73380393 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'/home/qisogexqbz/domains/cezos.exis24.pl/public_html/vendor/smarty/smarty/libs/plugins/modifier.date_format.php','function'=>'smarty_modifier_date_format',),));
 ?>
 <div class="simpleblog__listing__post__wrapper__footer card-footer py-0">

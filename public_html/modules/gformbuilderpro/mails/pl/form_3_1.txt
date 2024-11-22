@@ -1,6 +1,175 @@
 
 
 
+
+
+
+
+
+
 {shop_name}
+E-mail: {shop_email}
+Adres: {shop_address}
+
+
+
+
+
+
+Właśnie otrzymałeś nowe zgłoszenie{form_title}" form
+
+
+
+
+
+
+Imię
+{input_50653_1723626380}
+
+
+Nazwisko
+{input_268855_1723626380}
+
+
+Email
+{input_825606_1723626380}
+
+
+Numer telefonu
+{input_973453_1723626380}
+
+
+Nazwa Firmy
+{input_655688_1723626380}
+
+
+Adres
+{input_254236_1723626380}
+
+
+Kod pocztowy
+{input_286562_1723626380}
+
+
+Miejscowość
+{input_987350_1723626380}
+
+
+Wybierz kraj
+{selectcountry_255539_1723626380}
+
+
+Numer VAT
+{input_635968_1723626380}
+
+
+Nazwa Projektu
+{input_439065_1723626380}
+
+
+Rozmiar modułu LED
+{input_48648}
+
+
+Moc modułu
+{input_80481}
+
+
+Strumień świetlny
+{input_439}
+
+
+Temperatura barwowa
+{input_47366}
+
+
+Dodatkowe funkcje
+{survey_74340}
+
+
+Współczynnik oddawania barw
+{input_23730}
+
+
+Kąt świecenia
+{input_82561}
+
+
+Typ zasilania
+{radio_29399}
+
+
+Prąd pracy
+{input_73311}
+
+
+Napięcie zasilania
+{input_86360}
+
+
+Miejsce zastosowania
+{select_9824}
+
+
+Max. temperatura otoczenia
+{select_21409}
+
+
+Inna temperatura otoczenia
+{input_35259}
+
+
+Dodatkowy radiator
+{radio_97126}
+
+
+Liczba kanałów
+{input_97548}
+
+
+Kształt modułu LED
+{input_19428}
+
+
+Progi ilościowe
+{input_91516}
+
+
+Plik nr.1
+{fileupload_87091}
+
+
+Plik nr.2 
+{fileupload_72918}
+
+
+Plik nr. 3
+{fileupload_31050}
+
+
+Plik nr. 4
+{fileupload_51612}
+
+
+Plik nr. 5
+{fileupload_99299}
+
+
+Ile plików chcesz dodać ?
+{select_35131}
+
+
+Dodatkowe informacje
+{textarea_34747}
+
+
+
+
+
+{shop_name}
+
+
+
+
 
 

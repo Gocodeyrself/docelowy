@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'prestashopcorp/ps_metrics',
-        'pretty_version' => 'dev-a3bf27724eb82bada84be2449af1ce96b26b8ce4',
-        'version' => 'dev-a3bf27724eb82bada84be2449af1ce96b26b8ce4',
-        'reference' => 'a3bf27724eb82bada84be2449af1ce96b26b8ce4',
+        'pretty_version' => '1.0.0+no-version-set',
+        'version' => '1.0.0.0',
+        'reference' => null,
         'type' => 'prestashop-module',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -13,7 +13,7 @@
         'clue/stream-filter' => array(
             'pretty_version' => '1.x-dev',
             'version' => '1.9999999.9999999.9999999-dev',
-            'reference' => '3cd5ac57c18cf9e449682eeadd8f8fdd5b4e864f',
+            'reference' => '049509fef80032cb3f051595029ab75b49a3c2f7',
             'type' => 'library',
             'install_path' => __DIR__ . '/../clue/stream-filter',
             'aliases' => array(),
@@ -46,7 +46,7 @@
         'php-http/message' => array(
             'pretty_version' => '1.x-dev',
             'version' => '1.9999999.9999999.9999999-dev',
-            'reference' => '47a14338bf4ebd67d317bf1144253d7db4ab55fd',
+            'reference' => '4cb00d6d316783d357a59ec94c234c50aca515f5',
             'type' => 'library',
             'install_path' => __DIR__ . '/../php-http/message',
             'aliases' => array(),
@@ -59,20 +59,18 @@
             ),
         ),
         'php-http/promise' => array(
-            'pretty_version' => 'dev-master',
-            'version' => 'dev-master',
-            'reference' => '4c4c1f9b7289a2ec57cde7f1e9762a5789506f88',
+            'pretty_version' => '1.x-dev',
+            'version' => '1.9999999.9999999.9999999-dev',
+            'reference' => 'fc85b1fba37c169a69a07ef0d5a8075770cc1f83',
             'type' => 'library',
             'install_path' => __DIR__ . '/../php-http/promise',
-            'aliases' => array(
-                0 => '1.1.x-dev',
-            ),
+            'aliases' => array(),
             'dev_requirement' => false,
         ),
         'phpoption/phpoption' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => 'dd3a383e599f49777d8b628dadbb90cae435b87e',
+            'reference' => '416ca2ac2a84555b785a98002d613fe13d1d1c2f',
             'type' => 'library',
             'install_path' => __DIR__ . '/../phpoption/phpoption',
             'aliases' => array(
@@ -99,14 +97,12 @@
             'dev_requirement' => false,
         ),
         'prestashop/module-lib-mbo-installer' => array(
-            'pretty_version' => 'dev-main',
-            'version' => 'dev-main',
-            'reference' => '866cadc9eccc93d43d22e9c5534de26d5c83aa9b',
+            'pretty_version' => 'v0.1',
+            'version' => '0.1.0.0',
+            'reference' => 'c9e598307ef17975e10c98c98538c2d3512b962b',
             'type' => 'library',
             'install_path' => __DIR__ . '/../prestashop/module-lib-mbo-installer',
-            'aliases' => array(
-                0 => '9999999-dev',
-            ),
+            'aliases' => array(),
             'dev_requirement' => false,
         ),
         'prestashop/module-lib-service-container' => array(
@@ -128,9 +124,9 @@
             'dev_requirement' => false,
         ),
         'prestashopcorp/ps_metrics' => array(
-            'pretty_version' => 'dev-a3bf27724eb82bada84be2449af1ce96b26b8ce4',
-            'version' => 'dev-a3bf27724eb82bada84be2449af1ce96b26b8ce4',
-            'reference' => 'a3bf27724eb82bada84be2449af1ce96b26b8ce4',
+            'pretty_version' => '1.0.0+no-version-set',
+            'version' => '1.0.0.0',
+            'reference' => null,
             'type' => 'prestashop-module',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -178,7 +174,7 @@
         'symfony/polyfill-ctype' => array(
             'pretty_version' => '1.x-dev',
             'version' => '1.9999999.9999999.9999999-dev',
-            'reference' => 'ea208ce43cbb04af6867b4fdddb1bdbf84cc28cb',
+            'reference' => 'ef4d7e442ca910c4764bce785146269b30cb5fc4',
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/polyfill-ctype',
             'aliases' => array(),

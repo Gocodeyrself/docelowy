@@ -1,6 +1,6 @@
 <?php
 
-namespace Http\Promise;
+namespace ps_metrics_module_v4_0_8\Http\Promise;
 
 /**
  * Promise represents a value that may not be available yet, but will be resolved at some point in future.
@@ -19,17 +19,14 @@ interface Promise
      * Promise has not been fulfilled or rejected.
      */
     const PENDING = 'pending';
-
     /**
      * Promise has been fulfilled.
      */
     const FULFILLED = 'fulfilled';
-
     /**
      * Promise has been rejected.
      */
     const REJECTED = 'rejected';
-
     /**
      * Adds behavior for when the promise is resolved or rejected (response will be available, or error happens).
      *
@@ -41,15 +38,13 @@ interface Promise
      *
      * @return Promise a new resolved promise with value of the executed callback (onFulfilled / onRejected)
      */
-    public function then(callable $onFulfilled = null, callable $onRejected = null);
-
+    public function then(?callable $onFulfilled = null, ?callable $onRejected = null);
     /**
      * Returns the state of the promise, one of PENDING, FULFILLED or REJECTED.
      *
      * @return string
      */
     public function getState();
-
     /**
      * Wait for the promise to be fulfilled or rejected.
      *
@@ -61,9 +56,9 @@ interface Promise
      *
      * @param bool $unwrap Whether to return resolved value / throw reason or not
      *
-     * @return mixed Resolved value, null if $unwrap is set to false
+     * @return ($unwrap is true ? mixed : null) Resolved value, null if $unwrap is set to false
      *
-     * @throws \Exception the rejection reason if $unwrap is set to true and the request failed
+     * @throws \Throwable the rejection reason if $unwrap is set to true and the request failed
      */
-    public function wait($unwrap = true);
+    public function wait($unwrap = \true);
 }

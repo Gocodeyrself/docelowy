@@ -4,11 +4,12 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitda8bf44f875e89534e31a89f1411b2fb
+class ComposerStaticInitce4fbee433c706a7fbb843d0761b179c
 {
     public static $files = array (
         '9c67151ae59aff4788964ce8eb2a0f43' => __DIR__ . '/..' . '/clue/stream-filter/src/functions_include.php',
         '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
+        'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
         '8cff32064859f4559445b89279f3199c' => __DIR__ . '/..' . '/php-http/message/src/filters.php',
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
         '2a9afd012ba84c341672875ae49cd5cd' => __DIR__ . '/..' . '/segmentio/analytics-php/lib/Segment.php',
@@ -22,13 +23,13 @@ class ComposerStaticInitda8bf44f875e89534e31a89f1411b2fb
         'P' => 
         array (
             'Psr\\Http\\Message\\' => 17,
-            'Psr\\Http\\Client\\' => 16,
             'Prestashop\\ModuleLibGuzzleAdapter\\' => 34,
             'PrestaShop\\PsAccountsInstaller\\' => 31,
             'PrestaShop\\Module\\PrestashopFacebook\\' => 37,
             'PrestaShop\\ModuleLibServiceContainer\\' => 37,
             'PrestaShop\\ModuleLibFaq\\' => 24,
             'PrestaShop\\ModuleLibCacheDirectoryProvider\\' => 43,
+            'PrestaShopCorp\\Billing\\' => 23,
             'PhpOption\\' => 10,
         ),
         'H' => 
@@ -62,12 +63,7 @@ class ComposerStaticInitda8bf44f875e89534e31a89f1411b2fb
         ),
         'Psr\\Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-factory/src',
-            1 => __DIR__ . '/..' . '/psr/http-message/src',
-        ),
-        'Psr\\Http\\Client\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/psr/http-client/src',
+            0 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
         'Prestashop\\ModuleLibGuzzleAdapter\\' => 
         array (
@@ -92,6 +88,10 @@ class ComposerStaticInitda8bf44f875e89534e31a89f1411b2fb
         'PrestaShop\\ModuleLibCacheDirectoryProvider\\' => 
         array (
             0 => __DIR__ . '/..' . '/prestashop/module-lib-cache-directory-provider/src',
+        ),
+        'PrestaShopCorp\\Billing\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/prestashopcorp/module-lib-billing/src',
         ),
         'PhpOption\\' => 
         array (
@@ -1529,10 +1529,8 @@ class ComposerStaticInitda8bf44f875e89534e31a89f1411b2fb
         'GuzzleHttp\\Psr7\\BufferStream' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/BufferStream.php',
         'GuzzleHttp\\Psr7\\CachingStream' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/CachingStream.php',
         'GuzzleHttp\\Psr7\\DroppingStream' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/DroppingStream.php',
-        'GuzzleHttp\\Psr7\\Exception\\MalformedUriException' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/Exception/MalformedUriException.php',
         'GuzzleHttp\\Psr7\\FnStream' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/FnStream.php',
         'GuzzleHttp\\Psr7\\Header' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/Header.php',
-        'GuzzleHttp\\Psr7\\HttpFactory' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/HttpFactory.php',
         'GuzzleHttp\\Psr7\\InflateStream' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/InflateStream.php',
         'GuzzleHttp\\Psr7\\LazyOpenStream' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/LazyOpenStream.php',
         'GuzzleHttp\\Psr7\\LimitStream' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/LimitStream.php',
@@ -1559,7 +1557,6 @@ class ComposerStaticInitda8bf44f875e89534e31a89f1411b2fb
         'Http\\Client\\Exception' => __DIR__ . '/..' . '/php-http/httplug/src/Exception.php',
         'Http\\Client\\Exception\\HttpException' => __DIR__ . '/..' . '/php-http/httplug/src/Exception/HttpException.php',
         'Http\\Client\\Exception\\NetworkException' => __DIR__ . '/..' . '/php-http/httplug/src/Exception/NetworkException.php',
-        'Http\\Client\\Exception\\RequestAwareTrait' => __DIR__ . '/..' . '/php-http/httplug/src/Exception/RequestAwareTrait.php',
         'Http\\Client\\Exception\\RequestException' => __DIR__ . '/..' . '/php-http/httplug/src/Exception/RequestException.php',
         'Http\\Client\\Exception\\TransferException' => __DIR__ . '/..' . '/php-http/httplug/src/Exception/TransferException.php',
         'Http\\Client\\HttpAsyncClient' => __DIR__ . '/..' . '/php-http/httplug/src/HttpAsyncClient.php',
@@ -1621,6 +1618,19 @@ class ComposerStaticInitda8bf44f875e89534e31a89f1411b2fb
         'PhpOption\\None' => __DIR__ . '/..' . '/phpoption/phpoption/src/PhpOption/None.php',
         'PhpOption\\Option' => __DIR__ . '/..' . '/phpoption/phpoption/src/PhpOption/Option.php',
         'PhpOption\\Some' => __DIR__ . '/..' . '/phpoption/phpoption/src/PhpOption/Some.php',
+        'PrestaShopCorp\\Billing\\Builder\\EnvBuilder' => __DIR__ . '/..' . '/prestashopcorp/module-lib-billing/src/Builder/EnvBuilder.php',
+        'PrestaShopCorp\\Billing\\Builder\\UrlBuilder' => __DIR__ . '/..' . '/prestashopcorp/module-lib-billing/src/Builder/UrlBuilder.php',
+        'PrestaShopCorp\\Billing\\Clients\\BillingApiGatewayClient' => __DIR__ . '/..' . '/prestashopcorp/module-lib-billing/src/Clients/BillingAPIGatewayClient.php',
+        'PrestaShopCorp\\Billing\\Clients\\BillingServiceSubscriptionClient' => __DIR__ . '/..' . '/prestashopcorp/module-lib-billing/src/Clients/BillingServiceSubscriptionClient.php',
+        'PrestaShopCorp\\Billing\\Clients\\GenericClient' => __DIR__ . '/..' . '/prestashopcorp/module-lib-billing/src/Clients/GenericClient.php',
+        'PrestaShopCorp\\Billing\\Clients\\Handler\\HttpResponseHandler' => __DIR__ . '/..' . '/prestashopcorp/module-lib-billing/src/Clients/Handler/HttpResponseHandler.php',
+        'PrestaShopCorp\\Billing\\Config\\Config' => __DIR__ . '/..' . '/prestashopcorp/module-lib-billing/src/Config/Config.php',
+        'PrestaShopCorp\\Billing\\Exception\\BillingContextException' => __DIR__ . '/..' . '/prestashopcorp/module-lib-billing/src/Exception/BillingContextException.php',
+        'PrestaShopCorp\\Billing\\Exception\\MissingMandatoryParametersException' => __DIR__ . '/..' . '/prestashopcorp/module-lib-billing/src/Exception/MissingMandatoryParametersException.php',
+        'PrestaShopCorp\\Billing\\Exception\\QueryParamsException' => __DIR__ . '/..' . '/prestashopcorp/module-lib-billing/src/Exception/QueryParamsException.php',
+        'PrestaShopCorp\\Billing\\Presenter\\BillingPresenter' => __DIR__ . '/..' . '/prestashopcorp/module-lib-billing/src/Presenter/BillingPresenter.php',
+        'PrestaShopCorp\\Billing\\Services\\BillingService' => __DIR__ . '/..' . '/prestashopcorp/module-lib-billing/src/Services/BillingService.php',
+        'PrestaShopCorp\\Billing\\Wrappers\\BillingContextWrapper' => __DIR__ . '/..' . '/prestashopcorp/module-lib-billing/src/Wrappers/BillingContextWrapper.php',
         'PrestaShop\\ModuleLibCacheDirectoryProvider\\Cache\\CacheDirectoryProvider' => __DIR__ . '/..' . '/prestashop/module-lib-cache-directory-provider/src/Cache/CacheDirectoryProvider.php',
         'PrestaShop\\ModuleLibFaq\\Faq' => __DIR__ . '/..' . '/prestashop/module-lib-faq/src/Faq.php',
         'PrestaShop\\ModuleLibFaq\\Parameters' => __DIR__ . '/..' . '/prestashop/module-lib-faq/src/Parameters.php',
@@ -1707,33 +1717,25 @@ class ComposerStaticInitda8bf44f875e89534e31a89f1411b2fb
         'PrestaShop\\PsAccountsInstaller\\Installer\\Installer' => __DIR__ . '/..' . '/prestashop/prestashop-accounts-installer/src/Installer/Installer.php',
         'PrestaShop\\PsAccountsInstaller\\Installer\\Presenter\\InstallerPresenter' => __DIR__ . '/..' . '/prestashop/prestashop-accounts-installer/src/Installer/Presenter/InstallerPresenter.php',
         'Prestashop\\ModuleLibGuzzleAdapter\\ClientFactory' => __DIR__ . '/..' . '/prestashop/module-lib-guzzle-adapter/src/ClientFactory.php',
-        'Prestashop\\ModuleLibGuzzleAdapter\\ConfigInterface' => __DIR__ . '/..' . '/prestashop/module-lib-guzzle-adapter/src/ConfigInterface.php',
         'Prestashop\\ModuleLibGuzzleAdapter\\Guzzle5\\Client' => __DIR__ . '/..' . '/prestashop/module-lib-guzzle-adapter/src/Guzzle5/Client.php',
         'Prestashop\\ModuleLibGuzzleAdapter\\Guzzle5\\Config' => __DIR__ . '/..' . '/prestashop/module-lib-guzzle-adapter/src/Guzzle5/Config.php',
         'Prestashop\\ModuleLibGuzzleAdapter\\Guzzle7\\Client' => __DIR__ . '/..' . '/prestashop/module-lib-guzzle-adapter/src/Guzzle7/Client.php',
         'Prestashop\\ModuleLibGuzzleAdapter\\Guzzle7\\Config' => __DIR__ . '/..' . '/prestashop/module-lib-guzzle-adapter/src/Guzzle7/Config.php',
         'Prestashop\\ModuleLibGuzzleAdapter\\Guzzle7\\Exception\\UnexpectedValueException' => __DIR__ . '/..' . '/prestashop/module-lib-guzzle-adapter/src/Guzzle7/Exception/UnexpectedValueException.php',
         'Prestashop\\ModuleLibGuzzleAdapter\\Guzzle7\\Promise' => __DIR__ . '/..' . '/prestashop/module-lib-guzzle-adapter/src/Guzzle7/Promise.php',
+        'Prestashop\\ModuleLibGuzzleAdapter\\Interfaces\\ClientExceptionInterface' => __DIR__ . '/..' . '/prestashop/module-lib-guzzle-adapter/src/Interfaces/ClientExceptionInterface.php',
+        'Prestashop\\ModuleLibGuzzleAdapter\\Interfaces\\ConfigInterface' => __DIR__ . '/..' . '/prestashop/module-lib-guzzle-adapter/src/Interfaces/ConfigInterface.php',
+        'Prestashop\\ModuleLibGuzzleAdapter\\Interfaces\\HttpClientInterface' => __DIR__ . '/..' . '/prestashop/module-lib-guzzle-adapter/src/Interfaces/HttpClientInterface.php',
         'Prestashop\\ModuleLibGuzzleAdapter\\VersionDetection' => __DIR__ . '/..' . '/prestashop/module-lib-guzzle-adapter/src/VersionDetection.php',
         'Ps_FacebookApiHealthCheckModuleFrontController' => __DIR__ . '/../..' . '/controllers/front/apiHealthCheck.php',
         'Ps_facebook' => __DIR__ . '/../..' . '/ps_facebook.php',
         'Ps_facebookAjaxModuleFrontController' => __DIR__ . '/../..' . '/controllers/front/Ajax.php',
-        'Psr\\Http\\Client\\ClientExceptionInterface' => __DIR__ . '/..' . '/psr/http-client/src/ClientExceptionInterface.php',
-        'Psr\\Http\\Client\\ClientInterface' => __DIR__ . '/..' . '/psr/http-client/src/ClientInterface.php',
-        'Psr\\Http\\Client\\NetworkExceptionInterface' => __DIR__ . '/..' . '/psr/http-client/src/NetworkExceptionInterface.php',
-        'Psr\\Http\\Client\\RequestExceptionInterface' => __DIR__ . '/..' . '/psr/http-client/src/RequestExceptionInterface.php',
         'Psr\\Http\\Message\\MessageInterface' => __DIR__ . '/..' . '/psr/http-message/src/MessageInterface.php',
-        'Psr\\Http\\Message\\RequestFactoryInterface' => __DIR__ . '/..' . '/psr/http-factory/src/RequestFactoryInterface.php',
         'Psr\\Http\\Message\\RequestInterface' => __DIR__ . '/..' . '/psr/http-message/src/RequestInterface.php',
-        'Psr\\Http\\Message\\ResponseFactoryInterface' => __DIR__ . '/..' . '/psr/http-factory/src/ResponseFactoryInterface.php',
         'Psr\\Http\\Message\\ResponseInterface' => __DIR__ . '/..' . '/psr/http-message/src/ResponseInterface.php',
-        'Psr\\Http\\Message\\ServerRequestFactoryInterface' => __DIR__ . '/..' . '/psr/http-factory/src/ServerRequestFactoryInterface.php',
         'Psr\\Http\\Message\\ServerRequestInterface' => __DIR__ . '/..' . '/psr/http-message/src/ServerRequestInterface.php',
-        'Psr\\Http\\Message\\StreamFactoryInterface' => __DIR__ . '/..' . '/psr/http-factory/src/StreamFactoryInterface.php',
         'Psr\\Http\\Message\\StreamInterface' => __DIR__ . '/..' . '/psr/http-message/src/StreamInterface.php',
-        'Psr\\Http\\Message\\UploadedFileFactoryInterface' => __DIR__ . '/..' . '/psr/http-factory/src/UploadedFileFactoryInterface.php',
         'Psr\\Http\\Message\\UploadedFileInterface' => __DIR__ . '/..' . '/psr/http-message/src/UploadedFileInterface.php',
-        'Psr\\Http\\Message\\UriFactoryInterface' => __DIR__ . '/..' . '/psr/http-factory/src/UriFactoryInterface.php',
         'Psr\\Http\\Message\\UriInterface' => __DIR__ . '/..' . '/psr/http-message/src/UriInterface.php',
         'Raven_Autoloader' => __DIR__ . '/..' . '/sentry/sentry/lib/Raven/Autoloader.php',
         'Raven_Breadcrumbs' => __DIR__ . '/..' . '/sentry/sentry/lib/Raven/Breadcrumbs.php',
@@ -1763,10 +1765,10 @@ class ComposerStaticInitda8bf44f875e89534e31a89f1411b2fb
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitda8bf44f875e89534e31a89f1411b2fb::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitda8bf44f875e89534e31a89f1411b2fb::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInitda8bf44f875e89534e31a89f1411b2fb::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInitda8bf44f875e89534e31a89f1411b2fb::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitce4fbee433c706a7fbb843d0761b179c::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitce4fbee433c706a7fbb843d0761b179c::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInitce4fbee433c706a7fbb843d0761b179c::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInitce4fbee433c706a7fbb843d0761b179c::$classMap;
 
         }, null, ClassLoader::class);
     }

@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 4.3.1, created on 2024-10-16 13:09:04
+/* Smarty version 4.3.1, created on 2024-11-22 08:34:54
   from 'module:ph_simpleblogviewstemplatesfront1.7commentsform.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.1',
-  'unifunc' => 'content_670f9ed04f3c75_94010690',
+  'unifunc' => 'content_6740341ebaec78_43647606',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_670f9ed04f3c75_94010690 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6740341ebaec78_43647606 (Smarty_Internal_Template $_smarty_tpl) {
 ?><div class="simpleblog__addComment blog-mb">
 <?php if ($_smarty_tpl->tpl_vars['customer']->value['is_logged'] || Configuration::get('PH_BLOG_COMMENT_ALLOW_GUEST')) {?>
     <h2 class="h2 mb-2"><?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['l'][0], array( array('s'=>'New comment','mod'=>'ph_simpleblog'),$_smarty_tpl ) );?>

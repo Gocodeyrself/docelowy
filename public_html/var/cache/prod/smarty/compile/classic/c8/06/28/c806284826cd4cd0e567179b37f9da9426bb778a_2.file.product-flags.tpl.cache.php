@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 4.3.1, created on 2024-10-14 11:03:20
+/* Smarty version 4.3.1, created on 2024-11-22 08:31:33
   from '/home/qisogexqbz/domains/cezos.exis24.pl/public_html/themes/classic/templates/catalog/_partials/product-flags.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.1',
-  'unifunc' => 'content_670cde580a6a71_10415350',
+  'unifunc' => 'content_67403355941383_54985631',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -20,21 +20,21 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_670cde580a6a71_10415350 (Smarty_Internal_Template $_smarty_tpl) {
+function content_67403355941383_54985631 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, false);
-$_smarty_tpl->compiled->nocache_hash = '236571057670cde5809c629_07102531';
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1549753623670cde5809e466_30012244', 'product_flags');
+$_smarty_tpl->compiled->nocache_hash = '12561361656740335593d798_71266744';
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_2391136086740335593de00_19632709', 'product_flags');
 ?>
 
 <?php }
 /* {block 'product_flags'} */
-class Block_1549753623670cde5809e466_30012244 extends Smarty_Internal_Block
+class Block_2391136086740335593de00_19632709 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'product_flags' => 
   array (
-    0 => 'Block_1549753623670cde5809e466_30012244',
+    0 => 'Block_2391136086740335593de00_19632709',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {

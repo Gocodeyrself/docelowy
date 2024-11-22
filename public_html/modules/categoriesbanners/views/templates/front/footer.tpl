@@ -37,7 +37,6 @@ rowsc.before( banner_html );
     }
 </style>
 {/foreach}
-</div>
 <!-- categorybannermodule-->
 {literal}
 <style>

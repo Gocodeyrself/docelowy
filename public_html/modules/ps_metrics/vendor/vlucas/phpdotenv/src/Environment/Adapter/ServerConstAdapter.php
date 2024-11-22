@@ -1,10 +1,9 @@
 <?php
 
-namespace Dotenv\Environment\Adapter;
+namespace ps_metrics_module_v4_0_8\Dotenv\Environment\Adapter;
 
-use PhpOption\None;
-use PhpOption\Some;
-
+use ps_metrics_module_v4_0_8\PhpOption\None;
+use ps_metrics_module_v4_0_8\PhpOption\Some;
 class ServerConstAdapter implements AdapterInterface
 {
     /**
@@ -14,9 +13,8 @@ class ServerConstAdapter implements AdapterInterface
      */
     public function isSupported()
     {
-        return true;
+        return \true;
     }
-
     /**
      * Get an environment variable, if it exists.
      *
@@ -26,13 +24,11 @@ class ServerConstAdapter implements AdapterInterface
      */
     public function get($name)
     {
-        if (array_key_exists($name, $_SERVER)) {
+        if (\array_key_exists($name, $_SERVER)) {
             return Some::create($_SERVER[$name]);
         }
-
         return None::create();
     }
-
     /**
      * Set an environment variable.
      *
@@ -45,7 +41,6 @@ class ServerConstAdapter implements AdapterInterface
     {
         $_SERVER[$name] = $value;
     }
-
     /**
      * Clear an environment variable.
      *

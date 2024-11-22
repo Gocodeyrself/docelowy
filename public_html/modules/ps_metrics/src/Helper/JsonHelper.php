@@ -18,7 +18,6 @@
  * @copyright Since 2007 PrestaShop SA and Contributors
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License version 3.0
  */
-
 namespace PrestaShop\Module\Ps_metrics\Helper;
 
 class JsonHelper
@@ -32,18 +31,15 @@ class JsonHelper
      */
     public function jsonEncode($data)
     {
-        $json = json_encode($data);
+        $json = \json_encode($data);
         if (empty($data)) {
-            $json = json_encode($data, JSON_FORCE_OBJECT);
+            $json = \json_encode($data, \JSON_FORCE_OBJECT);
         }
-
-        if (false !== $json) {
+        if (\false !== $json) {
             return $json;
         }
-
         return '';
     }
-
     /**
      * Check if the json is valid and returns an empty data if not
      *
@@ -52,19 +48,16 @@ class JsonHelper
      *
      * @return array $data
      */
-    public function jsonDecode($json, bool $assoc = true)
+    public function jsonDecode($json, bool $assoc = \true)
     {
         if ($json) {
-            $data = json_decode($json, $assoc);
-
-            if (JSON_ERROR_NONE === json_last_error()) {
+            $data = \json_decode($json, $assoc);
+            if (\JSON_ERROR_NONE === \json_last_error()) {
                 return $data;
             }
         }
-
         return [];
     }
-
     /**
      * Check if string is JSON
      *
@@ -74,8 +67,7 @@ class JsonHelper
      */
     public function isJson(string $string)
     {
-        json_decode($string);
-
-        return json_last_error() == JSON_ERROR_NONE;
+        \json_decode($string);
+        return \json_last_error() == \JSON_ERROR_NONE;
     }
 }

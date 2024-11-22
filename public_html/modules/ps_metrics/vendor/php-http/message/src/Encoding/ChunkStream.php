@@ -1,6 +1,6 @@
 <?php
 
-namespace Http\Message\Encoding;
+namespace ps_metrics_module_v4_0_8\Http\Message\Encoding;
 
 /**
  * Transform a regular stream into a chunked one.
@@ -9,20 +9,17 @@ namespace Http\Message\Encoding;
  */
 class ChunkStream extends FilteredStream
 {
-    protected function readFilter(): string
+    protected function readFilter() : string
     {
         return 'chunk';
     }
-
-    protected function writeFilter(): string
+    protected function writeFilter() : string
     {
         return 'dechunk';
     }
-
-    protected function fill(): void
+    protected function fill() : void
     {
         parent::fill();
-
         if ($this->stream->eof()) {
             $this->buffer .= "0\r\n\r\n";
         }

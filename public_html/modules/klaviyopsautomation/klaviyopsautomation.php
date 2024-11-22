@@ -34,11 +34,17 @@ class KlaviyoPsAutomation extends KlaviyoPsModule
         $this->module_key = '11f15f4ff8f9102505780531ab77ee27';
         $this->name = 'klaviyopsautomation';
         $this->author = 'PrestaShop Partners';
-        $this->version = '1.3.1';
+        $this->version = '1.8.1';
+        $this->ps_versions_compliancy = [
+            'min' => '1.7',
+            'max' => _PS_VERSION_
+        ];
 
         parent::__construct();
 
         $this->displayName = $this->l('PrestaShop Automation with Klaviyo');
+        $this->description = $this->l('Klaviyo module to integrate PrestaShop with Klaviyo.');
+        $this->confirmUninstall = $this->l('Are you sure you want to uninstall?');
     }
 
     public function registerControllersAndHooks()
@@ -63,7 +69,7 @@ class KlaviyoPsAutomation extends KlaviyoPsModule
         $infoText = null;
         $headingText = null;
         $subHeadingText = null;
-        $klaviyoLink = $this->l('https://www.klaviyo.com/uk/grow/integrations/prestashop-automation');
+        $klaviyoLink = 'https://www.klaviyo.com/uk/grow/integrations/prestashop-automation';
         $configLink = $this->context->link->getAdminLink('AdminKlaviyoPsConfig');
 
         if ($controller->controller_name === 'AdminMailTheme') {

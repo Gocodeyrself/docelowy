@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.1, created on 2024-10-14 11:11:54
+/* Smarty version 4.3.1, created on 2024-11-22 08:31:08
   from '/home/qisogexqbz/domains/cezos.exis24.pl/public_html/modules/dashactivity/views/templates/hook/dashboard_zone_one.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.1',
-  'unifunc' => 'content_670ce05a714d03_93757787',
+  'unifunc' => 'content_6740333c5378b0_47448209',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'd81d28c0ace87a8e5654466b840dca700f04e82a' => 
     array (
       0 => '/home/qisogexqbz/domains/cezos.exis24.pl/public_html/modules/dashactivity/views/templates/hook/dashboard_zone_one.tpl',
-      1 => 1689594767,
+      1 => 1730123171,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_670ce05a714d03_93757787 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6740333c5378b0_47448209 (Smarty_Internal_Template $_smarty_tpl) {
 ?><section id="dashactivity" class="panel widget">
 	<div class="panel-heading">
 		<i class="icon-time"></i> <?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['l'][0], array( array('s'=>'Activity overview','d'=>'Modules.Dashactivity.Admin'),$_smarty_tpl ) );?>
@@ -44,6 +44,7 @@ function content_670ce05a714d03_93757787 (Smarty_Internal_Template $_smarty_tpl)
 	</section>
 	<section id="dash_live" class="loading">
 		<ul class="data_list_large">
+			<?php if (Module::isEnabled('statslive')) {?>
 			<li>
 				<span class="data_label size_l">
 					<a href="<?php echo call_user_func_array($_smarty_tpl->registered_plugins[ 'modifier' ][ 'escape' ][ 0 ], array( $_smarty_tpl->tpl_vars['link']->value->getAdminLink('AdminStats'),'html','UTF-8' ));?>
@@ -58,6 +59,7 @@ function content_670ce05a714d03_93757787 (Smarty_Internal_Template $_smarty_tpl)
 					<span id="online_visitor"></span>
 				</span>
 			</li>
+			<?php }?>
 			<li>
 				<span class="data_label size_l">
 					<a href="<?php echo call_user_func_array($_smarty_tpl->registered_plugins[ 'modifier' ][ 'escape' ][ 0 ], array( $_smarty_tpl->tpl_vars['link']->value->getAdminLink('AdminCarts'),'html','UTF-8' ));?>
@@ -126,7 +128,7 @@ function content_670ce05a714d03_93757787 (Smarty_Internal_Template $_smarty_tpl)
 					<span id="new_messages"></span>
 				</span>
 			</li>
-			<?php if (Module::isInstalled('productcomments')) {?>
+			<?php if (Module::isEnabled('productcomments')) {?>
 				<li>
 				<span class="data_label"><a href="<?php echo call_user_func_array($_smarty_tpl->registered_plugins[ 'modifier' ][ 'escape' ][ 0 ], array( $_smarty_tpl->tpl_vars['link']->value->getAdminLink('AdminModules'),'html','UTF-8' ));?>
 &amp;configure=productcomments&amp;tab_module=front_office_features&amp;module_name=productcomments"><?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['l'][0], array( array('s'=>'Product Reviews','d'=>'Modules.Dashactivity.Admin'),$_smarty_tpl ) );?>
@@ -150,6 +152,7 @@ function content_670ce05a714d03_93757787 (Smarty_Internal_Template $_smarty_tpl)
 					<span id="new_customers"></span>
 				</span>
 			</li>
+			<?php if (Module::isEnabled('statsnewsletter')) {?>
 			<li>
 				<span class="data_label"><a href="<?php echo call_user_func_array($_smarty_tpl->registered_plugins[ 'modifier' ][ 'escape' ][ 0 ], array( $_smarty_tpl->tpl_vars['link']->value->getAdminLink('AdminStats'),'html','UTF-8' ));?>
 &amp;module=statsnewsletter"><?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['l'][0], array( array('s'=>'New Subscriptions','d'=>'Modules.Dashactivity.Admin'),$_smarty_tpl ) );?>
@@ -158,6 +161,8 @@ function content_670ce05a714d03_93757787 (Smarty_Internal_Template $_smarty_tpl)
 					<span id="new_registrations"></span>
 				</span>
 			</li>
+			<?php }?>
+			<?php if (Module::isEnabled('ps_emailsubscription')) {?>
 			<li>
 				<span class="data_label"><a href="<?php echo call_user_func_array($_smarty_tpl->registered_plugins[ 'modifier' ][ 'escape' ][ 0 ], array( $_smarty_tpl->tpl_vars['link']->value->getAdminLink('AdminModules'),'html','UTF-8' ));?>
 &amp;configure=ps_emailsubscription&amp;module_name=ps_emailsubscription"><?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['l'][0], array( array('s'=>'Total Subscribers','d'=>'Modules.Dashactivity.Admin'),$_smarty_tpl ) );?>
@@ -166,6 +171,7 @@ function content_670ce05a714d03_93757787 (Smarty_Internal_Template $_smarty_tpl)
 					<span id="total_suscribers"></span>
 				</span>
 			</li>
+			<?php }?>
 		</ul>
 	</section>
 	<section id="dash_traffic" class="loading">
@@ -174,6 +180,7 @@ function content_670ce05a714d03_93757787 (Smarty_Internal_Template $_smarty_tpl)
  <span class="subtitle small" id="traffic-subtitle"></span>
 		</header>
 		<ul class="data_list">
+			<?php if (Module::isEnabled('statsforecast')) {?>
 			<li>
 				<span class="data_label"><a href="<?php echo call_user_func_array($_smarty_tpl->registered_plugins[ 'modifier' ][ 'escape' ][ 0 ], array( $_smarty_tpl->tpl_vars['link']->value->getAdminLink('AdminStats'),'html','UTF-8' ));?>
 &amp;module=statsforecast"><?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['l'][0], array( array('s'=>'Visits','d'=>'Modules.Dashactivity.Admin'),$_smarty_tpl ) );?>
@@ -182,6 +189,8 @@ function content_670ce05a714d03_93757787 (Smarty_Internal_Template $_smarty_tpl)
 					<span id="visits"></span>
 				</span>
 			</li>
+			<?php }?>
+			<?php if (Module::isEnabled('statsvisits')) {?>
 			<li>
 				<span class="data_label"><a href="<?php echo call_user_func_array($_smarty_tpl->registered_plugins[ 'modifier' ][ 'escape' ][ 0 ], array( $_smarty_tpl->tpl_vars['link']->value->getAdminLink('AdminStats'),'html','UTF-8' ));?>
 &amp;module=statsvisits"><?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['l'][0], array( array('s'=>'Unique Visitors','d'=>'Modules.Dashactivity.Admin'),$_smarty_tpl ) );?>
@@ -190,6 +199,7 @@ function content_670ce05a714d03_93757787 (Smarty_Internal_Template $_smarty_tpl)
 					<span id="unique_visitors"></span>
 				</span>
 			</li>
+			<?php }?>
 			<li>
 				<span class="data_label"><?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['l'][0], array( array('s'=>'Traffic Sources','d'=>'Modules.Dashactivity.Admin'),$_smarty_tpl ) );?>
 </span>

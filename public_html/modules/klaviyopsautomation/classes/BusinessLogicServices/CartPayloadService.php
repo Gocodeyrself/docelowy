@@ -24,6 +24,7 @@ if (!defined('_PS_VERSION_')) {
     exit;
 }
 
+use Cart;
 use Customer;
 use Product;
 use ObjectModelCore;
@@ -34,6 +35,7 @@ class CartPayloadService extends PayloadServiceInterface
     const SENSITIVE_KEYS = array('secure_key');
 
     /**
+     * @param Cart $cart
      * @inheritDoc
      */
     public static function buildPayload(ObjectModelCore $cart, $id_shop = null)
@@ -54,7 +56,10 @@ class CartPayloadService extends PayloadServiceInterface
         return array_merge(
             self::removeSensitiveKeys($cart, self::SENSITIVE_KEYS),
             array(
-                'customer' => CustomerPayloadService::buildPayload(new Customer($cart->id_customer)),
+                'customer' => CustomerPayloadService::buildPayload(
+                    new Customer($cart->id_customer),
+                    $cart->id_shop
+                ),
                 'line_items' => $hydratedCartProducts
             )
         );

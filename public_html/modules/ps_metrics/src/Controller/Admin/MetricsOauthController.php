@@ -18,30 +18,26 @@
  * @copyright Since 2007 PrestaShop SA and Contributors
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License version 3.0
  */
-
 namespace PrestaShop\Module\Ps_metrics\Controller\Admin;
 
 use PrestaShop\Module\Ps_metrics\Api\AnalyticsApi;
 use PrestaShop\Module\Ps_metrics\Helper\PrestaShopHelper;
 use PrestaShop\Module\Ps_metrics\Helper\ToolsHelper;
 use PrestaShop\Module\Ps_metrics\Repository\ConfigurationRepository;
-use PrestaShop\PsAccountsInstaller\Installer\Facade\PsAccounts;
+use ps_metrics_module_v4_0_8\PrestaShop\PsAccountsInstaller\Installer\Facade\PsAccounts;
 use PrestaShopBundle\Controller\Admin\FrameworkBundleAdminController;
-
 class MetricsOauthController extends FrameworkBundleAdminController
 {
     /**
      * @var \Ps_metrics
      */
     public $module;
-
     public function __construct()
     {
         /** @var \Ps_metrics $psMetrics */
         $psMetrics = \Module::getInstanceByName('ps_metrics');
         $this->module = $psMetrics;
     }
-
     /**
      * Main method
      *
@@ -51,35 +47,20 @@ class MetricsOauthController extends FrameworkBundleAdminController
     {
         /** @var ToolsHelper $toolsHelper */
         $toolsHelper = $this->module->getService('ps_metrics.helper.tools');
-
         /** @var ConfigurationRepository $configurationRepository */
-        $configurationRepository = $this->module->getService(
-            'ps_metrics.repository.configuration'
-        );
-
+        $configurationRepository = $this->module->getService('ps_metrics.repository.configuration');
         if ('PS' === $toolsHelper->getValue('from')) {
             $this->redirectToGoogleAuthentication();
         }
-
-        $configurationRepository->saveActionGoogleLinked(true);
-
-        if (false === $this->isGoogleAuthenticationDone()) {
-            $configurationRepository->saveActionGoogleLinked(false);
+        $configurationRepository->saveActionGoogleLinked(\true);
+        if (\false === $this->isGoogleAuthenticationDone()) {
+            $configurationRepository->saveActionGoogleLinked(\false);
         }
-
         /** @var PrestaShopHelper $prestashopHelper */
         $prestashopHelper = $this->module->getService('ps_metrics.helper.prestashop');
         $link = $prestashopHelper->getLink();
-
-        $toolsHelper->redirectAdmin(
-            $link->getAdminLink('MetricsController', true, [
-                'route' => 'metrics_page',
-                'google_message_error' => $toolsHelper->getValue('message'),
-                'countProperty' => $toolsHelper->getValue('count'),
-            ]) . '#/settings'
-        );
+        $toolsHelper->redirectAdmin($link->getAdminLink('MetricsController', \true, ['route' => 'metrics_page', 'google_message_error' => $toolsHelper->getValue('message'), 'countProperty' => $toolsHelper->getValue('count')]) . '#/settings');
     }
-
     /**
      * Connexion to Google OAuth by redirecting to psessentials service
      *
@@ -89,43 +70,20 @@ class MetricsOauthController extends FrameworkBundleAdminController
     {
         /** @var AnalyticsApi $apiAnalytics */
         $apiAnalytics = $this->module->getService('ps_metrics.api.analytics');
-
         /** @var ToolsHelper $toolsHelper */
         $toolsHelper = $this->module->getService('ps_metrics.helper.tools');
-
         /** @var PsAccounts $psAccountsFacade */
         $psAccountsFacade = $this->module->getService('ps_accounts.facade');
         $psAccountsService = $psAccountsFacade->getPsAccountsService();
-
         /** @var PrestaShopHelper $prestashopHelper */
         $prestashopHelper = $this->module->getService('ps_metrics.helper.prestashop');
         $link = $prestashopHelper->getLink();
-
-        $serviceResult = $apiAnalytics->generateAuthUrl([
-            'state' => $this->getGoogleApiState(
-                \Tools::getHttpHost(true) .
-                    $link->getAdminLink('MetricsOauthController', true, [
-                        'route' => 'metrics_oauth',
-                        'from' => 'PS',
-                    ]),
-                $psAccountsService->getShopUuidV4()
-            ),
-        ]);
-
+        $serviceResult = $apiAnalytics->generateAuthUrl(['state' => $this->getGoogleApiState(\Tools::getHttpHost(\true) . $link->getAdminLink('MetricsOauthController', \true, ['route' => 'metrics_oauth', 'from' => 'PS']), $psAccountsService->getShopUuidV4())]);
         if (empty($serviceResult)) {
-            $toolsHelper->redirectAdmin(
-                $link->getAdminLink('MetricsController', true, [
-                    'route' => 'metrics_page',
-                    'google_message_error' => $toolsHelper->getValue('message'),
-                    'countProperty' => $toolsHelper->getValue('count'),
-                    'redirect' => 'settings',
-                ]) . '#/settings'
-            );
+            $toolsHelper->redirectAdmin($link->getAdminLink('MetricsController', \true, ['route' => 'metrics_page', 'google_message_error' => $toolsHelper->getValue('message'), 'countProperty' => $toolsHelper->getValue('count'), 'redirect' => 'settings']) . '#/settings');
         }
-
         $toolsHelper->redirect($serviceResult['authorizeUrl']);
     }
-
     /**
      * The service psessentials returns a param "status=ok" when the connection is done and valid
      *
@@ -135,14 +93,11 @@ class MetricsOauthController extends FrameworkBundleAdminController
     {
         /** @var ToolsHelper $toolsHelper */
         $toolsHelper = $this->module->getService('ps_metrics.helper.tools');
-
         if ('ok' === $toolsHelper->getValue('status')) {
-            return true;
+            return \true;
         }
-
-        return false;
+        return \false;
     }
-
     /**
      * Google State is a base64 json encoded
      *
@@ -154,12 +109,6 @@ class MetricsOauthController extends FrameworkBundleAdminController
     private function getGoogleApiState($shopRedirectUri, $shopId)
     {
         // the use of base64_encode is necessary for the api
-        return base64_encode(
-            '{"redirectUri":"' .
-                $shopRedirectUri .
-                '","shopId":"' .
-                $shopId .
-                '"}'
-        );
+        return \base64_encode('{"redirectUri":"' . $shopRedirectUri . '","shopId":"' . $shopId . '"}');
     }
 }

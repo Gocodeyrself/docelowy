@@ -99,7 +99,7 @@
                   class="input"
                   name="company-name"
                   type="text"
-                  required=""
+                  {* required="" *}
                   value="{if isset($smarty.session.companyName)}{$smarty.session.companyName}{/if}"
                 >
                 <label class="label" for="company-name">
@@ -236,7 +236,7 @@ Pozdrawiam' d='Shop.Theme.Exis' sprintf=['%indeks%' => $product.reference, '%nam
           </div>
         {/if}
 
-      </section>
+      {hook h='displayPaCaptcha' posTo='contact'}</section>
 
       <footer class="form-footer text-sm-left">
         <style>

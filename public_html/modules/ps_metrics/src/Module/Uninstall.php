@@ -18,46 +18,37 @@
  * @copyright Since 2007 PrestaShop SA and Contributors
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License version 3.0
  */
-
 namespace PrestaShop\Module\Ps_metrics\Module;
 
 use PrestaShop\Module\Ps_metrics\Api\AnalyticsApi;
 use PrestaShop\Module\Ps_metrics\Repository\ConfigurationRepository;
-use PrestaShop\PsAccountsInstaller\Installer\Facade\PsAccounts;
-
+use ps_metrics_module_v4_0_8\PrestaShop\PsAccountsInstaller\Installer\Facade\PsAccounts;
 class Uninstall
 {
     /**
      * @var ConfigurationRepository
      */
     private $configurationRepository;
-
     /**
      * @var AnalyticsApi
      */
     private $analyticsApi;
-
     /**
      * @var PsAccounts
      */
     private $psAccountsFacade;
-
     /**
      * Uninstall constructor.
      *
      * @param ConfigurationRepository $configurationRepository
      * @param AnalyticsApi $analyticsApi
      */
-    public function __construct(
-        PsAccounts $psAccountsFacade,
-        ConfigurationRepository $configurationRepository,
-        AnalyticsApi $analyticsApi
-    ) {
+    public function __construct(PsAccounts $psAccountsFacade, ConfigurationRepository $configurationRepository, AnalyticsApi $analyticsApi)
+    {
         $this->psAccountsFacade = $psAccountsFacade;
         $this->configurationRepository = $configurationRepository;
         $this->analyticsApi = $analyticsApi;
     }
-
     /**
      * resetConfigurationValues
      *
@@ -65,9 +56,8 @@ class Uninstall
      */
     public function resetConfigurationValues()
     {
-        return $this->configurationRepository->saveActionGoogleLinked(false);
+        return $this->configurationRepository->saveActionGoogleLinked(\false);
     }
-
     /**
      * unsubscribePsEssentials
      *
@@ -77,12 +67,10 @@ class Uninstall
     {
         // if the user is not onboarded, don't process unsubscribe
         if (!$this->isOnboardedWithAccountAndGoogle()) {
-            return true;
+            return \true;
         }
-
         return $this->analyticsApi->unsubscribe();
     }
-
     /**
      * Check if the user is onboarded on prestashop account and google
      *
@@ -90,19 +78,13 @@ class Uninstall
      */
     private function isOnboardedWithAccountAndGoogle()
     {
-        if (false === \Module::isInstalled('ps_accounts')) {
-            return false;
+        if (\false === \Module::isInstalled('ps_accounts')) {
+            return \false;
         }
-
         $shopUuidV4 = $this->psAccountsFacade->getPsAccountsService()->getShopUuidV4();
-
-        if (
-            false === $shopUuidV4 &&
-            false === $this->configurationRepository->getGoogleLinkedValue()
-        ) {
-            return false;
+        if (\false === $shopUuidV4 && \false === $this->configurationRepository->getGoogleLinkedValue()) {
+            return \false;
         }
-
-        return true;
+        return \true;
     }
 }

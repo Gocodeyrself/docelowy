@@ -24,10 +24,12 @@ if (!defined('_PS_VERSION_')) {
     exit;
 }
 
+use Address;
 use ArrayObject;
+use Country;
 use Currency;
 use Customer;
-use Klaviyo\Exception\KlaviyoException;
+use KlaviyoV3Sdk\Exception\KlaviyoException;
 use KlaviyoPs\Classes\KlaviyoUtils;
 use Language;
 use Order;
@@ -95,10 +97,22 @@ class OrderService
             $order['id_lang'] = 0;
         }
 
+        if (!isset($order['id_address_delivery'])) {
+            $order['id_address_delivery'] = 0;
+        }
+
         $order['id_order'] = (int) $order['id_order'];
         $order['id_customer'] = (int) $order['id_customer'];
         $order['id_lang'] = (int) $order['id_lang'];
+        $order['id_address_delivery'] = (int) $order['id_address_delivery'];
 
+        $address = new Address($order['id_address_delivery']);
+        if (Validate::isLoadedObject($address)) {
+            $order['id_country'] = (int) $address->id_country;
+        }
+
+        // Normalizing an order like a context because it has the context data
+        // So, a normalized order can be used as context
         return $this->contextService->normalize($order);
     }
 
@@ -188,7 +202,8 @@ class OrderService
             }
 
             $order['cache_customer'] = $this->customerService->normalize(
-                $customer
+                $customer,
+                $order // Normalized order can be used as a context
             );
         }
 

@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 4.3.1, created on 2024-10-14 11:01:06
+/* Smarty version 4.3.1, created on 2024-11-22 10:05:34
   from 'module:ps_banner_twops_banner.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.1',
-  'unifunc' => 'content_670cddd2dc81b5_50187810',
+  'unifunc' => 'content_6740495e072837_88182769',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -18,21 +18,21 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   ),
   'cache_lifetime' => 31536000,
 ),true)) {
-function content_670cddd2dc81b5_50187810 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6740495e072837_88182769 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->smarty->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
   'renderLogo' => 
   array (
     'compiled_filepath' => '/home/qisogexqbz/domains/cezos.exis24.pl/public_html/var/cache/prod/smarty/compile/classiclayouts_layout_full_width_tpl/ed/d0/a8/edd0a83d7e312b5429093b7e36fb04ce2ddbd44c_2.file.helpers.tpl.php',
     'uid' => 'edd0a83d7e312b5429093b7e36fb04ce2ddbd44c',
-    'call_name' => 'smarty_template_function_renderLogo_1220440509670cdd9d6ab1e3_23650861',
+    'call_name' => 'smarty_template_function_renderLogo_5626056336740334d357ac1_70770946',
   ),
 ));
-?><a class="banner" href="https://sklep.cezos.com/en/">
+?><a class="banner" href="https://cezos.com/en/">
         <div class="card-banner">
         <div class="image-box">
           <img
             class="img-fluid"
-            src="https://sklep.cezos.com/modules/ps_banner_two/img/3b716956c54aca9fe8b6b75bd18ddd7d.jpg"
+            src="https://cezos.com/modules/ps_banner_two/img/3b716956c54aca9fe8b6b75bd18ddd7d.jpg"
             alt=""
             title=""
             width="1200"

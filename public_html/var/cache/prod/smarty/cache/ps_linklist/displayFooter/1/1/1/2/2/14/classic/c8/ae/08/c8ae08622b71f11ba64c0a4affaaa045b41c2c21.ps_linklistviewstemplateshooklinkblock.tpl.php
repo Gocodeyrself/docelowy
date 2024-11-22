@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 4.3.1, created on 2024-10-14 11:01:06
+/* Smarty version 4.3.1, created on 2024-11-22 08:31:08
   from 'module:ps_linklistviewstemplateshooklinkblock.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.1',
-  'unifunc' => 'content_670cddd2e1a302_87041081',
+  'unifunc' => 'content_6740333c6a1bc3_34541494',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -18,13 +18,13 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   ),
   'cache_lifetime' => 31536000,
 ),true)) {
-function content_670cddd2e1a302_87041081 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6740333c6a1bc3_34541494 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->smarty->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
   'renderLogo' => 
   array (
-    'compiled_filepath' => '/home/qisogexqbz/domains/cezos.exis24.pl/public_html/var/cache/prod/smarty/compile/classiclayouts_layout_full_width_tpl/ed/d0/a8/edd0a83d7e312b5429093b7e36fb04ce2ddbd44c_2.file.helpers.tpl.php',
+    'compiled_filepath' => '/home/qisogexqbz/domains/cezos.exis24.pl/public_html/var/cache/prod/smarty/compile/classiclayouts_layout_left_column_tpl/ed/d0/a8/edd0a83d7e312b5429093b7e36fb04ce2ddbd44c_2.file.helpers.tpl.php',
     'uid' => 'edd0a83d7e312b5429093b7e36fb04ce2ddbd44c',
-    'call_name' => 'smarty_template_function_renderLogo_1220440509670cdd9d6ab1e3_23650861',
+    'call_name' => 'smarty_template_function_renderLogo_11323843006740333c02c3c5_99843043',
   ),
 ));
 ?><div class="col-md-3 links footer-container-pt">
@@ -45,7 +45,7 @@ $_smarty_tpl->smarty->ext->_tplFunction->registerTplFunctions($_smarty_tpl, arra
             <a
                 id="link-cms-page-19-2"
                 class="cms-page-link"
-                href="https://sklep.cezos.com/en/content/19-downloads"
+                href="https://cezos.com/en/content/19-downloads"
                 title=""
                             >
               Downloads
@@ -55,7 +55,7 @@ $_smarty_tpl->smarty->ext->_tplFunction->registerTplFunctions($_smarty_tpl, arra
             <a
                 id="link-cms-page-39-2"
                 class="cms-page-link"
-                href="https://sklep.cezos.com/en/content/39-FAQ-frequently-asked-questions"
+                href="https://cezos.com/en/content/39-FAQ-frequently-asked-questions"
                 title=""
                             >
               FAQ - frequently asked questions
@@ -65,7 +65,7 @@ $_smarty_tpl->smarty->ext->_tplFunction->registerTplFunctions($_smarty_tpl, arra
             <a
                 id="link-static-page-contact-2"
                 class="cms-page-link"
-                href="https://sklep.cezos.com/en/contact-us"
+                href="https://cezos.com/en/contact-us"
                 title="Use our form to contact us"
                             >
               Contact us
@@ -89,7 +89,7 @@ $_smarty_tpl->smarty->ext->_tplFunction->registerTplFunctions($_smarty_tpl, arra
             <a
                 id="link-cms-page-1-1"
                 class="cms-page-link"
-                href="https://sklep.cezos.com/en/content/1-terms-and-conditions-store"
+                href="https://cezos.com/en/content/1-terms-and-conditions-store"
                 title="Our terms and conditions"
                             >
               Store Regulations
@@ -99,7 +99,7 @@ $_smarty_tpl->smarty->ext->_tplFunction->registerTplFunctions($_smarty_tpl, arra
             <a
                 id="link-cms-page-2-1"
                 class="cms-page-link"
-                href="https://sklep.cezos.com/en/content/2-legal-notice"
+                href="https://cezos.com/en/content/2-legal-notice"
                 title="Legal notice"
                             >
               Legal Notice
@@ -109,7 +109,7 @@ $_smarty_tpl->smarty->ext->_tplFunction->registerTplFunctions($_smarty_tpl, arra
             <a
                 id="link-cms-page-3-1"
                 class="cms-page-link"
-                href="https://sklep.cezos.com/en/content/3-General-warranty-conditions"
+                href="https://cezos.com/en/content/3-General-warranty-conditions"
                 title=""
                             >
               General warranty conditions
@@ -119,7 +119,7 @@ $_smarty_tpl->smarty->ext->_tplFunction->registerTplFunctions($_smarty_tpl, arra
             <a
                 id="link-cms-page-14-1"
                 class="cms-page-link"
-                href="https://sklep.cezos.com/en/content/14-General-terms-of-sale"
+                href="https://cezos.com/en/content/14-General-terms-of-sale"
                 title=""
                             >
               General terms of sale

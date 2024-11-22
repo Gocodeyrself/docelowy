@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 4.3.1, created on 2024-10-16 12:11:53
+/* Smarty version 4.3.1, created on 2024-11-22 08:58:43
   from '/home/qisogexqbz/domains/cezos.exis24.pl/public_html/themes/classic/templates/catalog/_partials/category-header.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.1',
-  'unifunc' => 'content_670f91694273f5_82083161',
+  'unifunc' => 'content_674039b3365c50_38866636',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_670f91694273f5_82083161 (Smarty_Internal_Template $_smarty_tpl) {
+function content_674039b3365c50_38866636 (Smarty_Internal_Template $_smarty_tpl) {
 ?><div id="js-product-list-header" class="hidden">
 
 <?php echo '<script'; ?>

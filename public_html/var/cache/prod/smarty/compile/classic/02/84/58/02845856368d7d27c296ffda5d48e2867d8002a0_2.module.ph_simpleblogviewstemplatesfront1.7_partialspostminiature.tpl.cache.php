@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 4.3.1, created on 2024-10-14 11:04:35
+/* Smarty version 4.3.1, created on 2024-11-22 08:31:33
   from 'module:ph_simpleblogviewstemplatesfront1.7_partialspostminiature.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.1',
-  'unifunc' => 'content_670cdea3cf9d66_82042465',
+  'unifunc' => 'content_67403355a5b491_63056989',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -28,9 +28,9 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'module:ph_simpleblog/views/templates/front/1.7/_partials/post-miniature-footer.tpl' => 1,
   ),
 ),false)) {
-function content_670cdea3cf9d66_82042465 (Smarty_Internal_Template $_smarty_tpl) {
+function content_67403355a5b491_63056989 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'/home/qisogexqbz/domains/cezos.exis24.pl/public_html/vendor/smarty/smarty/libs/plugins/function.cycle.php','function'=>'smarty_function_cycle',),));
-$_smarty_tpl->compiled->nocache_hash = '1671318129670cdea3cac6a1_79214784';
+$_smarty_tpl->compiled->nocache_hash = '3916420367403355a55705_74911125';
 ?>
 <div class="simpleblog__listing__post
     <?php if ($_smarty_tpl->tpl_vars['blogLayout']->value == 'grid' && $_smarty_tpl->tpl_vars['columns']->value == '3') {?>

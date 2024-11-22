@@ -18,11 +18,9 @@
  * @copyright Since 2007 PrestaShop SA and Contributors
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License version 3.0
  */
-
 namespace PrestaShop\Module\Ps_metrics\Helper;
 
 use Tools;
-
 class ToolsHelper
 {
     /**
@@ -34,7 +32,6 @@ class ToolsHelper
     {
         return Tools::getShopDomainSsl($http);
     }
-
     /**
      * @return bool
      */
@@ -42,18 +39,16 @@ class ToolsHelper
     {
         return Tools::usingSecureMode();
     }
-
     /**
      * @param string $value
      * @param false|mixed $default_value
      *
      * @return false|mixed
      */
-    public function getValue(string $value, $default_value = false)
+    public function getValue(string $value, $default_value = \false)
     {
         return Tools::getValue($value, $default_value);
     }
-
     /**
      * @param string $url
      *
@@ -63,7 +58,6 @@ class ToolsHelper
     {
         Tools::redirectAdmin($url);
     }
-
     /**
      * @param string $url
      *

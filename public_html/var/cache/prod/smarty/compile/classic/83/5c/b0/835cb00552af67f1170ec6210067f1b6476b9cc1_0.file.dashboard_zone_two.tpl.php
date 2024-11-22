@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.1, created on 2024-10-14 11:11:54
+/* Smarty version 4.3.1, created on 2024-11-22 08:31:08
   from '/home/qisogexqbz/domains/cezos.exis24.pl/public_html/modules/dashproducts/views/templates/hook/dashboard_zone_two.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.1',
-  'unifunc' => 'content_670ce05a8166f5_34517788',
+  'unifunc' => 'content_6740333c56c8d1_54292564',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '835cb00552af67f1170ec6210067f1b6476b9cc1' => 
     array (
       0 => '/home/qisogexqbz/domains/cezos.exis24.pl/public_html/modules/dashproducts/views/templates/hook/dashboard_zone_two.tpl',
-      1 => 1689594767,
+      1 => 1730123683,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_670ce05a8166f5_34517788 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6740333c56c8d1_54292564 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <section id="dashproducts" class="panel widget">
   <header class="panel-heading">

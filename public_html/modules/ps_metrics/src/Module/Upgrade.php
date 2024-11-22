@@ -18,31 +18,26 @@
  * @copyright Since 2007 PrestaShop SA and Contributors
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License version 3.0
  */
-
 namespace PrestaShop\Module\Ps_metrics\Module;
 
 use PrestaShop\PrestaShop\Core\Addon\Module\ModuleManagerBuilder;
-use Ps_metrics;
-
 class Upgrade
 {
     /**
-     * @var Ps_metrics
+     * @var \Ps_metrics
      */
     private $module;
-
     /**
      * Install constructor.
      *
-     * @param Ps_metrics $module
+     * @param \Ps_metrics $module
      *
      * @return void
      */
-    public function __construct(Ps_metrics $module)
+    public function __construct(\Ps_metrics $module)
     {
         $this->module = $module;
     }
-
     /**
      * Upgrade metrics module
      *
@@ -50,14 +45,12 @@ class Upgrade
      */
     public function upgradeMetrics()
     {
-        if (true === \Module::needUpgrade($this->module)) {
+        if (\true === \Module::needUpgrade($this->module)) {
             /** @var ModuleManagerBuilder $moduleManagerBuilder */
             $moduleManagerBuilder = ModuleManagerBuilder::getInstance();
             $moduleManager = $moduleManagerBuilder->build();
-
             return $moduleManager->upgrade((string) $this->module->name);
         }
-
-        return true;
+        return \true;
     }
 }

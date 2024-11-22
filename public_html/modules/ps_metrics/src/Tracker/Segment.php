@@ -18,40 +18,33 @@
  * @copyright Since 2007 PrestaShop SA and Contributors
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License version 3.0
  */
-
 namespace PrestaShop\Module\Ps_metrics\Tracker;
 
 use PrestaShop\Module\Ps_metrics\Helper\PrestaShopHelper;
 use PrestaShop\Module\Ps_metrics\Helper\SegmentHelper;
 use PrestaShop\Module\Ps_metrics\Helper\ShopHelper;
-
-class Segment implements TrackerInterface
+class Segment implements \PrestaShop\Module\Ps_metrics\Tracker\TrackerInterface
 {
     /**
      * @var string
      */
     private $message = '';
-
     /**
      * @var array
      */
     private $options = [];
-
     /**
      * @var SegmentHelper
      */
     private $segmentHelper;
-
     /**
      * @var PrestaShopHelper
      */
     private $prestaShopHelper;
-
     /**
      * @var ShopHelper
      */
     private $shopHelper;
-
     /**
      * Segment constructor.
      *
@@ -59,17 +52,13 @@ class Segment implements TrackerInterface
      * @param PrestaShopHelper $prestaShopHelper
      * @param ShopHelper $shopHelper
      */
-    public function __construct(
-        SegmentHelper $segmentHelper,
-        PrestaShopHelper $prestaShopHelper,
-        ShopHelper $shopHelper
-    ) {
+    public function __construct(SegmentHelper $segmentHelper, PrestaShopHelper $prestaShopHelper, ShopHelper $shopHelper)
+    {
         $this->segmentHelper = $segmentHelper;
         $this->prestaShopHelper = $prestaShopHelper;
         $this->shopHelper = $shopHelper;
         $this->init();
     }
-
     /**
      * Init segment client with the api key
      *
@@ -79,7 +68,6 @@ class Segment implements TrackerInterface
     {
         $this->segmentHelper->init();
     }
-
     /**
      * Track event on segment
      *
@@ -92,11 +80,9 @@ class Segment implements TrackerInterface
         if (empty($this->message)) {
             throw new \PrestaShopException('Message cannot be empty. Need to set it with setMessage() method.');
         }
-
         // Dispatch track depending on context shop
         $this->dispatchTrack();
     }
-
     /**
      * Add track
      *
@@ -106,36 +92,11 @@ class Segment implements TrackerInterface
      */
     private function segmentTrack($userId)
     {
-        $referer = isset($_SERVER['HTTP_REFERER'])
-            ? $_SERVER['HTTP_REFERER']
-            : '';
-        $url =
-            (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on'
-                ? 'https'
-                : 'http') . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-
-        $this->segmentHelper->track([
-            'userId' => $userId,
-            'event' => $this->message,
-            'channel' => 'browser',
-            'context' => [
-                'locale' => (new PrestaShopHelper())->getLanguageIsoCode(),
-                'page' => [
-                    'referrer' => $referer,
-                    'url' => $url,
-                ],
-            ],
-            'properties' => array_merge(
-                [
-                    'module' => 'ps_metrics',
-                ],
-                $this->options
-            ),
-        ]);
-
+        $referer = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : '';
+        $url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http') . "://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}";
+        $this->segmentHelper->track(['userId' => $userId, 'event' => $this->message, 'channel' => 'browser', 'context' => ['locale' => (new PrestaShopHelper())->getLanguageIsoCode(), 'page' => ['referrer' => $referer, 'url' => $url]], 'properties' => \array_merge(['module' => 'ps_metrics'], $this->options)]);
         $this->segmentHelper->flush();
     }
-
     /**
      * Handle tracking differently depending on the shop context
      *
@@ -155,7 +116,6 @@ class Segment implements TrackerInterface
                 break;
         }
     }
-
     /**
      * Send track segment only for the current shop
      *
@@ -166,7 +126,6 @@ class Segment implements TrackerInterface
         $userId = $this->prestaShopHelper->getShopDomain();
         $this->segmentTrack($userId);
     }
-
     /**
      * Send track segment for each shop in the current shop group
      *
@@ -174,15 +133,11 @@ class Segment implements TrackerInterface
      */
     private function trackShopGroup()
     {
-        $shops = $this->shopHelper->getShops(
-            true,
-            $this->shopHelper->getContextShopGroupID()
-        );
+        $shops = $this->shopHelper->getShops(\true, $this->shopHelper->getContextShopGroupID());
         foreach ($shops as $shop) {
             $this->segmentTrack($shop['domain']);
         }
     }
-
     /**
      * Send track segment for all shops
      *
@@ -195,7 +150,6 @@ class Segment implements TrackerInterface
             $this->segmentTrack($shop['domain']);
         }
     }
-
     /**
      * @return string
      */
@@ -203,7 +157,6 @@ class Segment implements TrackerInterface
     {
         return $this->message;
     }
-
     /**
      * @param string $message
      *
@@ -213,7 +166,6 @@ class Segment implements TrackerInterface
     {
         $this->message = $message;
     }
-
     /**
      * @return array
      */
@@ -221,7 +173,6 @@ class Segment implements TrackerInterface
     {
         return $this->options;
     }
-
     /**
      * @param array $options
      *

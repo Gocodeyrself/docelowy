@@ -1,10 +1,9 @@
 <?php
 
-namespace Http\Message\Encoding;
+namespace ps_metrics_module_v4_0_8\Http\Message\Encoding;
 
-use Clue\StreamFilter as Filter;
+use ps_metrics_module_v4_0_8\Clue\StreamFilter as Filter;
 use Psr\Http\Message\StreamInterface;
-
 /**
  * Stream compress (RFC 1950).
  *
@@ -17,22 +16,18 @@ class CompressStream extends FilteredStream
      */
     public function __construct(StreamInterface $stream, $level = -1)
     {
-        if (!extension_loaded('zlib')) {
+        if (!\extension_loaded('zlib')) {
             throw new \RuntimeException('The zlib extension must be enabled to use this stream');
         }
-
         parent::__construct($stream, ['window' => 15, 'level' => $level]);
-
         // @deprecated will be removed in 2.0
         $this->writeFilterCallback = Filter\fun($this->writeFilter(), ['window' => 15]);
     }
-
-    protected function readFilter(): string
+    protected function readFilter() : string
     {
         return 'zlib.deflate';
     }
-
-    protected function writeFilter(): string
+    protected function writeFilter() : string
     {
         return 'zlib.inflate';
     }

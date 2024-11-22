@@ -18,22 +18,18 @@
  * @copyright Since 2007 PrestaShop SA and Contributors
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License version 3.0
  */
-
 namespace PrestaShop\Module\Ps_metrics\Repository;
 
 use Configuration;
 use PrestaShop\Module\Ps_metrics\Helper\PrestaShopHelper;
-
 class ConfigurationRepository
 {
     const ACCOUNT_LINKED = 'PS_METRICS_ACCOUNT_LINKED';
     const ACCOUNT_GOOGLETAG_LINKED = 'PS_METRICS_GOOGLETAG_LINKED';
-
     /**
      * @var int
      */
     private $shopId;
-
     /**
      * ConfigurationRepository constructor.
      *
@@ -45,7 +41,6 @@ class ConfigurationRepository
     {
         $this->shopId = (int) $prestaShopHelper->getShopId();
     }
-
     /**
      * saveActionGoogleLinked
      *
@@ -55,15 +50,8 @@ class ConfigurationRepository
      */
     public function saveActionGoogleLinked($action)
     {
-        return Configuration::updateValue(
-            self::ACCOUNT_LINKED,
-            $action,
-            false,
-            null,
-            $this->shopId
-        );
+        return Configuration::updateValue(self::ACCOUNT_LINKED, $action, \false, null, $this->shopId);
     }
-
     /**
      * getGoogleLinkedValue
      *
@@ -71,14 +59,8 @@ class ConfigurationRepository
      */
     public function getGoogleLinkedValue()
     {
-        return (bool) Configuration::get(
-            self::ACCOUNT_LINKED,
-            null,
-            null,
-            $this->shopId
-        );
+        return (bool) Configuration::get(self::ACCOUNT_LINKED, null, null, $this->shopId);
     }
-
     /**
      * getShopDomain
      *
@@ -86,14 +68,8 @@ class ConfigurationRepository
      */
     public function getShopDomain()
     {
-        return Configuration::get(
-            'PS_SHOP_DOMAIN',
-            null,
-            null,
-            $this->shopId
-        );
+        return Configuration::get('PS_SHOP_DOMAIN', null, null, $this->shopId);
     }
-
     /**
      * saveGoogleTagLinked
      *
@@ -103,12 +79,6 @@ class ConfigurationRepository
      */
     public function saveGoogleTagLinked($action)
     {
-        return Configuration::updateValue(
-            self::ACCOUNT_GOOGLETAG_LINKED,
-            $action,
-            false,
-            null,
-            $this->shopId
-        );
+        return Configuration::updateValue(self::ACCOUNT_GOOGLETAG_LINKED, $action, \false, null, $this->shopId);
     }
 }

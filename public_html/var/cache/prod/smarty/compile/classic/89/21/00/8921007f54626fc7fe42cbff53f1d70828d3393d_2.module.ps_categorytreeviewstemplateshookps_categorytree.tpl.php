@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 4.3.1, created on 2024-10-14 11:12:57
+/* Smarty version 4.3.1, created on 2024-11-22 08:31:08
   from 'module:ps_categorytreeviewstemplateshookps_categorytree.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.1',
-  'unifunc' => 'content_670ce099dab790_24345436',
+  'unifunc' => 'content_6740333c3d2789_77590425',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -20,13 +20,13 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_670ce099dab790_24345436 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6740333c3d2789_77590425 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->smarty->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
   'categories' => 
   array (
     'compiled_filepath' => '/home/qisogexqbz/domains/cezos.exis24.pl/public_html/var/cache/prod/smarty/compile/classic/89/21/00/8921007f54626fc7fe42cbff53f1d70828d3393d_2.module.ps_categorytreeviewstemplateshookps_categorytree.tpl.php',
     'uid' => '8921007f54626fc7fe42cbff53f1d70828d3393d',
-    'call_name' => 'smarty_template_function_categories_261172843670ce099da08f8_46263518',
+    'call_name' => 'smarty_template_function_categories_20063429006740333c3cce44_42044666',
   ),
 ));
 ?>
@@ -44,9 +44,9 @@ $_smarty_tpl->smarty->ext->_tplFunction->registerTplFunctions($_smarty_tpl, arra
   </ul>
 </div>
 <?php }
-/* smarty_template_function_categories_261172843670ce099da08f8_46263518 */
-if (!function_exists('smarty_template_function_categories_261172843670ce099da08f8_46263518')) {
-function smarty_template_function_categories_261172843670ce099da08f8_46263518(Smarty_Internal_Template $_smarty_tpl,$params) {
+/* smarty_template_function_categories_20063429006740333c3cce44_42044666 */
+if (!function_exists('smarty_template_function_categories_20063429006740333c3cce44_42044666')) {
+function smarty_template_function_categories_20063429006740333c3cce44_42044666(Smarty_Internal_Template $_smarty_tpl,$params) {
 $params = array_merge(array('nodes'=>array(),'depth'=>0), $params);
 foreach ($params as $key => $value) {
 $_smarty_tpl->tpl_vars[$key] = new Smarty_Variable($value, $_smarty_tpl->isRenderingCache);
@@ -76,5 +76,5 @@ $_smarty_tpl->tpl_vars['node']->do_else = false;
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?></ul><?php }
 }}
-/*/ smarty_template_function_categories_261172843670ce099da08f8_46263518 */
+/*/ smarty_template_function_categories_20063429006740333c3cce44_42044666 */
 }

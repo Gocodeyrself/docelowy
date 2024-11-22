@@ -38,7 +38,7 @@ class CsvService
      * @param array $options
      * @return string
      */
-    public function serialize($data, $options = [])
+    public function csvSerialize($data, $options = [])
     {
         $res = '';
         $options = $this->initOption($options);

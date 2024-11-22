@@ -18,12 +18,10 @@
  * @copyright Since 2007 PrestaShop SA and Contributors
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License version 3.0
  */
-
 namespace PrestaShop\Module\Ps_metrics\Adapter;
 
-use PrestaShopLogger;
+use ps_metrics_module_v4_0_8\PrestaShopLogger;
 use Psr\Log\LoggerInterface;
-
 /**
  * Class that bridge the PrestaShop implementation of Logger with Psr Logger interface.
  */
@@ -33,19 +31,16 @@ class LoggerAdapter implements LoggerInterface
      * Detailed debug information
      */
     const DEBUG = 100;
-
     /**
      * Interesting events
      *
      * Examples: User logs in, SQL logs.
      */
     const INFO = 200;
-
     /**
      * Uncommon events
      */
     const NOTICE = 250;
-
     /**
      * Exceptional occurrences that are not errors
      *
@@ -53,19 +48,16 @@ class LoggerAdapter implements LoggerInterface
      * undesirable things that are not necessarily wrong.
      */
     const WARNING = 300;
-
     /**
      * Runtime errors
      */
     const ERROR = 400;
-
     /**
      * Critical conditions
      *
      * Example: Application component unavailable, unexpected exception.
      */
     const CRITICAL = 500;
-
     /**
      * Action must be taken immediately
      *
@@ -73,12 +65,10 @@ class LoggerAdapter implements LoggerInterface
      * This should trigger the SMS alerts and wake you up.
      */
     const ALERT = 550;
-
     /**
      * Urgent alert.
      */
     const EMERGENCY = 600;
-
     /**
      * {@inheritdoc}
      */
@@ -86,7 +76,6 @@ class LoggerAdapter implements LoggerInterface
     {
         $this->log(static::EMERGENCY, $message, $context);
     }
-
     /**
      * {@inheritdoc}
      */
@@ -94,7 +83,6 @@ class LoggerAdapter implements LoggerInterface
     {
         $this->log(static::ALERT, $message, $context);
     }
-
     /**
      * {@inheritdoc}
      */
@@ -102,7 +90,6 @@ class LoggerAdapter implements LoggerInterface
     {
         $this->log(static::CRITICAL, $message, $context);
     }
-
     /**
      * {@inheritdoc}
      */
@@ -110,7 +97,6 @@ class LoggerAdapter implements LoggerInterface
     {
         $this->log(static::ERROR, $message, $context);
     }
-
     /**
      * {@inheritdoc}
      */
@@ -118,7 +104,6 @@ class LoggerAdapter implements LoggerInterface
     {
         $this->log(static::WARNING, $message, $context);
     }
-
     /**
      * {@inheritdoc}
      */
@@ -126,7 +111,6 @@ class LoggerAdapter implements LoggerInterface
     {
         $this->log(static::NOTICE, $message, $context);
     }
-
     /**
      * {@inheritdoc}
      */
@@ -134,7 +118,6 @@ class LoggerAdapter implements LoggerInterface
     {
         $this->log(static::INFO, $message, $context);
     }
-
     /**
      * {@inheritdoc}
      */
@@ -142,7 +125,6 @@ class LoggerAdapter implements LoggerInterface
     {
         $this->log(static::DEBUG, $message, $context);
     }
-
     /**
      * {@inheritdoc}
      */
@@ -164,16 +146,14 @@ class LoggerAdapter implements LoggerInterface
             case static::INFO:
             case static::DEBUG:
             default:
-            $severity = 1;
+                $severity = 1;
         }
-
         $errorCode = !empty($context['error_code']) ? (int) $context['error_code'] : null;
         $objectType = !empty($context['object_type']) ? $context['object_type'] : null;
         $objectId = !empty($context['object_id']) ? (int) $context['object_id'] : null;
-        $allowDuplicate = !empty($context['allow_duplicate']) ? (bool) $context['allow_duplicate'] : false;
+        $allowDuplicate = !empty($context['allow_duplicate']) ? (bool) $context['allow_duplicate'] : \false;
         $idEmployee = !empty($context['id_employee']) ? (int) $context['id_employee'] : null;
         unset($context['error_code'], $context['object_type'], $context['object_id'], $context['allow_duplicate'], $context['id_employee']);
-
         PrestaShopLogger::addLog($message, $severity, $errorCode, $objectType, $objectId, $allowDuplicate, $idEmployee);
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Dotenv\Environment\Adapter;
+namespace ps_metrics_module_v4_0_8\Dotenv\Environment\Adapter;
 
 interface AdapterInterface
 {
@@ -10,7 +10,6 @@ interface AdapterInterface
      * @return bool
      */
     public function isSupported();
-
     /**
      * Get an environment variable, if it exists.
      *
@@ -19,7 +18,6 @@ interface AdapterInterface
      * @return \PhpOption\Option
      */
     public function get($name);
-
     /**
      * Set an environment variable.
      *
@@ -29,7 +27,6 @@ interface AdapterInterface
      * @return void
      */
     public function set($name, $value = null);
-
     /**
      * Clear an environment variable.
      *

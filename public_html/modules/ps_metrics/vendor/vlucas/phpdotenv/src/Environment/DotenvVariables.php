@@ -1,6 +1,6 @@
 <?php
 
-namespace Dotenv\Environment;
+namespace ps_metrics_module_v4_0_8\Dotenv\Environment;
 
 /**
  * The default implementation of the environment variables interface.
@@ -13,7 +13,6 @@ class DotenvVariables extends AbstractVariables
      * @var \Dotenv\Environment\Adapter\AdapterInterface[]
      */
     protected $adapters;
-
     /**
      * Create a new dotenv environment variables instance.
      *
@@ -27,7 +26,6 @@ class DotenvVariables extends AbstractVariables
         $this->adapters = $adapters;
         parent::__construct($immutable);
     }
-
     /**
      * Get an environment variable.
      *
@@ -46,7 +44,6 @@ class DotenvVariables extends AbstractVariables
             }
         }
     }
-
     /**
      * Set an environment variable.
      *
@@ -61,7 +58,6 @@ class DotenvVariables extends AbstractVariables
             $adapter->set($name, $value);
         }
     }
-
     /**
      * Clear an environment variable.
      *

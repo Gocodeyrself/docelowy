@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 4.3.1, created on 2024-10-14 11:04:35
+/* Smarty version 4.3.1, created on 2024-11-22 08:31:33
   from 'module:ph_simpleblogviewstemplatesfront1.7_partialstypevideopostthumbnail.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.1',
-  'unifunc' => 'content_670cdea3d08509_21941238',
+  'unifunc' => 'content_67403355a73ca2_73648878',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -20,8 +20,8 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_670cdea3d08509_21941238 (Smarty_Internal_Template $_smarty_tpl) {
-$_smarty_tpl->compiled->nocache_hash = '631881547670cdea3d00911_06920031';
+function content_67403355a73ca2_73648878 (Smarty_Internal_Template $_smarty_tpl) {
+$_smarty_tpl->compiled->nocache_hash = '16578894967403355a71af7_65852056';
 if (Configuration::get('PH_BLOG_DISPLAY_THUMBNAIL') && ((isset($_smarty_tpl->tpl_vars['post']->value['banner_wide'])) || (isset($_smarty_tpl->tpl_vars['post']->value['banner_thumb'])))) {?>
 <a href="<?php echo htmlspecialchars((string) $_smarty_tpl->tpl_vars['post']->value['url'], ENT_QUOTES, 'UTF-8');?>
 " title="<?php echo htmlspecialchars((string) $_smarty_tpl->tpl_vars['post']->value['title'], ENT_QUOTES, 'UTF-8');?>

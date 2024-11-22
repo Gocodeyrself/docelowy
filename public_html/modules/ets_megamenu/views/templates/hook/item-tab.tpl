@@ -25,7 +25,9 @@
         <span class="mm_tab_name mm_tab_toggle">
             <span class="mm_tab_toggle_title">
                 {if $tab.url}
-                    <a href="{$tab.url|escape:'html':'UTF-8'}">
+                    {* Oryginalny kod - usunięty, aby zapobiec przekierowaniu *}
+                    {*<a href="{$tab.url|escape:'html':'UTF-8'}">*}
+                    <a class="ets_mm_url" href="#" onclick="event.preventDefault();">
                 {/if}
                 {if $tab.tab_img_link}
                     <img src="{$tab.tab_img_link|escape:'html':'UTF-8'}" title="" alt="" width="20" />
