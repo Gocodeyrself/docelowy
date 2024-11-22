@@ -24,13 +24,65 @@ class RecaptchaRegistration extends Module
     {
         return parent::install() &&
             $this->registerHook('displayCustomerAccountForm') &&
-            $this->registerHook('actionValidateCustomerForm');
+            $this->registerHook('actionValidateCustomerForm') &&
+            Configuration::updateValue('RECAPTCHA_SITE_KEY', '') &&
+            Configuration::updateValue('RECAPTCHA_SECRET_KEY', '');
+    }
+
+    public function uninstall()
+    {
+        return parent::uninstall() &&
+            Configuration::deleteByName('RECAPTCHA_SITE_KEY') &&
+            Configuration::deleteByName('RECAPTCHA_SECRET_KEY');
+    }
+
+    public function getContent()
+    {
+        $output = '';
+
+        // Sprawdzenie, czy formularz został przesłany
+        if (Tools::isSubmit('submitRecaptchaConfiguration')) {
+            $siteKey = Tools::getValue('RECAPTCHA_SITE_KEY');
+            $secretKey = Tools::getValue('RECAPTCHA_SECRET_KEY');
+
+            // Walidacja kluczy
+            if (empty($siteKey) || empty($secretKey)) {
+                $output .= $this->displayError($this->l('Oba pola są wymagane.'));
+            } else {
+                Configuration::updateValue('RECAPTCHA_SITE_KEY', $siteKey);
+                Configuration::updateValue('RECAPTCHA_SECRET_KEY', $secretKey);
+                $output .= $this->displayConfirmation($this->l('Ustawienia zostały zapisane.'));
+            }
+        }
+
+        // Pobranie zapisanych kluczy
+        $siteKey = Configuration::get('RECAPTCHA_SITE_KEY');
+        $secretKey = Configuration::get('RECAPTCHA_SECRET_KEY');
+
+        // Formularz konfiguracji
+        $output .= '
+            <form action="' . Tools::safeOutput($_SERVER['REQUEST_URI']) . '" method="post">
+                <label>' . $this->l('Site Key (klucz witryny)') . '</label>
+                <div class="margin-form">
+                    <input type="text" name="RECAPTCHA_SITE_KEY" value="' . Tools::safeOutput($siteKey) . '" />
+                </div>
+                <label>' . $this->l('Secret Key (klucz tajny)') . '</label>
+                <div class="margin-form">
+                    <input type="text" name="RECAPTCHA_SECRET_KEY" value="' . Tools::safeOutput($secretKey) . '" />
+                </div>
+                <button type="submit" name="submitRecaptchaConfiguration" class="btn btn-primary">' . $this->l('Zapisz') . '</button>
+            </form>
+        ';
+
+        return $output;
     }
 
     public function hookDisplayCustomerAccountForm($params)
     {
+        $siteKey = Configuration::get('RECAPTCHA_SITE_KEY');
+
         $this->context->smarty->assign([
-            'site_key' => '6LcpGhwqAAAAAB2-Hi3qM1zrGiPeP2agHIoglTdg', // Zamień na swój klucz witryny
+            'site_key' => $siteKey,
         ]);
 
         return $this->display(__FILE__, 'views/templates/hook/recaptcha.tpl');
@@ -41,25 +93,25 @@ class RecaptchaRegistration extends Module
         $form = $params['form'];
 
         $recaptcha_response = Tools::getValue('g-recaptcha-response');
-        $secret_key = '6LcpGhwqAAAAAJzoy6_gNzqOMwi59KIcb6rchvAP'; // Zamień na swój klucz tajny
+        $secretKey = Configuration::get('RECAPTCHA_SECRET_KEY');
 
         if (!$recaptcha_response) {
             $form->addError($this->l('Proszę potwierdzić, że nie jesteś robotem.'));
             return;
         }
 
-        $recaptcha_verify = $this->verifyRecaptcha($secret_key, $recaptcha_response);
+        $recaptcha_verify = $this->verifyRecaptcha($secretKey, $recaptcha_response);
 
         if (!$recaptcha_verify->success) {
             $form->addError($this->l('Weryfikacja reCAPTCHA nie powiodła się. Spróbuj ponownie.'));
         }
     }
 
-    private function verifyRecaptcha($secret_key, $response)
+    private function verifyRecaptcha($secretKey, $response)
     {
         $url = 'https://www.google.com/recaptcha/api/siteverify';
         $data = array(
-            'secret' => $secret_key,
+            'secret' => $secretKey,
             'response' => $response,
             'remoteip' => $_SERVER['REMOTE_ADDR']
         );
