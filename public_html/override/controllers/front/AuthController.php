@@ -1,6 +1,16 @@
 <?php
 class AuthController extends AuthControllerCore
 {
+    public function initContent()
+    {
+        parent::initContent();
+
+        // Dodajemy klucz witryny reCAPTCHA do smarty, aby był dostępny w szablonie
+        $this->context->smarty->assign('recaptcha_site_key', '6LcpGhwqAAAAAB2-Hi3qM1zrGiPeP2agHIoglTdg'); // Zamień na swój klucz witryny
+
+        $this->context->smarty->assign('test_variable', 'Nadpisanie działa');
+    }
+
     public function postProcess()
     {
         if (Tools::isSubmit('submitCreate')) {
@@ -14,8 +24,7 @@ class AuthController extends AuthControllerCore
             }
 
             // Weryfikacja odpowiedzi reCAPTCHA
-            $recaptcha_verify = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret='.$secret_key.'&response='.$recaptcha_response.'&remoteip='.$_SERVER['REMOTE_ADDR']);
-            $recaptcha_verify = json_decode($recaptcha_verify);
+            $recaptcha_verify = $this->verifyRecaptcha($secret_key, $recaptcha_response);
 
             if (!$recaptcha_verify->success) {
                 $this->errors[] = $this->trans('Weryfikacja reCAPTCHA nie powiodła się. Spróbuj ponownie.', [], 'Shop.Notifications.Error');
@@ -24,5 +33,25 @@ class AuthController extends AuthControllerCore
         }
 
         parent::postProcess();
+    }
+
+    private function verifyRecaptcha($secret_key, $response)
+    {
+        $url = 'https://www.google.com/recaptcha/api/siteverify';
+        $data = array(
+            'secret' => $secret_key,
+            'response' => $response,
+            'remoteip' => $_SERVER['REMOTE_ADDR']
+        );
+
+        // Używamy cURL do weryfikacji reCAPTCHA
+        $curl = curl_init($url);
+        curl_setopt($curl, CURLOPT_POST, true);
+        curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query($data));
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        $recaptcha_verify = curl_exec($curl);
+        curl_close($curl);
+
+        return json_decode($recaptcha_verify);
     }
 }

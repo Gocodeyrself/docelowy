@@ -22,6 +22,7 @@
  * @copyright Since 2007 PrestaShop SA and Contributors
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  *}
+ <p>{$test_variable}</p>
  {block name='customer_form'}
   {block name='customer_form_errors'}
     {include file='_partials/form-errors.tpl' errors=$errors['']}
@@ -45,7 +46,7 @@
     {/block}
 
     <!-- Dodany widget reCAPTCHA -->
-    <div class="g-recaptcha" data-sitekey="6LcpGhwqAAAAAB2-Hi3qM1zrGiPeP2agHIoglTdg"></div>
+    <div class="g-recaptcha" data-sitekey="{$recaptcha_site_key}"></div>
     <!-- Załadowanie skryptu API reCAPTCHA -->
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
