@@ -39,9 +39,13 @@
   {if $page.meta.robots !== 'index'}
     <meta name="robots" content="{$page.meta.robots}">
   {/if}
-  {if $page.canonical}
-    <link rel="canonical" href="{$page.canonical}">
-  {/if}
+  {if $page.page_name == 'index'}
+    <link rel="canonical" href="{$urls.base_url}{$urls.lang}"/>
+{else}
+    {if $page.canonical}
+        <link rel="canonical" href="{$page.canonical}">
+    {/if}
+{/if}
   {block name='head_hreflang'}
     {foreach from=$urls.alternative_langs item=pageUrl key=code}
       <link rel="alternate" href="{$pageUrl}" hreflang="{$code}">
