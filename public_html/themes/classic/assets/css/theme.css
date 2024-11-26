@@ -9216,14 +9216,26 @@ body#checkout #hook-display-after-carrier>[class^=col].links .row>[class^=col] {
   white-space: nowrap
 }
 
-.social-sharing li.linkedin {
-  color: #0077b5; /* Kolor ikony */
+.social-sharing li a i {
+  font-size: 1.5rem; /* Rozmiar ikon */
+  color: #555; /* Domyślny kolor */
 }
 
-.social-sharing li.linkedin:hover {
-  color: #005582; /* Kolor na hover */
+.social-sharing li.facebook a i {
+  color: #3b5998; /* Kolor Facebooka */
 }
 
+.social-sharing li.twitter a i {
+  color: #1da1f2; /* Kolor Twittera */
+}
+
+.social-sharing li.linkedin a i {
+  color: #0077b5; /* Kolor LinkedIn */
+}
+
+.social-sharing li a:hover i {
+  color: #333; /* Kolor ikon po najechaniu */
+}
 
 .block-social ul li a:hover,
 .social-sharing li a:hover {
