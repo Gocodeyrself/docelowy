@@ -223,7 +223,7 @@ class Ps_Sharebuttons extends Module implements WidgetInterface
         if (Configuration::get('PS_SC_LINKEDIN')) {
             $social_share_links['linkedin'] = [
                 'label' => $this->trans('Share', [], 'Modules.Sharebuttons.Shop'),
-                'class' => 'linkedin',
+                'class' => 'linkedin', // Kluczowe: klasa musi być "linkedin"
                 'url' => 'https://www.linkedin.com/sharing/share-offsite/?url=' . $sharing_url,
             ];
         }

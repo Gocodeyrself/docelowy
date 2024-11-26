@@ -9204,7 +9204,7 @@ body#checkout #hook-display-after-carrier>[class^=col].links .row>[class^=col] {
   background-repeat: no-repeat;
   background-position: .25rem .25rem;
   background-size: 2rem 2rem;
-  border-radius: 50%
+  border-radius: 0;
 }
 
 .social-sharing li a {
@@ -9216,25 +9216,9 @@ body#checkout #hook-display-after-carrier>[class^=col].links .row>[class^=col] {
   white-space: nowrap
 }
 
-.social-sharing li a i {
-  font-size: 1.5rem; /* Rozmiar ikon */
-  color: #555; /* Domyślny kolor */
-}
-
-.social-sharing li.facebook a i {
-  color: #3b5998; /* Kolor Facebooka */
-}
-
-.social-sharing li.twitter a i {
-  color: #1da1f2; /* Kolor Twittera */
-}
-
-.social-sharing li.linkedin a i {
-  color: #0077b5; /* Kolor LinkedIn */
-}
-
-.social-sharing li a:hover i {
-  color: #333; /* Kolor ikon po najechaniu */
+.social-sharing li.linkedin {
+  background-size: 21px; /* Dopasowanie wielkości SVG w okręgu */
+  background-position: center; /* Wyśrodkowanie ikony */
 }
 
 .block-social ul li a:hover,
@@ -9811,6 +9795,15 @@ body#checkout #hook-display-after-carrier>[class^=col].links .row>[class^=col] {
 .linkedin {
   background-image: url(../css/b2efa71e4ca1cd26b0f4.svg);
   background-position: center center
+}
+
+.linkedin.icon-gray {
+  background-image: url(../css/linkedin-grey.svg); /* Ikona LinkedIn w wersji szarej */
+}
+
+.linkedin.icon-gray:hover,
+.linkedin::before {
+  background-image: url(../css/linkedin-blue.svg); /* Kolorowa wersja LinkedIn na hover */
 }
 
 .rss {

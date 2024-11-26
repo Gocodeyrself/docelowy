@@ -30,11 +30,14 @@
         {foreach from=$social_share_links item='social_share_link'}
           <li class="{$social_share_link.class}">
             <a href="{$social_share_link.url}" title="{$social_share_link.label}" target="_blank" rel="noopener noreferrer">
-              <i class="fab fa-{$social_share_link.class}"></i> <!-- Automatyczne przypisanie ikon Font Awesome -->
+              <i class="fab fa-{$social_share_link.cWlass}"></i> <!-- Ikona Font Awesome -->
+              {$social_share_link.label}
             </a>
           </li>
+          
         {/foreach}
       </ul>
     </div>
   {/if}
 {/block}
+
