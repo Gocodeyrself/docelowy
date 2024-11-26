@@ -9215,6 +9215,16 @@ body#checkout #hook-display-after-carrier>[class^=col].links .row>[class^=col] {
   white-space: nowrap
 }
 
+.social-sharing li.linkedin {
+  background-color: #0077b5; /* Kolor LinkedIn */
+  background-image: url('../../themes/classic/assets/fontawesome/svgs/brands/linkedin.svg'); /* Ścieżka do ikony */
+  background-size: 1.5rem 1.5rem; /* Rozmiar ikony */
+  background-repeat: no-repeat; /* Ustawienie powtarzania */
+  background-position: center; /* Wyśrodkowanie ikony */
+}
+
+
+
 .block-social ul li a:hover,
 .social-sharing li a:hover {
   color: transparent

@@ -228,6 +228,7 @@ class Ps_Sharebuttons extends Module implements WidgetInterface
             ];
         }
         
+        
 
         return [
             'social_share_links' => $social_share_links,
