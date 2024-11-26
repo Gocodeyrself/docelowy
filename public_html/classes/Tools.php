@@ -4213,26 +4213,29 @@ exit;
         return $array;
     }
 
-    public static function generateCategoryMiniatureById($id){
+    public static function generateCategoryMiniatureById($id) {
         $category = new Category((int)$id, (int)Context::getContext()->language->id);
-        if (Validate::isLoadedObject($category) && $id!=2 && $category->level_depth==2) {
+        if (Validate::isLoadedObject($category) && $id != 2 && $category->level_depth == 2) {
             $file = "/c/$id-category_default/$category->link_rewrite.jpg";
-            echo "<img src='$file' class='menu_category_img'/>";
+            $altText = htmlspecialchars($category->name, ENT_QUOTES, 'UTF-8'); // Użycie nazwy kategorii jako ALT
+            echo "<img src='$file' class='menu_category_img' alt='$altText'/>";
         }
     }
+    
 
-    public static function generateCategoryMiniature($page_identifier){
+    public static function generateCategoryMiniature($page_identifier) {
         $parts = explode("-", $page_identifier);
         if (count($parts) > 1) {
             $id = $parts[1];
             $category = new Category((int)$id, (int)Context::getContext()->language->id);
-            if (Validate::isLoadedObject($category) && $id!=2 && $category->level_depth==2) {
+            if (Validate::isLoadedObject($category) && $id != 2 && $category->level_depth == 2) {
                 $file = "/c/$id-category_default/$category->link_rewrite.jpg";
-                echo "<img src='$file' class='menu_category_img'/>";
+                $altText = htmlspecialchars($category->name, ENT_QUOTES, 'UTF-8'); // Użycie nazwy kategorii jako ALT
+                echo "<img src='$file' class='menu_category_img' alt='$altText'/>";
             }
         }
-
     }
+    
 
     public static function getProductAccessories($id_product)
     {
