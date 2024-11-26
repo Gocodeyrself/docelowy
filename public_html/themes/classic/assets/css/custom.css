@@ -1302,9 +1302,9 @@ body#category #content-wrapper.long_products .products .js-product .thumbnail-co
 }
 
 .js-product-additional-info {
-    margin-top: 20px;
+    /*margin-top: 20px;
     display: flex;
-    align-items: center;
+    align-items: center;*/
 }
 
 .product-comments-additional-info>*,

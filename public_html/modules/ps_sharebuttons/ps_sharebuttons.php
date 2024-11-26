@@ -37,7 +37,7 @@ class Ps_Sharebuttons extends Module implements WidgetInterface
      */
     const PS_16_EQUIVALENT_MODULE = 'socialsharing';
 
-    protected static $networks = ['Facebook', 'Twitter', 'Pinterest'];
+    protected static $networks = ['Facebook', 'Twitter', 'Pinterest', 'LinkedIn'];
 
     private $templateFile;
 
@@ -219,6 +219,15 @@ class Ps_Sharebuttons extends Module implements WidgetInterface
                 'url' => 'https://www.pinterest.com/pin/create/button/?media=' . $sharing_img . '&url=' . $sharing_url,
             ];
         }
+
+        if (Configuration::get('PS_SC_LINKEDIN')) {
+            $social_share_links['linkedin'] = [
+                'label' => $this->trans('Share', [], 'Modules.Sharebuttons.Shop'),
+                'class' => 'linkedin',
+                'url' => 'https://www.linkedin.com/sharing/share-offsite/?url=' . $sharing_url,
+            ];
+        }
+        
 
         return [
             'social_share_links' => $social_share_links,
