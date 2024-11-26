@@ -4426,7 +4426,8 @@ button.close {
   z-index: 1050;
   display: none;
   outline: 0;
-  padding-right: 0 !important; /* Padding usuniety z pop-up potwierdzenie dodania do koszyka */
+  padding-right: 0 !important;
+  /* Padding usuniety z pop-up potwierdzenie dodania do koszyka */
 }
 
 .modal.fade .modal-dialog {
@@ -9216,13 +9217,12 @@ body#checkout #hook-display-after-carrier>[class^=col].links .row>[class^=col] {
 }
 
 .social-sharing li.linkedin {
-  background-color: #0077b5; /* Kolor LinkedIn */
-  background-image: url('../../themes/classic/assets/fontawesome/svgs/brands/linkedin.svg'); /* Ścieżka do ikony */
-  background-size: 1.5rem 1.5rem; /* Rozmiar ikony */
-  background-repeat: no-repeat; /* Ustawienie powtarzania */
-  background-position: center; /* Wyśrodkowanie ikony */
+  color: #0077b5; /* Kolor ikony */
 }
 
+.social-sharing li.linkedin:hover {
+  color: #005582; /* Kolor na hover */
+}
 
 
 .block-social ul li a:hover,
@@ -10377,7 +10377,7 @@ body#checkout #hook-display-after-carrier>[class^=col].links .row>[class^=col] {
   }
 
   abbr[title]::after {
-    content: " ("attr(title) ")"
+    content: " (" attr(title) ")"
   }
 
   pre {
@@ -12396,7 +12396,7 @@ body#checkout #hook-display-after-carrier>[class^=col].links .row>[class^=col] {
     background-color: #f6f6f6
   }
 
-   .footer-container .links ul>li {
+  .footer-container .links ul>li {
     font-weight: 500;
     padding-left: 1.125rem;
     padding-right: 1.125rem;
