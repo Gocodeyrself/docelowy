@@ -5859,9 +5859,11 @@ body#checkout section.checkout-step hr {
 }
 
 .bootstrap-touchspin {
-  display: inline-block;
-  float: left;
-  width: auto
+  width: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  float: none;
 }
 
 .bootstrap-touchspin input:focus {
@@ -9246,7 +9248,7 @@ body#checkout #hook-display-after-carrier>[class^=col].links .row>[class^=col] {
 }
 
 .card-block {
-  padding: 1.25rem 2.25rem .0rem
+  padding: 0;
 }
 
 .card-block.checkout {
@@ -12778,7 +12780,7 @@ body#checkout #hook-display-after-carrier>[class^=col].links .row>[class^=col] {
   }
 
   .card-block {
-    padding: 0
+    padding: 1.25rem 2.25rem .0rem;
   }
 
   .card {
