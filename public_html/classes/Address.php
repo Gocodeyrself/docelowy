@@ -139,7 +139,7 @@ class AddressCore extends ObjectModel
             'other' => ['type' => self::TYPE_STRING, 'validate' => 'isMessage', 'size' => 300],
             'phone' => ['type' => self::TYPE_STRING, 'validate' => 'isPhoneNumber', 'size' => 32],
             'phone_mobile' => ['type' => self::TYPE_STRING, 'validate' => 'isPhoneNumber', 'size' => 32],
-            'dni' => ['type' => self::TYPE_STRING, 'validate' => 'isDniLite', 'size' => 16],
+            'dni' => ['type' => self::TYPE_STRING, 'validate' => 'isDniLite', 'size' => false],
             'deleted' => ['type' => self::TYPE_BOOL, 'validate' => 'isBool', 'copy_post' => false],
             'date_add' => ['type' => self::TYPE_DATE, 'validate' => 'isDate', 'copy_post' => false],
             'date_upd' => ['type' => self::TYPE_DATE, 'validate' => 'isDate', 'copy_post' => false],
