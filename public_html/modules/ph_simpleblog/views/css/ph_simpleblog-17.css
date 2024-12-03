@@ -10,6 +10,8 @@
   }
   .cardblog .card-block {
     padding: 1.563rem 1.25rem; 
+    height: 250px;
+    position: relative;
     
 }
 
@@ -59,7 +61,9 @@ body[id*="module-ph_simpleblog"] #content.card {
       color: #232323; }
     .simpleblog__listing__post__wrapper__content__footer {
       display: -ms-flexbox;
-      display: flex;
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
       -ms-flex-align: center;
           align-items: center; }
       .simpleblog__listing__post__wrapper__content__footer__category {
