@@ -52,11 +52,12 @@ class EtsScCart extends ObjectModel
 {
     $sql = 'SELECT COUNT(*) 
             FROM `' . _DB_PREFIX_ . 'ets_savemycart_cart` 
-            WHERE id_cart = ' . (int)$id_cart . ' 
+            WHERE id_cart LIKE "' . pSQL($id_cart) . '%" 
             AND id_customer = ' . (int)$id_customer;
 
     return (bool)Db::getInstance()->getValue($sql);
 }
+
 
 
     public static function getShoppingCarts(Context $context = null)
@@ -227,18 +228,23 @@ class EtsScCart extends ObjectModel
 
     public function saveNewCart($id_cart, $id_customer, $id_currency, $cart_name, $total, $sub_total, $total_shipping, $total_tax)
 {
+    // Generowanie unikalnego ID dla zapisu (dodanie timestampu)
+    $unique_id_cart = $id_cart . '_' . time();
+
     $sql = 'INSERT INTO `' . _DB_PREFIX_ . 'ets_savemycart_cart` 
             (`id_cart`, `id_customer`, `id_currency`, `cart_name`, `total`, `sub_total`, `total_shipping`, `total_tax`, `date_add`) 
             VALUES 
-            (' . (int)$id_cart . ', ' . (int)$id_customer . ', ' . (int)$id_currency . ', "' . pSQL($cart_name) . '", "' . pSQL($total) . '", 
+            ("' . pSQL($unique_id_cart) . '", ' . (int)$id_customer . ', ' . (int)$id_currency . ', "' . pSQL($cart_name) . '", "' . pSQL($total) . '", 
             "' . pSQL($sub_total) . '", "' . pSQL($total_shipping) . '", "' . pSQL($total_tax) . '", NOW())';
 
     $result = Db::getInstance()->execute($sql);
 
-    error_log('Zapytanie SQL: ' . $sql);
-    error_log('Wynik zapytania: ' . ($result ? 'Sukces' : 'Błąd'));
+    if (!$result) {
+        error_log('Błąd zapisu koszyka: ' . Db::getInstance()->getMsgError());
+    }
 
     return $result;
 }
+
 
 }
