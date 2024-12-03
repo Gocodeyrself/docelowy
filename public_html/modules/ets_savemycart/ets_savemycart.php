@@ -550,19 +550,36 @@ $this->refs = 'https://prestahero.com/';
     }
 
     public function hookDisplayShoppingCartFooter()
-    {
-        if (!isset($this->context->cart->id) || !$this->context->cart->getLastProduct()) {
-            return;
-        }
-        $tpl_var = array();
-        if ((int)Configuration::get('ETS_SC_SAVE_MY_CART') && !EtsScCart::itemExist($this->context->cart->id)) {
-            $tpl_var['save_cart_html'] = $this->display(__FILE__, 'fo-shopping-cart.tpl');
-
-        }
-        $tpl_var['isShareable'] = Configuration::get('ETS_SC_SHARE_MY_CART');
-        $this->smarty->assign($tpl_var);
-        return $this->display(__FILE__, 'fo-button-share.tpl');
+{
+    if (!isset($this->context->cart->id) || !$this->context->cart->getLastProduct()) {
+        return;
     }
+
+    $tpl_var = array();
+
+    // Wywołanie zapisu nowego koszyka
+    if ((int)Configuration::get('ETS_SC_SAVE_MY_CART')) {
+        $cart = new EtsScCart();
+        $cart_name = 'Koszyk ' . date('Y-m-d H:i:s'); // Możesz zmienić nazwę koszyka
+        $cart->saveNewCart(
+            $this->context->cart->id,
+            $this->context->customer->id,
+            $this->context->currency->id,
+            $cart_name,
+            $this->context->cart->getOrderTotal(),
+            $this->context->cart->getOrderTotal(false, Cart::ONLY_PRODUCTS),
+            $this->context->cart->getOrderTotal(false, Cart::ONLY_SHIPPING),
+            $this->context->cart->getOrderTotal() - $this->context->cart->getOrderTotal(false)
+        );
+        $tpl_var['save_cart_html'] = $this->display(__FILE__, 'fo-shopping-cart.tpl');
+    }
+
+    $tpl_var['isShareable'] = Configuration::get('ETS_SC_SHARE_MY_CART');
+    $this->smarty->assign($tpl_var);
+
+    return $this->display(__FILE__, 'fo-button-share.tpl');
+}
+
 
     public function hookDisplayCustomerAccount()
     {
