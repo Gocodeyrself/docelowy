@@ -1259,7 +1259,6 @@ pre code {
   background-image: none;
   background-clip: padding-box;
   border-radius: var(--border-radius);
-  box-shadow: 2px 1px 4px grey;
 }
 
 .form-control::-ms-expand {
@@ -5694,7 +5693,8 @@ body#checkout section.checkout-step .step-edit .edit {
 }
 
 .card {
-  border: 0
+  border: 0;
+  padding: 10px;
 }
 
 .label,
