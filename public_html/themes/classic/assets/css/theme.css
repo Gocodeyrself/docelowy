@@ -5762,7 +5762,8 @@ body#checkout .custom-checkbox {
   text-transform: uppercase;
   border: 0;
   -webkit-box-shadow: none;
-  box-shadow: none
+  box-shadow: 2px 1px 4px grey;
+  border-radius: 0px 10px 10px 0px;
 }
 
 .input-group .input-group-btn>.btn[data-action=show-password] {
