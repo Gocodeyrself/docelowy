@@ -48,10 +48,16 @@ class EtsScCart extends ObjectModel
         )
     );
 
-    public static function itemExist($id_cart)
-    {
-        return (int)Db::getInstance()->getValue('SELECT id_cart FROM `' . _DB_PREFIX_ . 'ets_savemycart_cart` WHERE id_cart =' . (int)$id_cart);
-    }
+    public static function itemExist($id_cart, $id_customer)
+{
+    $sql = 'SELECT COUNT(*) 
+            FROM `' . _DB_PREFIX_ . 'ets_savemycart_cart` 
+            WHERE id_cart = ' . (int)$id_cart . ' 
+            AND id_customer = ' . (int)$id_customer;
+
+    return (bool)Db::getInstance()->getValue($sql);
+}
+
 
     public static function getShoppingCarts(Context $context = null)
     {
@@ -220,13 +226,19 @@ class EtsScCart extends ObjectModel
     }
 
     public function saveNewCart($id_cart, $id_customer, $id_currency, $cart_name, $total, $sub_total, $total_shipping, $total_tax)
-    {
-        $sql = 'INSERT INTO `' . _DB_PREFIX_ . 'ets_savemycart_cart` 
-                (`id_cart`, `id_customer`, `id_currency`, `cart_name`, `total`, `sub_total`, `total_shipping`, `total_tax`, `date_add`) 
-                VALUES 
-                (' . (int)$id_cart . ', ' . (int)$id_customer . ', ' . (int)$id_currency . ', "' . pSQL($cart_name) . '", "' . pSQL($total) . '", 
-                "' . pSQL($sub_total) . '", "' . pSQL($total_shipping) . '", "' . pSQL($total_tax) . '", NOW())';
+{
+    $sql = 'INSERT INTO `' . _DB_PREFIX_ . 'ets_savemycart_cart` 
+            (`id_cart`, `id_customer`, `id_currency`, `cart_name`, `total`, `sub_total`, `total_shipping`, `total_tax`, `date_add`) 
+            VALUES 
+            (' . (int)$id_cart . ', ' . (int)$id_customer . ', ' . (int)$id_currency . ', "' . pSQL($cart_name) . '", "' . pSQL($total) . '", 
+            "' . pSQL($sub_total) . '", "' . pSQL($total_shipping) . '", "' . pSQL($total_tax) . '", NOW())';
 
-        return Db::getInstance()->execute($sql);
-    }
+    $result = Db::getInstance()->execute($sql);
+
+    error_log('Zapytanie SQL: ' . $sql);
+    error_log('Wynik zapytania: ' . ($result ? 'Sukces' : 'Błąd'));
+
+    return $result;
+}
+
 }
