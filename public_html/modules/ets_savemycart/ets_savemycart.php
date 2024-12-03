@@ -550,19 +550,25 @@ $this->refs = 'https://prestahero.com/';
     }
 
     public function hookDisplayShoppingCartFooter()
-    {
-        if (!isset($this->context->cart->id) || !$this->context->cart->getLastProduct()) {
-            return;
-        }
-        $tpl_var = array();
-        if ((int)Configuration::get('ETS_SC_SAVE_MY_CART') && !EtsScCart::itemExist($this->context->cart->id)) {
-            $tpl_var['save_cart_html'] = $this->display(__FILE__, 'fo-shopping-cart.tpl');
-
-        }
-        $tpl_var['isShareable'] = Configuration::get('ETS_SC_SHARE_MY_CART');
-        $this->smarty->assign($tpl_var);
-        return $this->display(__FILE__, 'fo-button-share.tpl');
+{
+    if (!isset($this->context->cart->id) || !$this->context->cart->getLastProduct()) {
+        return;
     }
+
+    $tpl_var = array();
+
+    // Zawsze pokazuj przycisk „Zapisz swój koszyk”, jeśli są produkty w koszyku
+    if ((int)Configuration::get('ETS_SC_SAVE_MY_CART')) {
+        $tpl_var['save_cart_html'] = $this->display(__FILE__, 'fo-shopping-cart.tpl');
+    }
+
+    // Logika udostępniania koszyka
+    $tpl_var['isShareable'] = Configuration::get('ETS_SC_SHARE_MY_CART');
+
+    $this->smarty->assign($tpl_var);
+    return $this->display(__FILE__, 'fo-button-share.tpl');
+}
+
 
     public function hookDisplayCustomerAccount()
     {
