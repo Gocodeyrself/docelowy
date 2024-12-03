@@ -27,24 +27,24 @@
 			</div>
 			<div class="ets-sp-panel-msg ets_sc_panel_msg js-ets_sc_panel_msg"></div>
 			<form action="{$link_action nofilter}" id="save_cart_form" method="post">
-				<input type="hidden" name="id_customer" id="id_customer" value="{if isset($id_customer)}{$id_customer|intval}{/if}"/>
-				<input type="hidden" name="submitCart" id="submitCart" value="1"/>
-				<div class="form-group">
-					<label class="control-label">{l s='Cart name' mod='ets_savemycart'}<span>*</span></label>
-					<input name="cart_name" type="text" id="cart_name" class="form-control" value="" autofocus="autofocus" tabindex="1" required />
-				</div>
-				<div class="form-group row-padding-top">
-					<button id="submit_cart" class="submit_cart btn btn-primary" tabindex="2" name="submitCart">
-                       <i class="ets_svg_icon svg_fill_white svg_fill_hover_white">
-                        <svg class="w_16 h_16" width="16" height="16" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M512 1536h768v-384h-768v384zm896 0h128v-896q0-14-10-38.5t-20-34.5l-281-281q-10-10-34-20t-39-10v416q0 40-28 68t-68 28h-576q-40 0-68-28t-28-68v-416h-128v1280h128v-416q0-40 28-68t68-28h832q40 0 68 28t28 68v416zm-384-928v-320q0-13-9.5-22.5t-22.5-9.5h-192q-13 0-22.5 9.5t-9.5 22.5v320q0 13 9.5 22.5t22.5 9.5h192q13 0 22.5-9.5t9.5-22.5zm640 32v928q0 40-28 68t-68 28h-1344q-40 0-68-28t-28-68v-1344q0-40 28-68t68-28h928q40 0 88 20t76 48l280 280q28 28 48 76t20 88z"/></svg>
-                       </i> {l s='Save cart' mod='ets_savemycart'}
-                    </button>
-					{*
-					<button id="submit_off" class="submit_off btn btn-primary" tabindex="3" name="submitOff">{l s='No, don\'t show it anymore' mod='ets_savemycart'}</button>
-					*}
-					<a class="ets_sc_checkout btn btn-primary" href="{$link_checkout nofilter}">{l s='Checkout now' mod='ets_savemycart'}</a>
-				</div>
-			</form>
+    <input type="hidden" name="id_customer" id="id_customer" value="{if isset($id_customer)}{$id_customer|intval}{/if}"/>
+    <input type="hidden" name="submitCart" id="submitCart" value="1"/>
+    <div class="form-group">
+        <label class="control-label">{l s='Cart name' mod='ets_savemycart'}<span>*</span></label>
+        <input name="cart_name" type="text" id="cart_name" class="form-control" value="" autofocus="autofocus" tabindex="1" required />
+    </div>
+    <div class="form-group row-padding-top">
+        <button id="submit_cart" class="submit_cart btn btn-primary" tabindex="2" name="submitCart">
+           <i class="ets_svg_icon svg_fill_white svg_fill_hover_white">
+            <svg class="w_16 h_16" width="16" height="16" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+                <path d="M512 1536h768v-384h-768v384zm896 0h128v-896q0-14-10-38.5t-20-34.5l-281-281q-10-10-34-20t-39-10v416q0 40-28 68t-68 28h-576q-40 0-68-28t-28-68v-416h-128v1280h128v-416q0-40 28-68t68-28h832q40 0 68 28t28 68v416zm-384-928v-320q0-13-9.5-22.5t-22.5-9.5h-192q-13 0-22.5 9.5t-9.5 22.5v320q0 13 9.5 22.5t22.5 9.5h192q13 0 22.5-9.5t9.5-22.5zm640 32v928q0 40-28 68t-68 28h-1344q-40 0-68-28t-28-68v-1344q0-40 28-68t68-28h928q40 0 88 20t76 48l280 280q28 28 48 76t20 88z"/>
+            </svg>
+           </i> {l s='Save cart' mod='ets_savemycart'}
+        </button>
+        <a class="ets_sc_checkout btn btn-primary" href="{$link_checkout nofilter}">{l s='Checkout now' mod='ets_savemycart'}</a>
+    </div>
+</form>
+
 		</div>
 	</div>
 	<div class="ets_sc_form_login" style="display: none;">

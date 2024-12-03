@@ -229,23 +229,16 @@ class EtsScCart extends ObjectModel
 
     public function saveNewCart($id_cart, $id_customer, $id_currency, $cart_name, $total, $sub_total, $total_shipping, $total_tax)
 {
-    // Dodanie unikalnego identyfikatora do id_cart
-    $unique_id_cart = (int)$id_cart . '_' . time(); // Unikalny identyfikator
-
+    // Usuń ograniczenie związane z 'id_cart'
     $sql = 'INSERT INTO `' . _DB_PREFIX_ . 'ets_savemycart_cart` 
             (`id_cart`, `id_customer`, `id_currency`, `cart_name`, `total`, `sub_total`, `total_shipping`, `total_tax`, `date_add`) 
             VALUES 
-            ("' . pSQL($unique_id_cart) . '", ' . (int)$id_customer . ', ' . (int)$id_currency . ', "' . pSQL($cart_name) . '", "' . pSQL($total) . '", 
+            (NULL, ' . (int)$id_customer . ', ' . (int)$id_currency . ', "' . pSQL($cart_name) . '", "' . pSQL($total) . '", 
             "' . pSQL($sub_total) . '", "' . pSQL($total_shipping) . '", "' . pSQL($total_tax) . '", NOW())';
 
-    $result = Db::getInstance()->execute($sql);
-
-    if (!$result) {
-        error_log('Błąd zapisu koszyka: ' . Db::getInstance()->getMsgError());
-    }
-
-    return $result;
+    return Db::getInstance()->execute($sql);
 }
+
 
 
 

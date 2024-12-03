@@ -453,23 +453,48 @@ class Ets_savemycartSubmitModuleFrontController extends EtsSaveCartFrontControll
 
 
     public function popupInit(Customer $customer)
-    {
-        $product_count = (int)$this->context->cart->nbProducts();
-        $tpl_var = array(
-            'product_count' => $product_count,
-            'link_action' => $this->getCurrentURL(),
-            'link_checkout' => $this->link_checkout,
-            'id_customer' => (int)$this->context->customer->id,
-            'link' => EtsScLink::getInstance()->getLinkRewrite($this->context->language->id),
-        );
-        if (!$customer->id) {
-            $tpl_var['openLogin'] = true;
-            $this->context->smarty->assign($tpl_var);
-            die(json_encode(array(
-                'isLogged' => false,
-                'html' => $product_count > 0 ? $this->context->smarty->fetch($this->module->getLocalPath() . '/views/templates/front/popup.tpl') : false,
-            )));
+{
+    $product_count = (int)$this->context->cart->nbProducts();
+    $tpl_var = array(
+        'product_count' => $product_count,
+        'link_action' => $this->getCurrentURL(),
+        'link_checkout' => $this->link_checkout,
+        'id_customer' => (int)$this->context->customer->id,
+        'link' => EtsScLink::getInstance()->getLinkRewrite($this->context->language->id),
+    );
+
+    // Odczytaj nazwę koszyka z formularza
+    if (Tools::isSubmit('cart_name')) {
+        $cart_name = Tools::getValue('cart_name');
+        if (!$cart_name) {
+            die(json_encode(['error' => $this->module->l('Cart name cannot be empty.')]));
         }
+
+        // Zapisz nowy koszyk
+        $cart = new EtsScCart();
+        $cart->saveNewCart(
+            $this->context->cart->id,
+            $this->context->customer->id,
+            $this->context->currency->id,
+            $cart_name, // Nazwa podana przez użytkownika
+            $this->context->cart->getOrderTotal(),
+            $this->context->cart->getOrderTotal(false, Cart::ONLY_PRODUCTS),
+            $this->context->cart->getOrderTotal(false, Cart::ONLY_SHIPPING),
+            $this->context->cart->getOrderTotal() - $this->context->cart->getOrderTotal(false)
+        );
+
+        die(json_encode(['success' => $this->module->l('Cart has been saved successfully.')]));
     }
+
+    if (!$customer->id) {
+        $tpl_var['openLogin'] = true;
+        $this->context->smarty->assign($tpl_var);
+        die(json_encode(array(
+            'isLogged' => false,
+            'html' => $product_count > 0 ? $this->context->smarty->fetch($this->module->getLocalPath() . '/views/templates/front/popup.tpl') : false,
+        )));
+    }
+}
+
 
 }
