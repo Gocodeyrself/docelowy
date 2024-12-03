@@ -60,6 +60,7 @@ class EtsScCart extends ObjectModel
 
 
 
+
     public static function getShoppingCarts(Context $context = null)
     {
         if (!$context) {
@@ -228,8 +229,8 @@ class EtsScCart extends ObjectModel
 
     public function saveNewCart($id_cart, $id_customer, $id_currency, $cart_name, $total, $sub_total, $total_shipping, $total_tax)
 {
-    // Generowanie unikalnego ID dla zapisu (dodanie timestampu)
-    $unique_id_cart = $id_cart . '_' . time();
+    // Dodanie unikalnego identyfikatora do id_cart
+    $unique_id_cart = (int)$id_cart . '_' . time(); // Unikalny identyfikator
 
     $sql = 'INSERT INTO `' . _DB_PREFIX_ . 'ets_savemycart_cart` 
             (`id_cart`, `id_customer`, `id_currency`, `cart_name`, `total`, `sub_total`, `total_shipping`, `total_tax`, `date_add`) 
@@ -245,6 +246,7 @@ class EtsScCart extends ObjectModel
 
     return $result;
 }
+
 
 
 }

@@ -560,10 +560,10 @@ $this->refs = 'https://prestahero.com/';
     if ((int)Configuration::get('ETS_SC_SAVE_MY_CART')) {
         $cart = new EtsScCart();
 
-        // Pobierz nazwę koszyka z danych wejściowych
+        // Pobranie nazwy koszyka od użytkownika
         $cart_name = Tools::getValue('cart_name', 'Koszyk ' . date('Y-m-d H:i:s'));
 
-        // Zapisz koszyk z unikalnym identyfikatorem
+        // Zapisanie koszyka z unikalnym id_cart
         $cart->saveNewCart(
             $this->context->cart->id,
             $this->context->customer->id,
@@ -583,6 +583,7 @@ $this->refs = 'https://prestahero.com/';
 
     return $this->display(__FILE__, 'fo-button-share.tpl');
 }
+
 
 
 
