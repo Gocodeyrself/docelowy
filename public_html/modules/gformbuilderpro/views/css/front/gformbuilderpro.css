@@ -203,6 +203,7 @@ span.spinner_sub:hover,.spinner_plus:hover,
 }
 .checkbox_item_wp input[type="checkbox"] {
     margin-right: 10px;
+    accent-color: red;
 }
 .checkbox_item_wp p {
     display: flex;
