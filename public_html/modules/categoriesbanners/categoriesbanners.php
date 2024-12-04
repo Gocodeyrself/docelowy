@@ -367,7 +367,6 @@ class Categoriesbanners extends Module {
         $id_category = (int) Tools::getValue('id_category');
 
         //if($id_category){
-            die("TEXT");
 
         $c_lang = $this->context->language->id;
         $SQL = 'SELECT * FROM ' . _DB_PREFIX_ . 'category_banner_mangement WHERE `active` = "1" AND `category` = ' . (int) Tools::getValue('id_category') . ' AND `lang` = ' . (int) $c_lang . ';';
