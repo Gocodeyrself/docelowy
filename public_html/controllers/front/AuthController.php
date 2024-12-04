@@ -33,14 +33,24 @@ class AuthControllerCore extends FrontController
     public $auth = false;
 
     public function checkAccess()
-    {
-        if ($this->context->customer->isLogged() && !$this->ajax) {
+{
+    if ($this->context->customer->isLogged() && !$this->ajax) {
+        // Sprawdź, czy parametr back został ustawiony
+        $back = rawurldecode(Tools::getValue('back'));
+
+        if (Tools::urlBelongsToShop($back)) {
+            // Jeśli parametr back prowadzi do ważnego URL, przekieruj tam
+            $this->redirect_after = $back;
+        } else {
+            // W przeciwnym razie użyj authRedirection lub my-account
             $this->redirect_after = $this->authRedirection ? urlencode($this->authRedirection) : 'my-account';
-            $this->redirect();
         }
 
-        return parent::checkAccess();
+        $this->redirect();
     }
+
+    return parent::checkAccess();
+}
 
     public function initContent()
     {
