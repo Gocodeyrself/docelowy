@@ -1,0 +1,35 @@
+[{shop_url}] 
+
+Dear {recipients_name},
+
+Your friend has shared their shopping cart with you through {shop_name}. A PDF version of the shopping cart is attached for your convenience.
+
+Here are the details of the shopping cart:
+
+REFERENCE  PRODUCT          UNIT PRICE      QUANTITY       TOTAL PRICE
+-----------------------------------------------------------------------
+{products_txt}
+
+Discounts: {discounts}
+
+PRODUCTS TOTAL: {total_products}
+SHIPPING TOTAL: {total_shipping}
+DISCOUNTS TOTAL: {total_discount}
+ORDER TOTAL: {total}
+
+What can you do with this shopping cart?
+- You can view this shopping cart online by clicking the link below.
+- Modify product quantities, update the cart, or apply vouchers.
+- Proceed to checkout and securely place your order.
+
+Click the link below to view the shopping cart:
+[{shopping_cart_link}]
+
+You can also forward this message to someone else if you'd like to share it.
+
+Need assistance?
+Please contact {shop_name} for further help.
+
+Thank you for using {shop_name}!
+
+{shop_name} [{shop_url}] powered by PrestaShop(tm) [http://www.prestashop.com/]
