@@ -1,46 +1,35 @@
-
 [{shop_url}] 
 
 Dear {recipients_name},
 
-The below Products/Shopping cart has been sent to you through the {shop_name} and a
-PDF version is attached for your convenience.
+Your friend has shared their shopping cart with you through {shop_name}. A PDF version of the shopping cart is attached for your convenience.
 
-REFERENCE
+Here are the details of the shopping cart:
 
-PRODUCT
+REFERENCE  PRODUCT          UNIT PRICE      QUANTITY       TOTAL PRICE
+-----------------------------------------------------------------------
+{products_txt}
 
-UNIT PRICE
+Discounts: {discounts}
 
-QUANTITY
+PRODUCTS TOTAL: {total_products}
+SHIPPING TOTAL: {total_shipping}
+DISCOUNTS TOTAL: {total_discount}
+ORDER TOTAL: {total}
 
-TOTAL PRICE
+What can you do with this shopping cart?
+- You can view this shopping cart online by clicking the link below.
+- Modify product quantities, update the cart, or apply vouchers.
+- Proceed to checkout and securely place your order.
 
-{products_txt} 
+Click the link below to view the shopping cart:
+[{shopping_cart_link}]
 
-{discounts} 
+You can also forward this message to someone else if you'd like to share it.
 
-PRODUCTS 
+Need assistance?
+Please contact {shop_name} for further help.
 
-{total_products}
+Thank you for using {shop_name}!
 
-SHIPPING 
-
-{total_shipping}
-
-TOTAL
-
-{total}
-
-So, what can you do with this shopping cart?
-You can now view this shopping cart on the {shop_name}, change
-product quantities, update the cart & vouchers, and place your order securely online.
-Click Here To View This Shopping Cart Online [{shopping_cart_link}]
-Or
-You can simply forward this to someone else.
-If you need any further assistance, Contact Us!
-
-
-{shop_name} [{shop_url}] powered by
-PrestaShop(tm) [http://www.prestashop.com/] 
-
+{shop_name} [{shop_url}] powered by PrestaShop(tm) [http://www.prestashop.com/]

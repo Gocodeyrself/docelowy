@@ -17,13 +17,15 @@
  * @copyright  ETS Software Technology Co., Ltd
  * @license    Valid for 1 website (or project) for each purchase of license
  */
-if (!defined('_PS_VERSION_')) { exit; }
+if (!defined('_PS_VERSION_')) {
+    exit;
+}
 require_once _PS_MODULE_DIR_ . 'ets_savemycart/classes/HTMLTemplateCartPdf.php';
-require_once _PS_MODULE_DIR_.'ets_savemycart/classes/EtsScLink.php';
+require_once _PS_MODULE_DIR_ . 'ets_savemycart/classes/EtsScLink.php';
 require_once(dirname(__FILE__) . '/abstract.php');
 class Ets_savemycartSubmitModuleFrontController extends EtsSaveCartFrontController
 {
-//    private $link_checkout;
+    //    private $link_checkout;
     private $cartRuleErrros;
     public function __construct()
     {
@@ -37,55 +39,57 @@ class Ets_savemycartSubmitModuleFrontController extends EtsSaveCartFrontControll
     {
         parent::init();
 
-        $this->link_checkout = $this->context->link->getPageLink((Configuration::get('PS_ORDER_PROCESS_TYPE') ? 'order-opc' : 'order'), (int)Configuration::get('PS_SSL_ENABLED_EVERYWHERE'));
+        $this->link_checkout = $this->context->link->getPageLink((Configuration::get('PS_ORDER_PROCESS_TYPE') ? 'order-opc' : 'order'), (int) Configuration::get('PS_SSL_ENABLED_EVERYWHERE'));
         $verify = trim(Tools::getValue('verify'));
         $token = trim(Tools::getValue('token'));
         if (trim($verify) !== '' && trim($token) !== '') {
-	        // Limit cart:
-	        $ETS_SC_NUMBER_OF_CLICK = !trim(Configuration::get('ETS_SC_NUMBER_OF_CLICK')) ? 100000 : (int)trim(Configuration::get('ETS_SC_NUMBER_OF_CLICK'));
+            // Limit cart:
+            $ETS_SC_NUMBER_OF_CLICK = !trim(Configuration::get('ETS_SC_NUMBER_OF_CLICK')) ? 100000 : (int) trim(Configuration::get('ETS_SC_NUMBER_OF_CLICK'));
             $rs = EtsScCart::getVerify($token, $verify);
             if ($shopping_cart = $rs['cart']) {
-	            $numberOfClick = count(EtsScCart::getClickCount((int)$shopping_cart['id_ets_savemycart']));
-                if (($cart = new Cart($shopping_cart['id_cart']))
+                $numberOfClick = count(EtsScCart::getClickCount((int) $shopping_cart['id_ets_savemycart']));
+                if (
+                    ($cart = new Cart($shopping_cart['id_cart']))
                     && $cart->id > 0
                     && $cart->getLastProduct()
                 ) {
                     if ($numberOfClick <= $ETS_SC_NUMBER_OF_CLICK) {
-	                    if ((int)$this->context->cart->id == (int)$cart->id) {
-		                    Db::getInstance()->insert(
-			                    'ets_savemycart_count',
-			                    [
-				                    'id_ets_savemycart' => (int)$shopping_cart['id_ets_savemycart'],
-				                    'id_cart_binding' => $this->context->cart->id
-			                    ]
-		                    );
-		                    Tools::redirectLink($this->link_checkout);
-		                    exit;
-	                    }
-	                    $id_cart_rules = explode(',',$shopping_cart['cart_rules']);
-	                    $binding_carts = EtsScCart::getBindingCart((int)$shopping_cart['id_ets_savemycart']);
+                        if ((int) $this->context->cart->id == (int) $cart->id) {
+                            Db::getInstance()->insert(
+                                'ets_savemycart_count',
+                                [
+                                    'id_ets_savemycart' => (int) $shopping_cart['id_ets_savemycart'],
+                                    'id_cart_binding' => $this->context->cart->id
+                                ]
+                            );
+                            Tools::redirectLink($this->link_checkout);
+                            exit;
+                        }
+                        $id_cart_rules = explode(',', $shopping_cart['cart_rules']);
+                        $binding_carts = EtsScCart::getBindingCart((int) $shopping_cart['id_ets_savemycart']);
 
-	                    if ($rs['expiredToken']) {
-		                    Db::getInstance()->delete('ets_savemycart_expired_token', 'id_cart=' . (int)$shopping_cart['id_cart']);
-	                    }
+                        if ($rs['expiredToken']) {
+                            Db::getInstance()->delete('ets_savemycart_expired_token', 'id_cart=' . (int) $shopping_cart['id_cart']);
+                        }
                         if ($this->context->cart->id) {
-                            if (is_array($binding_carts) && count($binding_carts)){
+                            if (is_array($binding_carts) && count($binding_carts)) {
                                 foreach ($binding_carts as $binding_cart) {
-                                    if (isset($binding_cart['id_cart_binding'])
+                                    if (
+                                        isset($binding_cart['id_cart_binding'])
                                         && $binding_cart['id_cart_binding']
                                         && $this->context->cart->id == $binding_cart['id_cart_binding']
                                     ) {
                                         Db::getInstance()->insert(
                                             'ets_savemycart_count',
                                             [
-                                                'id_ets_savemycart' => (int)$shopping_cart['id_ets_savemycart'],
+                                                'id_ets_savemycart' => (int) $shopping_cart['id_ets_savemycart'],
                                                 'id_cart_binding' => $this->context->cart->id
                                             ]
                                         );
-                                        $this->updateBoundCartCartRule($this->context->cart->id,$id_cart_rules);
-                                        if ($this->cartRuleErrros){
-                                            Tools::redirectLink($this->link_checkout.'?cr_err=1');
-                                        }else{
+                                        $this->updateBoundCartCartRule($this->context->cart->id, $id_cart_rules);
+                                        if ($this->cartRuleErrros) {
+                                            Tools::redirectLink($this->link_checkout . '?cr_err=1');
+                                        } else {
                                             Tools::redirectLink($this->link_checkout);
                                         }
                                         exit;
@@ -93,18 +97,17 @@ class Ets_savemycartSubmitModuleFrontController extends EtsSaveCartFrontControll
                                 }
                             }
 
-                        }
-                        else {
+                        } else {
                             $new_cart = new Cart();
-                            $new_cart->id_lang = (int)$this->context->cookie->id_lang;
-                            $new_cart->id_currency = (int)$this->context->cookie->id_currency;
-                            $new_cart->id_guest = (int)$this->context->cookie->id_guest;
-                            $new_cart->id_shop_group = (int)$this->context->shop->id_shop_group;
+                            $new_cart->id_lang = (int) $this->context->cookie->id_lang;
+                            $new_cart->id_currency = (int) $this->context->cookie->id_currency;
+                            $new_cart->id_guest = (int) $this->context->cookie->id_guest;
+                            $new_cart->id_shop_group = (int) $this->context->shop->id_shop_group;
                             $new_cart->id_shop = $this->context->shop->id;
                             if ($this->context->cookie->id_customer) {
-                                $new_cart->id_customer = (int)$this->context->cookie->id_customer;
-                                $new_cart->id_address_delivery = (int)Address::getFirstCustomerAddressId($new_cart->id_customer);
-                                $new_cart->id_address_invoice = (int)$cart->id_address_delivery;
+                                $new_cart->id_customer = (int) $this->context->cookie->id_customer;
+                                $new_cart->id_address_delivery = (int) Address::getFirstCustomerAddressId($new_cart->id_customer);
+                                $new_cart->id_address_invoice = (int) $cart->id_address_delivery;
                             } else {
                                 $new_cart->id_address_delivery = 0;
                                 $new_cart->id_address_invoice = 0;
@@ -121,43 +124,45 @@ class Ets_savemycartSubmitModuleFrontController extends EtsSaveCartFrontControll
                             Db::getInstance()->insert(
                                 'ets_savemycart_binding',
                                 [
-                                    'id_ets_savemycart' => (int)$shopping_cart['id_ets_savemycart'],
+                                    'id_ets_savemycart' => (int) $shopping_cart['id_ets_savemycart'],
                                     'id_cart_binding' => $this->context->cart->id
                                 ]
                             );
                             Db::getInstance()->insert(
                                 'ets_savemycart_count',
                                 [
-                                    'id_ets_savemycart' => (int)$shopping_cart['id_ets_savemycart'],
+                                    'id_ets_savemycart' => (int) $shopping_cart['id_ets_savemycart'],
                                     'id_cart_binding' => $this->context->cart->id
                                 ]
                             );
 
-                            $this->updateBoundCartCartRule($this->context->cart->id,$id_cart_rules);
+                            $this->updateBoundCartCartRule($this->context->cart->id, $id_cart_rules);
                         }
                         if ($res) {
-                            if ($this->cartRuleErrros){
-                                Tools::redirectLink($this->link_checkout.'?cr_err=1');
-                            }else{
+                            if ($this->cartRuleErrros) {
+                                Tools::redirectLink($this->link_checkout . '?cr_err=1');
+                            } else {
                                 Tools::redirectLink($this->link_checkout);
                             }
                         } else {
                             $this->errors[] = $this->module->l('Cannot binding new cart to your current cart.', 'submit');
                         }
                     } else {
-                    	if (!Db::getInstance()->getRow('
+                        if (
+                            !Db::getInstance()->getRow('
 			                SELECT * 
 			                FROM `' . _DB_PREFIX_ . 'ets_savemycart_expired_token` 
-			                WHERE token=\'' . pSQL($token) . '\'')) {
-		                    Db::getInstance()->insert(
-			                    'ets_savemycart_expired_token',
-			                    [
-				                    'id_cart' => (int)$shopping_cart['id_cart'],
-				                    'token' => $token
-			                    ]
-		                    );
-	                    }
-//                        Db::getInstance()->delete('ets_savemycart', 'id_ets_savemycart=' . (int)$shopping_cart['id_ets_savemycart']);
+			                WHERE token=\'' . pSQL($token) . '\'')
+                        ) {
+                            Db::getInstance()->insert(
+                                'ets_savemycart_expired_token',
+                                [
+                                    'id_cart' => (int) $shopping_cart['id_cart'],
+                                    'token' => $token
+                                ]
+                            );
+                        }
+                        //                        Db::getInstance()->delete('ets_savemycart', 'id_ets_savemycart=' . (int)$shopping_cart['id_ets_savemycart']);
 //                        Db::getInstance()->delete('ets_savemycart_binding', 'id_ets_savemycart=' . (int)$shopping_cart['id_ets_savemycart']);
 //                        Db::getInstance()->delete('ets_savemycart_count', 'id_ets_savemycart=' . (int)$shopping_cart['id_ets_savemycart']);
                         $this->errors[] = $this->module->l('You have run out of views turn for this cart.', 'submit');
@@ -167,7 +172,7 @@ class Ets_savemycartSubmitModuleFrontController extends EtsSaveCartFrontControll
                 }
             } elseif ($rs['expiredToken']) {
                 $this->errors[] = $this->module->l('You have run out of views turn for this cart.', 'submit');
-            }else {
+            } else {
                 $this->errors[] = $this->module->l('The token is invalid.', 'submit');
             }
         }
@@ -175,14 +180,16 @@ class Ets_savemycartSubmitModuleFrontController extends EtsSaveCartFrontControll
 
     public function checkBindingCart($binding_carts, $id_cart)
     {
-        if (!is_array($binding_carts) ||
+        if (
+            !is_array($binding_carts) ||
             count($binding_carts) <= 0 ||
             $id_cart <= 0
         ) {
             return false;
         }
         foreach ($binding_carts as $binding_cart) {
-            if (isset($binding_cart['id_cart_binding'])
+            if (
+                isset($binding_cart['id_cart_binding'])
                 && $binding_cart['id_cart_binding']
                 && $id_cart == $binding_cart['id_cart_binding']
             ) {
@@ -192,21 +199,27 @@ class Ets_savemycartSubmitModuleFrontController extends EtsSaveCartFrontControll
 
         return false;
     }
-    public function getIdCartRules(Cart $cart){
-            $ids = array();
-            foreach ($cart->getCartRules() as $key => $value){
-                array_push($ids,$value['id_cart_rule']);
-            }
-            return $ids;
+    public function getIdCartRules(Cart $cart)
+    {
+        $ids = array();
+        foreach ($cart->getCartRules() as $key => $value) {
+            array_push($ids, $value['id_cart_rule']);
+        }
+        return $ids;
     }
     public function initContent()
     {
         parent::initContent();
         if (Tools::isSubmit('submitSend') || Tools::getValue('submitSend')) {
-            if (!Tools::getValue('id_cart') && $this->context->cart->id <= 0 ) {
-                Tools::redirectLink($this->context->link->getPageLink('index', (int)Configuration::get('PS_SSL_ENABLED_EVERYWHERE')));
+            error_log('ETS_SC_SUBMIT - Start processing');
+            error_log('Recipient name: ' . Tools::getValue('name'));
+            error_log('Recipient email: ' . Tools::getValue('email'));
+            error_log('Cart ID: ' . Tools::getValue('id_cart'));
+
+            if (!Tools::getValue('id_cart') && $this->context->cart->id <= 0) {
+                Tools::redirectLink($this->context->link->getPageLink('index', (int) Configuration::get('PS_SSL_ENABLED_EVERYWHERE')));
             }
-            Tools::getValue('id_cart') ? $currentCart = new Cart((int)Tools::getValue('id_cart')) : $currentCart = $this->context->cart;
+            Tools::getValue('id_cart') ? $currentCart = new Cart((int) Tools::getValue('id_cart')) : $currentCart = $this->context->cart;
             $name = Tools::getValue('name');
             if (trim($name) == '') {
                 $this->errors[] = $this->module->l('Recipient name is required', 'submit');
@@ -228,7 +241,7 @@ class Ets_savemycartSubmitModuleFrontController extends EtsSaveCartFrontControll
                 // Get product list in Cart:
                 $virtual_product = true;
                 $product_var_tpl_list = array();
-                $id_group = isset($this->context->customer) && $this->context->customer->id ? Customer::getDefaultGroupId((int)$this->context->customer->id) : (int)Group::getCurrent()->id;
+                $id_group = isset($this->context->customer) && $this->context->customer->id ? Customer::getDefaultGroupId((int) $this->context->customer->id) : (int) Group::getCurrent()->id;
                 $group = new Group($id_group);
                 $use_tax_display = $group->price_display_method ? false : true;
                 $currency = Currency::getCurrencyInstance($currentCart->id_currency);
@@ -257,7 +270,7 @@ class Ets_savemycartSubmitModuleFrontController extends EtsSaveCartFrontControll
                         $product_var_tpl['old_price'] = Tools::displayPrice($old_price, $currency);
 
                         if (isset($p->specificPrice['reduction_type']) && $p->specificPrice['reduction_type'] !== 'percentage') {
-                            $currency2 = CurrencyCore::getCurrencyInstance($p->specificPrice['id_currency'] > 0 ? (int)$p->specificPrice['id_currency'] : (int)ConfigurationCore::get('PS_CURRENCY_DEFAULT'));
+                            $currency2 = CurrencyCore::getCurrencyInstance($p->specificPrice['id_currency'] > 0 ? (int) $p->specificPrice['id_currency'] : (int) ConfigurationCore::get('PS_CURRENCY_DEFAULT'));
                             $product_var_tpl['reduction'] = Tools::displayPrice(Tools::convertPriceFull($p->specificPrice['reduction'], $currency2, $currency), $currency);
                         } elseif (isset($p->specificPrice['reduction'])) {
                             $product_var_tpl['reduction'] = ($p->specificPrice['reduction'] * 100) . '%';
@@ -268,7 +281,7 @@ class Ets_savemycartSubmitModuleFrontController extends EtsSaveCartFrontControll
                         $product_var_tpl['attributes'] = $p->getAttributeCombinationsById($product['id_product_attribute'], $currentCart->id_lang);
                     }
                     // Product customized:
-                    $customized_datas = Product::getAllCustomizedDatas((int)$currentCart->id);
+                    $customized_datas = Product::getAllCustomizedDatas((int) $currentCart->id);
                     if (isset($customized_datas[$product['id_product']][$product['id_product_attribute']])) {
                         $product_var_tpl['customization'] = array();
                         foreach ($customized_datas[$product['id_product']][$product['id_product_attribute']][$currentCart->id_address_delivery] as $customization) {
@@ -280,7 +293,7 @@ class Ets_savemycartSubmitModuleFrontController extends EtsSaveCartFrontControll
                             if (isset($customization['datas'][Product::CUSTOMIZE_FILE]))
                                 $customization_text .= sprintf(Tools::displayError('%d image(s)'), count($customization['datas'][Product::CUSTOMIZE_FILE])) . Tools::nl2br(PHP_EOL);
 
-                            $customization_quantity = (int)$product['customization_quantity'];
+                            $customization_quantity = (int) $product['customization_quantity'];
 
                             $product_var_tpl['customization'][] = array(
                                 'customization_text' => $customization_text,
@@ -298,7 +311,7 @@ class Ets_savemycartSubmitModuleFrontController extends EtsSaveCartFrontControll
                 $product_list_txt = '';
                 $product_list_html = '';
                 if (count($product_var_tpl_list) > 0) {
-                    $product_list_txt = $this->getEmailTemplateContent('product_list.txt', Mail::TYPE_TEXT, $product_var_tpl_list,true);
+                    $product_list_txt = $this->getEmailTemplateContent('product_list.txt', Mail::TYPE_TEXT, $product_var_tpl_list, true);
                     $product_list_html = $this->getEmailTemplateContent('email_product_list.tpl', Mail::TYPE_HTML, $product_var_tpl_list);
                 }
 
@@ -307,7 +320,7 @@ class Ets_savemycartSubmitModuleFrontController extends EtsSaveCartFrontControll
                 $token = Tools::encrypt(Tools::passwdGen(8));
                 $currency = new Currency($currentCart->id_currency);
                 $data = [
-                    'shopping_cart_link' => $this->context->link->getModuleLink($this->module->name, 'submit', ['token' => $token, 'verify' => Tools::encrypt($currentCart->id)], (int)Configuration::get('PS_SSL_ENABLED_EVERYWHERE')),
+                    'shopping_cart_link' => $this->context->link->getModuleLink($this->module->name, 'submit', ['token' => $token, 'verify' => Tools::encrypt($currentCart->id)], (int) Configuration::get('PS_SSL_ENABLED_EVERYWHERE')),
                     'recipients_name' => $name,
                     'products' => $product_list_html,
                     'products_txt' => $product_list_txt,
@@ -315,13 +328,13 @@ class Ets_savemycartSubmitModuleFrontController extends EtsSaveCartFrontControll
                     'total_shipping' => CartCore::getTotalCart($currentCart->id, $use_tax_display, Cart::ONLY_SHIPPING),
                     'product_list' => $product_var_tpl_list,
                     'total' => CartCore::getTotalCart($currentCart->id, $use_tax_display),
-                    'total_discount' => $this->context->getCurrentLocale()->formatPrice($currentCart->getDiscountSubtotalWithoutGifts(),$currency->iso_code),
+                    'total_discount' => $this->context->getCurrentLocale()->formatPrice($currentCart->getDiscountSubtotalWithoutGifts(), $currency->iso_code),
                     'use_tax_display' => $use_tax_display ? $this->module->l('(Tax incl.)', 'submit') : $this->module->l('(Tax excl.)', 'submit'),
-                    'forward_mail' => 'mailto:?subject=FW: '.$this->module->l('Shopping cart', 'submit'),
+                    'forward_mail' => 'mailto:?subject=FW: ' . $this->module->l('Shopping cart', 'submit'),
                 ];
 
                 // General PDF:
-                $pdf = new PDF((object)$data, 'CartPdf', Context::getContext()->smarty);
+                $pdf = new PDF((object) $data, 'CartPdf', Context::getContext()->smarty);
                 $file_attachement = [];
                 $file_attachement['content'] = $pdf->render(false);
                 $file_attachement['name'] = $name . '-' . sprintf('%06d', $currentCart->id) . '.pdf';
@@ -340,7 +353,7 @@ class Ets_savemycartSubmitModuleFrontController extends EtsSaveCartFrontControll
 //                $isoTemplate = $language->iso_code . '/' . $template;
 //                $PS_MAIL_TYPE = trim(Configuration::get('PS_MAIL_TYPE'));
 
-//                if (
+                //                if (
 //                	!file_exists($templatePath . $isoTemplate . '.txt')
 //	                && ($PS_MAIL_TYPE == Mail::TYPE_BOTH || $PS_MAIL_TYPE == Mail::TYPE_TEXT)
 //                ) {
@@ -353,26 +366,35 @@ class Ets_savemycartSubmitModuleFrontController extends EtsSaveCartFrontControll
 //                }
 
                 if (!count($this->errors)) {
-                    if (@Mail::Send(
-                        (int)$currentCart->id_lang,
-                        'shopping_cart',
-                        Mail::l('Your friend has just shared his/her cart to you', (int)$currentCart->id_lang),
-                        $templateVars,
-                        $email,
-                        $name,
-                        $this->context->customer->email,
-                        $this->context->shop->name,
-                        $file_attachement, null, $this->module->getLocalPath() . 'mails/'
-                    )) {
+                    error_log('Attempting to send mail to: ' . $email);
+                    if (
+                        @Mail::Send(
+                            (int) $currentCart->id_lang,
+                            'shopping_cart',
+                            Mail::l('Your friend has just shared his/her cart to you', (int) $currentCart->id_lang),
+                            $templateVars,
+                            $email,
+                            $name,
+                            $this->context->customer->email,
+                            $this->context->shop->name,
+                            $file_attachement,
+                            null,
+                            $this->module->getLocalPath() . 'mails/'
+                        )
+                    ) {
+                        error_log('Attempting to send mail to: ' . $email);
                         $ids = $this->getIdCartRules($currentCart);
                         // Add log when send mail to guest success!
-                        if (!Db::getInstance()->insert('ets_savemycart',
-                            [
-                                'id_cart' => (int)$currentCart->id,
-                                'token' => $token,
-                                'cart_rules' => implode(',',$ids),
-                            ]
-                        )) {
+                        if (
+                            !Db::getInstance()->insert(
+                                'ets_savemycart',
+                                [
+                                    'id_cart' => (int) $currentCart->id,
+                                    'token' => $token,
+                                    'cart_rules' => implode(',', $ids),
+                                ]
+                            )
+                        ) {
                             $this->errors[] = $this->module->l('Adding log failed.', 'submit');
                         }
                         die(json_encode([
@@ -380,7 +402,8 @@ class Ets_savemycartSubmitModuleFrontController extends EtsSaveCartFrontControll
                             'msg' => $this->module->l('Mail sent successfully.', 'submit')
                         ]));
                     } else
-                        $this->errors[] = $this->module->l('Sending mail failed.', 'submit');
+                        error_log('Mail sending failed to ' . $email);
+                    $this->errors[] = $this->module->l('Sending mail failed.', 'submit');
                 }
             }
             die(json_encode([
@@ -404,18 +427,18 @@ class Ets_savemycartSubmitModuleFrontController extends EtsSaveCartFrontControll
         return version_compare(_PS_VERSION_, '1.7.0.0', '>=') ? ImageType::getFormattedName($name) : ImageType::getFormatedName($name);
     }
 
-    protected function getEmailTemplateContent($template_name, $mail_type, $var,$isTxt=false)
+    protected function getEmailTemplateContent($template_name, $mail_type, $var, $isTxt = false)
     {
         $email_configuration = Configuration::get('PS_MAIL_TYPE');
         if ($email_configuration != $mail_type && $email_configuration != Mail::TYPE_BOTH)
             return '';
-        if ($isTxt){
+        if ($isTxt) {
             if (file_exists(($file = $this->module->getLocalPath() . 'mails/' . $this->context->language->iso_code . DIRECTORY_SEPARATOR . $template_name))) {
                 $this->context->smarty->assign('list', $var);
                 return $this->context->smarty->fetch($file);
             }
-        }else{
-            if (file_exists(($file = $this->module->getLocalPath() . 'views/templates/front/'. $template_name))) {
+        } else {
+            if (file_exists(($file = $this->module->getLocalPath() . 'views/templates/front/' . $template_name))) {
                 $this->context->smarty->assign('list', $var);
                 return $this->context->smarty->fetch($file);
             }
@@ -423,26 +446,27 @@ class Ets_savemycartSubmitModuleFrontController extends EtsSaveCartFrontControll
         return '';
     }
 
-    public function updateBoundCartCartRule($id_cart,$ids)
+    public function updateBoundCartCartRule($id_cart, $ids)
     {
         $this->cartRuleErrros = array();
-        if ((int)$id_cart && count($ids)){
-            foreach ($ids as $key => $val){
-                $cart_rule = EtsScTools::getCartRule((int)($val));
+        if ((int) $id_cart && count($ids)) {
+            foreach ($ids as $key => $val) {
+                $cart_rule = EtsScTools::getCartRule((int) ($val));
                 if ($cart_rule) {
-                    if ((int)$cart_rule ['id_customer'] != 0 && (int)$cart_rule['id_customer'] != (int)$this->context->customer->id){
-                        $this->cartRuleErrros[] = sprintf($this->module->l('You cannot use this voucher: %s', 'submit'),$cart_rule['code']);
-                    }elseif ((int)$cart_rule['quantity'] == 0){
-                        $this->cartRuleErrros[] = sprintf($this->module->l('This voucher %s is out of stock', 'submit'),$cart_rule['code']);
-                    }else{
+                    if ((int) $cart_rule['id_customer'] != 0 && (int) $cart_rule['id_customer'] != (int) $this->context->customer->id) {
+                        $this->cartRuleErrros[] = sprintf($this->module->l('You cannot use this voucher: %s', 'submit'), $cart_rule['code']);
+                    } elseif ((int) $cart_rule['quantity'] == 0) {
+                        $this->cartRuleErrros[] = sprintf($this->module->l('This voucher %s is out of stock', 'submit'), $cart_rule['code']);
+                    } else {
                         try {
-                            Db::getInstance()->insert('cart_cart_rule',
+                            Db::getInstance()->insert(
+                                'cart_cart_rule',
                                 [
-                                    'id_cart' => (int)$id_cart,
-                                    'id_cart_rule' => (int)$val,
+                                    'id_cart' => (int) $id_cart,
+                                    'id_cart_rule' => (int) $val,
                                 ]
                             );
-                        } catch (Exception $e){
+                        } catch (Exception $e) {
                             //Do something
                         }
                     }
@@ -454,12 +478,12 @@ class Ets_savemycartSubmitModuleFrontController extends EtsSaveCartFrontControll
 
     public function popupInit(Customer $customer)
     {
-        $product_count = (int)$this->context->cart->nbProducts();
+        $product_count = (int) $this->context->cart->nbProducts();
         $tpl_var = array(
             'product_count' => $product_count,
             'link_action' => $this->getCurrentURL(),
             'link_checkout' => $this->link_checkout,
-            'id_customer' => (int)$this->context->customer->id,
+            'id_customer' => (int) $this->context->customer->id,
             'link' => EtsScLink::getInstance()->getLinkRewrite($this->context->language->id),
         );
         if (!$customer->id) {

@@ -169,22 +169,23 @@ $(document).ready(function () {
                         btn.removeClass('active');
                         if (json) {
                             if (json.errors) {
-                                $('.ets-sp-panel-msg').append('<p class="alert alert-danger">' + json.errors + '</p>');
-                            } else {
-                                if (json.ok) {
-                                    showSuccessMessage(json.msg);
-                                    $('.ets_sc_sendmail_form.active').removeClass('active');
-                                    $('.ets_sc_overload:not(.active), .ets_sc_sendmail_result:not(.active)').addClass('active');
-                                    $('#ets_shoppingcart_email_form #name').val('');
-                                    $('#ets_shoppingcart_email_form #email').val('');
-                                }
+                                console.log('Errors:', json.errors); // Debugowanie w konsoli
+                                showErrorMessage(json.errors);
+                            } else if (json.ok) {
+                                showSuccessMessage(json.msg || 'Mail sent successfully!');
+                                $('.ets_sc_sendmail_form.active').removeClass('active');
+                                $('.ets_sc_overload:not(.active), .ets_sc_sendmail_result:not(.active)').addClass('active');
+                                $('#ets_shoppingcart_email_form #name').val('');
+                                $('#ets_shoppingcart_email_form #email').val('');
                             }
                         }
                     },
-                    error: function () {
+                    error: function (xhr, status, error) {
+                        console.error('AJAX error:', status, error); // Debugowanie błędów AJAX
                         btn.removeClass('active');
                     }
                 });
+                
             }
         }
     });
