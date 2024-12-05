@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Message from {shop_name}</title>
+    <style>
+        body {
+            -webkit-text-size-adjust: none;
+            background-color: #eee;
+            font-family: Open-sans, sans-serif;
+            color: #555454;
+            font-size: 14px;
+            line-height: 22px;
+            margin: auto;
+        }
+        .table-mail {
+            width: 750px;
+            margin: 10px auto;
+        }
+        .box {
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 3px;
+            box-shadow: 0 20px 30px 0 rgba(0, 0, 0, 0.1);
+        }
+        .table-recap th, .table-recap td {
+            padding: 10px;
+            border: 1px solid #d2dae3;
+        }
+        .table-recap {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .button_link {
+            background-color: #2FB5D2;
+            border: 1px solid #2FB5D2;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .button_link:hover {
+            background-color: #2ecdef;
+            border-color: #2ecdef;
+        }
+        @media only screen and (max-width: 500px) {
+            .table-mail {
+                width: 90%;
+            }
+            .box {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+<table class="table-mail">
+    <tr>
+        <td>
+            <table class="table">
+                <tr>
+                    <td class="box">
+                        <table>
+                            <tr>
+                                <td align="left">
+                                    <a title="{shop_name}" href="{shop_url}">
+                                        <img src="{shop_logo}" alt="{shop_name}" />
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p>Dear <strong>{recipients_name}</strong>,</p>
+                                    <p>Your shopping cart from <strong>{shop_name}</strong> has been shared with you.</p>
+                                </td>
+                            </tr>
+                        </table>
+                        <table class="table-recap">
+                            <thead>
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Description</th>
+                                    <th style="text-align:right;">Unit Price</th>
+                                    <th style="text-align:right;">Quantity</th>
+                                    <th style="text-align:right;">Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {products}
+                            </tbody>
+                        </table>
+                        <p style="text-align:center; margin-top: 20px;">
+                            <a href="{shopping_cart_link}" class="button_link">View Shopping Cart</a>
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align:center;">
+                        <span>&copy; {shop_name} - All rights reserved</span>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

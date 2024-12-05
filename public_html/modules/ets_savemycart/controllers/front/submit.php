@@ -13,7 +13,7 @@ require_once(dirname(__FILE__) . '/abstract.php');
 
 class Ets_savemycartSubmitModuleFrontController extends EtsSaveCartFrontController
 {
-    private $cartRuleErrros;
+    private $cartRuleErrors;
 
     public function __construct()
     {
@@ -89,20 +89,21 @@ class Ets_savemycartSubmitModuleFrontController extends EtsSaveCartFrontControll
     {
         $product_list_txt = '';
         $product_list_html = '';
-        $product_list = [];
 
         foreach ($currentCart->getProducts() as $product) {
-            $product_list[] = [
-                'name' => $product['name'],
-                'price' => Tools::displayPrice($product['price'], $this->context->currency),
-                'quantity' => $product['quantity']
-            ];
+            $product_list_txt .= "{$product['name']} ({$product['quantity']} x " . Tools::displayPrice($product['price'], $this->context->currency) . ") = " . Tools::displayPrice($product['total'], $this->context->currency) . PHP_EOL;
+            $product_list_html .= "<tr>
+                <td>{$product['name']}</td>
+                <td>{$product['quantity']}</td>
+                <td>" . Tools::displayPrice($product['price'], $this->context->currency) . "</td>
+                <td>" . Tools::displayPrice($product['total'], $this->context->currency) . "</td>
+            </tr>";
         }
 
         return [
             'products_txt' => $product_list_txt,
             'products_html' => $product_list_html,
-            'total' => CartCore::getTotalCart($currentCart->id),
+            'total' => Tools::displayPrice($currentCart->getOrderTotal(), $this->context->currency),
             'email' => $email,
             'name' => $name
         ];
