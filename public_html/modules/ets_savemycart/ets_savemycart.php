@@ -137,61 +137,48 @@ $this->refs = 'https://prestahero.com/';
      */
     public function _doEmailTemplate($language = null)
 {
-    // Ścieżka do folderu mails
-    $src = dirname(__FILE__) . '/mails/';
-    // Pobierz listę języków
-    $languages = $language ? [$language] : Language::getLanguages(false);
-
-    foreach ($languages as $lang) {
-        $langIso = $language ? $language->iso_code : $lang['iso_code'];
-        $srcLangPath = $src . 'en'; // Domyślnie kopiujemy pliki z 'en'
-        $destLangPath = $src . $langIso; // Folder docelowy np. 'pl'
-
-        // Sprawdź, czy folder docelowy istnieje; jeśli nie, utwórz go
-        if (!file_exists($destLangPath)) {
-            if (!mkdir($destLangPath, 0755, true)) {
-                return false; // Nie udało się utworzyć folderu
-            }
+    $path_mail = dirname(__FILE__) . '/mails/';
+    $languages = Language::getLanguages(false);
+    
+    foreach ($languages as $language) {
+        $lang_folder = $path_mail . $language['iso_code'];
+        if (!file_exists($lang_folder)) {
+            mkdir($lang_folder, 0755, true);
         }
-
-        // Kopiuj pliki z folderu 'en' do folderu języka docelowego
-        foreach (glob($srcLangPath . '/*') as $file) {
-            $filename = basename($file);
-            $destFile = $destLangPath . '/' . $filename;
-
-            // Kopiuj plik tylko, jeśli jeszcze nie istnieje w folderze docelowym
-            if (!file_exists($destFile)) {
-                if (!copy($file, $destFile)) {
-                    return false; // Nie udało się skopiować pliku
-                }
-            }
-        }
+        // Tworzenie pliku shopping_cart.txt
+        file_put_contents($lang_folder . '/shopping_cart.txt', 'Twój koszyk został udostępniony!');
+        // Tworzenie pliku shopping_cart.html
+        file_put_contents($lang_folder . '/shopping_cart.html', '<p>Twój koszyk został udostępniony!</p>');
     }
-
-    return true; // Wszystko przebiegło pomyślnie
+    
+    return true;
 }
 
 
-    public function recurseCopy($src, $dst)
-    {
-        if (!@file_exists($src)) {
-            return false;
-        }
-        $dir = opendir($src);
-        if (!@mkdir($dst)) {
-            return false;
-        }
-        while (false !== ($file = readdir($dir))) {
-            if (($file != '.') && ($file != '..')) {
-                if (is_dir($src . '/' . $file)) {
-                    $this->recurseCopy($src . '/' . $file, $dst . '/' . $file);
-                } else {
-                    @copy($src . '/' . $file, $dst . '/' . $file);
-                }
+
+
+public function recurseCopy($src, $dst)
+{
+    if (!@file_exists($src)) {
+        file_put_contents(_PS_ROOT_DIR_.'/debug.log', 'Source not found: '.$src.PHP_EOL, FILE_APPEND);
+        return false;
+    }
+    $dir = opendir($src);
+    @mkdir($dst);
+    file_put_contents(_PS_ROOT_DIR_.'/debug.log', 'Creating directory: '.$dst.PHP_EOL, FILE_APPEND);
+    while (false !== ($file = readdir($dir))) {
+        if (($file != '.') && ($file != '..')) {
+            if (is_dir($src . '/' . $file)) {
+                $this->recurseCopy($src . '/' . $file, $dst . '/' . $file);
+            } else {
+                copy($src . '/' . $file, $dst . '/' . $file);
+                file_put_contents(_PS_ROOT_DIR_.'/debug.log', 'Copying file: '.$src.'/'.$file.' to '.$dst.'/'.$file.PHP_EOL, FILE_APPEND);
             }
         }
-        closedir($dir);
     }
+    closedir($dir);
+}
+
 
     // CODE:
     public function getConfigs($isStyleConfigs=false)

@@ -40,14 +40,13 @@ class Ets_savemycartSubmitModuleFrontController extends EtsSaveCartFrontControll
                 $name = Tools::getValue('name');
                 $id_cart = Tools::getValue('id_cart');
 
+                // Validate inputs
                 if (!$email) {
                     throw new Exception('Email value is missing');
                 }
-
                 if (!$name) {
                     throw new Exception('Name value is missing');
                 }
-
                 if (!$id_cart && !$this->context->cart->id) {
                     throw new Exception('Cart ID is missing');
                 }
@@ -70,10 +69,12 @@ class Ets_savemycartSubmitModuleFrontController extends EtsSaveCartFrontControll
                 $data = $this->prepareEmailData($currentCart, $name, $email);
                 $this->sendCartEmail($data, $email, $name, $currentCart);
 
+                // Log successful email
                 file_put_contents(_PS_ROOT_DIR_ . '/log_submit_debug.log', 'Debug: Email sent successfully' . PHP_EOL, FILE_APPEND);
                 die(json_encode(['ok' => 1, 'msg' => 'Mail sent successfully.']));
 
             } catch (Exception $e) {
+                // Log errors
                 file_put_contents(
                     _PS_ROOT_DIR_ . '/log_submit_debug.log',
                     'Error: ' . $e->getMessage() . PHP_EOL,
@@ -88,8 +89,8 @@ class Ets_savemycartSubmitModuleFrontController extends EtsSaveCartFrontControll
     {
         $product_list_txt = '';
         $product_list_html = '';
-
         $product_list = [];
+
         foreach ($currentCart->getProducts() as $product) {
             $product_list[] = [
                 'name' => $product['name'],
@@ -109,12 +110,21 @@ class Ets_savemycartSubmitModuleFrontController extends EtsSaveCartFrontControll
 
     private function sendCartEmail($data, $email, $name, $currentCart)
     {
+        // Prepare email template variables
         $templateVars = [
             '{products}' => $data['products_html'],
             '{total}' => $data['total'],
             '{name}' => $name
         ];
 
+        // Debug mail data before sending
+        file_put_contents(
+            _PS_ROOT_DIR_ . '/log_submit_debug.log',
+            "Debug: Preparing to send mail to $email with data: " . print_r($templateVars, true) . PHP_EOL,
+            FILE_APPEND
+        );
+
+        // Attempt to send email
         if (
             !Mail::Send(
                 (int)$currentCart->id_lang,

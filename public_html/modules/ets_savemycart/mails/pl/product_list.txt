@@ -1,0 +1,21 @@
+{foreach $list as $product}
+    Kod produktu: {$product['reference']}
+
+    Nazwa produktu: {$product['name']}
+
+    Cena jednostkowa: {$product['price']}
+
+    Ilość: {$product['quantity']}
+
+    Cena całkowita: {$product['price']}
+
+    {foreach $product['customization'] as $customization}
+        Produkt: {$product['name']} - Opcja niestandardowa: {$customization['customization_text']}
+
+        Cena: {$product['price']}
+
+        Ilość niestandardowa: {$customization['customization_quantity']}
+
+        Suma: {$product['quantity']}
+    {/foreach}
+{/foreach}
