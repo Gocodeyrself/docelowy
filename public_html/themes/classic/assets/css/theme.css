@@ -6523,10 +6523,8 @@ body#checkout section.checkout-step .radio-field label {
 }
 
 body#checkout #header .header-nav {
-  max-height: none;
-  padding: .9375rem 0;
-  margin-bottom: 0;
-  border: 0
+  max-height: 50px;
+  border-bottom: #f6f6f6 2px solid;
 }
 
 body#checkout #header .header-nav .logo {

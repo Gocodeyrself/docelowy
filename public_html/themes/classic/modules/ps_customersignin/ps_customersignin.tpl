@@ -97,7 +97,7 @@
        </a>
        <div class="dropdown-menu" aria-labelledby="accountDropdown">
          <!-- Poprawione linki do logowania -->
-         <a class="dropdown-item" href="{if $language.iso_code == 'pl'}https://cezos.com/pl/logowanie{else}https://cezos.com/en/login{/if}">
+         <a class="dropdown-item" href="{if $language.iso_code == 'pl'}https://cezos.com/pl/logowanie?back={$smarty.server.REQUEST_URI|escape:'html':'UTF-8'}{else}https://cezos.com/en/login?back={$smarty.server.REQUEST_URI|escape:'html':'UTF-8'}{/if}">
            {if $language.iso_code == 'pl'}
              Zaloguj
            {else}
@@ -105,7 +105,7 @@
            {/if}
          </a>
          <!-- Poprawione tłumaczenie dla rejestracji -->
-         <a class="dropdown-item" href="{$urls.pages.register}">
+         <a class="dropdown-item" href="{$urls.pages.register|escape:'html':'UTF-8'}?back={$smarty.server.REQUEST_URI|escape:'html':'UTF-8'}">
            {if $language.iso_code == 'pl'}
              Zarejestruj
            {else}
