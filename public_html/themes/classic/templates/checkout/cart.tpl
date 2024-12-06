@@ -64,31 +64,37 @@
       <!-- Right Block: cart subtotal & cart total -->
       <div class="cart-grid-right col-lg-4">
 
-      {block name='cart_summary'}
-        <div class="card cart-summary">
+      {block name='hook_shopping_cart'}
+        {hook h='displayShoppingCart'}
+      {/block}
       
-          {block name='hook_shopping_cart'}
-            {hook h='displayShoppingCart'}
-          {/block}
       
-          {block name='hook_cart_share_button'}
-            {hook h='displayCartShareButton'}
-          {/block}
+      {block name='cart_totals'}
+        {include file='checkout/_partials/cart-detailed-totals.tpl' cart=$cart}
+      {/block}
       
-          {block name='cart_totals'}
-            {include file='checkout/_partials/cart-detailed-totals.tpl' cart=$cart}
-          {/block}
+      {block name='cart_actions'}
+        {include file='checkout/_partials/cart-detailed-actions.tpl' cart=$cart}
+      {/block}
       
-          {block name='cart_actions'}
-            {include file='checkout/_partials/cart-detailed-actions.tpl' cart=$cart}
-          {/block}
-
-          {block name='hook_shopping_cart'}
-            {hook h='displayShoppingCart'}
-          {/block}
-          
+      {block name='hook_reassurance'}
+        {hook h='displayReassurance'}
+      {/block}
       
+      {if !$customer.is_logged}
+        <div class="checkout_auth_btns">
+          <a class="btn btn-primary login" href="{$urls.pages.authentication}">
+            {l s='Log in' d='Shop.Theme.Global'}
+          </a>
+          <a class="btn btn-primary register" href="{$urls.pages.register}">
+            {l s='Sign in' d='Shop.Theme.Global'}
+          </a>
         </div>
+      {/if}
+      
+      {hook h='displayCrossSellingShoppingCart'}
+      
+      </div>
       {/block}
 
         {block name='hook_reassurance'}
