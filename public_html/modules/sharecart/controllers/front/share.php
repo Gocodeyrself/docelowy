@@ -8,31 +8,28 @@ class ShareCartShareModuleFrontController extends ModuleFrontController
 
         $uniqueId = Tools::getValue('id');
         if (!$uniqueId) {
-            die('Invalid link');
+            $this->errors[] = $this->trans('Invalid link.', [], 'Modules.Sharecart.Shop');
+            $this->setTemplate('errors/not_found.tpl');
+            return;
         }
 
-        // Pobranie danych koszyka
-        $cart = Db::getInstance()->getRow('
+        // Pobranie danych koszyka z bazy
+        $cartLink = Db::getInstance()->getRow('
             SELECT * FROM `' . _DB_PREFIX_ . 'sharecart_links`
             WHERE unique_id = "' . pSQL($uniqueId) . '"
         ');
 
-        if (!$cart) {
-            die('Cart not found');
+        if (!$cartLink) {
+            $this->errors[] = $this->trans('This cart does not exist or has expired.', [], 'Modules.Sharecart.Shop');
+            $this->setTemplate('errors/not_found.tpl');
+            return;
         }
 
-        // Sprawdzenie, czy link nie wygasł
-        $dateAdded = new DateTime($cart['date_add']);
-        $dateLimit = (new DateTime())->modify('-2 weeks');
-        if ($dateAdded < $dateLimit) {
-            die('This link has expired.');
-        }
+        // Pobranie zawartości koszyka
+        $cart = new Cart((int)$cartLink['cart_id']);
+        $products = $cart->getProducts();
 
-        // Pobranie produktów z koszyka
-        $cartObj = new Cart((int)$cart['cart_id']);
-        $products = $cartObj->getProducts();
-
-        // Przekazanie danych do widoku
+        // Przekazanie produktów do widoku
         $this->context->smarty->assign([
             'products' => $products,
         ]);

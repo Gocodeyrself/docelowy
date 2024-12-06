@@ -66,12 +66,21 @@ class ShareCart extends Module
     }
 
     public function hookDisplayShoppingCart($params)
-    {
-        $this->context->controller->addJS($this->_path . 'views/js/sharecart.js');
-        $this->context->controller->addCSS($this->_path . 'views/css/sharecart.css');
+{
+    // Logowanie dla weryfikacji wywołania hooka
+    PrestaShopLogger::addLog('hookDisplayShoppingCart called', 1);
 
-        return $this->display(__FILE__, 'views/templates/hook/displayCartShareButton.tpl');
-    }
+    // Wymuszenie dodania pliku JavaScript
+    echo '<script src="' . $this->_path . 'views/js/sharecart.js"></script>';
+    
+    // Wymuszenie dodania pliku CSS
+    echo '<link rel="stylesheet" href="' . $this->_path . 'views/css/sharecart.css">';
+
+    // Funkcja nie zwraca treści do wyświetlenia
+    return '';
+}
+
+
 
     public function getContent()
     {
@@ -113,5 +122,15 @@ class ShareCart extends Module
     // Zapisanie zmodyfikowanego pliku
     return file_put_contents($themePath, $updatedTplContent) !== false;
 }
+
+public function hookDisplayCartShareButton($params)
+{
+    $this->context->smarty->assign([
+        'share_link' => '#', // Tymczasowo, link generuje się dynamicznie w JS
+    ]);
+
+    return $this->display(__FILE__, 'views/templates/hook/displayCartShareButton.tpl');
+}
+
 
 }
