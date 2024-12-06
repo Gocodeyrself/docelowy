@@ -1,0 +1,9 @@
+sharecart_generate_link:
+    path: /module/sharecart/ajax
+    controller: ShareCartAjaxModuleFrontController
+    methods: [POST]
+
+sharecart_view:
+    path: /sharecart/{id}
+    controller: ShareCartShareModuleFrontController
+    methods: [GET]
