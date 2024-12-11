@@ -201,7 +201,7 @@
               {/block}
               {* Zamyka blok formularza produktu *}
 
-        
+              
             </div>
             {* Zamyka div z informacjami o produkcie *}
 

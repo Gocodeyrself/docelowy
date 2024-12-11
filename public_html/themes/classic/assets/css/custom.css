@@ -936,6 +936,7 @@ main,
     width: 60px;
     height: 32px;
     border-right: none;
+    border-radius: 10px 0 0 10px;
 }
 
 .product-right-container .input-group-btn-vertical button {
@@ -1169,7 +1170,7 @@ body#category #content-wrapper.long_products .products .js-product .thumbnail-co
     color: #000;
     font-size: 14px;
     align-items: center;
-    display: inline-flex;
+    display: block;
     font-weight: 700;
     margin-left: 5px;
 }
@@ -4748,5 +4749,13 @@ button.contactHandler {
       padding: 15px 15px 0 15px;
     }
   }
+
+  .product-flags-custom.product-flags.js-product-flags {
+    display: none; /* Ukrywa element, gdy nie ma flag do wyświetlenia */
+}
+
+.product-flags-custom.product-flags.js-product-flags.has-flags {
+    display: block; /* Pokazuje element, gdy są dostępne flagi */
+}
 
   
