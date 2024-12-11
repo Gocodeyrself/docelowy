@@ -23,15 +23,15 @@
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  *}
 
-{block name='social_sharing'}
+ {block name='social_sharing'}
   {if $social_share_links}
-    <div class="social-sharing">
-      <span>{l s='Share' d='Shop.Theme.Actions'}</span>
-      <ul>
-        {foreach from=$social_share_links item='social_share_link'}
-          <li class="{$social_share_link.class} icon-gray"><a href="{$social_share_link.url}" class="text-hide" title="{$social_share_link.label}" target="_blank" rel="noopener noreferrer">{$social_share_link.label}</a></li>
-        {/foreach}
-      </ul>
+    <div class="social-sharing-buttons">
+      {foreach from=$social_share_links item='social_share_link'}
+        <a href="{$social_share_link.url}" class="btn-share {$social_share_link.class}" title="{$social_share_link.label}" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-{$social_share_link.class}"></i>
+          <span>{$social_share_link.label}</span>
+        </a>
+      {/foreach}
     </div>
   {/if}
 {/block}

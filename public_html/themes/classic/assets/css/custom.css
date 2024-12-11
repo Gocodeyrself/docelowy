@@ -1311,7 +1311,7 @@ body#category #content-wrapper.long_products .products .js-product .thumbnail-co
 
 .product-comments-additional-info>*,
 .product-comments-additional-info {
-    margin: 0 !important;
+    margin-bottom: 5px;
 }
 
 .product-comments-additional-info {

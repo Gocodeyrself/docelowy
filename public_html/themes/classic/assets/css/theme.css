@@ -9190,11 +9190,6 @@ body#checkout #hook-display-after-carrier>[class^=col].links .row>[class^=col] {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  width: 40%;
-  justify-content: center;
-  position: absolute;
-  right: 1px;
-  bottom: 1px;
 }
 
 .social-sharing li {
@@ -9227,6 +9222,88 @@ body#checkout #hook-display-after-carrier>[class^=col].links .row>[class^=col] {
 .block-social ul li a:hover,
 .social-sharing li a:hover {
   color: transparent
+}
+
+
+.social-sharing-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/*.facebook {
+  background-image: url(../css/04be689c12d686c59503.svg)
+}
+
+.facebook::before {
+  content: ""
+}
+
+.facebook.icon-gray {
+  background-image: url(../css/b252849e892c264f4f22.svg)
+}
+
+.facebook.icon-gray:hover,
+.facebook::before {
+  background-image: url(../css/fa3993a997a0b84e9900.svg)
+}*/
+
+.btn-share {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* Wyrównanie zawartości do lewej */
+  padding: 10px 20px;
+  font-size: 16px; /* Rozmiar fontu */
+  font-weight: bold;
+  text-decoration: none;
+  color: #555; /* Domyślny kolor tekstu */
+  border: 2px solid transparent; /* Brak widocznego obramowania */
+  border-radius: 5px; /* Zaokrąglenie rogów */
+  background-color: transparent !important; /* Tło przezroczyste */
+  transition: transform 0.3s ease, color 0.3s ease; /* Animacja powiększenia i zmiany koloru */
+  text-align: left; /* Wyrównanie tekstu do lewej */
+}
+
+.btn-share:hover {
+  transform: scale(1.05); /* Powiększenie na hover */
+  background-color: transparent !important;
+}
+
+.btn-share.facebook:hover {
+  color: #2d4373; /* Ciemniejszy kolor Facebook na hover */
+}
+
+.btn-share.linkedin:hover {
+  color: #005582; /* Ciemniejszy kolor LinkedIn na hover */
+}
+
+.btn-share i {
+  margin-right: 10px; /* Odstęp między ikoną a tekstem */
+  font-size: 20px; /* Rozmiar ikony */
+  line-height: 1; /* Wyrównanie ikony */
+}
+.btn-share span {
+  white-space: nowrap; /* Zapobiega zawijaniu tekstu */
+}
+
+.btn-share.facebook {
+  color: #3b5998; /* Kolor tekstu i ikony dla Facebook */
+}
+
+.btn-share.twitter {
+  background-color: #1da1f2;
+}
+
+.btn-share.pinterest {
+  background-color: #bd081c;
+}
+
+.btn-share.linkedin {
+  color: #0077b5; /* Kolor tekstu i ikony dla LinkedIn */
+}
+
+.btn-share:hover {
+  background-color: #333;
 }
 
 .products-selection {
@@ -9761,22 +9838,6 @@ body#checkout #hook-display-after-carrier>[class^=col].links .row>[class^=col] {
   white-space: nowrap
 }
 
-.facebook {
-  background-image: url(../css/04be689c12d686c59503.svg)
-}
-
-.facebook::before {
-  content: ""
-}
-
-.facebook.icon-gray {
-  background-image: url(../css/b252849e892c264f4f22.svg)
-}
-
-.facebook.icon-gray:hover,
-.facebook::before {
-  background-image: url(../css/fa3993a997a0b84e9900.svg)
-}
 
 .twitter {
   background-image: url(../css/f56d95737d55e2bdba95.svg)
@@ -9794,20 +9855,20 @@ body#checkout #hook-display-after-carrier>[class^=col].links .row>[class^=col] {
 .twitter::before {
   background-image: url(../css/0ba57b3ea460c3d7d0c4.svg)
 }
-
+/*
 .linkedin {
   background-image: url(../css/b2efa71e4ca1cd26b0f4.svg);
   background-position: center center
 }
 
 .linkedin.icon-gray {
-  background-image: url(../css/linkedin-grey.svg); /* Ikona LinkedIn w wersji szarej */
+  background-image: url(../css/linkedin-grey.svg);
 }
 
 .linkedin.icon-gray:hover,
 .linkedin::before {
-  background-image: url(../css/linkedin-blue.svg); /* Kolorowa wersja LinkedIn na hover */
-}
+  background-image: url(../css/linkedin-blue.svg);
+} */
 
 .rss {
   background-image: url(../css/cbeba06698c00a61e822.svg)

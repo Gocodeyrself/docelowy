@@ -172,66 +172,65 @@ class Ps_Sharebuttons extends Module implements WidgetInterface
     }
 
     public function getWidgetVariables($hookName, array $params)
-    {
-        if (!method_exists($this->context->controller, 'getProduct')) {
-            return;
-        }
+{
+    if (!method_exists($this->context->controller, 'getProduct')) {
+        return;
+    }
 
-        $product = $this->context->controller->getProduct();
+    $product = $this->context->controller->getProduct();
 
-        if (!Validate::isLoadedObject($product)) {
-            return;
-        }
+    if (!Validate::isLoadedObject($product)) {
+        return;
+    }
 
-        $social_share_links = [];
-        $sharing_url = urlencode(addcslashes($this->context->link->getProductLink($product), "'"));
-        $sharing_name = urlencode(addcslashes($product->name, "'"));
+    $social_share_links = [];
+    $sharing_url = urlencode(addcslashes($this->context->link->getProductLink($product), "'"));
+    $sharing_name = urlencode(addcslashes($product->name, "'"));
 
-        $image_cover_id = $product->getCover($product->id);
-        if (is_array($image_cover_id) && isset($image_cover_id['id_image'])) {
-            $image_cover_id = (int) $image_cover_id['id_image'];
-        } else {
-            $image_cover_id = 0;
-        }
+    $image_cover_id = $product->getCover($product->id);
+    if (is_array($image_cover_id) && isset($image_cover_id['id_image'])) {
+        $image_cover_id = (int) $image_cover_id['id_image'];
+    } else {
+        $image_cover_id = 0;
+    }
 
-        $sharing_img = urlencode(addcslashes($this->context->link->getImageLink($product->link_rewrite, (string) $image_cover_id), "'"));
+    $sharing_img = urlencode(addcslashes($this->context->link->getImageLink($product->link_rewrite, (string) $image_cover_id), "'"));
 
-        if (Configuration::get('PS_SC_FACEBOOK')) {
-            $social_share_links['facebook'] = [
-                'label' => $this->trans('Share', [], 'Modules.Sharebuttons.Shop'),
-                'class' => 'facebook',
-                'url' => 'https://www.facebook.com/sharer.php?u=' . $sharing_url,
-            ];
-        }
-
-        if (Configuration::get('PS_SC_TWITTER')) {
-            $social_share_links['twitter'] = [
-                'label' => $this->trans('Tweet', [], 'Modules.Sharebuttons.Shop'),
-                'class' => 'twitter',
-                'url' => 'https://twitter.com/intent/tweet?text=' . $sharing_name . ' ' . $sharing_url,
-            ];
-        }
-
-        if (Configuration::get('PS_SC_PINTEREST')) {
-            $social_share_links['pinterest'] = [
-                'label' => $this->trans('Pinterest', [], 'Modules.Sharebuttons.Shop'),
-                'class' => 'pinterest',
-                'url' => 'https://www.pinterest.com/pin/create/button/?media=' . $sharing_img . '&url=' . $sharing_url,
-            ];
-        }
-
-        if (Configuration::get('PS_SC_LINKEDIN')) {
-            $social_share_links['linkedin'] = [
-                'label' => $this->trans('Share', [], 'Modules.Sharebuttons.Shop'),
-                'class' => 'linkedin', // Kluczowe: klasa musi być "linkedin"
-                'url' => 'https://www.linkedin.com/sharing/share-offsite/?url=' . $sharing_url,
-            ];
-        }
-        
-        
-
-        return [
-            'social_share_links' => $social_share_links,
+    if (Configuration::get('PS_SC_FACEBOOK')) {
+        $social_share_links['facebook'] = [
+            'label' => $this->trans('Share on Facebook', [], 'Modules.Sharebuttons.Shop'),
+            'class' => 'facebook',
+            'url' => 'https://www.facebook.com/sharer.php?u=' . $sharing_url,
         ];
     }
+
+    if (Configuration::get('PS_SC_TWITTER')) {
+        $social_share_links['twitter'] = [
+            'label' => $this->trans('Tweet on Twitter', [], 'Modules.Sharebuttons.Shop'),
+            'class' => 'twitter',
+            'url' => 'https://twitter.com/intent/tweet?text=' . $sharing_name . ' ' . $sharing_url,
+        ];
+    }
+
+    if (Configuration::get('PS_SC_PINTEREST')) {
+        $social_share_links['pinterest'] = [
+            'label' => $this->trans('Pin on Pinterest', [], 'Modules.Sharebuttons.Shop'),
+            'class' => 'pinterest',
+            'url' => 'https://www.pinterest.com/pin/create/button/?media=' . $sharing_img . '&url=' . $sharing_url,
+        ];
+    }
+
+    if (Configuration::get('PS_SC_LINKEDIN')) {
+        $social_share_links['linkedin'] = [
+            'label' => $this->trans('Share on LinkedIn', [], 'Modules.Sharebuttons.Shop'),
+            'class' => 'linkedin',
+            'url' => 'https://www.linkedin.com/sharing/share-offsite/?url=' . $sharing_url,
+        ];
+    }
+
+    return [
+        'social_share_links' => $social_share_links,
+    ];
+}
+
 }

@@ -37,45 +37,60 @@
 
 .btn-comment,
 .btn-comment-inverse {
-  background-color: dimgrey !important;
-  color: #ffffff;
-  background: var(--first-color);
-    font-size: 16px !important;
-    text-transform: math-auto;
-    font-weight: 600;
-    padding: 0.5rem 2rem;
-    border-radius: 10px !important;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* Wyrównanie zawartości do lewej */
+  width: 100%; /* Dopasowanie szerokości */
+  background: transparent !important; /* Tło przezroczyste */
+  color: #FF2323; /* Domyślny kolor tekstu i ikon */
+  font-size: 16px !important; /* Dopasowanie rozmiaru fontu */
+  font-weight: 600; /* Grubość tekstu */
+  padding: 10px 20px; /* Standardowe odstępy */
+  border: 2px solid transparent; /* Brak widocznego obramowania */
+  border-radius: 5px; /* Zaokrąglenie rogów */
+  text-transform: none; /* Brak automatycznego formatowania liter */
+  cursor: pointer;
+  transition: all 0.3s ease; /* Animacja na hover */
+  text-align: left; /* Wyrównanie tekstu do lewej */
 }
-.btn-comment .material-icons,
-.btn-comment-inverse .material-icons {
-  font-size: 20px;
-  margin-right: 7px;
+
+.btn-comment .material-icons {
+  margin-right: 10px; /* Odstęp między ikoną a tekstem */
+  font-size: 20px; /* Rozmiar ikony */
+  line-height: 1; /* Wyrównanie ikony */
 }
 
 .btn-comment:hover {
-  background-color: #3c4d52;
+  transform: scale(1.05); /* Powiększenie na hover */
+  color: #B41816; /* Ciemniejszy kolor tekstu na hover */
 }
 
 .btn-comment-inverse {
-  background-color: #ffffff;
-  color: #363a41;
-  border: 1px solid #979797;
-}
-.btn-comment-inverse:hover {
-  background-color: #6b868f;
-  border: 1px solid #6b868f;
-  color: #ffffff;
+  background: transparent !important; /* Tło przezroczyste */
+  color: #B41816; /* Domyślny kolor tekstu i ikon */
+  border: 2px solid #B41816; /* Subtelny border */
+  justify-content: flex-start; /* Wyrównanie zawartości do lewej */
+  text-align: left; /* Tekst również wyrównany do lewej */
 }
 
+.btn-comment-inverse:hover {
+  transform: scale(1.05); /* Powiększenie na hover */
+  color: #FF2323; /* Zmiana koloru tekstu na hover */
+  border: 2px solid #FF2323; /* Zmiana koloru obramowania */
+}
+
+
 .btn-comment-big {
-  padding: 13px 16px;
+  padding: 13px 16px; /* Większy przycisk */
   height: 45px;
 }
 
 .btn-comment-huge {
-  padding: 13px 28px;
+  padding: 13px 28px; /* Jeszcze większy przycisk */
   height: 45px;
 }
+
+
 
 .link-comment {
   color: #232323;

@@ -34,7 +34,7 @@
               {$social_share_link.label}
             </a>
           </li>
-          
+          <br>
         {/foreach}
       </ul>
     </div>
