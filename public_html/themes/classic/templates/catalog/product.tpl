@@ -215,19 +215,22 @@
 
             {block name='hook_display_reassurance'}
             {hook h='displayReassurance'}
+            {hook h='displayProductActions' product=$product}
             {/block}
           </div>
         </div>
-<!-- New box with sharring information -->
-        <div class="col-md-12 white-bgr box-shadow accessories-container" style="padding: 10px 15px;">
-          <h4 class="head-title mb-2">{l s='Share your opinion' d='Shop.Theme.Catalog'}</h4>
+<!-- New box with sharing information -->
+<div class="col-md-12 white-bgr box-shadow accessories-container" style="padding: 10px 15px;">
+  <h4 class="head-title mb-2">{l s='Share your opinion' d='Shop.Theme.Catalog'}</h4>
 
-          {block name='product_additional_info'}
-            {include file='catalog/_partials/product-additional-info.tpl'}
-            {hook h='displayProductActions' product=$product}
-            {/block}
-        </div>
-<!-- End of box with sharring information -->
+  {block name='product_additional_info'}
+    {include file='catalog/_partials/product-additional-info.tpl'}<br>
+  {/block}
+</div>
+<!-- End of box with sharing information -->
+
+
+<!-- End of box with comments and social sharing -->
 
         <!-- New box with delivery and returns information -->
         <div class="col-md-12 white-bgr box-shadow accessories-container" style="padding: 10px 15px;">
