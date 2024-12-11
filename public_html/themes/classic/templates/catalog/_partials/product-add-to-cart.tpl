@@ -85,6 +85,20 @@
             <i class="material-icons product-unavailable">&#xE14B;</i>
           {/if}
           {$product.availability_message}
+          {* Dodanie informacji o stanie magazynowym w nawiasach *}
+          <span class="catalog_number">
+            (
+            {assign var="qFeature" value=Tools::getQuantityFromFeature($product.id_product)}
+            {if $qFeature}
+              {l s="%count% szt." sprintf=['%count%' => $qFeature ] d='Shop.Theme.Checkout'}
+            {else}
+              {if $product.quantity < 0}
+                {l s="%count% szt." sprintf=['%count%' => 0] d='Shop.Theme.Checkout'}
+              {else}
+                {l s="%count% szt." sprintf=['%count%' => $product.quantity] d='Shop.Theme.Checkout'}
+              {/if}
+            {/if})
+          </span>
         {/if}
       </span>
     {/block}

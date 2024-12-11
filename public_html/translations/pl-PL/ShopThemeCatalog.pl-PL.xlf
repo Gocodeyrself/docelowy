@@ -705,6 +705,12 @@
             <source>Delivery and Returns</source>
             <target state="final">Dostawa i Zwroty</target>
         </trans-unit>
+        
+        <!-- Share your opinion -->
+        <trans-unit id="share_your_opinion" approved="yes">
+            <source>Share your opinion</source>
+            <target state="final">Udostępnij swoją opinię</target>
+        </trans-unit>
 
         <!-- Complaints and returns -->
         <trans-unit id="complaints_and_returns" approved="yes">

@@ -8945,9 +8945,10 @@ body#checkout #hook-display-after-carrier>[class^=col].links .row>[class^=col] {
 }
 
 #product-availability {
-  display: inline;
+  display: flex;
   margin-top: .625rem;
-  font-weight: 700
+  font-weight: 700;
+  align-items: center;
 }
 
 #product-availability .material-icons {
@@ -9253,7 +9254,7 @@ body#checkout #hook-display-after-carrier>[class^=col].links .row>[class^=col] {
   align-items: center;
   justify-content: flex-start; /* Wyrównanie zawartości do lewej */
   padding: 10px 20px;
-  font-size: 16px; /* Rozmiar fontu */
+  font-size: 18px; /* Rozmiar fontu */
   font-weight: bold;
   text-decoration: none;
   color: #555; /* Domyślny kolor tekstu */
@@ -9279,7 +9280,7 @@ body#checkout #hook-display-after-carrier>[class^=col].links .row>[class^=col] {
 
 .btn-share i {
   margin-right: 10px; /* Odstęp między ikoną a tekstem */
-  font-size: 20px; /* Rozmiar ikony */
+  font-size: 30px; /* Rozmiar ikony */
   line-height: 1; /* Wyrównanie ikony */
 }
 .btn-share span {

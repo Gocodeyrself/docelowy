@@ -189,31 +189,24 @@
                 <ul class="product-flags-custom product-flags js-product-flags">
                   {foreach from=$product.flags item=flag}
                     {if $flag.type != "new" && $flag.type != "discount" && $flag.type != "on-sale" && $flag.type != "out_of_stock"}
+                      {* Wyświetla flagi produktów, które nie są typu "new", "discount", "on-sale" ani "out_of_stock" *}
                       <li class="product-flag {$flag.type}">{$flag.label}</li>
                     {/if}
                   {/foreach}
                 </ul>
 
                 {block name='product_refresh'}{/block}
+                  {* Blok do odświeżania produktu, obecnie pusty *}
               </form>
               {/block}
+              {* Zamyka blok formularza produktu *}
 
-              <div class="catalog_number">
-                {l s="Stan" d='Shop.Theme.Catalog'}
-                {assign var="qFeature" value=Tools::getQuantityFromFeature($product.id_product)}
-                {if $qFeature}
-                  {l s="%count% szt." sprintf=['%count%' => $qFeature ] d='Shop.Theme.Checkout'}
-                {else}
-                  {if $product.quantity < 0}
-                    {l s="%count% szt." sprintf=['%count%' => 0] d='Shop.Theme.Checkout'}
-                  {else}
-                    {l s="%count% szt." sprintf=['%count%' => $product.quantity] d='Shop.Theme.Checkout'}
-                  {/if}
-                {/if}
-              </div>
+        
             </div>
+            {* Zamyka div z informacjami o produkcie *}
 
             {block name='hook_display_reassurance'}
+                {* Wywołuje hook 'displayReassurance', który może być używany przez moduły do dodawania treści zapewniających klienta *}
             {hook h='displayReassurance'}
             {hook h='displayProductActions' product=$product}
             {/block}

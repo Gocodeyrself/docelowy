@@ -1168,12 +1168,10 @@ body#category #content-wrapper.long_products .products .js-product .thumbnail-co
     text-transform: none;
     color: #000;
     font-size: 14px;
-    line-height: 22px;
-    display: block;
-    margin-bottom: 5px;
-    clear: both;
-    font-weight: 400;
-    margin-bottom: 3px;
+    align-items: center;
+    display: inline-flex;
+    font-weight: 700;
+    margin-left: 5px;
 }
 
 .product_type:first-child {
