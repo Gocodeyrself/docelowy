@@ -1286,19 +1286,21 @@ body#category #content-wrapper.long_products .products .js-product .thumbnail-co
 
 .product-main .add-to-cart {
     background-color: #ed192d;
-    padding: 10px 60px;
+    padding: 0.5rem 2rem;
     color: #fff !important;
     border-color: #ed192d;
+    font-size: 16px;
+    font-weight: 600;
     border: 1px solid;
     cursor: pointer;
-    height: 34px;
-    border-radius: var(--border-radius);
+    border-radius: 10px;
+    text-transform: math-auto;
 }
 
 .product-main .add-to-cart:hover i,
 .product-main .add-to-cart:hover {
-    background-color: #fff;
-    color: #ed192d !important;
+    background-color: #d90111;
+    color: #fff !important;
 }
 
 .js-product-additional-info {
@@ -1503,7 +1505,6 @@ body#category #content-wrapper.long_products .products .js-product .thumbnail-co
     background: var(--first-color);
     font-size: 16px !important;
     text-transform: math-auto;
-    border-radius: var(--border-radius);
     font-weight: 600;
     padding: 0.5rem 2rem;
     border-radius: 10px !important;

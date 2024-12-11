@@ -53,32 +53,31 @@ class CarrierBuilder
     }
 
     /**
-     * @param array $carriers
+     * @param array<mixed> $carriers
      * @param int $langId
      * @param \Currency $currency
      * @param string $weightUnit
      *
-     * @return array
+     * @return array<mixed>
      *
-     * @throws \PrestaShopDatabaseException
-     * @throws \PrestaShopException
+     * @@throws \PrestaShopDatabaseException
+     * @@throws \PrestaShopException
      */
-    public function buildCarriers(array $carriers, int $langId, \Currency $currency, $weightUnit)
+    public function buildCarriers($carriers, $langId, \Currency $currency, $weightUnit)
     {
         $eventBusCarriers = [];
         foreach ($carriers as $carrier) {
             $eventBusCarriers[] = $this->buildCarrier(
                 new \Carrier($carrier['id_carrier'], $langId),
                 $currency->iso_code,
-                $weightUnit,
-                $carrier['update_date']
+                $weightUnit
             );
         }
 
         $formattedCarriers = [];
         /** @var EventBusCarrier $eventBusCarrier */
         foreach ($eventBusCarriers as $eventBusCarrier) {
-            /** @var array $eventBusCarrierSerialized */
+            /** @var array<mixed> $eventBusCarrierSerialized */
             $eventBusCarrierSerialized = $eventBusCarrier->jsonSerialize();
             $formattedCarriers = array_merge($formattedCarriers, $eventBusCarrierSerialized);
         }
@@ -90,14 +89,13 @@ class CarrierBuilder
      * @param \Carrier $carrier
      * @param string $currencyIsoCode
      * @param string $weightUnit
-     * @param string $updateDate
      *
      * @return EventBusCarrier
      *
-     * @throws \PrestaShopDatabaseException
-     * @throws \PrestaShopException
+     * @@throws \PrestaShopDatabaseException
+     * @@throws \PrestaShopException
      */
-    public function buildCarrier(\Carrier $carrier, $currencyIsoCode, $weightUnit, $updateDate)
+    public function buildCarrier(\Carrier $carrier, $currencyIsoCode, $weightUnit)
     {
         $eventBusCarrier = new EventBusCarrier();
         $freeShippingStartsAtPrice = (float) $this->configurationRepository->get('PS_SHIPPING_FREE_PRICE');
@@ -128,8 +126,7 @@ class CarrierBuilder
             ->setGrade($carrier->grade)
             ->setDelay($carrier->delay)
             ->setCurrency($currencyIsoCode)
-            ->setWeightUnit($weightUnit)
-            ->setUpdateAt($updateDate);
+            ->setWeightUnit($weightUnit);
 
         $deliveryPriceByRanges = $this->carrierRepository->getDeliveryPriceByRange($carrier);
 
@@ -168,13 +165,13 @@ class CarrierBuilder
     /**
      * @param \Carrier $carrier
      * @param \RangeWeight|\RangePrice $range
-     * @param array $zone
+     * @param array<mixed> $zone
      *
      * @return false|CarrierDetail
      *
-     * @throws \PrestaShopDatabaseException
+     * @@throws \PrestaShopDatabaseException
      */
-    private function buildCarrierDetails(\Carrier $carrier, $range, array $zone)
+    private function buildCarrierDetails(\Carrier $carrier, $range, $zone)
     {
         /** @var int $rangeId */
         $rangeId = $range->id;
@@ -188,14 +185,14 @@ class CarrierBuilder
         $carrierDetail->setZoneId($zone['id_zone']);
         $carrierDetail->setRangeId($rangeId);
 
-        /** @var array $countryIsoCodes */
+        /** @var array<mixed> $countryIsoCodes */
         $countryIsoCodes = $this->countryRepository->getCountyIsoCodesByZoneId($zone['id_zone']);
         if (!$countryIsoCodes) {
             return false;
         }
         $carrierDetail->setCountryIsoCodes($countryIsoCodes);
 
-        /** @var array $stateIsoCodes */
+        /** @var array<mixed> $stateIsoCodes */
         $stateIsoCodes = $this->stateRepository->getStateIsoCodesByZoneId($zone['id_zone']);
         $carrierDetail->setStateIsoCodes($stateIsoCodes);
 
@@ -209,12 +206,12 @@ class CarrierBuilder
      *
      * @return CarrierTax|null
      *
-     * @throws \PrestaShopDatabaseException
+     * @@throws \PrestaShopDatabaseException
      */
     private function buildCarrierTaxes(\Carrier $carrier, $zoneId, $rangeId)
     {
         $taxRulesGroupId = (int) $carrier->getIdTaxRulesGroup();
-        /** @var array $carrierTaxesByZone */
+        /** @var array<mixed> $carrierTaxesByZone */
         $carrierTaxesByZone = $this->taxRepository->getCarrierTaxesByZone($zoneId, $taxRulesGroupId);
 
         if (!$carrierTaxesByZone[0]['country_iso_code']) {

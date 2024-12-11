@@ -8,19 +8,13 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+namespace PrestaShop\Module\PsAccounts\Vendor\Symfony\Component\Cache\Simple;
 
-namespace Symfony\Component\Cache\Simple;
-
-use Psr\SimpleCache\CacheInterface as Psr16CacheInterface;
-use Symfony\Component\Cache\Adapter\NullAdapter;
-use Symfony\Contracts\Cache\CacheInterface;
-
-@trigger_error(sprintf('The "%s" class is deprecated since Symfony 4.3, use "%s" and type-hint for "%s" instead.', NullCache::class, NullAdapter::class, CacheInterface::class), \E_USER_DEPRECATED);
-
+use PrestaShop\Module\PsAccounts\Vendor\Psr\SimpleCache\CacheInterface;
 /**
- * @deprecated since Symfony 4.3, use NullAdapter and type-hint for CacheInterface instead.
+ * @author Nicolas Grekas <p@tchwork.com>
  */
-class NullCache implements Psr16CacheInterface
+class NullCache implements CacheInterface
 {
     /**
      * {@inheritdoc}
@@ -29,76 +23,55 @@ class NullCache implements Psr16CacheInterface
     {
         return $default;
     }
-
     /**
      * {@inheritdoc}
-     *
-     * @return iterable
      */
     public function getMultiple($keys, $default = null)
     {
         foreach ($keys as $key) {
-            yield $key => $default;
+            (yield $key => $default);
         }
     }
-
     /**
      * {@inheritdoc}
-     *
-     * @return bool
      */
     public function has($key)
     {
-        return false;
+        return \false;
     }
-
     /**
      * {@inheritdoc}
-     *
-     * @return bool
      */
     public function clear()
     {
-        return true;
+        return \true;
     }
-
     /**
      * {@inheritdoc}
-     *
-     * @return bool
      */
     public function delete($key)
     {
-        return true;
+        return \true;
     }
-
     /**
      * {@inheritdoc}
-     *
-     * @return bool
      */
     public function deleteMultiple($keys)
     {
-        return true;
+        return \true;
     }
-
     /**
      * {@inheritdoc}
-     *
-     * @return bool
      */
     public function set($key, $value, $ttl = null)
     {
-        return false;
+        return \false;
     }
-
     /**
      * {@inheritdoc}
-     *
-     * @return bool
      */
     public function setMultiple($values, $ttl = null)
     {
-        return false;
+        return \false;
     }
 }

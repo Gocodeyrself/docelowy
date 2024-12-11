@@ -5,11 +5,12 @@ namespace PrestaShop\Module\PsEventbus\Provider;
 use PrestaShop\Module\PsEventbus\Builder\CarrierBuilder;
 use PrestaShop\Module\PsEventbus\Config\Config;
 use PrestaShop\Module\PsEventbus\DTO\Carrier as EventBusCarrier;
+use PrestaShop\Module\PsEventbus\Provider\PaginatedApiDataProviderInterface as ProviderPaginatedApiDataProviderInterface;
 use PrestaShop\Module\PsEventbus\Repository\CarrierRepository;
 use PrestaShop\Module\PsEventbus\Repository\ConfigurationRepository;
 use PrestaShop\Module\PsEventbus\Repository\LanguageRepository;
 
-class CarrierDataProvider implements PaginatedApiDataProviderInterface
+class CarrierDataProvider implements ProviderPaginatedApiDataProviderInterface
 {
     /**
      * @var ConfigurationRepository
@@ -48,17 +49,16 @@ class CarrierDataProvider implements PaginatedApiDataProviderInterface
      * @param int $limit
      * @param string $langIso
      *
-     * @return array
+     * @return array<mixed>
      *
-     * @throws \PrestaShopDatabaseException
+     * @@throws \PrestaShopDatabaseException
      */
     public function getFormattedData($offset, $limit, $langIso)
     {
-        $language = new \Language();
         $currency = new \Currency((int) $this->configurationRepository->get('PS_CURRENCY_DEFAULT'));
 
         $langId = $this->languageRepository->getLanguageIdByIsoCode($langIso);
-        /** @var array $carriers */
+        /** @var array<mixed> $carriers */
         $carriers = $this->carrierRepository->getAllCarrierProperties($offset, $limit, $langId);
 
         /** @var string $configurationPsWeightUnit */
@@ -76,20 +76,19 @@ class CarrierDataProvider implements PaginatedApiDataProviderInterface
 
     public function getFormattedDataIncremental($limit, $langIso, $objectIds)
     {
-        /** @var array $shippingIncremental */
+        /** @var array<mixed> $shippingIncremental */
         $shippingIncremental = $this->carrierRepository->getShippingIncremental(Config::COLLECTION_CARRIERS, $langIso);
 
         if (!$shippingIncremental) {
             return [];
         }
 
-        $language = new \Language();
         $currency = new \Currency((int) $this->configurationRepository->get('PS_CURRENCY_DEFAULT'));
 
         $langId = $this->languageRepository->getLanguageIdByIsoCode($langIso);
 
         $carrierIds = array_column($shippingIncremental, 'id_object');
-        /** @var array $carriers */
+        /** @var array<mixed> $carriers */
         $carriers = $this->carrierRepository->getCarrierProperties($carrierIds, $langId);
 
         /** @var string $configurationPsWeightUnit */
@@ -111,12 +110,28 @@ class CarrierDataProvider implements PaginatedApiDataProviderInterface
      *
      * @return int
      *
-     * @throws \PrestaShopDatabaseException
+     * @@throws \PrestaShopDatabaseException
      */
     public function getRemainingObjectsCount($offset, $langIso)
     {
         $langId = $this->languageRepository->getLanguageIdByIsoCode($langIso);
 
         return (int) $this->carrierRepository->getRemainingCarriersCount($offset, $langId);
+    }
+
+    /**
+     * @param int $offset
+     * @param int $limit
+     * @param string $langIso
+     *
+     * @return array<mixed>
+     *
+     * @@throws \PrestaShopDatabaseException
+     */
+    public function getQueryForDebug($offset, $limit, $langIso)
+    {
+        $langId = $this->languageRepository->getLanguageIdByIsoCode($langIso);
+
+        return $this->carrierRepository->getQueryForDebug($offset, $limit, $langId);
     }
 }

@@ -623,6 +623,7 @@ class ComposerStaticInita11d99060407121a828ab85bb8b687cb
         'PrestaShop\\Module\\Mbo\\Service\\ExternalContentProvider\\ExternalContentProviderInterface' => __DIR__ . '/../..' . '/src/Service/ExternalContentProvider/ExternalContentProviderInterface.php',
         'PrestaShop\\Module\\Mbo\\Service\\HookExceptionHolder' => __DIR__ . '/../..' . '/src/Service/HookExceptionHolder.php',
         'PrestaShop\\Module\\Mbo\\Service\\MboSymfonyCacheClearer' => __DIR__ . '/../..' . '/src/Service/MboSymfonyCacheClearer.php',
+        'PrestaShop\\Module\\Mbo\\Service\\ModuleInstaller' => __DIR__ . '/../..' . '/src/Service/ModuleInstaller.php',
         'PrestaShop\\Module\\Mbo\\Service\\ModulesHelper' => __DIR__ . '/../..' . '/src/Service/ModulesHelper.php',
         'PrestaShop\\Module\\Mbo\\Service\\View\\ContextBuilder' => __DIR__ . '/../..' . '/src/Service/View/ContextBuilder.php',
         'PrestaShop\\Module\\Mbo\\Service\\View\\InstalledModule' => __DIR__ . '/../..' . '/src/Service/View/InstalledModule.php',

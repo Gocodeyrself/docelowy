@@ -2,27 +2,14 @@
 
 namespace PrestaShop\Module\PsEventbus\Decorator;
 
-use PrestaShop\Module\PsEventbus\Repository\ConfigurationRepository;
-
 class ManufacturerDecorator
 {
     /**
-     * @var string
-     */
-    private $timezone;
-
-    public function __construct(
-        ConfigurationRepository $configurationRepository
-    ) {
-        $this->timezone = (string) $configurationRepository->get('PS_TIMEZONE');
-    }
-
-    /**
-     * @param array $manufacturers
+     * @param array<mixed> $manufacturers
      *
      * @return void
      */
-    public function decorateManufacturers(array &$manufacturers)
+    public function decorateManufacturers(&$manufacturers)
     {
         foreach ($manufacturers as &$manufacturer) {
             $this->castPropertyValues($manufacturer);
@@ -30,17 +17,17 @@ class ManufacturerDecorator
     }
 
     /**
-     * @param array $manufacturer
+     * @param array<mixed> $manufacturer
      *
      * @return void
      */
-    private function castPropertyValues(array &$manufacturer)
+    private function castPropertyValues(&$manufacturer)
     {
         $manufacturer['id_manufacturer'] = (int) $manufacturer['id_manufacturer'];
         $manufacturer['active'] = (bool) $manufacturer['active'];
         $manufacturer['id_lang'] = (int) $manufacturer['id_lang'];
         $manufacturer['id_shop'] = (int) $manufacturer['id_shop'];
-        $manufacturer['created_at'] = (new \DateTime($manufacturer['created_at'], new \DateTimeZone($this->timezone)))->format('Y-m-d\TH:i:sO');
-        $manufacturer['updated_at'] = (new \DateTime($manufacturer['updated_at'], new \DateTimeZone($this->timezone)))->format('Y-m-d\TH:i:sO');
+        $manufacturer['created_at'] = (string) $manufacturer['created_at'];
+        $manufacturer['updated_at'] = (string) $manufacturer['updated_at'];
     }
 }

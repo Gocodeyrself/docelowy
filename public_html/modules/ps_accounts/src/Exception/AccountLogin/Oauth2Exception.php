@@ -24,11 +24,18 @@ use PrestaShop\OAuth2\Client\Provider\PrestaShopUser;
 
 class Oauth2Exception extends AccountLoginException
 {
+    /**
+     * @param string $message
+     * @param PrestaShopUser|null $user
+     * @param \Exception $previous
+     */
     public function __construct(
-        ?PrestaShopUser $user,
-        string $message = 'OAuth2 error',
-        string $type = 'error_from_hydra'
+        $message = 'OAuth2 error',
+        PrestaShopUser $user = null,
+        \Exception $previous = null
     ) {
-        parent::__construct($user, $message, $type);
+        parent::__construct($message, $user, $previous);
+
+        $this->type = 'error_from_hydra';
     }
 }

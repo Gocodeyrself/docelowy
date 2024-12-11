@@ -8,14 +8,65 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+namespace PrestaShop\Module\PsAccounts\Vendor\Symfony\Component\Cache\Adapter;
 
-namespace Symfony\Component\Cache\Adapter;
-
-@trigger_error(sprintf('The "%s" class is @deprecated since Symfony 4.3, use "Psr16Adapter" instead.', SimpleCacheAdapter::class), \E_USER_DEPRECATED);
-
+use PrestaShop\Module\PsAccounts\Vendor\Psr\SimpleCache\CacheInterface;
+use PrestaShop\Module\PsAccounts\Vendor\Symfony\Component\Cache\PruneableInterface;
+use PrestaShop\Module\PsAccounts\Vendor\Symfony\Component\Cache\Traits\ProxyTrait;
 /**
- * @deprecated since Symfony 4.3, use Psr16Adapter instead.
+ * @author Nicolas Grekas <p@tchwork.com>
  */
-class SimpleCacheAdapter extends Psr16Adapter
+class SimpleCacheAdapter extends AbstractAdapter implements PruneableInterface
 {
+    /**
+     * @internal
+     */
+    const NS_SEPARATOR = '_';
+    use ProxyTrait;
+    private $miss;
+    public function __construct(CacheInterface $pool, $namespace = '', $defaultLifetime = 0)
+    {
+        parent::__construct($namespace, $defaultLifetime);
+        $this->pool = $pool;
+        $this->miss = new \stdClass();
+    }
+    /**
+     * {@inheritdoc}
+     */
+    protected function doFetch(array $ids)
+    {
+        foreach ($this->pool->getMultiple($ids, $this->miss) as $key => $value) {
+            if ($this->miss !== $value) {
+                (yield $key => $value);
+            }
+        }
+    }
+    /**
+     * {@inheritdoc}
+     */
+    protected function doHave($id)
+    {
+        return $this->pool->has($id);
+    }
+    /**
+     * {@inheritdoc}
+     */
+    protected function doClear($namespace)
+    {
+        return $this->pool->clear();
+    }
+    /**
+     * {@inheritdoc}
+     */
+    protected function doDelete(array $ids)
+    {
+        return $this->pool->deleteMultiple($ids);
+    }
+    /**
+     * {@inheritdoc}
+     */
+    protected function doSave(array $values, $lifetime)
+    {
+        return $this->pool->setMultiple($values, 0 === $lifetime ? null : $lifetime);
+    }
 }

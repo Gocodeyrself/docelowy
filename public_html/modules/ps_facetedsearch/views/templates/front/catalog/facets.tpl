@@ -18,9 +18,9 @@
  *}
 {if $displayedFacets|count}
   <div id="search_filters">
-    {* {block name='facets_title'}
+    {block name='facets_title'}
       <p class="text-uppercase h6 hidden-sm-down">{l s='Filter By' d='Shop.Theme.Actions'}</p>
-    {/block} *}
+    {/block}
 
     {block name='facets_clearall_button'}
       {if $activeFilters|count}
@@ -34,7 +34,7 @@
     {/block}
 
     {foreach from=$displayedFacets item="facet"}
-      <section class="facet clearfix">
+      <section class="facet clearfix" data-type="{$facet.type}" data-name="{$facet.label}">
         <p class="h6 facet-title hidden-sm-down">{$facet.label}</p>
         {assign var=_expand_id value=10|mt_rand:100000}
         {assign var=_collapse value=true}
@@ -73,9 +73,7 @@
                         {elseif isset($filter.properties.texture)}
                           <span class="color texture" style="background-image:url({$filter.properties.texture})"></span>
                         {else}
-                          {* <span {if !$js_enabled} class="ps-shown-by-js" {/if}><i class="material-icons rtl-no-flip checkbox-checked">&#xE5CA;</i></span> *}
-                          <span {if !$js_enabled} class="ps-shown-by-js" {/if}><i></i></span>
-
+                          <span {if !$js_enabled} class="ps-shown-by-js" {/if}><i class="material-icons rtl-no-flip checkbox-checked">&#xE5CA;</i></span>
                         {/if}
                       </span>
                     {else}

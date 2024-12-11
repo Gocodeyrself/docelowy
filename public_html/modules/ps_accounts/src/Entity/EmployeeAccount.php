@@ -40,6 +40,8 @@ class EmployeeAccount
      * @ORM\Id
      * @ORM\Column(name="id_employee_account", type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
+     *
+     * @phpstan-ignore-next-line
      */
     private $id;
 
@@ -119,7 +121,7 @@ class EmployeeAccount
      *
      * @return EmployeeAccount
      */
-    public function setEmail(string $email)
+    public function setEmail($email)
     {
         $this->email = $email;
 
@@ -139,7 +141,7 @@ class EmployeeAccount
      *
      * @return EmployeeAccount
      */
-    public function setUid(string $uid)
+    public function setUid($uid)
     {
         $this->uid = $uid;
 

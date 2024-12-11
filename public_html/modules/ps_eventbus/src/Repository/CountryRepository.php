@@ -15,13 +15,13 @@ class CountryRepository
     private $context;
 
     /**
-     * @var array
+     * @var array<mixed>
      */
     private $countryIsoCodeCache = [];
 
-    public function __construct(\Db $db, \Context $context)
+    public function __construct(\Context $context)
     {
-        $this->db = $db;
+        $this->db = \Db::getInstance();
         $this->context = $context;
     }
 
@@ -30,6 +30,14 @@ class CountryRepository
      */
     private function getBaseQuery()
     {
+        if ($this->context->shop == null) {
+            throw new \PrestaShopException('No shop context');
+        }
+
+        if ($this->context->language == null) {
+            throw new \PrestaShopException('No language context');
+        }
+
         $query = new \DbQuery();
 
         $query->from('country', 'c')
@@ -45,12 +53,16 @@ class CountryRepository
      * @param int $zoneId
      * @param bool $active
      *
-     * @return array|bool|\mysqli_result|\PDOStatement|resource|null
+     * @return array<mixed>|bool|\mysqli_result|\PDOStatement|resource|null
      *
      * @throws \PrestaShopDatabaseException
      */
-    public function getCountyIsoCodesByZoneId($zoneId, $active = true)
+    public function getCountyIsoCodesByZoneId($zoneId, $active = null)
     {
+        if ($active == null) {
+            $active = true;
+        }
+
         $cacheKey = $zoneId . '-' . (int) $active;
 
         if (!isset($this->countryIsoCodeCache[$cacheKey])) {

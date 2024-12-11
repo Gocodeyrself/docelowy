@@ -18,21 +18,32 @@
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License version 3.0
  */
 
-use PrestaShop\Module\PsAccounts\Handler\Error\Sentry;
+use PrestaShop\Module\PsAccounts\Account\Command\DeleteUserShopCommand;
+use PrestaShop\Module\PsAccounts\Account\Command\UnlinkShopCommand;
+use PrestaShop\Module\PsAccounts\Account\Session\Firebase\ShopSession;
+use PrestaShop\Module\PsAccounts\Cqrs\CommandBus;
+use PrestaShop\Module\PsAccounts\Polyfill\Traits\Controller\AjaxRender;
 use PrestaShop\Module\PsAccounts\Presenter\PsAccountsPresenter;
 use PrestaShop\Module\PsAccounts\Provider\OAuth2\PrestaShopSession;
-use PrestaShop\Module\PsAccounts\Repository\ShopTokenRepository;
-use PrestaShop\Module\PsAccounts\Service\ShopLinkAccountService;
+use PrestaShop\Module\PsAccounts\Repository\ConfigurationRepository;
+use PrestaShop\Module\PsAccounts\Service\SentryService;
 
 /**
  * Controller for all ajax calls.
  */
-class AdminAjaxPsAccountsController extends ModuleAdminController
+class AdminAjaxPsAccountsController extends \ModuleAdminController
 {
+    use AjaxRender;
+
     /**
      * @var Ps_accounts
      */
     public $module;
+
+    /**
+     * @var CommandBus
+     */
+    private $commandBus;
 
     /**
      * AdminAjaxPsAccountsController constructor.
@@ -42,6 +53,8 @@ class AdminAjaxPsAccountsController extends ModuleAdminController
     public function __construct()
     {
         parent::__construct();
+
+        $this->commandBus = $this->module->getService(CommandBus::class);
     }
 
     /**
@@ -52,19 +65,21 @@ class AdminAjaxPsAccountsController extends ModuleAdminController
     public function ajaxProcessGetOrRefreshToken()
     {
         try {
-            /** @var ShopTokenRepository $shopTokenService */
-            $shopTokenService = $this->module->getService(ShopTokenRepository::class);
+            /** @var ShopSession $shopSession */
+            $shopSession = $this->module->getService(ShopSession::class);
 
             header('Content-Type: text/json');
 
-            $this->ajaxDie(
-                json_encode([
-                    'token' => (string) $shopTokenService->getOrRefreshToken(),
-                    'refreshToken' => $shopTokenService->getRefreshToken(),
+            $token = $shopSession->getValidToken();
+
+            $this->ajaxRender(
+                (string) json_encode([
+                    'token' => (string) $token->getJwt(),
+                    'refreshToken' => $token->getRefreshToken(),
                 ])
             );
         } catch (Exception $e) {
-            Sentry::captureAndRethrow($e);
+            SentryService::captureAndRethrow($e);
         }
     }
 
@@ -77,18 +92,20 @@ class AdminAjaxPsAccountsController extends ModuleAdminController
     public function ajaxProcessUnlinkShop()
     {
         try {
-            /** @var ShopLinkAccountService $shopLinkAccountService */
-            $shopLinkAccountService = $this->module->getService(ShopLinkAccountService::class);
+            /** @var ConfigurationRepository $configurationRepository */
+            $configurationRepository = $this->module->getService(ConfigurationRepository::class);
 
-            $response = $shopLinkAccountService->unlinkShop();
+            $response = $this->commandBus->handle(new DeleteUserShopCommand(
+                $configurationRepository->getShopId()
+            ));
 
             http_response_code($response['httpCode']);
 
             header('Content-Type: text/json');
 
-            $this->ajaxDie(json_encode($response['body']));
+            $this->ajaxRender((string) json_encode($response['body']));
         } catch (Exception $e) {
-            Sentry::captureAndRethrow($e);
+            SentryService::captureAndRethrow($e);
         }
     }
 
@@ -100,16 +117,18 @@ class AdminAjaxPsAccountsController extends ModuleAdminController
     public function ajaxProcessResetLinkAccount()
     {
         try {
-            /** @var ShopLinkAccountService $shopLinkAccountService */
-            $shopLinkAccountService = $this->module->getService(ShopLinkAccountService::class);
+            /** @var ConfigurationRepository $configurationRepository */
+            $configurationRepository = $this->module->getService(ConfigurationRepository::class);
 
-            $shopLinkAccountService->resetLinkAccount();
+            $this->commandBus->handle(new UnlinkShopCommand(
+                $configurationRepository->getShopId()
+            ));
 
             header('Content-Type: text/json');
 
-            $this->ajaxDie(json_encode(['message' => 'success']));
+            $this->ajaxRender((string) json_encode(['message' => 'success']));
         } catch (Exception $e) {
-            Sentry::captureAndRethrow($e);
+            SentryService::captureAndRethrow($e);
         }
     }
 
@@ -128,9 +147,9 @@ class AdminAjaxPsAccountsController extends ModuleAdminController
 
             header('Content-Type: text/json');
 
-            $this->ajaxDie(json_encode($presenter->present($psxName)));
+            $this->ajaxRender((string) json_encode($presenter->present($psxName)));
         } catch (Exception $e) {
-            Sentry::captureAndRethrow($e);
+            SentryService::captureAndRethrow($e);
         }
     }
 
@@ -147,13 +166,13 @@ class AdminAjaxPsAccountsController extends ModuleAdminController
 
             header('Content-Type: text/json');
 
-            $this->ajaxDie(
-                json_encode([
+            $this->ajaxRender(
+                (string) json_encode([
                     'token' => (string) $oauthSession->getOrRefreshAccessToken(),
                 ])
             );
         } catch (Exception $e) {
-            Sentry::captureAndRethrow($e);
+            SentryService::captureAndRethrow($e);
         }
     }
 }

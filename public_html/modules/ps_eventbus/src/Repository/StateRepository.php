@@ -10,13 +10,13 @@ class StateRepository
     private $db;
 
     /**
-     * @var array
+     * @var array<mixed>
      */
     private $stateIsoCodeCache = [];
 
-    public function __construct(\Db $db)
+    public function __construct()
     {
-        $this->db = $db;
+        $this->db = \Db::getInstance();
     }
 
     /**
@@ -35,12 +35,16 @@ class StateRepository
      * @param int $zoneId
      * @param bool $active
      *
-     * @return array|bool|\mysqli_result|\PDOStatement|resource|null
+     * @return array<mixed>|bool|\mysqli_result|\PDOStatement|resource|null
      *
      * @throws \PrestaShopDatabaseException
      */
-    public function getStateIsoCodesByZoneId($zoneId, $active = true)
+    public function getStateIsoCodesByZoneId($zoneId, $active = null)
     {
+        if ($active == null) {
+            $active = true;
+        }
+
         $cacheKey = $zoneId . '-' . (int) $active;
 
         if (!isset($this->stateIsoCodeCache[$cacheKey])) {

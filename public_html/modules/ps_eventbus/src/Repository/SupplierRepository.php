@@ -14,9 +14,9 @@ class SupplierRepository
      */
     private $context;
 
-    public function __construct(\Db $db, \Context $context)
+    public function __construct(\Context $context)
     {
-        $this->db = $db;
+        $this->db = \Db::getInstance();
         $this->context = $context;
     }
 
@@ -25,15 +25,13 @@ class SupplierRepository
      * @param int $limit
      * @param string $langIso
      *
-     * @return array|bool|\mysqli_result|\PDOStatement|resource|null
+     * @return array<mixed>|bool|\mysqli_result|\PDOStatement|resource|null
      *
      * @throws \PrestaShopDatabaseException
      */
     public function getSuppliers($offset, $limit, $langIso)
     {
-        /** @var int $shopId */
-        $shopId = $this->context->shop->id;
-        $query = $this->getBaseQuery($shopId, $langIso);
+        $query = $this->getBaseQuery($langIso);
 
         $this->addSelectParameters($query);
 
@@ -50,9 +48,7 @@ class SupplierRepository
      */
     public function getRemainingSuppliersCount($offset, $langIso)
     {
-        /** @var int $shopId */
-        $shopId = $this->context->shop->id;
-        $query = $this->getBaseQuery($shopId, $langIso)
+        $query = $this->getBaseQuery($langIso)
             ->select('(COUNT(su.id_supplier) - ' . (int) $offset . ') as count');
 
         return (int) $this->db->getValue($query);
@@ -61,17 +57,15 @@ class SupplierRepository
     /**
      * @param int $limit
      * @param string $langIso
-     * @param array $supplierIds
+     * @param array<mixed> $supplierIds
      *
-     * @return array|bool|\mysqli_result|\PDOStatement|resource|null
+     * @return array<mixed>|bool|\mysqli_result|\PDOStatement|resource|null
      *
      * @throws \PrestaShopDatabaseException
      */
     public function getSuppliersIncremental($limit, $langIso, $supplierIds)
     {
-        /** @var int $shopId */
-        $shopId = $this->context->shop->id;
-        $query = $this->getBaseQuery($shopId, $langIso);
+        $query = $this->getBaseQuery($langIso);
 
         $this->addSelectParameters($query);
 
@@ -82,21 +76,51 @@ class SupplierRepository
     }
 
     /**
-     * @param int $shopId
      * @param string $langIso
      *
      * @return \DbQuery
      */
-    public function getBaseQuery($shopId, $langIso)
+    public function getBaseQuery($langIso)
     {
+        if ($this->context->shop === null) {
+            throw new \PrestaShopException('No shop context');
+        }
+
+        $shopId = (int) $this->context->shop->id;
+
         /** @var int $langId */
         $langId = (int) \Language::getIdByIso($langIso);
         $query = new \DbQuery();
         $query->from('supplier', 'su')
             ->innerJoin('supplier_lang', 'sul', 'su.id_supplier = sul.id_supplier AND sul.id_lang = ' . (int) $langId)
-            ->innerJoin('supplier_shop', 'sus', 'su.id_supplier = sus.id_supplier AND sus.id_shop = ' . (int) $shopId);
+            ->innerJoin('supplier_shop', 'sus', 'su.id_supplier = sus.id_supplier AND sus.id_shop = ' . $shopId);
 
         return $query;
+    }
+
+    /**
+     * @param int $offset
+     * @param int $limit
+     * @param string $langIso
+     *
+     * @return array<mixed>
+     *
+     * @throws \PrestaShopDatabaseException
+     */
+    public function getQueryForDebug($offset, $limit, $langIso)
+    {
+        $query = $this->getBaseQuery($langIso);
+
+        $this->addSelectParameters($query);
+
+        $query->limit($limit, $offset);
+
+        $queryStringified = preg_replace('/\s+/', ' ', $query->build());
+
+        return array_merge(
+            (array) $query,
+            ['queryStringified' => $queryStringified]
+        );
     }
 
     /**
@@ -106,7 +130,7 @@ class SupplierRepository
      */
     private function addSelectParameters(\DbQuery $query)
     {
-        $query->select('su.id_supplier, su.name, su.date_add as created_at, su.date_upd as updated_at, su.active, sul.id_lang,
-      sul.description, sul.meta_title, sul.meta_keywords, sul.meta_description, sus.id_shop');
+        $query->select('su.id_supplier, su.name, su.date_add as created_at, su.date_upd as updated_at, su.active, sul.id_lang');
+        $query->select('sul.description, sul.meta_title, sul.meta_keywords, sul.meta_description, sus.id_shop');
     }
 }

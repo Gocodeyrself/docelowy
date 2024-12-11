@@ -20,30 +20,54 @@
 
 namespace PrestaShop\Module\PsAccounts\Provider\OAuth2;
 
-use League\OAuth2\Client\Provider\Exception\IdentityProviderException;
-use League\OAuth2\Client\Token\AccessToken;
+use PrestaShop\Module\PsAccounts\Exception\AccountLogin\EmailNotVerifiedException;
+use PrestaShop\Module\PsAccounts\Exception\AccountLogin\EmployeeNotFoundException;
+use PrestaShop\Module\PsAccounts\Exception\AccountLogin\Oauth2Exception;
 use PrestaShop\Module\PsAccounts\Log\Logger;
+use PrestaShop\Module\PsAccounts\Vendor\League\OAuth2\Client\Provider\Exception\IdentityProviderException;
+use PrestaShop\Module\PsAccounts\Vendor\League\OAuth2\Client\Token\AccessToken;
 use PrestaShop\OAuth2\Client\Provider\PrestaShopUser;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Tools;
 
 trait PrestaShopLoginTrait
 {
-    abstract protected function getProvider(): PrestaShopClientProvider;
-
-    abstract protected function initUserSession(PrestaShopUser $user): bool;
-
-    abstract protected function redirectAfterLogin(): void;
-
-    abstract protected function getSession(): SessionInterface;
-
-    abstract protected function getOauth2Session(): PrestaShopSession;
+    /**
+     * @return ShopProvider
+     */
+    abstract protected function getProvider();
 
     /**
-     * @throws IdentityProviderException
+     * @param PrestaShopUser $user
+     *
+     * @return bool
+     */
+    abstract protected function initUserSession(PrestaShopUser $user);
+
+    /**
+     * @return void
+     */
+    abstract protected function redirectAfterLogin();
+
+    /**
+     * @return SessionInterface
+     */
+    abstract protected function getSession();
+
+    /**
+     * @return PrestaShopSession
+     */
+    abstract protected function getOauth2Session();
+
+    /**
+     * @return void
+     *
+     * @throws EmailNotVerifiedException
+     * @throws EmployeeNotFoundException
+     * @throws Oauth2Exception
      * @throws \Exception
      */
-    public function oauth2Login(): void
+    public function oauth2Login()
     {
         $provider = $this->getProvider();
 
@@ -69,11 +93,19 @@ trait PrestaShopLoginTrait
 
             throw new \Exception('Invalid state');
         } else {
-            // Try to get an access token using the authorization code grant.
-            /** @var AccessToken $accessToken */
-            $accessToken = $provider->getAccessToken('authorization_code', [
-                'code' => $_GET['code'],
-            ]);
+            // Restore the PKCE code before the `getAccessToken()` call.
+            $provider->setPkceCode($this->getSession()->get('oauth2pkceCode'));
+
+            try {
+                // Try to get an access token using the authorization code grant.
+                /** @var AccessToken $accessToken */
+                $accessToken = $provider->getAccessToken('authorization_code', [
+                    'code' => $_GET['code'],
+                ]);
+            } catch (IdentityProviderException $e) {
+                throw new Oauth2Exception($e->getMessage(), null, $e);
+            }
+
             $oauth2Session->setTokenProvider($accessToken);
 
             if ($this->initUserSession($oauth2Session->getPrestashopUser())) {
@@ -82,7 +114,14 @@ trait PrestaShopLoginTrait
         }
     }
 
-    private function oauth2Redirect(string $locale): void
+    /**
+     * @param string $locale
+     *
+     * @return void
+     *
+     * @throws \Exception
+     */
+    private function oauth2Redirect($locale)
     {
         $provider = $this->getProvider();
 
@@ -90,6 +129,10 @@ trait PrestaShopLoginTrait
         // urlAuthorize option and generates and applies any necessary parameters
         // (e.g. state).
         $authorizationUrl = $provider->getAuthorizationUrl(['ui_locales' => $locale]);
+
+        // Store the PKCE code after the `getAuthorizationUrl()` call.
+        //$_SESSION['oauth2pkceCode'] = $provider->getPkceCode();
+        $this->getSession()->set('oauth2pkceCode', $provider->getPkceCode());
 
         // Get the state generated for you and store it to the session.
         $this->getSession()->set('oauth2state', $provider->getState());
@@ -99,22 +142,44 @@ trait PrestaShopLoginTrait
         exit;
     }
 
-    private function oauth2ErrorLog(string $msg): void
+    /**
+     * @param string $msg
+     *
+     * @return void
+     *
+     * @throws \Exception
+     */
+    private function oauth2ErrorLog($msg)
     {
         Logger::getInstance()->error('[OAuth2] ' . $msg);
     }
 
-    private function getSessionReturnTo(): string
+    /**
+     * @return string
+     *
+     * @throws \Exception
+     */
+    private function getSessionReturnTo()
     {
         return $this->getSession()->get($this->getReturnToParam(), '');
     }
 
-    private function setSessionReturnTo(string $returnTo): void
+    /**
+     * @param string $returnTo
+     *
+     * @return void
+     *
+     * @throws \Exception
+     */
+    private function setSessionReturnTo($returnTo)
     {
         $this->getSession()->set($this->getReturnToParam(), $returnTo);
     }
 
-    private function getReturnToParam(): string
+    /**
+     * @return string
+     */
+    private function getReturnToParam()
     {
         return 'return_to';
     }

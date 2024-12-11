@@ -8,29 +8,20 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+namespace PrestaShop\Module\PsAccounts\Vendor\Symfony\Component\Cache;
 
-namespace Symfony\Component\Cache;
-
-use Doctrine\Common\Cache\CacheProvider;
-use Psr\Cache\CacheItemPoolInterface;
-use Symfony\Contracts\Service\ResetInterface;
-
-if (!class_exists(CacheProvider::class)) {
-    return;
-}
-
+use PrestaShop\Module\PsAccounts\Vendor\Doctrine\Common\Cache\CacheProvider;
+use PrestaShop\Module\PsAccounts\Vendor\Psr\Cache\CacheItemPoolInterface;
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  */
 class DoctrineProvider extends CacheProvider implements PruneableInterface, ResettableInterface
 {
     private $pool;
-
     public function __construct(CacheItemPoolInterface $pool)
     {
         $this->pool = $pool;
     }
-
     /**
      * {@inheritdoc}
      */
@@ -38,80 +29,58 @@ class DoctrineProvider extends CacheProvider implements PruneableInterface, Rese
     {
         return $this->pool instanceof PruneableInterface && $this->pool->prune();
     }
-
     /**
      * {@inheritdoc}
      */
     public function reset()
     {
-        if ($this->pool instanceof ResetInterface) {
+        if ($this->pool instanceof ResettableInterface) {
             $this->pool->reset();
         }
         $this->setNamespace($this->getNamespace());
     }
-
     /**
      * {@inheritdoc}
-     *
-     * @return mixed
      */
     protected function doFetch($id)
     {
-        $item = $this->pool->getItem(rawurlencode($id));
-
-        return $item->isHit() ? $item->get() : false;
+        $item = $this->pool->getItem(\rawurlencode($id));
+        return $item->isHit() ? $item->get() : \false;
     }
-
     /**
      * {@inheritdoc}
-     *
-     * @return bool
      */
     protected function doContains($id)
     {
-        return $this->pool->hasItem(rawurlencode($id));
+        return $this->pool->hasItem(\rawurlencode($id));
     }
-
     /**
      * {@inheritdoc}
-     *
-     * @return bool
      */
     protected function doSave($id, $data, $lifeTime = 0)
     {
-        $item = $this->pool->getItem(rawurlencode($id));
-
+        $item = $this->pool->getItem(\rawurlencode($id));
         if (0 < $lifeTime) {
             $item->expiresAfter($lifeTime);
         }
-
         return $this->pool->save($item->set($data));
     }
-
     /**
      * {@inheritdoc}
-     *
-     * @return bool
      */
     protected function doDelete($id)
     {
-        return $this->pool->deleteItem(rawurlencode($id));
+        return $this->pool->deleteItem(\rawurlencode($id));
     }
-
     /**
      * {@inheritdoc}
-     *
-     * @return bool
      */
     protected function doFlush()
     {
         return $this->pool->clear();
     }
-
     /**
      * {@inheritdoc}
-     *
-     * @return array|null
      */
     protected function doGetStats()
     {

@@ -2,32 +2,14 @@
 
 namespace PrestaShop\Module\PsEventbus\Decorator;
 
-use PrestaShop\Module\PsEventbus\Repository\ConfigurationRepository;
-
 class StockDecorator
 {
     /**
-     * @var ConfigurationRepository
-     */
-    private $configurationRepository;
-    /**
-     * @var string
-     */
-    private $timezone;
-
-    public function __construct(
-        ConfigurationRepository $configurationRepository
-    ) {
-        $this->configurationRepository = $configurationRepository;
-        $this->timezone = (string) $this->configurationRepository->get('PS_TIMEZONE');
-    }
-
-    /**
-     * @param array $stocks
+     * @param array<mixed> $stocks
      *
      * @return void
      */
-    public function decorateStocks(array &$stocks)
+    public function decorateStocks(&$stocks)
     {
         foreach ($stocks as &$stock) {
             $this->castStockPropertyValues($stock);
@@ -35,11 +17,11 @@ class StockDecorator
     }
 
     /**
-     * @param array $stock
+     * @param array<mixed> $stock
      *
      * @return void
      */
-    private function castStockPropertyValues(array &$stock)
+    private function castStockPropertyValues(&$stock)
     {
         $stock['id_stock_available'] = (int) $stock['id_stock_available'];
         $stock['id_product'] = (int) $stock['id_product'];
@@ -47,20 +29,23 @@ class StockDecorator
         $stock['id_shop'] = (int) $stock['id_shop'];
         $stock['id_shop_group'] = (int) $stock['id_shop_group'];
         $stock['quantity'] = (int) $stock['quantity'];
-        $stock['physical_quantity'] = (int) $stock['physical_quantity'];
-        $stock['reserved_quantity'] = (int) $stock['reserved_quantity'];
+
         $stock['depends_on_stock'] = (bool) $stock['depends_on_stock'];
         $stock['out_of_stock'] = (bool) $stock['out_of_stock'];
-        $stock['created_at'] = (new \DateTime($stock['created_at'], new \DateTimeZone($this->timezone)))->format('Y-m-d\TH:i:sO');
-        $stock['updated_at'] = (new \DateTime($stock['updated_at'], new \DateTimeZone($this->timezone)))->format('Y-m-d\TH:i:sO');
+
+        // https://github.com/PrestaShop/PrestaShop/commit/2a3269ad93b1985f2615d6604458061d4989f0ea#diff-e98d435095567c145b49744715fd575eaab7050328c211b33aa9a37158421ff4R2186
+        if (defined('_PS_VERSION_') && version_compare(_PS_VERSION_, '1.7.2.0', '>=')) {
+            $stock['physical_quantity'] = (int) $stock['physical_quantity'];
+            $stock['reserved_quantity'] = (int) $stock['reserved_quantity'];
+        }
     }
 
     /**
-     * @param array $stockMvts
+     * @param array<mixed> $stockMvts
      *
      * @return void
      */
-    public function decorateStockMvts(array &$stockMvts)
+    public function decorateStockMvts(&$stockMvts)
     {
         foreach ($stockMvts as &$stockMvt) {
             $this->castStockMvtPropertyValues($stockMvt);
@@ -68,13 +53,13 @@ class StockDecorator
     }
 
     /**
-     * @param array $stockMvt
+     * @param array<mixed> $stockMvt
      *
      * @return void
      */
-    private function castStockMvtPropertyValues(array &$stockMvt)
+    private function castStockMvtPropertyValues(&$stockMvt)
     {
-        $date = (new \DateTime($stockMvt['date_add'], new \DateTimeZone($this->timezone)))->format('Y-m-d\TH:i:sO');
+        $date = $stockMvt['date_add'];
 
         $stockMvt['id_stock_mvt'] = (int) $stockMvt['id_stock_mvt'];
         $stockMvt['id_stock'] = (int) $stockMvt['id_stock'];
@@ -92,6 +77,5 @@ class StockDecorator
         $stockMvt['referer'] = (int) $stockMvt['referer'];
         $stockMvt['deleted'] = (bool) $stockMvt['deleted'];
         $stockMvt['created_at'] = $date;
-        $stockMvt['updated_at'] = $date;
     }
 }

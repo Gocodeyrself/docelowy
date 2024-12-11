@@ -21,6 +21,8 @@
 namespace PrestaShop\Module\PsAccounts\Repository;
 
 use PrestaShop\Module\PsAccounts\Adapter\Configuration;
+use PrestaShop\Module\PsAccounts\Adapter\ConfigurationKeys;
+use PrestaShop\Module\PsAccounts\Log\Logger;
 
 class ConfigurationRepository
 {
@@ -33,6 +35,8 @@ class ConfigurationRepository
      * ConfigurationRepository constructor.
      *
      * @param Configuration|null $configuration
+     *
+     * @throws \Exception
      */
     public function __construct(Configuration $configuration = null)
     {
@@ -62,7 +66,7 @@ class ConfigurationRepository
      */
     public function getFirebaseIdToken()
     {
-        return $this->configuration->get(Configuration::PS_ACCOUNTS_FIREBASE_ID_TOKEN);
+        return $this->configuration->get(ConfigurationKeys::PS_ACCOUNTS_FIREBASE_ID_TOKEN);
     }
 
     /**
@@ -70,7 +74,7 @@ class ConfigurationRepository
      */
     public function getFirebaseRefreshToken()
     {
-        return $this->configuration->get(Configuration::PS_ACCOUNTS_FIREBASE_REFRESH_TOKEN);
+        return $this->configuration->get(ConfigurationKeys::PS_ACCOUNTS_FIREBASE_REFRESH_TOKEN);
     }
 
     /**
@@ -81,32 +85,26 @@ class ConfigurationRepository
      */
     public function updateFirebaseIdAndRefreshTokens($idToken, $refreshToken)
     {
-        if (false === $this->configuration->get(Configuration::PS_PSX_FIREBASE_ID_TOKEN)) {
+        if (false === $this->configuration->get(ConfigurationKeys::PS_PSX_FIREBASE_ID_TOKEN)) {
             // FIXME: This to avoid mutual disconnect between ps_accounts & ps_checkout
-            $this->configuration->set(Configuration::PS_PSX_FIREBASE_ID_TOKEN, $idToken);
-            $this->configuration->set(Configuration::PS_PSX_FIREBASE_REFRESH_TOKEN, $refreshToken);
-            $this->configuration->set(Configuration::PS_PSX_FIREBASE_REFRESH_DATE, date('Y-m-d H:i:s'));
+            $this->configuration->set(ConfigurationKeys::PS_PSX_FIREBASE_ID_TOKEN, $idToken);
+            $this->configuration->set(ConfigurationKeys::PS_PSX_FIREBASE_REFRESH_TOKEN, $refreshToken);
+            $this->configuration->set(ConfigurationKeys::PS_PSX_FIREBASE_REFRESH_DATE, date('Y-m-d H:i:s'));
         }
-        $this->configuration->set(Configuration::PS_ACCOUNTS_FIREBASE_ID_TOKEN, $idToken);
-        $this->configuration->set(Configuration::PS_ACCOUNTS_FIREBASE_REFRESH_TOKEN, $refreshToken);
+        $this->configuration->set(ConfigurationKeys::PS_ACCOUNTS_FIREBASE_ID_TOKEN, $idToken);
+        $this->configuration->set(ConfigurationKeys::PS_ACCOUNTS_FIREBASE_REFRESH_TOKEN, $refreshToken);
     }
 
     /**
-     * Check if we have a refresh token.
+     * Owner Email
      *
-     * @return bool
-     */
-    public function hasFirebaseRefreshToken()
-    {
-        return !empty($this->configuration->get(Configuration::PS_ACCOUNTS_FIREBASE_REFRESH_TOKEN));
-    }
-
-    /**
      * @return string|null
+     *
+     * @deprecated
      */
     public function getFirebaseEmail()
     {
-        return $this->configuration->get(Configuration::PS_ACCOUNTS_FIREBASE_EMAIL);
+        return $this->configuration->get(ConfigurationKeys::PS_ACCOUNTS_FIREBASE_EMAIL);
     }
 
     /**
@@ -116,10 +114,28 @@ class ConfigurationRepository
      */
     public function updateFirebaseEmail($email)
     {
-        if (false === $this->configuration->get(Configuration::PS_PSX_FIREBASE_EMAIL)) {
-            $this->configuration->set(Configuration::PS_PSX_FIREBASE_EMAIL, $email);
+        if (false === $this->configuration->get(ConfigurationKeys::PS_PSX_FIREBASE_EMAIL)) {
+            $this->configuration->set(ConfigurationKeys::PS_PSX_FIREBASE_EMAIL, $email);
         }
-        $this->configuration->set(Configuration::PS_ACCOUNTS_FIREBASE_EMAIL, $email);
+        $this->configuration->set(ConfigurationKeys::PS_ACCOUNTS_FIREBASE_EMAIL, $email);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUserFirebaseUuid()
+    {
+        return $this->configuration->get(ConfigurationKeys::PS_ACCOUNTS_USER_FIREBASE_UUID);
+    }
+
+    /**
+     * @param string $uuid
+     *
+     * @return void
+     */
+    public function updateUserFirebaseUuid($uuid)
+    {
+        $this->configuration->set(ConfigurationKeys::PS_ACCOUNTS_USER_FIREBASE_UUID, $uuid);
     }
 
     /**
@@ -127,7 +143,7 @@ class ConfigurationRepository
      */
     public function getEmployeeId()
     {
-        return $this->configuration->get(Configuration::PS_ACCOUNTS_EMPLOYEE_ID);
+        return $this->configuration->get(ConfigurationKeys::PS_ACCOUNTS_EMPLOYEE_ID);
     }
 
     /**
@@ -137,31 +153,7 @@ class ConfigurationRepository
      */
     public function updateEmployeeId($employeeId)
     {
-        $this->configuration->set(Configuration::PS_ACCOUNTS_EMPLOYEE_ID, $employeeId);
-    }
-
-    /**
-     * @return bool
-     */
-    public function firebaseEmailIsVerified()
-    {
-        return in_array(
-            $this->configuration->get(Configuration::PS_ACCOUNTS_FIREBASE_EMAIL_IS_VERIFIED),
-            ['1', 1, true]
-        );
-    }
-
-    /**
-     * @param bool $status
-     *
-     * @return void
-     */
-    public function updateFirebaseEmailIsVerified($status)
-    {
-        $this->configuration->set(
-            Configuration::PS_ACCOUNTS_FIREBASE_EMAIL_IS_VERIFIED,
-            (string) $status
-        );
+        $this->configuration->set(ConfigurationKeys::PS_ACCOUNTS_EMPLOYEE_ID, $employeeId);
     }
 
     /**
@@ -169,7 +161,26 @@ class ConfigurationRepository
      */
     public function getShopUuid()
     {
-        return $this->configuration->get(Configuration::PSX_UUID_V4);
+        return $this->configuration->get(ConfigurationKeys::PSX_UUID_V4);
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getShopUuidDateUpd()
+    {
+        try {
+            $entry = $this->configuration->getUncachedConfiguration(
+                ConfigurationKeys::PSX_UUID_V4,
+                $this->configuration->getIdShopGroup(),
+                $this->configuration->getIdShop());
+
+            return $entry->date_upd;
+        } catch (\Exception $e) {
+            Logger::getInstance()->error(__METHOD__ . ': ' . $e->getMessage());
+
+            return null;
+        }
     }
 
     /**
@@ -179,10 +190,10 @@ class ConfigurationRepository
      */
     public function updateShopUuid($uuid)
     {
-        if (false === $this->configuration->get(Configuration::PS_CHECKOUT_SHOP_UUID_V4)) {
-            $this->configuration->set(Configuration::PS_CHECKOUT_SHOP_UUID_V4, $uuid);
+        if (false === $this->configuration->get(ConfigurationKeys::PS_CHECKOUT_SHOP_UUID_V4)) {
+            $this->configuration->set(ConfigurationKeys::PS_CHECKOUT_SHOP_UUID_V4, $uuid);
         }
-        $this->configuration->set(Configuration::PSX_UUID_V4, $uuid);
+        $this->configuration->set(ConfigurationKeys::PSX_UUID_V4, $uuid);
     }
 
     /**
@@ -190,7 +201,7 @@ class ConfigurationRepository
      */
     public function getAccountsRsaPrivateKey()
     {
-        return $this->configuration->get(Configuration::PS_ACCOUNTS_RSA_PRIVATE_KEY);
+        return $this->configuration->get(ConfigurationKeys::PS_ACCOUNTS_RSA_PRIVATE_KEY);
     }
 
     /**
@@ -200,7 +211,7 @@ class ConfigurationRepository
      */
     public function updateAccountsRsaPrivateKey($key)
     {
-        $this->configuration->set(Configuration::PS_ACCOUNTS_RSA_PRIVATE_KEY, $key);
+        $this->configuration->set(ConfigurationKeys::PS_ACCOUNTS_RSA_PRIVATE_KEY, $key);
     }
 
     /**
@@ -208,7 +219,7 @@ class ConfigurationRepository
      */
     public function getAccountsRsaPublicKey()
     {
-        return $this->configuration->get(Configuration::PS_ACCOUNTS_RSA_PUBLIC_KEY);
+        return $this->configuration->get(ConfigurationKeys::PS_ACCOUNTS_RSA_PUBLIC_KEY);
     }
 
     /**
@@ -218,25 +229,7 @@ class ConfigurationRepository
      */
     public function updateAccountsRsaPublicKey($key)
     {
-        $this->configuration->set(Configuration::PS_ACCOUNTS_RSA_PUBLIC_KEY, $key);
-    }
-
-    /**
-     * @return string
-     */
-    public function getAccountsRsaSignData()
-    {
-        return $this->configuration->get(Configuration::PS_ACCOUNTS_RSA_SIGN_DATA);
-    }
-
-    /**
-     * @param string $signData
-     *
-     * @return void
-     */
-    public function updateAccountsRsaSignData($signData)
-    {
-        $this->configuration->set(Configuration::PS_ACCOUNTS_RSA_SIGN_DATA, $signData);
+        $this->configuration->set(ConfigurationKeys::PS_ACCOUNTS_RSA_PUBLIC_KEY, $key);
     }
 
     /**
@@ -251,27 +244,17 @@ class ConfigurationRepository
     /**
      * @return mixed
      */
-    public function getUserFirebaseUuid()
+    public function getUserFirebaseIdToken()
     {
-        return $this->configuration->get(Configuration::PS_ACCOUNTS_USER_FIREBASE_UUID);
-    }
-
-    /**
-     * @param string $uuid
-     *
-     * @return void
-     */
-    public function updateUserFirebaseUuid($uuid)
-    {
-        $this->configuration->set(Configuration::PS_ACCOUNTS_USER_FIREBASE_UUID, $uuid);
+        return $this->configuration->get(ConfigurationKeys::PS_ACCOUNTS_USER_FIREBASE_ID_TOKEN);
     }
 
     /**
      * @return mixed
      */
-    public function getUserFirebaseIdToken()
+    public function getUserFirebaseRefreshToken()
     {
-        return $this->configuration->get(Configuration::PS_ACCOUNTS_USER_FIREBASE_ID_TOKEN);
+        return $this->configuration->get(ConfigurationKeys::PS_ACCOUNTS_USER_FIREBASE_REFRESH_TOKEN);
     }
 
     /**
@@ -281,25 +264,19 @@ class ConfigurationRepository
      */
     public function updateUserFirebaseIdToken($idToken)
     {
-        $this->configuration->set(Configuration::PS_ACCOUNTS_USER_FIREBASE_ID_TOKEN, $idToken);
+        $this->configuration->set(ConfigurationKeys::PS_ACCOUNTS_USER_FIREBASE_ID_TOKEN, $idToken);
     }
 
     /**
-     * @return mixed
-     */
-    public function getUserFirebaseRefreshToken()
-    {
-        return $this->configuration->get(Configuration::PS_ACCOUNTS_USER_FIREBASE_REFRESH_TOKEN);
-    }
-
-    /**
+     * @param string $idToken
      * @param string $refreshToken
      *
      * @return void
      */
-    public function updateUserFirebaseRefreshToken($refreshToken)
+    public function updateUserFirebaseIdAndRefreshToken($idToken, $refreshToken)
     {
-        $this->configuration->set(Configuration::PS_ACCOUNTS_USER_FIREBASE_REFRESH_TOKEN, $refreshToken);
+        $this->configuration->set(ConfigurationKeys::PS_ACCOUNTS_USER_FIREBASE_ID_TOKEN, $idToken);
+        $this->configuration->set(ConfigurationKeys::PS_ACCOUNTS_USER_FIREBASE_REFRESH_TOKEN, $refreshToken);
     }
 
     /**
@@ -316,41 +293,11 @@ class ConfigurationRepository
     }
 
     /**
-     * specify id_shop & id_shop_group for shop
-     *
-     * @return void
-     */
-    public function migrateToMultiShop()
-    {
-        $shop = $this->getMainShop();
-        \Db::getInstance()->query(
-            'UPDATE ' . _DB_PREFIX_ . 'configuration SET id_shop = ' . (int) $shop->id . ', id_shop_group = ' . (int) $shop->id_shop_group .
-            " WHERE (name like 'PS_ACCOUNTS_%' OR name = 'PSX_UUID_V4')" .
-            ' AND id_shop IS NULL AND id_shop_group IS NULL;'
-        );
-    }
-
-    /**
-     * nullify id_shop & id_shop_group for shop
-     *
-     * @return void
-     */
-    public function migrateToSingleShop()
-    {
-        $shop = $this->getMainShop();
-        \Db::getInstance()->query(
-            'UPDATE ' . _DB_PREFIX_ . 'configuration SET id_shop = NULL, id_shop_group = NULL' .
-            " WHERE (name like 'PS_ACCOUNTS_%' OR name = 'PSX_UUID_V4')" .
-            ' AND id_shop = ' . (int) $shop->id . ';'
-        );
-    }
-
-    /**
      * @return bool
      */
     public function getLoginEnabled()
     {
-        return (bool) $this->configuration->get(Configuration::PS_ACCOUNTS_LOGIN_ENABLED);
+        return (bool) $this->configuration->get(ConfigurationKeys::PS_ACCOUNTS_LOGIN_ENABLED);
     }
 
     /**
@@ -360,7 +307,7 @@ class ConfigurationRepository
      */
     public function updateLoginEnabled($enabled)
     {
-        $this->configuration->set(Configuration::PS_ACCOUNTS_LOGIN_ENABLED, (string) $enabled);
+        $this->configuration->set(ConfigurationKeys::PS_ACCOUNTS_LOGIN_ENABLED, (string) $enabled);
     }
 
     /**
@@ -368,7 +315,7 @@ class ConfigurationRepository
      */
     public function getOauth2ClientId()
     {
-        return $this->configuration->get(Configuration::PS_ACCOUNTS_OAUTH2_CLIENT_ID);
+        return $this->configuration->get(ConfigurationKeys::PS_ACCOUNTS_OAUTH2_CLIENT_ID);
     }
 
     /**
@@ -378,7 +325,7 @@ class ConfigurationRepository
      */
     public function updateOauth2ClientId($clientId)
     {
-        $this->configuration->set(Configuration::PS_ACCOUNTS_OAUTH2_CLIENT_ID, $clientId);
+        $this->configuration->set(ConfigurationKeys::PS_ACCOUNTS_OAUTH2_CLIENT_ID, $clientId);
     }
 
     /**
@@ -386,7 +333,7 @@ class ConfigurationRepository
      */
     public function getOauth2ClientSecret()
     {
-        return $this->configuration->get(Configuration::PS_ACCOUNTS_OAUTH2_CLIENT_SECRET);
+        return $this->configuration->get(ConfigurationKeys::PS_ACCOUNTS_OAUTH2_CLIENT_SECRET);
     }
 
     /**
@@ -396,44 +343,123 @@ class ConfigurationRepository
      */
     public function updateOauth2ClientSecret($secret)
     {
-        $this->configuration->set(Configuration::PS_ACCOUNTS_OAUTH2_CLIENT_SECRET, $secret);
+        $this->configuration->set(ConfigurationKeys::PS_ACCOUNTS_OAUTH2_CLIENT_SECRET, $secret);
     }
 
     /**
-     * @param string $type
-     *
-     * @return int
+     * @return string|null
      */
-    public function getRefreshTokenFailure($type)
+    public function getAccessToken()
     {
-        if ($type === 'shop') {
-            return (int) $this->configuration->get(Configuration::PS_ACCOUNTS_FIREBASE_REFRESH_TOKEN_FAILURE, '0');
-        }
-
-        if ($type === 'user') {
-            return (int) $this->configuration->get(Configuration::PS_ACCOUNTS_USER_FIREBASE_REFRESH_TOKEN_FAILURE, '0');
-        }
-
-        return 0;
+        return $this->configuration->get(ConfigurationKeys::PS_ACCOUNTS_ACCESS_TOKEN);
     }
 
     /**
-     * @param string $type
-     * @param int $attempt
+     * @param string $accessToken
      *
      * @return void
      */
-    public function updateRefreshTokenFailure($type, $attempt)
+    public function updateAccessToken($accessToken)
     {
-        switch ($type) {
-            case 'shop':
-                $this->configuration->set(Configuration::PS_ACCOUNTS_FIREBASE_REFRESH_TOKEN_FAILURE, (string) $attempt);
-                break;
-            case 'user':
-                $this->configuration->set(Configuration::PS_ACCOUNTS_USER_FIREBASE_REFRESH_TOKEN_FAILURE, (string) $attempt);
-                break;
-            default:
-                break;
+        $this->configuration->set(ConfigurationKeys::PS_ACCOUNTS_ACCESS_TOKEN, $accessToken);
+    }
+
+    /**
+     * @return void
+     *
+     * @throws \Exception
+     */
+    public function fixMultiShopConfig()
+    {
+        Logger::getInstance()->error(__METHOD__);
+
+        if ($this->isMultishopActive()) {
+            $this->migrateToMultiShop();
+        } else {
+            $this->migrateToSingleShop();
         }
+    }
+
+    /**
+     * is multi-shop active "right now"
+     *
+     * @return bool
+     */
+    public function isMultishopActive()
+    {
+        //return \Shop::isFeatureActive();
+        return $this->configuration->isMultishopActive();
+    }
+
+    /**
+     * @param string $upgrade
+     *
+     * @return void
+     */
+    public function updateLastUpgrade($upgrade)
+    {
+        $this->configuration->set(ConfigurationKeys::PS_ACCOUNTS_LAST_UPGRADE, $upgrade);
+    }
+
+    /**
+     * @param bool $cached
+     *
+     * @return string
+     */
+    public function getLastUpgrade($cached = true)
+    {
+        return $this->configuration->get(ConfigurationKeys::PS_ACCOUNTS_LAST_UPGRADE, false, $cached);
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getUnlinkedOnError()
+    {
+        return $this->configuration->get(ConfigurationKeys::PS_ACCOUNTS_UNLINKED_ON_ERROR);
+    }
+
+    /**
+     * @param string|null $error
+     *
+     * @return void
+     */
+    public function updateUnlinkedOnError($error)
+    {
+        $this->configuration->set(ConfigurationKeys::PS_ACCOUNTS_UNLINKED_ON_ERROR, $error);
+    }
+
+    /**
+     * specify id_shop & id_shop_group for shop
+     *
+     * @return void
+     *
+     * @throws \PrestaShopDatabaseException
+     */
+    protected function migrateToMultiShop()
+    {
+        $shop = $this->getMainShop();
+        \Db::getInstance()->query(
+            'UPDATE ' . _DB_PREFIX_ . 'configuration SET id_shop = ' . (int) $shop->id . ', id_shop_group = ' . (int) $shop->id_shop_group .
+            " WHERE name IN('" . join("','", array_values(ConfigurationKeys::cases())) . "')" .
+            ' AND id_shop IS NULL AND id_shop_group IS NULL;'
+        );
+    }
+
+    /**
+     * nullify id_shop & id_shop_group for shop
+     *
+     * @return void
+     *
+     * @throws \PrestaShopDatabaseException
+     */
+    protected function migrateToSingleShop()
+    {
+        $shop = $this->getMainShop();
+        \Db::getInstance()->query(
+            'UPDATE ' . _DB_PREFIX_ . 'configuration SET id_shop = NULL, id_shop_group = NULL' .
+            " WHERE name IN('" . join("','", array_values(ConfigurationKeys::cases())) . "')" .
+            ' AND id_shop = ' . (int) $shop->id . ';'
+        );
     }
 }

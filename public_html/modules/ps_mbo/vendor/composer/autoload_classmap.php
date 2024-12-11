@@ -410,6 +410,7 @@ return array(
     'PrestaShop\\Module\\Mbo\\Service\\ExternalContentProvider\\ExternalContentProviderInterface' => $baseDir . '/src/Service/ExternalContentProvider/ExternalContentProviderInterface.php',
     'PrestaShop\\Module\\Mbo\\Service\\HookExceptionHolder' => $baseDir . '/src/Service/HookExceptionHolder.php',
     'PrestaShop\\Module\\Mbo\\Service\\MboSymfonyCacheClearer' => $baseDir . '/src/Service/MboSymfonyCacheClearer.php',
+    'PrestaShop\\Module\\Mbo\\Service\\ModuleInstaller' => $baseDir . '/src/Service/ModuleInstaller.php',
     'PrestaShop\\Module\\Mbo\\Service\\ModulesHelper' => $baseDir . '/src/Service/ModulesHelper.php',
     'PrestaShop\\Module\\Mbo\\Service\\View\\ContextBuilder' => $baseDir . '/src/Service/View/ContextBuilder.php',
     'PrestaShop\\Module\\Mbo\\Service\\View\\InstalledModule' => $baseDir . '/src/Service/View/InstalledModule.php',

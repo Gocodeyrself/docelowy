@@ -2,7 +2,6 @@
 
 namespace PrestaShop\Module\PsEventbus\Service;
 
-use PrestaShop\Module\PsEventbus\Exception\EnvVarException;
 use PrestaShop\Module\PsEventbus\Repository\DeletedObjectsRepository;
 
 class DeletedObjectsService
@@ -16,11 +15,11 @@ class DeletedObjectsService
      */
     private $deletedObjectsRepository;
     /**
-     * @var ProxyServiceInterface
+     * @var ProxyService
      */
     private $proxyService;
 
-    public function __construct(\Context $context, DeletedObjectsRepository $deletedObjectsRepository, ProxyServiceInterface $proxyService)
+    public function __construct(\Context $context, DeletedObjectsRepository $deletedObjectsRepository, ProxyService $proxyService)
     {
         $this->context = $context;
         $this->deletedObjectsRepository = $deletedObjectsRepository;
@@ -31,19 +30,25 @@ class DeletedObjectsService
      * @param string $jobId
      * @param int $scriptStartTime
      *
-     * @return array
+     * @return array<mixed>
      *
-     * @throws \PrestaShopDatabaseException|EnvVarException
+     * @@throws \PrestaShopDatabaseException|EnvVarException
      */
     public function handleDeletedObjectsSync($jobId, $scriptStartTime)
     {
-        /** @var int $shopId */
-        $shopId = $this->context->shop->id;
+        if ($this->context->shop === null) {
+            throw new \PrestaShopException('No shop context');
+        }
+
+        $shopId = (int) $this->context->shop->id;
+
         $deletedObjects = $this->deletedObjectsRepository->getDeletedObjectsGrouped($shopId);
 
         if (empty($deletedObjects)) {
             return [
+                'job_id' => $jobId,
                 'total_objects' => 0,
+                'syncType' => 'full',
             ];
         }
 
@@ -65,17 +70,18 @@ class DeletedObjectsService
             [
                 'job_id' => $jobId,
                 'total_objects' => count($data),
+                'syncType' => 'full',
             ],
             $response
         );
     }
 
     /**
-     * @param array $data
+     * @param array<mixed> $data
      *
-     * @return array
+     * @return array<mixed>
      */
-    private function formatData(array $data)
+    private function formatData($data)
     {
         return array_map(function ($dataItem) {
             return [

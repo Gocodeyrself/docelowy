@@ -2,7 +2,7 @@
 <module>
     <name>statscatalog</name>
     <displayName><![CDATA[Statystyki katalogu]]></displayName>
-    <version><![CDATA[2.0.3]]></version>
+    <version><![CDATA[2.0.4]]></version>
     <description><![CDATA[Wzbogać swoje statystyki, sp&oacute;jrz na og&oacute;lne statystyki swojego katalogu.]]></description>
     <author><![CDATA[PrestaShop]]></author>
     <tab><![CDATA[administration]]></tab>

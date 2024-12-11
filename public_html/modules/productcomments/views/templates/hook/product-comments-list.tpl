@@ -22,9 +22,6 @@
  * @copyright Since 2007 PrestaShop SA and Contributors
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  *}
-<div class="product-comments-container tab-pane fade in" 
- id="extra-product-comments-list-header"
- >
 <script type="text/javascript">
   var productCommentUpdatePostErrorMessage = '{l|escape:'javascript' s='Sorry, your review appreciation cannot be sent.' d='Modules.Productcomments.Shop'}';
   var productCommentAbuseReportErrorMessage = '{l|escape:'javascript' s='Sorry, your abuse report cannot be sent.' d='Modules.Productcomments.Shop'}';
@@ -33,7 +30,7 @@
 <div id="product-comments-list-header">
   <div class="comments-nb">
     <i class="material-icons chat" data-icon="chat"></i>
-    <h2>{l s='Comments' d='Modules.Productcomments.Shop'} ({$nb_comments})</h2>
+    {l s='Comments' d='Modules.Productcomments.Shop'} ({$nb_comments})
   </div>
   {include file='module:productcomments/views/templates/hook/average-grade-stars.tpl' grade=$average_grade}
 </div>
@@ -100,4 +97,3 @@
   modal_title={l s='Your report cannot be sent' d='Modules.Productcomments.Shop'}
   icon='error'
 }
-</div>

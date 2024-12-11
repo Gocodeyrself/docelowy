@@ -8,14 +8,12 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-
-namespace Symfony\Component\Cache;
-
-use Symfony\Contracts\Service\ResetInterface;
+namespace PrestaShop\Module\PsAccounts\Vendor\Symfony\Component\Cache;
 
 /**
  * Resets a pool's local state.
  */
-interface ResettableInterface extends ResetInterface
+interface ResettableInterface
 {
+    public function reset();
 }

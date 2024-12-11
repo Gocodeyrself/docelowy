@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright since 2007 PrestaShop SA and Contributors
  * PrestaShop is an International Registered Trademark & Property of PrestaShop SA
@@ -20,7 +21,7 @@
 
 namespace PrestaShop\Module\PsEventbus\Handler\ErrorHandler;
 
-use PrestaShop\PsAccountsInstaller\Installer\Facade\PsAccounts;
+use PrestaShop\Module\PsEventbus\Service\PsAccountsAdapterService;
 
 /**
  * Handle Error.
@@ -32,29 +33,36 @@ class ErrorHandler implements ErrorHandlerInterface
      */
     protected $client;
 
-    public function __construct(\Module $module, PsAccounts $accountsService, string $sentryDsn, string $sentryEnv)
+    /**
+     * @param \Ps_eventbus $module
+     * @param PsAccountsAdapterService $psAccountsAdapterService
+     * @param string $sentryDsn
+     * @param string $sentryEnv
+     *
+     * @return void
+     */
+    public function __construct(\Ps_eventbus $module, PsAccountsAdapterService $psAccountsAdapterService, $sentryDsn, $sentryEnv)
     {
-        $psAccounts = \Module::getInstanceByName('ps_accounts');
         try {
             $this->client = new \Raven_Client(
                 $sentryDsn,
                 [
                     'level' => 'warning',
                     'tags' => [
-                        'shop_id' => $accountsService->getPsAccountsService()->getShopUuid(),
+                        'shop_id' => $psAccountsAdapterService->getShopUuid(),
                         'ps_eventbus_version' => $module->version,
-                        'ps_accounts_version' => $psAccounts ? $psAccounts->version : false,
+                        'ps_accounts_version' => $psAccountsAdapterService->getModule() ? $psAccountsAdapterService->getModule()->version : false,
                         'php_version' => phpversion(),
                         'prestashop_version' => _PS_VERSION_,
-                        'ps_eventbus_is_enabled' => \Module::isEnabled($module->name),
-                        'ps_eventbus_is_installed' => \Module::isInstalled($module->name),
+                        'ps_eventbus_is_enabled' => \Module::isEnabled((string) $module->name),
+                        'ps_eventbus_is_installed' => \Module::isInstalled((string) $module->name),
                         'env' => $sentryEnv,
                     ],
                 ]
             );
             /** @var string $configurationPsShopEmail */
             $configurationPsShopEmail = \Configuration::get('PS_SHOP_EMAIL');
-            $this->client->set_user_data($accountsService->getPsAccountsService()->getShopUuid(), $configurationPsShopEmail);
+            $this->client->set_user_data($psAccountsAdapterService->getShopUuid(), $configurationPsShopEmail);
         } catch (\Exception $e) {
         }
     }
@@ -63,14 +71,18 @@ class ErrorHandler implements ErrorHandlerInterface
      * @param \Exception $error
      * @param mixed $code
      * @param bool|null $throw
-     * @param array|null $data
+     * @param array<mixed>|null $data
      *
      * @return void
      *
-     * @throws \Exception
+     * @@throws Exception
      */
-    public function handle($error, $code = null, $throw = true, $data = null)
+    public function handle($error, $code = null, $throw = null, $data = null)
     {
+        if ($throw == null) {
+            $throw = true;
+        }
+
         if (!$this->client) {
             return;
         }

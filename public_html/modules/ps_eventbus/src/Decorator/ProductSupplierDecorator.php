@@ -2,27 +2,14 @@
 
 namespace PrestaShop\Module\PsEventbus\Decorator;
 
-use PrestaShop\Module\PsEventbus\Repository\ConfigurationRepository;
-
 class ProductSupplierDecorator
 {
     /**
-     * @var string
-     */
-    private $timezone;
-
-    public function __construct(
-        ConfigurationRepository $configurationRepository
-    ) {
-        $this->timezone = (string) $configurationRepository->get('PS_TIMEZONE');
-    }
-
-    /**
-     * @param array $productSuppliers
+     * @param array<mixed> $productSuppliers
      *
      * @return void
      */
-    public function decorateProductSuppliers(array &$productSuppliers)
+    public function decorateProductSuppliers(&$productSuppliers)
     {
         foreach ($productSuppliers as &$productSupplier) {
             $this->castProductSupplierPropertyValues($productSupplier);
@@ -30,11 +17,11 @@ class ProductSupplierDecorator
     }
 
     /**
-     * @param array $productSupplier
+     * @param array<mixed> $productSupplier
      *
      * @return void
      */
-    private function castProductSupplierPropertyValues(array &$productSupplier)
+    private function castProductSupplierPropertyValues(&$productSupplier)
     {
         $productSupplier['id_product_supplier'] = (int) $productSupplier['id_product_supplier'];
         $productSupplier['id_product'] = (int) $productSupplier['id_product'];
@@ -42,7 +29,5 @@ class ProductSupplierDecorator
         $productSupplier['id_supplier'] = (int) $productSupplier['id_supplier'];
         $productSupplier['product_supplier_price_te'] = (float) $productSupplier['product_supplier_price_te'];
         $productSupplier['id_currency'] = (int) $productSupplier['id_currency'];
-        $productSupplier['created_at'] = (new \DateTime($productSupplier['created_at'], new \DateTimeZone($this->timezone)))->format('Y-m-d\TH:i:sO');
-        $productSupplier['updated_at'] = (new \DateTime($productSupplier['updated_at'], new \DateTimeZone($this->timezone)))->format('Y-m-d\TH:i:sO');
     }
 }

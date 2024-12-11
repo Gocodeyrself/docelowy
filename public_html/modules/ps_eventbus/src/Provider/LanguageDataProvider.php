@@ -29,13 +29,13 @@ class LanguageDataProvider implements PaginatedApiDataProviderInterface
      * @param int $limit
      * @param string $langIso
      *
-     * @return array
+     * @return array<mixed>
      *
-     * @throws \PrestaShopDatabaseException
+     * @@throws \PrestaShopDatabaseException
      */
     public function getFormattedData($offset, $limit, $langIso)
     {
-        $languages = $this->languageRepository->getLanguagesSync($offset, $limit, $langIso);
+        $languages = $this->languageRepository->getLanguagesSync($offset, $limit);
 
         if (!is_array($languages)) {
             return [];
@@ -59,21 +59,21 @@ class LanguageDataProvider implements PaginatedApiDataProviderInterface
      */
     public function getRemainingObjectsCount($offset, $langIso)
     {
-        return (int) $this->languageRepository->getRemainingLanguagesCount($offset, $langIso);
+        return (int) $this->languageRepository->getRemainingLanguagesCount($offset);
     }
 
     /**
      * @param int $limit
      * @param string $langIso
-     * @param array $objectIds
+     * @param array<mixed> $objectIds
      *
-     * @return array
+     * @return array<mixed>
      *
-     * @throws \PrestaShopDatabaseException
+     * @@throws \PrestaShopDatabaseException
      */
     public function getFormattedDataIncremental($limit, $langIso, $objectIds)
     {
-        $languages = $this->languageRepository->getLanguagesIncremental($limit, $langIso, $objectIds);
+        $languages = $this->languageRepository->getLanguagesIncremental($limit, $objectIds);
 
         if (!is_array($languages)) {
             return [];
@@ -87,5 +87,19 @@ class LanguageDataProvider implements PaginatedApiDataProviderInterface
                 'properties' => $language,
             ];
         }, $languages);
+    }
+
+    /**
+     * @param int $offset
+     * @param int $limit
+     * @param string $langIso
+     *
+     * @return array<mixed>
+     *
+     * @@throws \PrestaShopDatabaseException
+     */
+    public function getQueryForDebug($offset, $limit, $langIso)
+    {
+        return $this->languageRepository->getQueryForDebug($offset, $limit);
     }
 }

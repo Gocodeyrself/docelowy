@@ -27,6 +27,4 @@
     <dd>{$bankwireDetails nofilter}</dd>
     <dt>{l s='Bank name' d='Modules.Wirepayment.Shop'}</dt>
     <dd>{$bankwireAddress nofilter}</dd>
-	<dt>{l s='Description' d='Modules.Wirepayment.Shop'}</dt>
-    <dd>{$reference nofilter}</dd>
 </dl>

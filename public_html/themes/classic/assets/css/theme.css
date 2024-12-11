@@ -9190,8 +9190,11 @@ body#checkout #hook-display-after-carrier>[class^=col].links .row>[class^=col] {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  width: 100%;
-  margin-top: 1.5rem
+  width: 40%;
+  justify-content: center;
+  position: absolute;
+  right: 1px;
+  bottom: 1px;
 }
 
 .social-sharing li {

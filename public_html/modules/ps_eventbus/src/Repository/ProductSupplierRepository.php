@@ -9,9 +9,9 @@ class ProductSupplierRepository
      */
     private $db;
 
-    public function __construct(\Db $db)
+    public function __construct()
     {
-        $this->db = $db;
+        $this->db = \Db::getInstance();
     }
 
     /**
@@ -20,8 +20,7 @@ class ProductSupplierRepository
     public function getBaseQuery()
     {
         $query = new \DbQuery();
-        $query->from('product_supplier', 'ps')
-        ->innerJoin('product', 'p', 'p.id_product = ps.id_product');
+        $query->from('product_supplier', 'ps');
 
         return $query;
     }
@@ -30,7 +29,7 @@ class ProductSupplierRepository
      * @param int $offset
      * @param int $limit
      *
-     * @return array|bool|\mysqli_result|\PDOStatement|resource|null
+     * @return array<mixed>|bool|\mysqli_result|\PDOStatement|resource|null
      *
      * @throws \PrestaShopDatabaseException
      */
@@ -60,9 +59,9 @@ class ProductSupplierRepository
 
     /**
      * @param int $limit
-     * @param array $productIds
+     * @param array<mixed> $productIds
      *
-     * @return array|bool|\mysqli_result|\PDOStatement|resource|null
+     * @return array<mixed>|bool|\mysqli_result|\PDOStatement|resource|null
      *
      * @throws \PrestaShopDatabaseException
      */
@@ -79,13 +78,37 @@ class ProductSupplierRepository
     }
 
     /**
+     * @param int $offset
+     * @param int $limit
+     *
+     * @return array<mixed>
+     *
+     * @throws \PrestaShopDatabaseException
+     */
+    public function getQueryForDebug($offset, $limit)
+    {
+        $query = $this->getBaseQuery();
+
+        $this->addSelectParameters($query);
+
+        $query->limit($limit, $offset);
+
+        $queryStringified = preg_replace('/\s+/', ' ', $query->build());
+
+        return array_merge(
+            (array) $query,
+            ['queryStringified' => $queryStringified]
+        );
+    }
+
+    /**
      * @param \DbQuery $query
      *
      * @return void
      */
     private function addSelectParameters(\DbQuery $query)
     {
-        $query->select('ps.id_product_supplier, ps.id_product, ps.id_product_attribute, ps.id_supplier, ps.product_supplier_reference,
-        ps.product_supplier_price_te, ps.id_currency, p.date_add AS created_at, p.date_upd as updated_at');
+        $query->select('ps.id_product_supplier, ps.id_product, ps.id_product_attribute, ps.id_supplier, ps.product_supplier_reference');
+        $query->select('ps.product_supplier_price_te, ps.id_currency');
     }
 }

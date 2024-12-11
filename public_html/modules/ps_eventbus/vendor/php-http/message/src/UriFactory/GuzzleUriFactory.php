@@ -2,17 +2,13 @@
 
 namespace Http\Message\UriFactory;
 
-use GuzzleHttp\Psr7\Utils;
+use GuzzleHttp\Psr7;
 use Http\Message\UriFactory;
-
-use function GuzzleHttp\Psr7\uri_for;
 
 /**
  * Creates Guzzle URI.
  *
  * @author David de Boer <david@ddeboer.nl>
- *
- * @deprecated This will be removed in php-http/message2.0. Consider using the official Guzzle PSR-17 factory
  */
 final class GuzzleUriFactory implements UriFactory
 {
@@ -21,10 +17,6 @@ final class GuzzleUriFactory implements UriFactory
      */
     public function createUri($uri)
     {
-        if (class_exists(Utils::class)) {
-            return Utils::uriFor($uri);
-        }
-
-        return uri_for($uri);
+        return Psr7\uri_for($uri);
     }
 }

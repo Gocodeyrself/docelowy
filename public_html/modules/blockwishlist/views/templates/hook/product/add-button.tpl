@@ -25,7 +25,5 @@
   data-list-id="1"
   data-checked="true"
   data-is-product="true"
-><i class="material-icons">favorite_border</i></div>
+></div>
 
-
-{* <button class="wishlist-button-add wishlist-button-product"><i class="material-icons">favorite_border</i></button> *}

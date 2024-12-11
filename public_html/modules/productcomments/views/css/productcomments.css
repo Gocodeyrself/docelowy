@@ -37,13 +37,14 @@
 
 .btn-comment,
 .btn-comment-inverse {
-  height: 36px;
-  border-radius: 2px;
-  background-color: #6b868f;
+  background-color: dimgrey !important;
   color: #ffffff;
-  font-size: 14px;
-  box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.2);
-  padding: 8px;
+  background: var(--first-color);
+    font-size: 16px !important;
+    text-transform: math-auto;
+    font-weight: 600;
+    padding: 0.5rem 2rem;
+    border-radius: 10px !important;
 }
 .btn-comment .material-icons,
 .btn-comment-inverse .material-icons {

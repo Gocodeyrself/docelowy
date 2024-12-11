@@ -30,9 +30,9 @@ class ProductSupplierDataProvider implements PaginatedApiDataProviderInterface
      * @param int $limit
      * @param string $langIso
      *
-     * @return array
+     * @return array<mixed>
      *
-     * @throws \PrestaShopDatabaseException
+     * @@throws \PrestaShopDatabaseException
      */
     public function getFormattedData($offset, $limit, $langIso)
     {
@@ -66,11 +66,11 @@ class ProductSupplierDataProvider implements PaginatedApiDataProviderInterface
     /**
      * @param int $limit
      * @param string $langIso
-     * @param array $objectIds
+     * @param array<mixed> $objectIds
      *
-     * @return array
+     * @return array<mixed>
      *
-     * @throws \PrestaShopDatabaseException
+     * @@throws \PrestaShopDatabaseException
      */
     public function getFormattedDataIncremental($limit, $langIso, $objectIds)
     {
@@ -89,5 +89,19 @@ class ProductSupplierDataProvider implements PaginatedApiDataProviderInterface
                 'properties' => $productSupplier,
             ];
         }, $productSuppliers);
+    }
+
+    /**
+     * @param int $offset
+     * @param int $limit
+     * @param string $langIso
+     *
+     * @return array<mixed>
+     *
+     * @@throws \PrestaShopDatabaseException
+     */
+    public function getQueryForDebug($offset, $limit, $langIso)
+    {
+        return $this->productSupplierRepository->getQueryForDebug($offset, $limit);
     }
 }

@@ -2,7 +2,7 @@
 <module>
     <name>ps_emailalerts</name>
     <displayName><![CDATA[Powiadomienia poczty]]></displayName>
-    <version><![CDATA[2.4.1]]></version>
+    <version><![CDATA[3.0.1]]></version>
     <description><![CDATA[Ułatw sobie codzienne życie, obsługuj powiadomienia mailowe o stanach magazynowych i zam&oacute;wieniach skierowane zar&oacute;wno do Ciebie, jak i Twoich klient&oacute;w.]]></description>
     <author><![CDATA[PrestaShop]]></author>
     <tab><![CDATA[administration]]></tab>

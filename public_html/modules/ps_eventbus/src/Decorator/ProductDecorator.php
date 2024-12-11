@@ -36,6 +36,11 @@ class ProductDecorator
      */
     private $bundleRepository;
 
+    /**
+     * @var int
+     */
+    private $shopId;
+
     public function __construct(
         \Context $context,
         LanguageRepository $languageRepository,
@@ -50,18 +55,24 @@ class ProductDecorator
         $this->categoryRepository = $categoryRepository;
         $this->arrayFormatter = $arrayFormatter;
         $this->bundleRepository = $bundleRepository;
+
+        if ($this->context->shop === null) {
+            throw new \PrestaShopException('No shop context');
+        }
+
+        $this->shopId = (int) $this->context->shop->id;
     }
 
     /**
-     * @param array $products
+     * @param array<mixed> $products
      * @param string $langIso
      * @param int $langId
      *
      * @return void
      *
-     * @throws \PrestaShopDatabaseException
+     * @@throws \PrestaShopDatabaseException
      */
-    public function decorateProducts(array &$products, $langIso, $langId)
+    public function decorateProducts(&$products, $langIso, $langId)
     {
         $this->addFeatureValues($products, $langId);
         $this->addAttributeValues($products, $langId);
@@ -80,11 +91,11 @@ class ProductDecorator
     }
 
     /**
-     * @param array $products
+     * @param array<mixed> $products
      *
-     * @return array
+     * @return array<mixed>
      */
-    public function getBundles(array $products)
+    public function getBundles($products)
     {
         $bundles = [];
         foreach ($products as $product) {
@@ -97,20 +108,24 @@ class ProductDecorator
     }
 
     /**
-     * @param array $product
+     * @param array<mixed> $product
      *
      * @return void
      */
-    private function addLink(array &$product)
+    private function addLink(&$product)
     {
         try {
+            if ($this->context->link === null) {
+                throw new \PrestaShopException('No link context');
+            }
+
             $product['link'] = $this->context->link->getProductLink(
                 $product,
                 null,
                 null,
                 null,
                 $this->languageRepository->getLanguageIdByIsoCode($product['iso_code']),
-                $this->context->shop->id,
+                $this->shopId,
                 $product['id_attribute']
             );
         } catch (\PrestaShopException $e) {
@@ -119,11 +134,11 @@ class ProductDecorator
     }
 
     /**
-     * @param array $product
+     * @param array<mixed> $product
      *
      * @return void
      */
-    private function addProductPrices(array &$product)
+    private function addProductPrices(&$product)
     {
         $product['price_tax_excl'] = (float) $product['price_tax_excl'];
         $product['price_tax_incl'] =
@@ -137,7 +152,12 @@ class ProductDecorator
         $product['sale_tax'] = $product['sale_price_tax_incl'] - $product['sale_price_tax_excl'];
     }
 
-    private function getBundleCollection(array $product): array
+    /**
+     * @param array<mixed> $product
+     *
+     * @return array<mixed>
+     */
+    private function getBundleCollection($product)
     {
         $bundleProducts = $this->bundleRepository->getBundleProducts($product['id_product']);
         $uniqueProductId = $product['unique_product_id'];
@@ -158,29 +178,27 @@ class ProductDecorator
     }
 
     /**
-     * @param array $product
+     * @param array<mixed> $product
      *
      * @return void
      */
-    private function formatDescriptions(array &$product)
+    private function formatDescriptions(&$product)
     {
         $product['description'] = base64_encode($product['description']);
         $product['description_short'] = base64_encode($product['description_short']);
     }
 
     /**
-     * @param array $product
+     * @param array<mixed> $product
      *
      * @return void
      */
-    private function addCategoryTree(array &$product)
+    private function addCategoryTree(&$product)
     {
-        /** @var int $shopId */
-        $shopId = $this->context->shop->id;
         $categoryPaths = $this->categoryRepository->getCategoryPaths(
             $product['id_category_default'],
             $this->languageRepository->getLanguageIdByIsoCode($product['iso_code']),
-            $shopId
+            $this->shopId
         );
 
         $product['category_path'] = $categoryPaths['category_path'];
@@ -188,11 +206,11 @@ class ProductDecorator
     }
 
     /**
-     * @param array $product
+     * @param array<mixed> $product
      *
      * @return void
      */
-    private function castPropertyValues(array &$product)
+    private function castPropertyValues(&$product)
     {
         $product['id_product'] = (int) $product['id_product'];
         $product['id_manufacturer'] = (int) $product['id_manufacturer'];
@@ -213,38 +231,35 @@ class ProductDecorator
         $product['available_date'] = (string) $product['available_date'];
         $product['is_bundle'] = $product['is_bundle'] == '1';
         $product['is_virtual'] = $product['is_virtual'] == '1';
-        if ($product['unit_price_ratio'] == 0) {
-            unset($product['unit_price_ratio']);
-            unset($product['unity']);
-        } else {
-            $product['unit_price_ratio'] = (float) $product['unit_price_ratio'];
-            $product['unity'] = (string) $product['unity'];
-            $product['price_per_unit'] = (float) ($product['price_tax_excl'] / $product['unit_price_ratio']);
+        $product['unit_price_ratio'] = (float) $product['unit_price_ratio'];
+        $product['unity'] = (string) $product['unity'];
+        if ($product['unit_price_ratio'] != 0) {
+            $product['price_per_unit'] = (float) $product['price_tax_excl'] / (float) $product['unit_price_ratio'];
         }
     }
 
     /**
-     * @param array $product
+     * @param array<mixed> $product
      *
      * @return void
      */
-    private function addUniqueId(array &$product)
+    private function addUniqueId(&$product)
     {
         $product['unique_product_id'] = "{$product['id_product']}-{$product['id_attribute']}-{$product['iso_code']}";
     }
 
     /**
-     * @param array $product
+     * @param array<mixed> $product
      *
      * @return void
      */
-    private function addAttributeId(array &$product)
+    private function addAttributeId(&$product)
     {
         $product['id_product_attribute'] = "{$product['id_product']}-{$product['id_attribute']}";
     }
 
     /**
-     * @param array $product
+     * @param array<mixed> $product
      * @param string $langiso
      *
      * @return void
@@ -255,14 +270,14 @@ class ProductDecorator
     }
 
     /**
-     * @param array $products
+     * @param array<mixed> $products
      * @param int $langId
      *
      * @return void
      *
-     * @throws \PrestaShopDatabaseException
+     * @@throws \PrestaShopDatabaseException
      */
-    private function addFeatureValues(array &$products, $langId)
+    private function addFeatureValues(&$products, $langId)
     {
         $productIds = $this->arrayFormatter->formatValueArray($products, 'id_product', true);
         $features = $this->productRepository->getProductFeatures($productIds, $langId);
@@ -273,14 +288,14 @@ class ProductDecorator
     }
 
     /**
-     * @param array $products
+     * @param array<mixed> $products
      * @param int $langId
      *
      * @return void
      *
-     * @throws \PrestaShopDatabaseException
+     * @@throws \PrestaShopDatabaseException
      */
-    private function addAttributeValues(array &$products, $langId)
+    private function addAttributeValues(&$products, $langId)
     {
         $attributeIds = $this->arrayFormatter->formatValueArray($products, 'id_attribute', true);
         $attributes = $this->productRepository->getProductAttributeValues($attributeIds, $langId);
@@ -291,13 +306,13 @@ class ProductDecorator
     }
 
     /**
-     * @param array $products
+     * @param array<mixed> $products
      *
      * @return void
      *
-     * @throws \PrestaShopDatabaseException
+     * @@throws \PrestaShopDatabaseException
      */
-    private function addImages(array &$products)
+    private function addImages(&$products)
     {
         $productIds = $this->arrayFormatter->formatValueArray($products, 'id_product', true);
         $attributeIds = $this->arrayFormatter->formatValueArray($products, 'id_attribute', true);
@@ -327,7 +342,7 @@ class ProductDecorator
                     return $image['id_product_attribute'] === $product['id_attribute'];
                 });
 
-                // If combination has some pictures -> the first one is the cover
+                // If a combination has some pictures -> the first one is the cover
                 if (count($productAttributeImages)) {
                     $productImageIds = $this->arrayFormatter->formatValueArray($productAttributeImages, 'id_image');
                     $coverImageId = reset($productImageIds);
@@ -340,15 +355,24 @@ class ProductDecorator
 
             $productImageIds = array_diff($productImageIds, [$coverImageId]);
 
+            if ($this->context->link === null) {
+                throw new \PrestaShopException('No link context');
+            }
+
+            $link = $this->context->link;
+
+            // For some stores, we might implement a behavior that dynamically adapts,
+            // retrieving the appropriate label from an image table to accurately reflect
+            // the merchant's available items.
             $product['images'] = $this->arrayFormatter->arrayToString(
-                array_map(function ($imageId) use ($product) {
-                    return $this->context->link->getImageLink($product['link_rewrite'], (string) $imageId);
+                array_map(function ($imageId) use ($product, $link) {
+                    return $link->getImageLink($product['link_rewrite'], (string) $imageId);
                 }, $productImageIds)
             );
 
             $product['cover'] = $coverImageId == '0' ?
                 '' :
-                $this->context->link->getImageLink($product['link_rewrite'], (string) $coverImageId);
+                $link->getImageLink($product['link_rewrite'], (string) $coverImageId);
         }
     }
 }

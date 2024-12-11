@@ -8,17 +8,16 @@
  *
  * @copyright Copyright (c) Ben Ramsey <ben@benramsey.com>
  * @license http://opensource.org/licenses/MIT MIT
+ * @link https://benramsey.com/projects/ramsey-uuid/ Documentation
+ * @link https://packagist.org/packages/ramsey/uuid Packagist
+ * @link https://github.com/ramsey/uuid GitHub
  */
+namespace PrestaShop\Module\PsAccounts\Vendor\Ramsey\Uuid\Exception;
 
-declare(strict_types=1);
-
-namespace Ramsey\Uuid\Exception;
-
-use LogicException as PhpLogicException;
-
+use RuntimeException;
 /**
- * Thrown to indicate that the requested operation is not supported
+ * Thrown to indicate that the requested operation is not supported.
  */
-class UnsupportedOperationException extends PhpLogicException implements UuidExceptionInterface
+class UnsupportedOperationException extends RuntimeException
 {
 }

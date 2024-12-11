@@ -24,11 +24,18 @@ use PrestaShop\OAuth2\Client\Provider\PrestaShopUser;
 
 class EmailNotVerifiedException extends AccountLoginException
 {
+    /**
+     * @param string $message
+     * @param PrestaShopUser|null $user
+     * @param \Exception $previous
+     */
     public function __construct(
-        ?PrestaShopUser $user,
-        string $message = 'Your account email is not verified',
-        string $type = 'email_not_verified'
+        $message = 'Your account email is not verified',
+        PrestaShopUser $user = null,
+        \Exception $previous = null
     ) {
-        parent::__construct($user, $message, $type);
+        parent::__construct($message, $user, $previous);
+
+        $this->type = 'email_not_verified';
     }
 }

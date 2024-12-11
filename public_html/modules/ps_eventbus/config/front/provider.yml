@@ -47,7 +47,7 @@ services:
     class: PrestaShop\Module\PsEventbus\Provider\OrderDataProvider
     public: true
     arguments:
-      - '@ps_eventbus.context'
+      - "@ps_eventbus.context"
       - '@PrestaShop\Module\PsEventbus\Repository\OrderRepository'
       - '@PrestaShop\Module\PsEventbus\Repository\OrderDetailsRepository'
       - '@PrestaShop\Module\PsEventbus\Formatter\ArrayFormatter'
@@ -60,6 +60,11 @@ services:
     arguments:
       - '@PrestaShop\Module\PsEventbus\Repository\CartRepository'
       - '@PrestaShop\Module\PsEventbus\Repository\CartProductRepository'
+
+  PrestaShop\Module\PsEventbus\Provider\CartRuleDataProvider:
+    class: PrestaShop\Module\PsEventbus\Provider\CartRuleDataProvider
+    public: true
+    arguments:
       - '@PrestaShop\Module\PsEventbus\Repository\CartRuleRepository'
 
   PrestaShop\Module\PsEventbus\Provider\GoogleTaxonomyDataProvider:
@@ -67,7 +72,7 @@ services:
     public: true
     arguments:
       - '@PrestaShop\Module\PsEventbus\Repository\GoogleTaxonomyRepository'
-      - '@ps_eventbus.context'
+      - "@ps_eventbus.context"
 
   PrestaShop\Module\PsEventbus\Provider\CarrierDataProvider:
     class: PrestaShop\Module\PsEventbus\Provider\CarrierDataProvider
@@ -95,7 +100,6 @@ services:
     class: PrestaShop\Module\PsEventbus\Provider\WishlistDataProvider
     public: true
     arguments:
-      - '@ps_eventbus.context'
       - '@PrestaShop\Module\PsEventbus\Repository\WishlistRepository'
       - '@PrestaShop\Module\PsEventbus\Repository\WishlistProductRepository'
       - '@PrestaShop\Module\PsEventbus\Decorator\WishlistDecorator'
@@ -131,9 +135,39 @@ services:
       - '@PrestaShop\Module\PsEventbus\Repository\SupplierRepository'
       - '@PrestaShop\Module\PsEventbus\Decorator\SupplierDecorator'
 
+  PrestaShop\Module\PsEventbus\Provider\EmployeeDataProvider:
+    class: PrestaShop\Module\PsEventbus\Provider\EmployeeDataProvider
+    public: true
+    arguments:
+      - '@PrestaShop\Module\PsEventbus\Repository\EmployeeRepository'
+      - '@PrestaShop\Module\PsEventbus\Decorator\EmployeeDecorator'
+
   PrestaShop\Module\PsEventbus\Provider\LanguageDataProvider:
     class: PrestaShop\Module\PsEventbus\Provider\LanguageDataProvider
     public: true
     arguments:
       - '@PrestaShop\Module\PsEventbus\Repository\LanguageRepository'
       - '@PrestaShop\Module\PsEventbus\Decorator\LanguageDecorator'
+
+
+  PrestaShop\Module\PsEventbus\Provider\ImageDataProvider:
+    class: PrestaShop\Module\PsEventbus\Provider\ImageDataProvider
+    public: true
+    arguments:
+      - '@PrestaShop\Module\PsEventbus\Repository\ImageRepository'
+      - '@PrestaShop\Module\PsEventbus\Decorator\ImageDecorator'
+
+  PrestaShop\Module\PsEventbus\Provider\ImageTypeDataProvider:
+    class: PrestaShop\Module\PsEventbus\Provider\ImageTypeDataProvider
+    public: true
+    arguments:
+      - '@PrestaShop\Module\PsEventbus\Repository\ImageTypeRepository'
+      - '@PrestaShop\Module\PsEventbus\Decorator\ImageTypeDecorator'
+
+  PrestaShop\Module\PsEventbus\Provider\TranslationDataProvider:
+    class: PrestaShop\Module\PsEventbus\Provider\TranslationDataProvider
+    public: true
+    arguments:
+      - '@PrestaShop\Module\PsEventbus\Repository\TranslationRepository'
+      - '@PrestaShop\Module\PsEventbus\Decorator\TranslationDecorator'
+

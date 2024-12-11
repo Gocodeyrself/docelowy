@@ -9,9 +9,9 @@ class BundleRepository
      */
     private $db;
 
-    public function __construct(\Db $db)
+    public function __construct()
     {
-        $this->db = $db;
+        $this->db = \Db::getInstance();
     }
 
     /**
@@ -34,7 +34,7 @@ class BundleRepository
     /**
      * @param int $productPackId
      *
-     * @return array
+     * @return array<mixed>
      *
      * @throws \PrestaShopDatabaseException
      */

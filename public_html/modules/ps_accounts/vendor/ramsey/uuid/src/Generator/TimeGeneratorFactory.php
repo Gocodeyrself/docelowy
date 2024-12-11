@@ -8,19 +8,17 @@
  *
  * @copyright Copyright (c) Ben Ramsey <ben@benramsey.com>
  * @license http://opensource.org/licenses/MIT MIT
+ * @link https://benramsey.com/projects/ramsey-uuid/ Documentation
+ * @link https://packagist.org/packages/ramsey/uuid Packagist
+ * @link https://github.com/ramsey/uuid GitHub
  */
+namespace PrestaShop\Module\PsAccounts\Vendor\Ramsey\Uuid\Generator;
 
-declare(strict_types=1);
-
-namespace Ramsey\Uuid\Generator;
-
-use Ramsey\Uuid\Converter\TimeConverterInterface;
-use Ramsey\Uuid\Provider\NodeProviderInterface;
-use Ramsey\Uuid\Provider\TimeProviderInterface;
-
+use PrestaShop\Module\PsAccounts\Vendor\Ramsey\Uuid\Converter\TimeConverterInterface;
+use PrestaShop\Module\PsAccounts\Vendor\Ramsey\Uuid\Provider\NodeProviderInterface;
+use PrestaShop\Module\PsAccounts\Vendor\Ramsey\Uuid\Provider\TimeProviderInterface;
 /**
- * TimeGeneratorFactory retrieves a default time generator, based on the
- * environment
+ * A factory for retrieving a time generator, based on the environment
  */
 class TimeGeneratorFactory
 {
@@ -28,36 +26,35 @@ class TimeGeneratorFactory
      * @var NodeProviderInterface
      */
     private $nodeProvider;
-
     /**
      * @var TimeConverterInterface
      */
     private $timeConverter;
-
     /**
      * @var TimeProviderInterface
      */
     private $timeProvider;
-
-    public function __construct(
-        NodeProviderInterface $nodeProvider,
-        TimeConverterInterface $timeConverter,
-        TimeProviderInterface $timeProvider
-    ) {
+    /**
+     * Constructs a `TimeGeneratorFactory` using a node provider, time converter,
+     * and time provider
+     *
+     * @param NodeProviderInterface $nodeProvider
+     * @param TimeConverterInterface $timeConverter
+     * @param TimeProviderInterface $timeProvider
+     */
+    public function __construct(NodeProviderInterface $nodeProvider, TimeConverterInterface $timeConverter, TimeProviderInterface $timeProvider)
+    {
         $this->nodeProvider = $nodeProvider;
         $this->timeConverter = $timeConverter;
         $this->timeProvider = $timeProvider;
     }
-
     /**
      * Returns a default time generator, based on the current environment
+     *
+     * @return TimeGeneratorInterface
      */
-    public function getGenerator(): TimeGeneratorInterface
+    public function getGenerator()
     {
-        return new DefaultTimeGenerator(
-            $this->nodeProvider,
-            $this->timeConverter,
-            $this->timeProvider
-        );
+        return new DefaultTimeGenerator($this->nodeProvider, $this->timeConverter, $this->timeProvider);
     }
 }

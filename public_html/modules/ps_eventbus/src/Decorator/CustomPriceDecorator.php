@@ -23,7 +23,12 @@ class CustomPriceDecorator
         $this->priceService = $priceService;
     }
 
-    public function decorateSpecificPrices(array &$specificPrices): void
+    /**
+     * @param array<mixed> $specificPrices
+     *
+     * @return void
+     */
+    public function decorateSpecificPrices(&$specificPrices)
     {
         foreach ($specificPrices as &$specificPrice) {
             $this->addTotalPrice($specificPrice);
@@ -32,7 +37,12 @@ class CustomPriceDecorator
         }
     }
 
-    private function addTotalPrice(array &$specificPrice): void
+    /**
+     * @param array<mixed> $specificPrice
+     *
+     * @return void
+     */
+    private function addTotalPrice(&$specificPrice)
     {
         $this->context->country = new \Country($specificPrice['id_country']);
         $this->context->currency = new \Currency($specificPrice['id_currency']);
@@ -45,6 +55,7 @@ class CustomPriceDecorator
             false,
             $this->context
         );
+
         $specificPrice['price_tax_excluded'] = $this->priceService->getSpecificProductPrice(
             $specificPrice['id_product'],
             $specificPrice['id_product_attribute'],
@@ -71,7 +82,12 @@ class CustomPriceDecorator
         );
     }
 
-    private function castPropertyValues(array &$specificPrice): void
+    /**
+     * @param array<mixed> $specificPrice
+     *
+     * @return void
+     */
+    private function castPropertyValues(&$specificPrice)
     {
         $specificPrice['id_specific_price'] = (int) $specificPrice['id_specific_price'];
         $specificPrice['id_product'] = (int) $specificPrice['id_product'];
@@ -93,13 +109,6 @@ class CustomPriceDecorator
         $specificPrice['sale_price_tax_incl'] = (float) $specificPrice['sale_price_tax_incl'];
         $specificPrice['sale_price_tax_excl'] = (float) $specificPrice['sale_price_tax_excl'];
 
-        if ($specificPrice['from'] === '0000-00-00 00:00:00') {
-            unset($specificPrice['from']);
-        }
-        if ($specificPrice['to'] === '0000-00-00 00:00:00') {
-            unset($specificPrice['to']);
-        }
-
         if ($specificPrice['reduction_type'] === 'percentage') {
             $specificPrice['discount_percentage'] = $specificPrice['reduction'] * 100;
             $specificPrice['discount_value_tax_incl'] = 0.0;
@@ -111,8 +120,17 @@ class CustomPriceDecorator
         }
     }
 
-    private function setShopId(array &$specificPrice): void
+    /**
+     * @param array<mixed> $specificPrice
+     *
+     * @return void
+     */
+    private function setShopId(&$specificPrice)
     {
+        if ($this->context->shop === null) {
+            throw new \PrestaShopException('No shop context');
+        }
+
         if ($specificPrice['id_shop']) {
             $specificPrice['id_shop'] = $this->context->shop->id;
         }

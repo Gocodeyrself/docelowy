@@ -184,11 +184,6 @@
                 {block name='product_add_to_cart'}
                 {include file='catalog/_partials/product-add-to-cart.tpl'}
                 {/block}
-
-                {block name='product_additional_info'}
-                {include file='catalog/_partials/product-additional-info.tpl'}
-                {hook h='displayProductActions' product=$product}
-                {/block}
                 
                 {* Wskaźniki flag produktów *}
                 <ul class="product-flags-custom product-flags js-product-flags">
@@ -223,6 +218,16 @@
             {/block}
           </div>
         </div>
+<!-- New box with sharring information -->
+        <div class="col-md-12 white-bgr box-shadow accessories-container" style="padding: 10px 15px;">
+          <h4 class="head-title mb-2">{l s='Share your opinion' d='Shop.Theme.Catalog'}</h4>
+
+          {block name='product_additional_info'}
+            {include file='catalog/_partials/product-additional-info.tpl'}
+            {hook h='displayProductActions' product=$product}
+            {/block}
+        </div>
+<!-- End of box with sharring information -->
 
         <!-- New box with delivery and returns information -->
         <div class="col-md-12 white-bgr box-shadow accessories-container" style="padding: 10px 15px;">

@@ -1408,7 +1408,7 @@ var jr = 90;
 function Zr(e, n, t) {
   var r = H(e), o = r.on, l = n.Elements.track, i = t.live && !t.isNavigation, s = Ce("span", gr), c = dt(jr, U(a, !1));
   function v() {
-    i && (d(!n.Autoplay.isPaused()), x(l, an, !0), s.textContent = "\u2026", o(Tn, U(d, !0)), o(Sn, U(d, !1)), o([et, Ve], U(a, !0)));
+    i && (d(!n.Autoplay.isPaused()), x(l, an, !0), s.textContent = "…", o(Tn, U(d, !0)), o(Sn, U(d, !1)), o([et, Ve], U(a, !0)));
   }
   function a(E) {
     x(l, rn, E), E ? (Ze(l, s), c.start()) : (Ie(s), c.cancel());

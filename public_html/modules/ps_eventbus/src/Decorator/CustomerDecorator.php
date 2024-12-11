@@ -2,27 +2,14 @@
 
 namespace PrestaShop\Module\PsEventbus\Decorator;
 
-use PrestaShop\Module\PsEventbus\Repository\ConfigurationRepository;
-
 class CustomerDecorator
 {
     /**
-     * @var ConfigurationRepository
-     */
-    private $configurationRepository;
-
-    public function __construct(
-        ConfigurationRepository $configurationRepository
-    ) {
-        $this->configurationRepository = $configurationRepository;
-    }
-
-    /**
-     * @param array $customers
+     * @param array<mixed> $customers
      *
      * @return void
      */
-    public function decorateCustomers(array &$customers)
+    public function decorateCustomers(&$customers)
     {
         foreach ($customers as &$customer) {
             $this->castPropertyValues($customer);
@@ -31,20 +18,16 @@ class CustomerDecorator
     }
 
     /**
-     * @param array $customer
+     * @param array<mixed> $customer
      *
      * @return void
      */
-    private function castPropertyValues(array &$customer)
+    private function castPropertyValues(&$customer)
     {
         $customer['id_customer'] = (int) $customer['id_customer'];
         $customer['id_lang'] = (int) $customer['id_lang'];
-
         $customer['newsletter'] = (bool) $customer['newsletter'];
-
-        $timezone = (string) $this->configurationRepository->get('PS_TIMEZONE');
-        $customer['newsletter_date_add'] = (new \DateTime($customer['newsletter_date_add'], new \DateTimeZone($timezone)))->format('Y-m-d\TH:i:sO');
-
+        $customer['newsletter_date_add'] = (string) $customer['newsletter_date_add'];
         $customer['optin'] = (bool) $customer['optin'];
         $customer['active'] = (bool) $customer['active'];
         $customer['is_guest'] = (bool) $customer['is_guest'];
@@ -52,11 +35,11 @@ class CustomerDecorator
     }
 
     /**
-     * @param array $customer
+     * @param array<mixed> $customer
      *
      * @return void
      */
-    private function hashEmail(array &$customer)
+    private function hashEmail(&$customer)
     {
         $customer['email_hash'] = hash('sha256', $customer['email'] . 'dUj4GMBD6689pL9pyr');
         unset($customer['email']);

@@ -24,11 +24,18 @@ use PrestaShop\OAuth2\Client\Provider\PrestaShopUser;
 
 class EmployeeNotFoundException extends AccountLoginException
 {
+    /**
+     * @param string $message
+     * @param PrestaShopUser|null $user
+     * @param \Exception $previous
+     */
     public function __construct(
-        ?PrestaShopUser $user,
-        string $message = 'The email address is not associated to a PrestaShop backoffice account.',
-        string $type = 'employee_not_found'
+        $message = 'The email address is not associated to a PrestaShop backoffice account.',
+        PrestaShopUser $user = null,
+        \Exception $previous = null
     ) {
-        parent::__construct($user, $message, $type);
+        parent::__construct($message, $user, $previous);
+
+        $this->type = 'employee_not_found';
     }
 }

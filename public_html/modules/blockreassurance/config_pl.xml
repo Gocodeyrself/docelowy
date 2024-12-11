@@ -2,7 +2,7 @@
 <module>
     <name>blockreassurance</name>
     <displayName><![CDATA[Bezpieczeństwo Klienta]]></displayName>
-    <version><![CDATA[5.1.2]]></version>
+    <version><![CDATA[5.1.4]]></version>
     <description><![CDATA[Połącz się ze swoimi gośćmi i zapewnij ich o bezpiecznej płatności, bezpłatnej wysyłce lub zwrotach.]]></description>
     <author><![CDATA[PrestaShop]]></author>
     <tab><![CDATA[front_office_features]]></tab>

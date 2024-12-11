@@ -19,11 +19,11 @@ class CompressionService
     /**
      * Compresses data with gzip
      *
-     * @param array $data
+     * @param array<mixed> $data
      *
      * @return string
      *
-     * @throws \Exception
+     * @@throws \Exception
      */
     public function gzipCompressData($data)
     {

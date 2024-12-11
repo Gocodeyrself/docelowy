@@ -20,17 +20,15 @@
 
 namespace PrestaShop\Module\PsAccounts\Provider;
 
-use phpseclib\Crypt\RSA;
 use PrestaShop\Module\PsAccounts\Exception\SshKeysNotFoundException;
 use PrestaShop\Module\PsAccounts\Repository\ConfigurationRepository;
+use PrestaShop\Module\PsAccounts\Vendor\phpseclib\Crypt\RSA;
 
 /**
  * Manage RSA
  */
 class RsaKeysProvider
 {
-    const SIGNATURE_DATA = 'data';
-
     /**
      * @var RSA
      */
@@ -126,13 +124,6 @@ class RsaKeysProvider
             $this->configuration->updateAccountsRsaPrivateKey($key['privatekey']);
             $this->configuration->updateAccountsRsaPublicKey($key['publickey']);
 
-            $this->configuration->updateAccountsRsaSignData(
-                $this->signData(
-                    $this->configuration->getAccountsRsaPrivateKey(),
-                    self::SIGNATURE_DATA
-                )
-            );
-
             if (false === $this->hasKeys()) {
                 throw new SshKeysNotFoundException('No RSA keys found for the shop');
             }
@@ -193,20 +184,11 @@ class RsaKeysProvider
     }
 
     /**
-     * @return string
-     */
-    public function getSignature()
-    {
-        return $this->configuration->getAccountsRsaSignData();
-    }
-
-    /**
      * @return void
      */
     public function cleanupKeys()
     {
         $this->configuration->updateAccountsRsaPrivateKey('');
         $this->configuration->updateAccountsRsaPublicKey('');
-        $this->configuration->updateAccountsRsaSignData('');
     }
 }

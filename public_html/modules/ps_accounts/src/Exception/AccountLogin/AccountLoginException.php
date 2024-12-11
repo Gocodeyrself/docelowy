@@ -22,30 +22,37 @@ namespace PrestaShop\Module\PsAccounts\Exception\AccountLogin;
 
 use PrestaShop\OAuth2\Client\Provider\PrestaShopUser;
 
-abstract class AccountLoginException extends \Exception
+class AccountLoginException extends \Exception
 {
     /**
      * @var PrestaShopUser|null
      */
-    private $user;
+    protected $user;
 
     /**
      * @var string
      */
-    private $type;
+    protected $type = 'error_other';
 
-    public function __construct(?PrestaShopUser $user, string $message = '', string $type = '')
-    {
-        parent::__construct($message);
+    /**
+     * @param string $message
+     * @param PrestaShopUser|null $user
+     * @param \Exception $previous
+     */
+    public function __construct(
+        $message = '',
+        PrestaShopUser $user = null,
+        \Exception $previous = null
+    ) {
+        parent::__construct($message, 0, $previous);
 
         $this->user = $user;
-        $this->type = $type;
     }
 
     /**
      * @return PrestaShopUser|null
      */
-    public function getPrestaShopUser(): ?PrestaShopUser
+    public function getUser()
     {
         return $this->user;
     }
@@ -53,7 +60,7 @@ abstract class AccountLoginException extends \Exception
     /**
      * @return string
      */
-    public function getType(): string
+    public function getType()
     {
         return $this->type;
     }

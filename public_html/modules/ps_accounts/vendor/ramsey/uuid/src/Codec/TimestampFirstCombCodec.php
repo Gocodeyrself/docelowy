@@ -8,106 +8,88 @@
  *
  * @copyright Copyright (c) Ben Ramsey <ben@benramsey.com>
  * @license http://opensource.org/licenses/MIT MIT
+ * @link https://benramsey.com/projects/ramsey-uuid/ Documentation
+ * @link https://packagist.org/packages/ramsey/uuid Packagist
+ * @link https://github.com/ramsey/uuid GitHub
  */
+namespace PrestaShop\Module\PsAccounts\Vendor\Ramsey\Uuid\Codec;
 
-declare(strict_types=1);
-
-namespace Ramsey\Uuid\Codec;
-
-use Ramsey\Uuid\Exception\InvalidUuidStringException;
-use Ramsey\Uuid\UuidInterface;
-
-use function bin2hex;
-use function sprintf;
-use function substr;
-use function substr_replace;
-
+use PrestaShop\Module\PsAccounts\Vendor\Ramsey\Uuid\Exception\InvalidUuidStringException;
+use PrestaShop\Module\PsAccounts\Vendor\Ramsey\Uuid\UuidInterface;
 /**
- * TimestampFirstCombCodec encodes and decodes COMBs, with the timestamp as the
- * first 48 bits
- *
- * In contrast with the TimestampLastCombCodec, the TimestampFirstCombCodec
- * adds the timestamp to the first 48 bits of the COMB. To generate a
- * timestamp-first COMB, set the TimestampFirstCombCodec as the codec, along
- * with the CombGenerator as the random generator.
- *
- * ``` php
- * $factory = new UuidFactory();
- *
- * $factory->setCodec(new TimestampFirstCombCodec($factory->getUuidBuilder()));
- *
- * $factory->setRandomGenerator(new CombGenerator(
- *     $factory->getRandomGenerator(),
- *     $factory->getNumberConverter()
- * ));
- *
- * $timestampFirstComb = $factory->uuid4();
- * ```
- *
- * @link https://www.informit.com/articles/printerfriendly/25862 The Cost of GUIDs as Primary Keys
- *
- * @psalm-immutable
+ * TimestampFirstCombCodec encodes and decodes COMB UUIDs which have the timestamp as the first 48 bits.
+ * To be used with MySQL, PostgreSQL, Oracle.
  */
 class TimestampFirstCombCodec extends StringCodec
 {
     /**
-     * @psalm-return non-empty-string
-     * @psalm-suppress MoreSpecificReturnType we know that the retrieved `string` is never empty
-     * @psalm-suppress LessSpecificReturnStatement we know that the retrieved `string` is never empty
-     */
-    public function encode(UuidInterface $uuid): string
-    {
-        $bytes = $this->swapBytes($uuid->getFields()->getBytes());
-
-        return sprintf(
-            '%08s-%04s-%04s-%04s-%012s',
-            bin2hex(substr($bytes, 0, 4)),
-            bin2hex(substr($bytes, 4, 2)),
-            bin2hex(substr($bytes, 6, 2)),
-            bin2hex(substr($bytes, 8, 2)),
-            bin2hex(substr($bytes, 10))
-        );
-    }
-
-    /**
-     * @psalm-return non-empty-string
-     * @psalm-suppress MoreSpecificReturnType we know that the retrieved `string` is never empty
-     * @psalm-suppress LessSpecificReturnStatement we know that the retrieved `string` is never empty
-     */
-    public function encodeBinary(UuidInterface $uuid): string
-    {
-        /** @phpstan-ignore-next-line PHPStan complains that this is not a non-empty-string. */
-        return $this->swapBytes($uuid->getFields()->getBytes());
-    }
-
-    /**
-     * @throws InvalidUuidStringException
+     * Encodes a UuidInterface as a string representation of a timestamp first COMB UUID
      *
-     * @inheritDoc
+     * @param UuidInterface $uuid
+     *
+     * @return string Hexadecimal string representation of a GUID
      */
-    public function decode(string $encodedUuid): UuidInterface
+    public function encode(UuidInterface $uuid)
     {
-        $bytes = $this->getBytes($encodedUuid);
-
-        return $this->getBuilder()->build($this, $this->swapBytes($bytes));
+        $sixPieceComponents = \array_values($uuid->getFieldsHex());
+        $this->swapTimestampAndRandomBits($sixPieceComponents);
+        return \vsprintf('%08s-%04s-%04s-%02s%02s-%012s', $sixPieceComponents);
     }
-
-    public function decodeBytes(string $bytes): UuidInterface
-    {
-        return $this->getBuilder()->build($this, $this->swapBytes($bytes));
-    }
-
     /**
-     * Swaps bytes according to the timestamp-first COMB rules
+     * Encodes a UuidInterface as a binary representation of timestamp first COMB UUID
+     *
+     * @param UuidInterface $uuid
+     *
+     * @return string Binary string representation of timestamp first COMB UUID
      */
-    private function swapBytes(string $bytes): string
+    public function encodeBinary(UuidInterface $uuid)
     {
-        $first48Bits = substr($bytes, 0, 6);
-        $last48Bits = substr($bytes, -6);
-
-        $bytes = substr_replace($bytes, $last48Bits, 0, 6);
-        $bytes = substr_replace($bytes, $first48Bits, -6);
-
-        return $bytes;
+        $stringEncoding = $this->encode($uuid);
+        return \hex2bin(\str_replace('-', '', $stringEncoding));
+    }
+    /**
+     * Decodes a string representation of timestamp first COMB UUID into a UuidInterface object instance
+     *
+     * @param string $encodedUuid
+     *
+     * @return UuidInterface
+     * @throws InvalidUuidStringException
+     */
+    public function decode($encodedUuid)
+    {
+        $fivePieceComponents = $this->extractComponents($encodedUuid);
+        $this->swapTimestampAndRandomBits($fivePieceComponents);
+        return $this->getBuilder()->build($this, $this->getFields($fivePieceComponents));
+    }
+    /**
+     * Decodes a binary representation of timestamp first COMB UUID into a UuidInterface object instance
+     *
+     * @param string $bytes
+     *
+     * @return UuidInterface
+     * @throws InvalidUuidStringException
+     */
+    public function decodeBytes($bytes)
+    {
+        return $this->decode(\bin2hex($bytes));
+    }
+    /**
+     * Swaps the first 48 bits with the last 48 bits
+     *
+     * @param array $components An array of UUID components (the UUID exploded on its dashes)
+     *
+     * @return void
+     */
+    protected function swapTimestampAndRandomBits(array &$components)
+    {
+        $last48Bits = $components[4];
+        if (\count($components) == 6) {
+            $last48Bits = $components[5];
+            $components[5] = $components[0] . $components[1];
+        } else {
+            $components[4] = $components[0] . $components[1];
+        }
+        $components[0] = \substr($last48Bits, 0, 8);
+        $components[1] = \substr($last48Bits, 8, 4);
     }
 }

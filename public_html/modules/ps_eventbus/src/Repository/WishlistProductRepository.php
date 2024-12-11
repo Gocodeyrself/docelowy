@@ -9,19 +9,20 @@ class WishlistProductRepository
      */
     private $db;
 
-    public function __construct(\Db $db)
+    public function __construct()
     {
-        $this->db = $db;
+        $this->db = \Db::getInstance();
     }
 
     /**
-     * @param array $wishlistIds
+     * @param array<mixed> $wishlistIds
      *
      * @return \DbQuery
      */
-    public function getBaseQuery(array &$wishlistIds)
+    public function getBaseQuery(&$wishlistIds)
     {
         $query = new \DbQuery();
+
         $query->from('wishlist_product', 'wp');
         $query->where('wp.id_wishlist IN(' . implode(',', array_map('intval', $wishlistIds)) . ')');
 
@@ -29,19 +30,36 @@ class WishlistProductRepository
     }
 
     /**
-     * @param array $wishlistIds
+     * @param array<mixed> $wishlistIds
      *
-     * @return array|bool|\mysqli_result|\PDOStatement|resource|null
+     * @return array<mixed>|bool|\mysqli_result|\PDOStatement|resource|null
      *
      * @throws \PrestaShopDatabaseException
      */
-    public function getWishlistProducts(array &$wishlistIds)
+    public function getWishlistProducts(&$wishlistIds)
     {
+        // need this module for this table : https://addons.prestashop.com/en/undownloadable/9131-wishlist-block.html
+        if (empty($this->checkIfPsWishlistIsInstalled())) {
+            return [];
+        }
+
         $query = $this->getBaseQuery($wishlistIds);
 
         $this->addSelectParameters($query);
 
         return $this->db->executeS($query);
+    }
+
+    /**
+     * @return array<mixed>|bool|\mysqli_result|\PDOStatement|resource|null
+     *
+     * @throws \PrestaShopDatabaseException
+     */
+    private function checkIfPsWishlistIsInstalled()
+    {
+        $moduleisInstalledQuery = 'SELECT * FROM information_schema.tables WHERE table_name LIKE \'%wishlist\' LIMIT 1;';
+
+        return $this->db->executeS($moduleisInstalledQuery);
     }
 
     /**
@@ -51,7 +69,7 @@ class WishlistProductRepository
      */
     private function addSelectParameters(\DbQuery $query)
     {
-        $query->select('wp.id_wishlist_product, wp.id_wishlist, wp.id_product, wp.id_product_attribute,
-      wp.quantity, wp.priority');
+        $query->select('wp.id_wishlist_product, wp.id_wishlist, wp.id_product, wp.id_product_attribute');
+        $query->select('wp.quantity, wp.priority');
     }
 }

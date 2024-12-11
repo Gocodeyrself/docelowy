@@ -44,9 +44,9 @@ class StockDataProvider implements PaginatedApiDataProviderInterface
      * @param int $limit
      * @param string $langIso
      *
-     * @return array
+     * @return array<mixed>
      *
-     * @throws \PrestaShopDatabaseException
+     * @@throws \PrestaShopDatabaseException
      */
     public function getFormattedData($offset, $limit, $langIso)
     {
@@ -84,11 +84,11 @@ class StockDataProvider implements PaginatedApiDataProviderInterface
     /**
      * @param int $limit
      * @param string $langIso
-     * @param array $objectIds
+     * @param array<mixed> $objectIds
      *
-     * @return array
+     * @return array<mixed>
      *
-     * @throws \PrestaShopDatabaseException
+     * @@throws \PrestaShopDatabaseException
      */
     public function getFormattedDataIncremental($limit, $langIso, $objectIds)
     {
@@ -114,12 +114,26 @@ class StockDataProvider implements PaginatedApiDataProviderInterface
     }
 
     /**
+     * @param int $offset
+     * @param int $limit
      * @param string $langIso
-     * @param array $stocks
      *
-     * @return array
+     * @return array<mixed>
      *
-     * @throws \PrestaShopDatabaseException
+     * @@throws \PrestaShopDatabaseException
+     */
+    public function getQueryForDebug($offset, $limit, $langIso)
+    {
+        return $this->stockRepository->getQueryForDebug($offset, $limit);
+    }
+
+    /**
+     * @param string $langIso
+     * @param array<mixed> $stocks
+     *
+     * @return array<mixed>
+     *
+     * @@throws \PrestaShopDatabaseException
      */
     private function getStockMvts($langIso, $stocks)
     {

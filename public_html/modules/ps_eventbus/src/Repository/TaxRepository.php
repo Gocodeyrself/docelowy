@@ -15,13 +15,13 @@ class TaxRepository
     private $context;
 
     /**
-     * @var array
+     * @var array<mixed>
      */
     private $countryIsoCodeCache = [];
 
-    public function __construct(\Db $db, \Context $context)
+    public function __construct(\Context $context)
     {
-        $this->db = $db;
+        $this->db = \Db::getInstance();
         $this->context = $context;
     }
 
@@ -30,6 +30,18 @@ class TaxRepository
      */
     private function getBaseQuery()
     {
+        if ($this->context->shop == null) {
+            throw new \PrestaShopException('No shop context');
+        }
+
+        $shopId = (int) $this->context->shop->id;
+
+        if ($this->context->language == null) {
+            throw new \PrestaShopException('No language context');
+        }
+
+        $language = (int) $this->context->language->id;
+
         $query = new \DbQuery();
 
         $query->from('tax', 't')
@@ -37,8 +49,8 @@ class TaxRepository
             ->innerJoin('tax_rules_group', 'trg', 'trg.id_tax_rules_group = tr.id_tax_rules_group')
             ->innerJoin('tax_rules_group_shop', 'trgs', 'trgs.id_tax_rules_group = tr.id_tax_rules_group')
             ->innerJoin('tax_lang', 'tl', 'tl.id_tax = t.id_tax')
-            ->where('trgs.id_shop = ' . (int) $this->context->shop->id)
-            ->where('tl.id_lang = ' . (int) $this->context->language->id);
+            ->where('trgs.id_shop = ' . $shopId)
+            ->where('tl.id_lang = ' . $language);
 
         return $query;
     }
@@ -48,12 +60,16 @@ class TaxRepository
      * @param int $taxRulesGroupId
      * @param bool $active
      *
-     * @return array|bool|\mysqli_result|\PDOStatement|resource|null
+     * @return array<mixed>|bool|\mysqli_result|\PDOStatement|resource|null
      *
      * @throws \PrestaShopDatabaseException
      */
-    public function getCarrierTaxesByZone($zoneId, $taxRulesGroupId, $active = true)
+    public function getCarrierTaxesByZone($zoneId, $taxRulesGroupId, $active = null)
     {
+        if ($active == null) {
+            $active = true;
+        }
+
         $cacheKey = $zoneId . '-' . (int) $active;
 
         if (!isset($this->countryIsoCodeCache[$cacheKey])) {

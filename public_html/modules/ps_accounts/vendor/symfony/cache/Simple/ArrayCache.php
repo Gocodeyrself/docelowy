@@ -8,148 +8,114 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+namespace PrestaShop\Module\PsAccounts\Vendor\Symfony\Component\Cache\Simple;
 
-namespace Symfony\Component\Cache\Simple;
-
-use Psr\Log\LoggerAwareInterface;
-use Psr\SimpleCache\CacheInterface as Psr16CacheInterface;
-use Symfony\Component\Cache\Adapter\ArrayAdapter;
-use Symfony\Component\Cache\CacheItem;
-use Symfony\Component\Cache\Exception\InvalidArgumentException;
-use Symfony\Component\Cache\ResettableInterface;
-use Symfony\Component\Cache\Traits\ArrayTrait;
-use Symfony\Contracts\Cache\CacheInterface;
-
-@trigger_error(sprintf('The "%s" class is deprecated since Symfony 4.3, use "%s" and type-hint for "%s" instead.', ArrayCache::class, ArrayAdapter::class, CacheInterface::class), \E_USER_DEPRECATED);
-
+use PrestaShop\Module\PsAccounts\Vendor\Psr\Log\LoggerAwareInterface;
+use PrestaShop\Module\PsAccounts\Vendor\Psr\SimpleCache\CacheInterface;
+use PrestaShop\Module\PsAccounts\Vendor\Symfony\Component\Cache\CacheItem;
+use PrestaShop\Module\PsAccounts\Vendor\Symfony\Component\Cache\Exception\InvalidArgumentException;
+use PrestaShop\Module\PsAccounts\Vendor\Symfony\Component\Cache\ResettableInterface;
+use PrestaShop\Module\PsAccounts\Vendor\Symfony\Component\Cache\Traits\ArrayTrait;
 /**
- * @deprecated since Symfony 4.3, use ArrayAdapter and type-hint for CacheInterface instead.
+ * @author Nicolas Grekas <p@tchwork.com>
  */
-class ArrayCache implements Psr16CacheInterface, LoggerAwareInterface, ResettableInterface
+class ArrayCache implements CacheInterface, LoggerAwareInterface, ResettableInterface
 {
     use ArrayTrait {
         ArrayTrait::deleteItem as delete;
         ArrayTrait::hasItem as has;
     }
-
     private $defaultLifetime;
-
     /**
+     * @param int  $defaultLifetime
      * @param bool $storeSerialized Disabling serialization can lead to cache corruptions when storing mutable values but increases performance otherwise
      */
-    public function __construct(int $defaultLifetime = 0, bool $storeSerialized = true)
+    public function __construct($defaultLifetime = 0, $storeSerialized = \true)
     {
-        $this->defaultLifetime = $defaultLifetime;
+        $this->defaultLifetime = (int) $defaultLifetime;
         $this->storeSerialized = $storeSerialized;
     }
-
     /**
      * {@inheritdoc}
      */
     public function get($key, $default = null)
     {
-        if (!\is_string($key) || !isset($this->expiries[$key])) {
-            CacheItem::validateKey($key);
+        foreach ($this->getMultiple([$key], $default) as $v) {
+            return $v;
         }
-        if (!$isHit = isset($this->expiries[$key]) && ($this->expiries[$key] > microtime(true) || !$this->delete($key))) {
-            $this->values[$key] = null;
-
-            return $default;
-        }
-        if (!$this->storeSerialized) {
-            return $this->values[$key];
-        }
-        $value = $this->unfreeze($key, $isHit);
-
-        return $isHit ? $value : $default;
     }
-
     /**
      * {@inheritdoc}
-     *
-     * @return iterable
      */
     public function getMultiple($keys, $default = null)
     {
         if ($keys instanceof \Traversable) {
-            $keys = iterator_to_array($keys, false);
+            $keys = \iterator_to_array($keys, \false);
         } elseif (!\is_array($keys)) {
-            throw new InvalidArgumentException(sprintf('Cache keys must be array or Traversable, "%s" given.', \is_object($keys) ? \get_class($keys) : \gettype($keys)));
+            throw new InvalidArgumentException(\sprintf('Cache keys must be array or Traversable, "%s" given.', \is_object($keys) ? \get_class($keys) : \gettype($keys)));
         }
         foreach ($keys as $key) {
-            if (!\is_string($key) || !isset($this->expiries[$key])) {
-                CacheItem::validateKey($key);
-            }
+            CacheItem::validateKey($key);
         }
-
-        return $this->generateItems($keys, microtime(true), function ($k, $v, $hit) use ($default) { return $hit ? $v : $default; });
+        return $this->generateItems($keys, \time(), function ($k, $v, $hit) use($default) {
+            return $hit ? $v : $default;
+        });
     }
-
     /**
      * {@inheritdoc}
-     *
-     * @return bool
      */
     public function deleteMultiple($keys)
     {
         if (!\is_array($keys) && !$keys instanceof \Traversable) {
-            throw new InvalidArgumentException(sprintf('Cache keys must be array or Traversable, "%s" given.', \is_object($keys) ? \get_class($keys) : \gettype($keys)));
+            throw new InvalidArgumentException(\sprintf('Cache keys must be array or Traversable, "%s" given.', \is_object($keys) ? \get_class($keys) : \gettype($keys)));
         }
         foreach ($keys as $key) {
             $this->delete($key);
         }
-
-        return true;
+        return \true;
     }
-
     /**
      * {@inheritdoc}
-     *
-     * @return bool
      */
     public function set($key, $value, $ttl = null)
     {
-        if (!\is_string($key)) {
-            CacheItem::validateKey($key);
-        }
-
+        CacheItem::validateKey($key);
         return $this->setMultiple([$key => $value], $ttl);
     }
-
     /**
      * {@inheritdoc}
-     *
-     * @return bool
      */
     public function setMultiple($values, $ttl = null)
     {
         if (!\is_array($values) && !$values instanceof \Traversable) {
-            throw new InvalidArgumentException(sprintf('Cache values must be array or Traversable, "%s" given.', \is_object($values) ? \get_class($values) : \gettype($values)));
+            throw new InvalidArgumentException(\sprintf('Cache values must be array or Traversable, "%s" given.', \is_object($values) ? \get_class($values) : \gettype($values)));
         }
         $valuesArray = [];
-
         foreach ($values as $key => $value) {
-            if (!\is_int($key) && !(\is_string($key) && isset($this->expiries[$key]))) {
-                CacheItem::validateKey($key);
-            }
+            \is_int($key) || CacheItem::validateKey($key);
             $valuesArray[$key] = $value;
         }
-        if (false === $ttl = $this->normalizeTtl($ttl)) {
-            return $this->deleteMultiple(array_keys($valuesArray));
+        if (\false === ($ttl = $this->normalizeTtl($ttl))) {
+            return $this->deleteMultiple(\array_keys($valuesArray));
         }
-        $expiry = 0 < $ttl ? microtime(true) + $ttl : \PHP_INT_MAX;
-
-        foreach ($valuesArray as $key => $value) {
-            if ($this->storeSerialized && null === $value = $this->freeze($value, $key)) {
-                return false;
+        if ($this->storeSerialized) {
+            foreach ($valuesArray as $key => $value) {
+                try {
+                    $valuesArray[$key] = \serialize($value);
+                } catch (\Exception $e) {
+                    $type = \is_object($value) ? \get_class($value) : \gettype($value);
+                    CacheItem::log($this->logger, 'Failed to save key "{key}" ({type})', ['key' => $key, 'type' => $type, 'exception' => $e]);
+                    return \false;
+                }
             }
+        }
+        $expiry = 0 < $ttl ? \time() + $ttl : \PHP_INT_MAX;
+        foreach ($valuesArray as $key => $value) {
             $this->values[$key] = $value;
             $this->expiries[$key] = $expiry;
         }
-
-        return true;
+        return \true;
     }
-
     private function normalizeTtl($ttl)
     {
         if (null === $ttl) {
@@ -159,9 +125,8 @@ class ArrayCache implements Psr16CacheInterface, LoggerAwareInterface, Resettabl
             $ttl = (int) \DateTime::createFromFormat('U', 0)->add($ttl)->format('U');
         }
         if (\is_int($ttl)) {
-            return 0 < $ttl ? $ttl : false;
+            return 0 < $ttl ? $ttl : \false;
         }
-
-        throw new InvalidArgumentException(sprintf('Expiration date must be an integer, a DateInterval or null, "%s" given.', \is_object($ttl) ? \get_class($ttl) : \gettype($ttl)));
+        throw new InvalidArgumentException(\sprintf('Expiration date must be an integer, a DateInterval or null, "%s" given.', \is_object($ttl) ? \get_class($ttl) : \gettype($ttl)));
     }
 }

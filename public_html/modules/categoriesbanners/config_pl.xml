@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <module>
     <name>categoriesbanners</name>
-    <displayName><![CDATA[Product list banners manger ( categories page banner)]]></displayName>
+    <displayName><![CDATA[Menedżer baner&oacute;w listy produkt&oacute;w (baner strony kategorii)]]></displayName>
     <version><![CDATA[5.2.4]]></version>
-    <description><![CDATA[category banner management before and after product banner any product row in category product page]]></description>
+    <description><![CDATA[Zarządzanie banerami kategorii przed i po banerach produkt&oacute;w na stronie kategorii]]></description>
     <author><![CDATA[Keshva Thakur]]></author>
     <tab><![CDATA[front_office_features]]></tab>
-	<confirmUninstall><![CDATA[Uninstalling the module will also delete all data?]]></confirmUninstall>
+	<confirmUninstall><![CDATA[Odinstalowanie modułu spowoduje również usunięcie wszystkich danych.]]></confirmUninstall>
     <is_configurable>1</is_configurable>
     <need_instance>1</need_instance>
 </module>
