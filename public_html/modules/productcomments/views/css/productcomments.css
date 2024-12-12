@@ -43,7 +43,7 @@
   width: 100%; /* Dopasowanie szerokości */
   background: transparent !important; /* Tło przezroczyste */
   color: #FF2323; /* Domyślny kolor tekstu i ikon */
-  font-size: 18px !important; /* Dopasowanie rozmiaru fontu */
+  font-size: 16px; /* Dopasowanie rozmiaru fontu */
   font-weight: bold; /* Grubość tekstu */
   padding: 10px 20px; /* Standardowe odstępy */
   border: 2px solid transparent; /* Brak widocznego obramowania */
@@ -56,7 +56,7 @@
 
 .btn-comment .material-icons {
   margin-right: 10px; /* Odstęp między ikoną a tekstem */
-  font-size: 30px; /* Rozmiar ikony */
+  font-size: 20px; /* Rozmiar ikony */
   line-height: 1; /* Wyrównanie ikony */
 }
 

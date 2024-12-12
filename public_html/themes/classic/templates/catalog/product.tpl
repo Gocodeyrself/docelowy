@@ -200,13 +200,10 @@
               </form>
               {/block}
               {* Zamyka blok formularza produktu *}
-
-              
             </div>
             {* Zamyka div z informacjami o produkcie *}
 
             {block name='hook_display_reassurance'}
-                {* Wywołuje hook 'displayReassurance', który może być używany przez moduły do dodawania treści zapewniających klienta *}
             {hook h='displayReassurance'}
             {hook h='displayProductActions' product=$product}
             {/block}
@@ -222,61 +219,57 @@
 </div>
 <!-- End of box with sharing information -->
 
+<!-- New box with delivery and returns information -->
+<div class="col-md-12 white-bgr box-shadow accessories-container">
+  <h4 class="head-title mb-2">{l s='Delivery and Returns' d='Shop.Theme.Catalog'}</h4>
 
-<!-- End of box with comments and social sharing -->
+  <div class="delivery-info">
 
-        <!-- New box with delivery and returns information -->
-        <div class="col-md-12 white-bgr box-shadow accessories-container" style="padding: 10px 15px;">
-          <h4 class="head-title mb-2">{l s='Delivery and Returns' d='Shop.Theme.Catalog'}</h4>
+    <!-- Complaints and returns -->
+    <p>
+      <i class="material-icons">&#xE89C;</i>
+      <span>{l s='Complaints and returns:' d='Shop.Theme.Catalog'}</span>
+      <a href="https://sklep.cezos.com/pl/content/20-reklamacjazwroty" target="_blank">
+        {l s='Learn more' d='Shop.Theme.Catalog'}
+      </a>
+    </p>
 
-          <div class="delivery-info" style="padding: 5px 10px; line-height: 1.4;">
+    <!-- Package tracking -->
+    <p>
+      <i class="material-icons">&#xE8B6;</i>
+      <span>{l s='Package tracking available after shipment:' d='Shop.Theme.Catalog'}</span>
+      <a href="https://sklep.cezos.com/pl/historia-zamowien" target="_blank">
+        {l s='Check order status' d='Shop.Theme.Catalog'}
+      </a>
+    </p>
 
-            <!-- Complaints and returns -->
-            <p class="d-flex align-items-center mb-1">
-              <i class="material-icons mr-1" style="color: #2d4156; font-size: 20px;">&#xE89C;</i>
-              <span style="font-weight: bold; color: #2d4156;">{l s='Complaints and returns:' d='Shop.Theme.Catalog'}</span>
-              <a href="https://sklep.cezos.com/pl/content/20-reklamacjazwroty" target="_blank" class="ml-1" style="color: #007bff; text-decoration: underline;">
-                {l s='Learn more' d='Shop.Theme.Catalog'}
-              </a>
-            </p>
+    <!-- Delivery within -->
+    <p>
+      <i class="material-icons">&#xE425;</i>
+      <span>{l s='Delivery within:' d='Shop.Theme.Catalog'}</span>
+      <span style="margin-left: 5px;">2-4 days</span>
+    </p>
 
-            <!-- Package tracking -->
-            <p class="d-flex align-items-center mb-1">
-              <i class="material-icons mr-1" style="color: #2d4156; font-size: 20px;">&#xE8B6;</i>
-              <span style="font-weight: bold; color: #2d4156;">{l s='Package tracking available after shipment:' d='Shop.Theme.Catalog'}</span>
-              <a href="https://sklep.cezos.com/pl/historia-zamowien" target="_blank" class="ml-1" style="color: #007bff; text-decoration: underline;">
-                {l s='Check order status' d='Shop.Theme.Catalog'}
-              </a>
-            </p>
+    <!-- Available shipping methods -->
+    <h5>{l s='Available shipping methods:' d='Shop.Theme.Catalog'}</h5>
+    <ul>
 
-            <!-- Delivery within -->
-            <p class="d-flex align-items-center mb-1">
-              <i class="material-icons mr-1" style="color: #2d4156; font-size: 20px;">&#xE425;</i>
-              <span style="font-weight: bold; color: #2d4156;">{l s='Delivery within:' d='Shop.Theme.Catalog'}</span>
-              <span style="color: #2d4156; margin-left: 5px;">2-4 days</span>
-            </p>
-
-            <!-- Available shipping methods -->
-            <h5 class="mt-3 mb-1" style="color: #333; font-weight: bold;">{l s='Available shipping methods:' d='Shop.Theme.Catalog'}</h5>
-            <ul class="pl-0" style="color: #666; margin-bottom: 0;">
-
-              {if $language.iso_code == 'en'}
-                <!-- For English, only display international shipping method -->
-                <li>{l s='GLS Courier - International:' d='Shop.Theme.Catalog'} {l s='Price dependent on destination country' d='Shop.Theme.Catalog'}</li>
-              {else}
-                <!-- For other languages, display all shipping methods -->
-                <li>{l s='Odbiór w sklepie:' d='Shop.Theme.Catalog'} {l s='za darmo' d='Shop.Theme.Catalog'}</li>
-                <li>{l s='Kurier GLS - Polska:' d='Shop.Theme.Catalog'} 30,00 zł</li>
-                <li>{l s='GLS Parcel Shop:' d='Shop.Theme.Catalog'} 18,50 zł</li>
-                <li>{l s='Przesyłka Paczkomat® - standardowa:' d='Shop.Theme.Catalog'} 25,92 zł</li>
-                <li>{l s='InPost Paczkomat (pobranie):' d='Shop.Theme.Catalog'} 30,00 zł</li>
-                <li>{l s='InPost kurier:' d='Shop.Theme.Catalog'} 30,91 zł</li>
-              {/if}
-            </ul>
-          </div>
-        </div>
-        <!-- End of new delivery and returns information box -->
-  
+      {if $language.iso_code == 'en'}
+        <!-- For English, only display international shipping method -->
+        <li>{l s='GLS Courier - International:' d='Shop.Theme.Catalog'} {l s='Price dependent on destination country' d='Shop.Theme.Catalog'}</li>
+      {else}
+        <!-- For other languages, display all shipping methods -->
+        <li>{l s='Odbiór w sklepie:' d='Shop.Theme.Catalog'} {l s='za darmo' d='Shop.Theme.Catalog'}</li>
+        <li>{l s='Kurier GLS - Polska:' d='Shop.Theme.Catalog'} 30,00 zł</li>
+        <li>{l s='GLS Parcel Shop:' d='Shop.Theme.Catalog'} 18,50 zł</li>
+        <li>{l s='Przesyłka Paczkomat® - standardowa:' d='Shop.Theme.Catalog'} 25,92 zł</li>
+        <li>{l s='InPost Paczkomat (pobranie):' d='Shop.Theme.Catalog'} 30,00 zł</li>
+        <li>{l s='InPost kurier:' d='Shop.Theme.Catalog'} 30,91 zł</li>
+      {/if}
+    </ul>
+  </div>
+</div>
+<!-- End of new delivery and returns information box -->
 
           <div class="col-md-12 hidden-md-down white-bgr box-shadow scroll height-400 accessories-container">
             <h4 class="head-title">{l s='You might also like' d='Shop.Theme.Catalog'}</h4>            
@@ -318,40 +311,51 @@
             </div>
             <div class="col-md-7 position-unset">
               {block name='page_header_container'}
-              {block name='page_header'}
-              <div class="catalog_number">{l s='Catalog Number:' d='Shop.Theme.Global'} <b itemprop="sku">{$product.ean13}</b></div>
-              <div class="catalog_number">{l s='Reference' d='Shop.Pdf'}: <b itemprop="sku">{$product.reference}</b>
-              </div>
-              <h1 class="h1 product-name">{block name='page_title'}{$product.name}{/block}</h1>
-              {if $product.flags}
-              {/if}
-              {if $product.grouped_features}
-              <ul>
-                {foreach from=$product.grouped_features item=feature}
-                    {if $feature.name == 'Producent' && $feature.value == 'Cezos'}
+                {block name='page_header'}
+                <h1 class="h1 product-name">{block name='page_title'}{$product.name}{/block}</h1>
+                <div class="catalog_number">{l s='Catalog Number:' d='Shop.Theme.Global'} <b itemprop="sku">{$product.ean13}</b></div>
+                <div class="catalog_number">{l s='Reference' d='Shop.Pdf'}: <b itemprop="sku">{$product.reference}</b></div>
+                
+                {if $product.flags}
+                {/if}
+                
+                {if $product.grouped_features}
+                  <ul>
+                    {* Ograniczenie liczby wyświetlanych cech do 10 *}
+                    {assign var="feature_count" value=0}
+                    
+                    {foreach from=$product.grouped_features item=feature}
+                      {if $feature.name == 'Producent' && $feature.value == 'Cezos'}
                         <li class="product_type highlight-cezos">
-                            {$feature.name}: <b>{$feature.value}</b>
+                          {$feature.name}: <b>{$feature.value}</b>
                         </li>
-                        {break}
-                    {/if}
-                {/foreach}
-
-                {foreach from=$product.grouped_features item=feature}
-                  {if !($feature.name == 'Producent' && $feature.value == 'Cezos') 
-                      && $feature.id_feature != 52 
-                      && $feature.id_feature != 69 
-                      && $feature.id_feature != 70 
-                      && $feature.id_feature != 71
-                      && $feature.id_feature != 7 
-                      && $feature.name != 'Waga brutto' 
-                      && $feature.name != 'Gross Weight'}
-                    <li class="product_type">
-                        {$feature.name}: <b>{$feature.value}</b>
-                    </li>
-                  {/if}
-                {/foreach}
-              </ul>
-              {/if}
+                        {assign var="feature_count" value=$feature_count+1}
+                        {if $feature_count >= 10}
+                          {break}
+                        {/if}
+                      {/if}
+                    {/foreach}
+                    
+                    {foreach from=$product.grouped_features item=feature}
+                      {if !($feature.name == 'Producent' && $feature.value == 'Cezos') 
+                          && $feature.id_feature != 52 
+                          && $feature.id_feature != 69 
+                          && $feature.id_feature != 70 
+                          && $feature.id_feature != 71
+                          && $feature.id_feature != 7 
+                          && $feature.name != 'Waga brutto' 
+                          && $feature.name != 'Gross Weight'}
+                        <li class="product_type">
+                          {$feature.name}: <b>{$feature.value}</b>
+                        </li>
+                        {assign var="feature_count" value=$feature_count+1}
+                        {if $feature_count >= 10}
+                          {break}
+                        {/if}
+                      {/if}
+                    {/foreach}
+                  </ul>
+                {/if}
               {/block}
               {/block}
             </div>

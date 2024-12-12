@@ -5903,7 +5903,7 @@ body#checkout section.checkout-step hr {
 
 .bootstrap-touchspin .input-group-btn-vertical .bootstrap-touchspin-down,
 .bootstrap-touchspin .input-group-btn-vertical .bootstrap-touchspin-up {
-  border-radius: 0
+  /*border-radius: 0*/
 }
 
 .bootstrap-touchspin .input-group-btn-vertical .touchspin-up::after {
@@ -8641,7 +8641,8 @@ body#checkout #hook-display-after-carrier>[class^=col].links .row>[class^=col] {
 
 .tabs .nav-tabs .nav-link {
   color: #7a7a7a;
-  border: 0 solid transparent
+  border: 0 solid transparent;
+  font-size: 20px;
 }
 
 .tabs .nav-tabs .nav-link.active {
@@ -9254,7 +9255,7 @@ body#checkout #hook-display-after-carrier>[class^=col].links .row>[class^=col] {
   align-items: center;
   justify-content: flex-start; /* Wyrównanie zawartości do lewej */
   padding: 10px 20px;
-  font-size: 18px; /* Rozmiar fontu */
+  font-size: 1rem; /* Rozmiar fontu */
   font-weight: bold;
   text-decoration: none;
   color: #555; /* Domyślny kolor tekstu */
@@ -9280,7 +9281,7 @@ body#checkout #hook-display-after-carrier>[class^=col].links .row>[class^=col] {
 
 .btn-share i {
   margin-right: 10px; /* Odstęp między ikoną a tekstem */
-  font-size: 30px; /* Rozmiar ikony */
+  font-size: 20px; /* Rozmiar ikony */
   line-height: 1; /* Wyrównanie ikony */
 }
 .btn-share span {
@@ -12878,3 +12879,5 @@ body#checkout #hook-display-after-carrier>[class^=col].links .row>[class^=col] {
     width: 100%
   }
 }
+
+
