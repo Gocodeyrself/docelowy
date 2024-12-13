@@ -183,7 +183,7 @@ class aapfree extends Module
         return (parent::install() &&
             $this->installdb() &&
             $this->createMenu() &&
-            $this->registerHook('displayProductAdditionalInfo') &&
+            $this->registerHook('displayProductActions') &&
             $this->registerHook('actionAdminControllerSetMedia') &&
             $this->installMailTranslation() &&
             $this->registerHook('displayHeader'));
@@ -233,7 +233,7 @@ class aapfree extends Module
         return true;
     }
 
-    public function hookdisplayProductAdditionalInfo($params)
+    public function hookdisplayProductActions($params)
     {
         if (Tools::getValue('controller') == 'product' && Tools::getValue('action') == 'quickview') {
             return;
@@ -241,7 +241,7 @@ class aapfree extends Module
         /* Product informations */
         $product = new Product((int)Tools::getValue('id_product'), false, $this->context->language->id);
         $image = Product::getCover((int)$product->id);
-
+    
         $this->context->smarty->assign(array(
             'aapfree_link' => $this->context->link,
             'aapfree_product' => $product,
