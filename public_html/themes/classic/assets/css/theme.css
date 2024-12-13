@@ -8950,6 +8950,9 @@ body#checkout #hook-display-after-carrier>[class^=col].links .row>[class^=col] {
   margin-top: .625rem;
   font-weight: 700;
   align-items: center;
+  position: absolute;
+  top: 25px;
+  right: 150px;
 }
 
 #product-availability .material-icons {
