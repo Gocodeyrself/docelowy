@@ -10,9 +10,14 @@
  * support@mypresta.eu
  *
  *}
-<a id="send_aap_button" class="btn btn-primary" href="#send_AAP_form">
-    <i class="material-icons">help_outline</i>{l s='Ask about product' mod='aapfree'}
+ <a id="send_aap_button" class="btn btn-primary" href="#send_AAP_form">
+ <i class="material-icons">shopping_bag</i>
+ <div>
+     <h3>{l s='Bulk orders?' mod='aapfree'}</h3>
+     <span>{l s='Special prices for bulk orders' mod='aapfree'}</span>
+ </div>
 </a>
+
 
 <div style="display: none;">
     <div id="send_AAP_form" class="card">

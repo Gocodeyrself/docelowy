@@ -1569,6 +1569,44 @@ font-weight: 600;
     border-radius: 10px !important;
 }
 
+#send_aap_button {
+    background: transparent;
+    color: #3C5997;
+    text-transform: none;
+    font-weight: bold;
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    text-decoration: none;
+}
+
+#send_aap_button:hover {
+    transform: scale(1.05);
+    color: #7188B9;
+}
+
+#send_aap_button i {
+    font-size: 40px;
+    margin-right: 1rem;
+}
+
+#send_aap_button h3 {
+    font-size: 24px;
+    margin: 0;
+    color: #3C5997;
+}
+
+#send_aap_button span {
+    font-size: 14px;
+    margin: 0;
+    color: #666;
+}
+
 .product-miniature .btn.btn-primary.quick-view {
     padding: 0.5rem 1rem;
 }
