@@ -1,0 +1,42 @@
+{
+    "remotePath": "./public_html/",
+    "host": "cezos.exis24.pl",
+    "username": "ftp-cezos@cezos.exis24.pl",
+    "password": "eTi6#d-7W6nGA-uf",
+    "port": 21,
+    "secure": false,
+    "protocol": "ftp",
+    "uploadOnSave": false,
+    "passive": false,
+    "debug": false,
+    "privateKeyPath": null,
+    "passphrase": null,
+    "agent": null,
+    "allow": [],
+    "ignore": [
+        "\\.vscode",
+        "\\.git",
+        "\\.DS_Store",
+        "\\admin270jq8jrlc4glrd2ocx",
+        "\\app",
+        "\\bin",
+        "\\cgi-bin",
+        "\\config",
+        "\\docs",
+        "\\download",
+        "\\pdf",
+        "\\src",
+        "\\remplates",
+        "\\tools",
+        "\\var",
+        "\\vendor",
+        "\\webservice",
+        "\\img"
+            ],
+    "generatedFiles": {
+        "extensionsToInclude": [
+            ".php .js .css .tpl .html"
+        ],
+        "path": ""
+    }
+}
