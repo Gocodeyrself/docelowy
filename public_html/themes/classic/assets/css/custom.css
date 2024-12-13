@@ -2317,6 +2317,8 @@ body#cms #wrapper {
     position: absolute;
     right: 15px;
     top: 15px;
+    height: 4.5rem;
+    width: 4.5rem;
 }
 
 .btn-r-cms-container {
@@ -3817,6 +3819,7 @@ p {
 
 .wishlist-button-add i {
     color: var(--first-color) !important;
+    font-size: 40px;
 }
 
 .product-actions .product-flags-custom {
