@@ -69,15 +69,23 @@
           {block name='product_features'}
             <ul class="product-long-features">
               {if $product.manufacturer_name}
-                <li><dl><dt>{l s="Brand" d="Shop.Theme.Catalog"}</dt><dd>{$product.manufacturer_name}</dd></dl></li>
+                <li>
+                  <dl>
+                    <dt>{l s="Brand" d="Shop.Theme.Catalog"}</dt>
+                    <dd>{$product.manufacturer_name}</dd>
+                  </dl>
+                </li>
               {/if}
-              {if $product.features}
-                {foreach from=$product.features item=feature}
-                  {if $feature.name != 'Waga brutto' && $feature.name != 'Szerokość brutto' && $feature.name != 'Głębokość brutto' && $feature.name != 'Wysokość brutto' && $feature.name != 'Gross Weight'}
-                    <li><dl><dt>{$feature.name}</dt><dd>{$feature.value}</dd></dl></li>
-                  {/if}
-                {/foreach}
-              {/if}
+              {foreach from=$product.features item=feature name=features}
+                {if $smarty.foreach.features.index < 10}
+                  <li>
+                    <dl>
+                      <dt>{$feature.name}</dt>
+                      <dd>{$feature.value}</dd>
+                    </dl>
+                  </li>
+                {/if}
+              {/foreach}
             </ul>
           {/block}
         </div>
